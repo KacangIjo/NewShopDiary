@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/main_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/linearLayout3"
+            android:background="#3f3f3f"
+            android:gravity="left">
+            <ImageButton
+                android:src="@drawable/iconmenu"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/btnMainMenu"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:scaleType="center"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout4"
+                android:gravity="center">
+                <ImageView
+                    android:src="@drawable/menuplace"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/imageView2"
+                    android:scaleType="fitXY" />
+                <TextView
+                    android:text="Current Location"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textViewCurrentLocationMainPage"
+                    android:gravity="center" />
+                <Button
+                    android:text="-"
+                    android:id="@+id/buttonSendNotif"
+                    android:layout_width="39.0dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:id="@+id/linearLayout2"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <TextView
+                android:text="EXPIRED"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textMainExpired"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#3F3F3F"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:gravity="center" />
+            <TextView
+                android:text="Running Out"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textMainRunOut"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="#3F3F3F"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:gravity="center" />
+            <TextView
+                android:text="STOCK"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textMainStock"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#3F3F3F"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:gravity="center" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/linearLayout1"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textMainExpCount"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#3F3F3F"
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textMainRunOutCount"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#3F3F3F"
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textMainStockCount"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#3F3F3F"
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="331.5dp"
+            android:id="@+id/recyclerViewInventoryMainPage"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="215.0dp"
+            android:layout_weight="1"
+            android:id="@+id/imageView1" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/linearMenuQuick"
+            android:layout_gravity="bottom"
+            android:background="#3f3f3f"
+            android:gravity="center">
+            <ImageButton
+                android:src="@drawable/storage"
+                android:layout_width="65dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="match_parent"
+                android:id="@+id/btnMainStorage"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent" />
+            <ImageButton
+                android:src="@drawable/use"
+                android:layout_width="65dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="match_parent"
+                android:id="@+id/btnMainUse"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent" />
+            <ImageButton
+                android:src="@drawable/add"
+                android:layout_width="65dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="match_parent"
+                android:id="@+id/btnMainAdd"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent" />
+            <ImageButton
+                android:src="@drawable/logo"
+                android:layout_width="65dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="match_parent"
+                android:id="@+id/btnMainKart"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent" />
+            <ImageButton
+                android:src="@drawable/garbage"
+                android:layout_height="match_parent"
+                android:id="@+id/btnMainRunOut"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:layout_width="65dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

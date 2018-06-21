@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Hello">Hello World, Click Me!</string>
+    <string name="ApplicationName">ShopDiaryProjectV1</string>
+  <string-array name="Category">
+    <item>Food</item>
+    <item>Drink</item>
+    <item>Medicine</item>
+    <item>Tool</item>
+    <item>Stationery</item>
+  </string-array>
+
+  <string-array name="Location">
+    <item>Rumah 1</item>
+    <item>Rumah 2</item>
+    <item>Rumah 3</item>
+    <item>Rumah 4</item>
+    <item>Rumah 5</item>
+  </string-array>
+
+  <string-array name="StorageRumah1">
+    <item>Storage 1</item>
+    <item>Storage 2</item>
+    <item>Storage 3</item>
+    <item>Storage 4</item>
+    <item>Storage 5</item>
+  </string-array>
+
+  <string-array name="StorageRumah2">
+    <item>Storage 1</item>
+    <item>Storage 2</item>
+    <item>Storage 3</item>
+    <item>Storage 4</item>
+    <item>Storage 5</item>
+  </string-array>
+  <string-array name="StorageRumah3">
+    <item>Storage 1</item>
+    <item>Storage 2</item>
+    <item>Storage 3</item>
+    <item>Storage 4</item>
+    <item>Storage 5</item>
+  </string-array>
+  <string-array name="StorageRumah4">
+    <item>Storage 1</item>
+    <item>Storage 2</item>
+    <item>Storage 3</item>
+    <item>Storage 4</item>
+    <item>Storage 5</item>
+  </string-array>
+  <string-array name="StorageRumah5">
+    <item>Storage 1</item>
+    <item>Storage 2</item>
+    <item>Storage 3</item>
+    <item>Storage 4</item>
+    <item>Storage 5</item>
+  </string-array>
+</resources>

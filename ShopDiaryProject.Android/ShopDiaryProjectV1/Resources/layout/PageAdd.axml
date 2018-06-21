@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/main_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/linearLayout3"
+            android:background="#3f3f3f"
+            android:gravity="left">
+            <ImageButton
+                android:src="@drawable/iconback"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/btnAddBack1"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+        <SurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="421.0dp"
+            android:id="@+id/cameraPreview" />
+        <TextView
+            android:text="Scan Your Barcode"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textScannedBarcode"
+            android:gravity="center"
+            android:layout_marginTop="10dp" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/linearMenuQuick"
+            android:layout_gravity="bottom"
+            android:background="#3f3f3f"
+            android:gravity="center">
+            <Button
+                android:text="SCAN"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonAddScan1" />
+            <Button
+                android:text="Without Scan"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonAddWithoutScan1" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

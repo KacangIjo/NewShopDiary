@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <TextView
+        android:text="Register Your New Account :)"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        style="@style/TextView"
+        android:layout_marginTop="10dp"
+        android:gravity="center" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="260.5dp"
+        android:id="@+id/linearLayout1"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="0dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/linearLayout2"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:text="Username"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView2"
+                android:gravity="center_vertical" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView3"
+                android:gravity="center_vertical" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/editTextRegUser"
+                style="@style/FormTheme" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/linearLayout3"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:text="Email"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView4"
+                android:gravity="center_vertical" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView5"
+                android:gravity="center_vertical" />
+            <EditText
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/editTextRegEmail"
+                style="@style/FormTheme" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/linearLayout3"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:text="Password"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView6"
+                android:gravity="center_vertical" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView4"
+                android:gravity="center_vertical" />
+            <EditText
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/editText1"
+                style="@style/FormTheme" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/linearLayout5"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+            <TextView
+                android:text="Confirm Pass"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView8"
+                android:gravity="center_vertical" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView9"
+                android:gravity="center_vertical" />
+            <EditText
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/editText2"
+                style="@style/FormTheme" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:text="Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonRegisterOK"
+        style="@style/LoginPageButton" />
+</LinearLayout>

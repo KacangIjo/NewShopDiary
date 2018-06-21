@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <TextView
+        android:text="ADD LOCATION"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:gravity="center"
+        android:layout_marginTop="10dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="255.0dp"
+        android:id="@+id/linearLayout1"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:text="Name"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView2"
+                android:gravity="center_vertical" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView3"
+                android:gravity="center_vertical" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/editTextAddLocationName"
+                style="@style/FormTheme" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout3"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:text="Address"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView4"
+                android:gravity="top" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView5"
+                android:gravity="top" />
+            <EditText
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/editTextAddLocationAddress"
+                style="@style/FormTheme" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout4"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:text="Description"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView6"
+                android:gravity="top" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView7"
+                android:gravity="top" />
+            <EditText
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/editTextAddLocationDesc"
+                style="@style/FormTheme" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout5"
+            android:layout_marginTop="41.5dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="62.5dp"
+        android:id="@+id/linearLayout6"
+        android:gravity="center"
+        android:layout_marginTop="32.0dp">
+        <Button
+            android:text="ADD"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/buttonAddLocationAdd" />
+        <Button
+            android:text="CANCEL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/buttonAddLocationCancel" />
+    </LinearLayout>
+</LinearLayout>

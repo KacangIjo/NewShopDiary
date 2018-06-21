@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/linearLayout1"
+        android:background="#3f3f3f">
+        <ImageButton
+            android:src="@drawable/iconback"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageButtonPageSummaryBack"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="5dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout2"
+            android:gravity="center">
+            <TextView
+                android:text="Summary"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView2"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="409.0dp"
+        android:id="@+id/linearLayout3"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout4">
+            <TextView
+                android:text="Start Date"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView3"
+                android:gravity="center_vertical" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView4"
+                android:gravity="center" />
+            <TextView
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textViewStartDate"
+                android:gravity="center"
+                android:layout_marginLeft="10dp" />
+            <ImageButton
+                android:src="@drawable/calendar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/imageButtonSummaryStartDate"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout5"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:text="End Date"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView6"
+                android:gravity="center_vertical" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView7"
+                android:gravity="center" />
+            <TextView
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textViewEndDate"
+                android:gravity="center"
+                android:layout_marginLeft="10dp" />
+            <ImageButton
+                android:src="@drawable/calendar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/imageButtonSummaryEndDate"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+        <Button
+            android:text="Get Summary!"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonSummaryOk"
+            android:layout_marginTop="20dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout6"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:text="Item Added"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView9" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView10" />
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textViewItemAdded"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout7"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:text="Money Spent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView11" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView12" />
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textViewMoneySpent"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout8"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:text="Money Spent On Expired Item"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView13"
+                android:gravity="left" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView14"
+                android:gravity="center" />
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textViewMoneySpentOnExpiredItem"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout9"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView15" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView16" />
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView20"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

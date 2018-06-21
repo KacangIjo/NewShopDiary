@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/linearLayout1">
+        <ImageButton
+            android:src="@drawable/iconback"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/btnDrawerBack"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="354.0dp"
+        android:id="@+id/linearLayout2">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout3"
+            android:gravity="center">
+            <ImageButton
+                android:src="@drawable/menuplace"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/btnDrawerPlace"
+                style="@style/ImageButton"
+                android:scaleType="fitXY" />
+            <ImageButton
+                android:src="@drawable/menuadd"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/btnDrawerAdd"
+                style="@style/ImageButton"
+                android:scaleType="fitXY" />
+            <ImageButton
+                android:src="@drawable/menuuse"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/btnDrawerUse"
+                style="@style/ImageButton"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout4"
+            android:gravity="center">
+            <ImageButton
+                android:src="@drawable/menustorage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/btnDrawerStorage"
+                style="@style/ImageButton"
+                android:scaleType="fitXY" />
+            <ImageButton
+                android:src="@drawable/menurunout"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/btnDrawerRunOut"
+                style="@style/ImageButton"
+                android:scaleType="fitXY" />
+            <ImageButton
+                android:src="@drawable/menucategory"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/btnDrawerCategory"
+                style="@style/ImageButton"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout5"
+            android:gravity="center">
+            <ImageButton
+                android:src="@drawable/menushoplist"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/btnDrawerShopList"
+                style="@style/ImageButton"
+                android:scaleType="fitXY" />
+            <ImageButton
+                android:src="@drawable/menusummary"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/btnDrawerSummary"
+                style="@style/ImageButton"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

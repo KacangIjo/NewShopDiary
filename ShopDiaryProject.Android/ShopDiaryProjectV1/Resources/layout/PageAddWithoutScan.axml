@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/main_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/toolbarAddWithoutScan"
+            android:background="#3f3f3f"
+            android:gravity="left">
+            <ImageButton
+                android:src="@drawable/iconback"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/btnAddBack2"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout9"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center">
+                <TextView
+                    android:text="Add Item"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/textView1"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="478.0dp"
+            android:id="@+id/linearLayout1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout2"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="Barcode ID"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView2"
+                    android:gravity="center_vertical" />
+                <TextView
+                    android:text=":"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView3"
+                    android:gravity="center_vertical" />
+                <TextView
+                    android:text="-"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textViewAddBarcodeId"
+                    android:gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout3"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="Name"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView4"
+                    android:gravity="center_vertical" />
+                <TextView
+                    android:text=":"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView5"
+                    android:gravity="center_vertical" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/editTextAddName"
+                    style="@style/FormTheme"
+                    android:background="#FFFFFF" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout4"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="Category"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView6"
+                    android:gravity="center_vertical" />
+                <TextView
+                    android:text=":"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView7"
+                    android:gravity="center_vertical" />
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/spinnerAddItemCategory"
+                    android:background="#3F3F3F"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout8"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="Storage"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView10" />
+                <TextView
+                    android:text=":"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView11" />
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/spinnerAddItemStorage"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#3f3f3f" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout5"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView8"
+                    android:gravity="center_vertical" />
+                <TextView
+                    android:text=":"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView9"
+                    android:gravity="center_vertical" />
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/editTextAddPrice"
+                    style="@style/FormTheme" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnPageAddWithoutScanExpDate"
+                android:gravity="center"
+                android:layout_marginTop="10dp">
+                <Button
+                    android:text="Expired Date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/buttonAddExpDate" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout7"
+                android:gravity="center"
+                android:layout_marginTop="107.5dp">
+                <Button
+                    android:text="Add To Inventory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/buttonAddAddToInventory" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/toolbarWithoutScanBottom"
+            android:layout_gravity="bottom"
+            android:background="#3f3f3f"
+            android:gravity="center">
+            <Button
+                android:text="SCAN"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonAddScan2" />
+            <Button
+                android:text="Without Scan"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonAddWithoutScan2" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

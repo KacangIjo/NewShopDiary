@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/toolbarStorages"
+            android:background="#3f3f3f">
+            <ImageButton
+                android:src="@drawable/iconback"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/imageButtonStorageBack"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center">
+                <TextView
+                    android:text="Manage Storages"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/textViewManageStoragess"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout3"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout4"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:text="Selected Storage"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textViewStoragePicked"
+                android:gravity="center_vertical" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textViewStoragestitik2"
+                android:gravity="center_vertical" />
+            <TextView
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textViewSelectedStorage"
+                android:gravity="center" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout6">
+            <Button
+                android:text="Add"
+                android:id="@+id/buttonStorageAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <Button
+                android:text="Edit Selected"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonStorageEdit" />
+            <Button
+                android:text="Delete Selected"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonStorageDelete" />
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerViewStorages"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+</LinearLayout>

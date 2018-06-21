@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/linearLayout1"
+        android:background="#3f3f3f">
+        <ImageButton
+            android:src="@drawable/iconback"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageButton1"
+            android:scaleType="fitXY"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout2"
+            android:gravity="center">
+            <TextView
+                android:text="Shop List"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView1"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="120.0dp"
+        android:id="@+id/linearLayout4">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:text="Selected Shop List"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView2" />
+            <TextView
+                android:text=":"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView3"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp" />
+            <TextView
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView4"
+                android:gravity="center" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/linearLayout3"
+            android:gravity="center">
+            <Button
+                android:text="Add New"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/button1" />
+            <Button
+                android:text="View Selected"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/button2" />
+            <Button
+                android:text="Delete Selected"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/button3" />
+        </LinearLayout>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="381.5dp"
+        android:id="@+id/recyclerView1"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp" />
+</LinearLayout>
