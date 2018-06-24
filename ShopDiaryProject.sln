@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDiaryProject.Android", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDiaryApp", "ShopDiaryApp\ShopDiaryApp.csproj", "{1E2D730C-56A7-4D16-A742-58BEC46AAD7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDiary.Android", "ShopDiary.Android\ShopDiary.Android.csproj", "{384921EB-6A72-4D29-BB16-67D0280BF344}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU
@@ -158,6 +160,33 @@ Global
 		{1E2D730C-56A7-4D16-A742-58BEC46AAD7C}.Release|x86.ActiveCfg = Release|Any CPU
 		{1E2D730C-56A7-4D16-A742-58BEC46AAD7C}.Release|x86.Build.0 = Release|Any CPU
 		{1E2D730C-56A7-4D16-A742-58BEC46AAD7C}.Release|x86.Deploy.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.AppStore|Any CPU.Deploy.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.AppStore|x64.ActiveCfg = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.AppStore|x64.Build.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.AppStore|x64.Deploy.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.AppStore|x86.Build.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.AppStore|x86.Deploy.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Debug|x64.Build.0 = Debug|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Debug|x86.Build.0 = Debug|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Release|x64.ActiveCfg = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Release|x64.Build.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Release|x64.Deploy.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Release|x86.ActiveCfg = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Release|x86.Build.0 = Release|Any CPU
+		{384921EB-6A72-4D29-BB16-67D0280BF344}.Release|x86.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
