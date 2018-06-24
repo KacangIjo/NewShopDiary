@@ -175,7 +175,10 @@
     <AndroidResource Include="Resources\layout\LoginPageSignUpLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Utility\ProgressBarLayout.axml">
+    <AndroidResource Include="Resources\layout\test.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\layout1.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

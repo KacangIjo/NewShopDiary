@@ -3,8 +3,15 @@
   <!--These two sections should match in length
   more icons from:  http://romannurik.github.io/AndroidAssetStudio/-->
   <string-array name="sections">
-    <item>Fragment 1</item>
-    <item>Fragment 2</item>
+    <item>Home</item>
+    <item>Places</item>
+    <item>Add Item</item>
+    <item>Storages</item>
+    <item>Category</item>
+    <item>Shop List</item>
+    <item>Run Out</item>
+    <item>Summary</item>
+    <item>Setting</item>
   </string-array>
   <string-array name="sections_icons">
     <item>@drawable/ic_home_1</item>

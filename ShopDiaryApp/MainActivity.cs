@@ -87,9 +87,9 @@ namespace ShopDiaryApp
                 case 0:
                     fragment = Fragment1.NewInstance();
                     break;
-                case 1:
-                    fragment = Fragment2.NewInstance();
-                    break;
+                //case 1:
+                //    fragment = Fragment2.NewInstance();
+                //    break;
             }
 
             SupportFragmentManager.BeginTransaction()
