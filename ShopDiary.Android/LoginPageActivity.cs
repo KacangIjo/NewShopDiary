@@ -28,23 +28,23 @@ namespace ShopDiaryApp
         {
             base.OnCreate(savedInstanceState);
             Window.RequestFeature(WindowFeatures.NoTitle);
-            SetContentView(Resource.Layout.LoginPageStart);
+            //SetContentView(Resource.Layout.LoginPageStart);
 
-            // Create your application here
-            mBtnLogIn = FindViewById<Button>(Resource.Id.buttonLoginPageLogin);
-            mBtnSignUp = FindViewById<Button>(Resource.Id.buttonLoginPageSignUp);
-            mEmail = FindViewById<EditText>(Resource.Id.textInputEditTextLoginPageEmail);
-            mPassword = FindViewById<EditText>(Resource.Id.editTextLoginPagePassword);
+            //// Create your application here
+            //mBtnLogIn = FindViewById<Button>(Resource.Id.buttonLoginPageLogin);
+            //mBtnSignUp = FindViewById<Button>(Resource.Id.buttonLoginPageSignUp);
+            //mEmail = FindViewById<EditText>(Resource.Id.textInputEditTextLoginPageEmail);
+            //mPassword = FindViewById<EditText>(Resource.Id.editTextLoginPagePassword);
 
-            // Button Function
-            mBtnLogIn.Click += (object sender, EventArgs e) =>
-            {
+            //// Button Function
+            //mBtnLogIn.Click += (object sender, EventArgs e) =>
+            //{
                 
-                var intent = new Intent(this, typeof(MainActivity));
-                this.StartActivity(intent);
+            //    var intent = new Intent(this, typeof(MainActivity));
+            //    this.StartActivity(intent);
 
   
-            };
+            //};
         }
 
         
