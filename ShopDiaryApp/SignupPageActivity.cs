@@ -43,15 +43,17 @@ namespace ShopDiaryApp
             // Button Function
             mButtonSignUp.Click += (object sender, EventArgs e) =>
             {
-                
-                
 
-  
+                var intent = new Intent(this, typeof(SignupPageActivity));
+                this.StartActivity(intent);
+
+
             };
             mButtonSignUpGoogle.Click += (object sender, EventArgs e) =>
             {
 
-                
+                var intent = new Intent(this, typeof(SignupPageActivity));
+                this.StartActivity(intent);
 
 
             };

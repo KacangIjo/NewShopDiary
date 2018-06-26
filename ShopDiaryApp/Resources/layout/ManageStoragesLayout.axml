@@ -23,7 +23,7 @@
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="394.3dp"
-                android:id="@+id/recyclerViewManageStorages"
+                android:id="@+id/recyclerViewManageLocations"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
@@ -31,7 +31,7 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/progressBarManageStorages"
+                android:id="@+id/progressBarManageLocations"
                 android:layout_marginTop="20dp" />
             <LinearLayout
                 android:orientation="horizontal"
@@ -39,7 +39,7 @@
                 android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="40.3dp"
-                android:id="@+id/linearLayoutToolbarManageS"
+                android:id="@+id/linearLayoutToolbarManageLocations"
                 android:background="#ff3f3f3f" />
         </LinearLayout>
     </LinearLayout>
