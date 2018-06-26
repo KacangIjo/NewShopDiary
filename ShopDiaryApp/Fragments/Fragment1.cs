@@ -23,7 +23,7 @@ namespace ShopDiaryApp.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var ignored = base.OnCreateView(inflater, container, savedInstanceState);
-            return inflater.Inflate(Resource.Layout.fragment1, null);
+            return inflater.Inflate(Resource.Layout.HomeLayout, null);
         }
     }
 }

@@ -1,31 +1,35 @@
-using Android.App;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Views;
+using Android.Widget;
 
 namespace ShopDiaryApp.Fragments
 {
-    public class Fragment2 : Activity
+    public class Fragment2 : Fragment
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.fragment2);
+
             // Create your fragment here
         }
 
-        //public override bool OnCreateOptionsMenu(IMenu menu)
-        //{
-        //    //MenuInflater.Inflate(Resource.Menu.nav_menu,menu);
-
-        //    //var searchItem = menu.FindItem(Resource.Id.action_search);
-
-        //    //var searchView = searchItem.ActionView.JavaCast<Android.Widget.SearchView>();
-        //    //return base.OnCreateOptionsMenu(menu);
-        //}
+        public static Fragment2 NewInstance()
+        {
+            var frag2 = new Fragment2 { Arguments = new Bundle() };
+            return frag2;
+        }
 
 
-       
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            HasOptionsMenu=true;
+            var ignored = base.OnCreateView(inflater, container, savedInstanceState);
+            return inflater.Inflate(Resource.Layout.ManageLocationsLayout, null);
+        }
+
+      
+
     }
 }

@@ -39,11 +39,14 @@ namespace ShopDiaryApp
             // Button Function
             mBtnLogIn.Click += (object sender, EventArgs e) =>
             {
-                
                 var intent = new Intent(this, typeof(MainActivity));
                 this.StartActivity(intent);
+            };
 
-  
+            mBtnSignUp.Click += (object sender, EventArgs e) =>
+            {
+                var intent = new Intent(this, typeof(SignupPageActivity));
+                this.StartActivity(intent);
             };
         }
 

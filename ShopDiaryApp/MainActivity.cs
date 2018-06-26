@@ -8,6 +8,7 @@ using ShopDiaryApp.Fragments;
 using Android.Support.V7.App;
 using Android.Support.V4.View;
 using Android.Support.Design.Widget;
+using Android.Runtime;
 
 namespace ShopDiaryApp
 {
@@ -87,14 +88,21 @@ namespace ShopDiaryApp
                 case 0:
                     fragment = Fragment1.NewInstance();
                     break;
-                //case 1:
-                //    fragment = Fragment2.NewInstance();
-                //    break;
+                case 1:
+                    fragment = Fragment2.NewInstance();
+                    break;
             }
 
             SupportFragmentManager.BeginTransaction()
                 .Replace(Resource.Id.content_frame, fragment)
                 .Commit();
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.nav_menu, menu);
+
+            return base.OnCreateOptionsMenu(menu);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -108,5 +116,6 @@ namespace ShopDiaryApp
             return base.OnOptionsItemSelected(item);
         }
     }
+
 }
 
