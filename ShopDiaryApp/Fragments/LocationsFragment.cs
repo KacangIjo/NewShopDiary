@@ -5,7 +5,7 @@ using Android.Widget;
 
 namespace ShopDiaryApp.Fragments
 {
-    public class Fragment2 : Fragment
+    public class LocationsFragment : Fragment
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -14,9 +14,9 @@ namespace ShopDiaryApp.Fragments
             // Create your fragment here
         }
 
-        public static Fragment2 NewInstance()
+        public static LocationsFragment NewInstance()
         {
-            var frag2 = new Fragment2 { Arguments = new Bundle() };
+            var frag2 = new LocationsFragment { Arguments = new Bundle() };
             return frag2;
         }
 

@@ -1,10 +1,11 @@
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
+using Android.Widget;
 
 namespace ShopDiaryApp.Fragments
 {
-    public class Fragment1 : Fragment
+    public class StoragesFragment : Fragment
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -13,17 +14,22 @@ namespace ShopDiaryApp.Fragments
             // Create your fragment here
         }
 
-        public static Fragment1 NewInstance()
+        public static StoragesFragment NewInstance()
         {
-            var frag1 = new Fragment1 { Arguments = new Bundle() };
-            return frag1;
+            var frag2 = new StoragesFragment { Arguments = new Bundle() };
+            return frag2;
         }
+
 
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            HasOptionsMenu=true;
             var ignored = base.OnCreateView(inflater, container, savedInstanceState);
-            return inflater.Inflate(Resource.Layout.HomeLayout, null);
+            return inflater.Inflate(Resource.Layout.ManageLocationsLayout, null);
         }
+
+      
+
     }
 }

@@ -86,10 +86,11 @@ namespace ShopDiaryApp
             switch (position)
             {
                 case 0:
-                    fragment = Fragment1.NewInstance();
+                    
+                    fragment = HomeFragment.NewInstance();
                     break;
                 case 1:
-                    fragment = Fragment2.NewInstance();
+                    fragment = LocationsFragment.NewInstance();
                     break;
             }
 
