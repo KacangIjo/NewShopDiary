@@ -62,7 +62,7 @@ namespace ShopDiaryApp
                         ListItemClicked(0);
                         break;
                     case Resource.Id.nav_home_2:
-                        SupportActionBar.Title = "Locations";
+                        SupportActionBar.Title = "Manage Locations";
                         ListItemClicked(1);
                         break;
                 }

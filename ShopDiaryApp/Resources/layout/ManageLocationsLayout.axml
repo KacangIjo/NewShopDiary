@@ -10,19 +10,13 @@
         android:gravity="fill_horizontal|bottom">
         <LinearLayout
             android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="610.3dp"
             android:layout_weight="1"
             android:gravity="center|bottom">
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="448.3dp"
+                android:layout_height="500dp"
                 android:id="@+id/recyclerViewManageStorages"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
