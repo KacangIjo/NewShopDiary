@@ -133,7 +133,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/linearLayout8"
                 android:background="@color/primary"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center">
                 <ImageButton
                     android:src="@drawable/storage"
@@ -148,27 +148,32 @@
                     android:layout_height="50.0dp"
                     android:id="@+id/imageButtonUseItem"
                     android:background="@android:color/transparent"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter"
+                    android:layout_marginLeft="10dp" />
                 <ImageButton
                     android:src="@drawable/add"
                     android:layout_width="50.0dp"
                     android:layout_height="50.0dp"
                     android:id="@+id/imageButtonHomeAdd"
                     android:background="@android:color/transparent"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter"
+                    android:layout_marginLeft="10dp" />
                 <ImageButton
                     android:src="@drawable/garbage"
                     android:layout_width="50.0dp"
                     android:layout_height="50.0dp"
                     android:background="@android:color/transparent"
                     android:id="@+id/imageButtonHomeCategories"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter"
+                    android:layout_marginLeft="10dp" />
                 <ImageButton
                     android:src="@drawable/logo"
                     android:layout_width="50.0dp"
                     android:layout_height="50.0dp"
+                    android:background="@android:color/transparent"
                     android:id="@+id/imageButtonHomeRunOut"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter"
+                    android:layout_marginLeft="10dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

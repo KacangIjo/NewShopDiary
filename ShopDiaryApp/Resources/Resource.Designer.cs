@@ -2328,8 +2328,11 @@ namespace ShopDiaryApp
 			// aapt resource value: 0x7f0700b9
 			public const int action_divider = 2131165369;
 			
+			// aapt resource value: 0x7f0700d7
+			public const int action_edit = 2131165399;
+			
 			// aapt resource value: 0x7f0700d5
-			public const int action_edit = 2131165397;
+			public const int action_edit2 = 2131165397;
 			
 			// aapt resource value: 0x7f0700b3
 			public const int action_image = 2131165363;
@@ -2349,8 +2352,11 @@ namespace ShopDiaryApp
 			// aapt resource value: 0x7f070043
 			public const int action_mode_close_button = 2131165251;
 			
+			// aapt resource value: 0x7f0700d8
+			public const int action_save = 2131165400;
+			
 			// aapt resource value: 0x7f0700d6
-			public const int action_save = 2131165398;
+			public const int action_save2 = 2131165398;
 			
 			// aapt resource value: 0x7f0700d4
 			public const int action_search = 2131165396;

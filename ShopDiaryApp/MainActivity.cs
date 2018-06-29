@@ -19,7 +19,7 @@ namespace ShopDiaryApp
 
         DrawerLayout drawerLayout;
         NavigationView navigationView;
-        Android.Widget.SearchView searchView;
+       
 
         IMenuItem previousItem;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -118,31 +118,15 @@ namespace ShopDiaryApp
         {
             switch (item.ItemId)
             {
-                case Resource.Id.action_edit:
-                    Toast.MakeText(this, "You pressed edit action!", ToastLength.Short).Show();
-                    break;
-                case Resource.Id.action_save:
-                    Toast.MakeText(this, "You pressed save action!", ToastLength.Short).Show();
-                    break;
+                case Android.Resource.Id.Home:
+                    drawerLayout.OpenDrawer(GravityCompat.Start);
+                    return true;
+              
             }
             return base.OnOptionsItemSelected(item);
-            //switch (item.ItemId)
-            //{
-            //    case Android.Resource.Id.Home:
-            //        drawerLayout.OpenDrawer(GravityCompat.Start);
-            //        return true;
-            //}
-            //return base.OnOptionsItemSelected(item);
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.nav_standart, menu);
-            return base.OnCreateOptionsMenu(menu);
-
-
-        }
-
+        
     }
 
 }
