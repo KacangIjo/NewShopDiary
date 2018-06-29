@@ -131,9 +131,45 @@
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
-                android:layout_height="40.3dp"
                 android:id="@+id/linearLayout8"
-                android:background="#ff3f3f3f" />
+                android:background="@color/primary"
+                android:layout_height="fill_parent"
+                android:gravity="center">
+                <ImageButton
+                    android:src="@drawable/storage"
+                    android:layout_width="50.0dp"
+                    android:layout_height="50.0dp"
+                    android:id="@+id/imageButtonHomeStorages"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent" />
+                <ImageButton
+                    android:src="@drawable/use"
+                    android:layout_width="50.0dp"
+                    android:layout_height="50.0dp"
+                    android:id="@+id/imageButtonUseItem"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter" />
+                <ImageButton
+                    android:src="@drawable/add"
+                    android:layout_width="50.0dp"
+                    android:layout_height="50.0dp"
+                    android:id="@+id/imageButtonHomeAdd"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter" />
+                <ImageButton
+                    android:src="@drawable/garbage"
+                    android:layout_width="50.0dp"
+                    android:layout_height="50.0dp"
+                    android:background="@android:color/transparent"
+                    android:id="@+id/imageButtonHomeCategories"
+                    android:scaleType="fitCenter" />
+                <ImageButton
+                    android:src="@drawable/logo"
+                    android:layout_width="50.0dp"
+                    android:layout_height="50.0dp"
+                    android:id="@+id/imageButtonHomeRunOut"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

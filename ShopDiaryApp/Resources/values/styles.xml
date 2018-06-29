@@ -3,7 +3,7 @@
   <style name="Theme.MyTheme" parent="Theme.MyTheme.Base">
   </style>
   <!-- Base theme applied no matter what API -->
-  <style name="Theme.MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+  <style name="Theme.MyTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="windowNoTitle">true</item>
     <!--We will be using the toolbar so no need to show ActionBar-->
     <item name="windowActionBar">false</item>

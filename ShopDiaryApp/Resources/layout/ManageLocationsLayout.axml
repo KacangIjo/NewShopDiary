@@ -44,18 +44,20 @@
                 android:layout_gravity="right"
                 android:gravity="right">
                 <ImageButton
-                    android:src="@drawable/icon"
+                    android:src="@drawable/iconadd"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:id="@+id/imageButton1"
-                    android:maxHeight="15dp" />
+                    android:maxHeight="15dp"
+                    android:scaleType="fitCenter" />
                 <ImageButton
-                    android:src="@android:drawable/ic_menu_gallery"
+                    android:src="@drawable/iconsearch"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:id="@+id/imageButton2"
                     android:maxWidth="50dp"
-                    android:layout_marginRight="5dp" />
+                    android:layout_marginRight="5dp"
+                    android:scaleType="fitCenter" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

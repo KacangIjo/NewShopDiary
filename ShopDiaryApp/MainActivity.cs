@@ -9,6 +9,7 @@ using Android.Support.V7.App;
 using Android.Support.V4.View;
 using Android.Support.Design.Widget;
 using Android.Runtime;
+using Android.Widget;
 
 namespace ShopDiaryApp
 {
@@ -18,16 +19,19 @@ namespace ShopDiaryApp
 
         DrawerLayout drawerLayout;
         NavigationView navigationView;
+        Android.Widget.SearchView searchView;
 
         IMenuItem previousItem;
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.main);
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
             {
                 SetSupportActionBar(toolbar);
+                SupportActionBar.Title = "Home";
                 SupportActionBar.SetDisplayHomeAsUpEnabled(true);
                 SupportActionBar.SetHomeButtonEnabled(true);
             }
@@ -36,6 +40,7 @@ namespace ShopDiaryApp
 
             //Set hamburger items menu
             SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            
 
             //setup navigation view
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
@@ -53,9 +58,11 @@ namespace ShopDiaryApp
                 switch (e.MenuItem.ItemId)
                 {
                     case Resource.Id.nav_home_1:
+                        SupportActionBar.Title="Home";
                         ListItemClicked(0);
                         break;
                     case Resource.Id.nav_home_2:
+                        SupportActionBar.Title = "Locations";
                         ListItemClicked(1);
                         break;
                 }
@@ -88,6 +95,7 @@ namespace ShopDiaryApp
                 case 0:
                     
                     fragment = HomeFragment.NewInstance();
+                    
                     break;
                 case 1:
                     fragment = LocationsFragment.NewInstance();
@@ -99,23 +107,42 @@ namespace ShopDiaryApp
                 .Commit();
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.nav_menu, menu);
+        //public override bool OnCreateOptionsMenu(IMenu menu)
+        //{
+        //    MenuInflater.Inflate(Resource.Menu.nav_search, menu);
 
-            return base.OnCreateOptionsMenu(menu);
-        }
+        //    return base.OnCreateOptionsMenu(menu);
+        //}
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
             {
-                case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer(GravityCompat.Start);
-                    return true;
+                case Resource.Id.action_edit:
+                    Toast.MakeText(this, "You pressed edit action!", ToastLength.Short).Show();
+                    break;
+                case Resource.Id.action_save:
+                    Toast.MakeText(this, "You pressed save action!", ToastLength.Short).Show();
+                    break;
             }
             return base.OnOptionsItemSelected(item);
+            //switch (item.ItemId)
+            //{
+            //    case Android.Resource.Id.Home:
+            //        drawerLayout.OpenDrawer(GravityCompat.Start);
+            //        return true;
+            //}
+            //return base.OnOptionsItemSelected(item);
         }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.nav_standart, menu);
+            return base.OnCreateOptionsMenu(menu);
+
+
+        }
+
     }
 
 }

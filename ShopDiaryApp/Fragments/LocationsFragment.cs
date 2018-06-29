@@ -7,11 +7,13 @@ namespace ShopDiaryApp.Fragments
 {
     public class LocationsFragment : Fragment
     {
+        
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
+            
         }
 
         public static LocationsFragment NewInstance()
@@ -29,7 +31,10 @@ namespace ShopDiaryApp.Fragments
             return inflater.Inflate(Resource.Layout.ManageLocationsLayout, null);
         }
 
-      
+       
+        
+
+
 
     }
 }

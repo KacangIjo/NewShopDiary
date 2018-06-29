@@ -202,8 +202,8 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\icon\add-list-512.png" />
-    <AndroidResource Include="Resources\icon\search-13-512.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\IconAdd.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\IconSearch.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
