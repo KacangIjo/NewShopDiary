@@ -50,8 +50,12 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -94,6 +98,35 @@
   <ItemGroup>
     <Compile Include="Fragments\InventoriesFragment.cs" />
     <Compile Include="Fragments\StoragesFragment.cs" />
+    <Compile Include="Helper\LoginHelper.cs" />
+    <Compile Include="Helper\UrlHelper.cs" />
+    <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\InventoryViewModel.cs" />
+    <Compile Include="Models\LocationViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\StorageViewModel.cs" />
+    <Compile Include="Models\ViewModels\CategoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\ConsumeViewModel.cs" />
+    <Compile Include="Models\ViewModels\InventorylogViewModel.cs" />
+    <Compile Include="Models\ViewModels\InventoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\LocationViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductViewModel.cs" />
+    <Compile Include="Models\ViewModels\PurchaseViewModel.cs" />
+    <Compile Include="Models\ViewModels\RoleLocationViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopitemViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShoplistViewModel.cs" />
+    <Compile Include="Models\ViewModels\StorageViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserLocationViewModel.cs" />
+    <Compile Include="Services\AccountDataService.cs" />
+    <Compile Include="Services\CategoryDataService.cs" />
+    <Compile Include="Services\ConsumeDataService.cs" />
+    <Compile Include="Services\InventoryDataService.cs" />
+    <Compile Include="Services\LocationDataService.cs" />
+    <Compile Include="Services\ProductDataService.cs" />
+    <Compile Include="Services\RoleLocationDataService.cs" />
+    <Compile Include="Services\StorageDataService.cs" />
+    <Compile Include="Services\UserLocationDataService.cs" />
     <Compile Include="SignupPageActivity.cs" />
     <Compile Include="LoginPageActivity.cs" />
     <Compile Include="MainActivity.cs" />
@@ -180,9 +213,6 @@
     <AndroidResource Include="Resources\layout\test.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\layout1.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\menu\nav_standart.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
@@ -204,6 +234,9 @@
     <AndroidResource Include="Resources\layout\LocationDetail.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\DialogFragmentAddUser.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -213,7 +246,20 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Adapter\" />
+    <Folder Include="DialogFragments\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopDiaryApp.API\ShopDiaryApp.API.csproj">
+      <Project>{B369FCDD-F9B2-42DC-99FA-C1D813EEA5A7}</Project>
+      <Name>ShopDiaryApp.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopDiaryProject.Domain\ShopDiaryProject.Domain.csproj">
+      <Project>{DDE9B260-2DE9-48B9-902E-2752F875DC53}</Project>
+      <Name>ShopDiaryProject.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
