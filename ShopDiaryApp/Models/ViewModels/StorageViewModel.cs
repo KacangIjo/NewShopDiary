@@ -1,7 +1,7 @@
 ﻿using ShopDiaryProject.Domain.Models;
 using System;
 
-namespace ShopDiaryApp.Android.Models.ViewModels
+namespace ShopDiaryApp.Models.ViewModels
 {
     public class StorageViewModel
     {

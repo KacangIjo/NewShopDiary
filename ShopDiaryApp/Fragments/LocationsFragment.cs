@@ -3,14 +3,13 @@ using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.View;
 using Android.Views;
-using Android.Widget;
 
 namespace ShopDiaryApp.Fragments
 {
     public class LocationsFragment : Fragment
     {
         Android.Support.V7.Widget.SearchView searchView;
-
+        
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

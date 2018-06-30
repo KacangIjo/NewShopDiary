@@ -7,6 +7,7 @@ using Android.Views;
 using ShopDiaryApp.Fragments;
 using Android.Support.V7.App;
 using Android.Support.V4.View;
+using Android.Support.V4.App;
 using Android.Support.Design.Widget;
 using Android.Runtime;
 using Android.Widget;
