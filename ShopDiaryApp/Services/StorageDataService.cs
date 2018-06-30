@@ -34,7 +34,7 @@ namespace ShopDiaryApp.Services
                     var modelResult = JsonConvert.DeserializeObject<List<StorageViewModel>>(result);
                     return modelResult;
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
 
                     return null;
