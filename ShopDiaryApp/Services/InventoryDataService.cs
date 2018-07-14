@@ -35,7 +35,7 @@ namespace ShopDiaryApp.Services
                     var modelResult = JsonConvert.DeserializeObject<List<InventoryViewModel>>(result);
                     return modelResult;
                 }
-                catch (Exception )
+                catch (Exception ex)
                 {
 
                     return null;

@@ -43,7 +43,7 @@ namespace ShopDiaryProjectV1.Services
                     var modelResult = JsonConvert.DeserializeObject<List<CategoryViewModel>>(result);
                     return modelResult;
                 }
-                catch (Exception )
+                catch (Exception ex)
                 {
 
                     return null;

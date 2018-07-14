@@ -37,7 +37,7 @@ namespace ShopDiaryApp.Services
                     var modelResult = JsonConvert.DeserializeObject<UserInfoViewModel>(result);
                     return modelResult;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                     return null;
@@ -73,7 +73,7 @@ namespace ShopDiaryApp.Services
                     LoginHelper.Token = modelResult.AccessToken;
                     return true;
                 }
-                catch (Exception )
+                catch (Exception ex)
                 {
 
                     return false;
