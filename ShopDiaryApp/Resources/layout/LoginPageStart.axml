@@ -46,11 +46,6 @@
             android:id="@+id/editTextLoginPagePassword"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp" />
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar1" />
         <Button
             android:text="Log In"
             android:layout_width="match_parent"
@@ -82,4 +77,14 @@
             android:layout_height="match_parent"
             android:background="@android:color/transparent" />
     </LinearLayout>
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar1"
+        android:visibility="invisible"
+        android:progress="10"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:progressBackgroundTint="#ff00fff0" />
 </LinearLayout>

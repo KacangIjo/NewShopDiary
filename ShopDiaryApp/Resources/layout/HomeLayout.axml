@@ -116,7 +116,7 @@
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="394.3dp"
-                android:id="@+id/recyclerView1"
+                android:id="@+id/recyclerHomePage"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
@@ -129,7 +129,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:minWidth="25px"
-                android:minHeight="25px"
+                android:minHeight="40px"
                 android:layout_width="match_parent"
                 android:id="@+id/linearLayout8"
                 android:background="@color/primary"
@@ -137,39 +137,39 @@
                 android:gravity="center">
                 <ImageButton
                     android:src="@drawable/storage"
-                    android:layout_width="50.0dp"
-                    android:layout_height="50.0dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:id="@+id/imageButtonHomeStorages"
                     android:scaleType="fitCenter"
                     android:background="@android:color/transparent" />
                 <ImageButton
                     android:src="@drawable/use"
-                    android:layout_width="50.0dp"
-                    android:layout_height="50.0dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:id="@+id/imageButtonUseItem"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
                     android:layout_marginLeft="10dp" />
                 <ImageButton
                     android:src="@drawable/add"
-                    android:layout_width="50.0dp"
-                    android:layout_height="50.0dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:id="@+id/imageButtonHomeAdd"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
                     android:layout_marginLeft="10dp" />
                 <ImageButton
                     android:src="@drawable/garbage"
-                    android:layout_width="50.0dp"
-                    android:layout_height="50.0dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:background="@android:color/transparent"
                     android:id="@+id/imageButtonHomeCategories"
                     android:scaleType="fitCenter"
                     android:layout_marginLeft="10dp" />
                 <ImageButton
                     android:src="@drawable/logo"
-                    android:layout_width="50.0dp"
-                    android:layout_height="50.0dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:background="@android:color/transparent"
                     android:id="@+id/imageButtonHomeRunOut"
                     android:scaleType="fitCenter"

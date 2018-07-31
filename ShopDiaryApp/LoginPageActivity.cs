@@ -24,6 +24,7 @@ namespace ShopDiaryApp
         private EditText mEmail;
         private EditText mPassword;
         private ProgressBar mProgressBar;
+        int progressvalue = 0;
 
         public static Class.User StaticUserClass = new Class.User();
         public static Class.Location StaticLocationClass = new Class.Location();
@@ -55,8 +56,11 @@ namespace ShopDiaryApp
             mBtnLogIn.Click += (object sender, EventArgs e) =>
             {
 
+                mProgressBar.Visibility = Android.Views.ViewStates.Visible;
+                
                 new Thread(new ThreadStart(async delegate
                 {
+                    
                     var intent = new Intent(this, typeof(MainActivity));
                     var user = mEmail.Text;
                     var pass = mPassword.Text;
@@ -67,11 +71,15 @@ namespace ShopDiaryApp
                     var temp = UserInfo.ID;
                     StaticUserClass.ID = Guid.Parse(temp);
                     //intent.PutExtra("AuthorizedUserId", UserInfo.ID.ToString());
-
-                    RunOnUiThread(() => mProgressBar.Progress = 100);
+                    UpgradeProgress();
+                 
+                    
 
                     if (isLogin)
+                    {
+                        RunOnUiThread(() => mProgressBar.Visibility = Android.Views.ViewStates.Invisible);
                         this.StartActivity(intent);
+                    }
                     else
                         RunOnUiThread(() => Toast.MakeText(this, "Failed to login in, please check again your username & password", ToastLength.Long).Show());
                 })).Start();
@@ -84,6 +92,16 @@ namespace ShopDiaryApp
             };
         }
 
+        private void UpgradeProgress()
+        {
+            while (progressvalue < 100)
+            {
+                progressvalue += 10;
+                mProgressBar.Progress = progressvalue;
+                Thread.Sleep(300);
+            }
+           
+        }
         
     }
 }

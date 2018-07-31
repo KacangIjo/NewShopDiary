@@ -11,17 +11,24 @@ using Android.Support.V4.App;
 using Android.Support.Design.Widget;
 using Android.Runtime;
 using Android.Widget;
+using ShopDiaryApp.Services;
+using ShopDiaryApp.Models.ViewModels;
+using System.Collections.Generic;
 
 namespace ShopDiaryApp
 {
     [Activity(Label = "@string/app_name", MainLauncher = false, LaunchMode = LaunchMode.SingleTop, Icon = "@drawable/Icon")]
     public class MainActivity : AppCompatActivity
     {
+        
 
         DrawerLayout drawerLayout;
         NavigationView navigationView;
-       
 
+        public MainActivity()
+        {
+            
+        }
         IMenuItem previousItem;
         protected override void OnCreate(Bundle savedInstanceState)
         {
