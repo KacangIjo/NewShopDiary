@@ -26,6 +26,88 @@ namespace ShopDiaryApp
 		
 		public static void UpdateIdValues()
 		{
+			global::ZXing.Mobile.Resource.Boolean.abc_action_bar_embed_tabs = global::ShopDiaryApp.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::ZXing.Mobile.Resource.Color.notification_action_color_filter = global::ShopDiaryApp.Resource.Color.notification_action_color_filter;
+			global::ZXing.Mobile.Resource.Color.notification_icon_bg_color = global::ShopDiaryApp.Resource.Color.notification_icon_bg_color;
+			global::ZXing.Mobile.Resource.Color.notification_material_background_media_default_color = global::ShopDiaryApp.Resource.Color.notification_material_background_media_default_color;
+			global::ZXing.Mobile.Resource.Color.primary_text_default_material_dark = global::ShopDiaryApp.Resource.Color.primary_text_default_material_dark;
+			global::ZXing.Mobile.Resource.Color.ripple_material_light = global::ShopDiaryApp.Resource.Color.ripple_material_light;
+			global::ZXing.Mobile.Resource.Color.secondary_text_default_material_dark = global::ShopDiaryApp.Resource.Color.secondary_text_default_material_dark;
+			global::ZXing.Mobile.Resource.Color.secondary_text_default_material_light = global::ShopDiaryApp.Resource.Color.secondary_text_default_material_light;
+			global::ZXing.Mobile.Resource.Dimension.notification_action_icon_size = global::ShopDiaryApp.Resource.Dimension.notification_action_icon_size;
+			global::ZXing.Mobile.Resource.Dimension.notification_action_text_size = global::ShopDiaryApp.Resource.Dimension.notification_action_text_size;
+			global::ZXing.Mobile.Resource.Dimension.notification_big_circle_margin = global::ShopDiaryApp.Resource.Dimension.notification_big_circle_margin;
+			global::ZXing.Mobile.Resource.Dimension.notification_content_margin_start = global::ShopDiaryApp.Resource.Dimension.notification_content_margin_start;
+			global::ZXing.Mobile.Resource.Dimension.notification_large_icon_height = global::ShopDiaryApp.Resource.Dimension.notification_large_icon_height;
+			global::ZXing.Mobile.Resource.Dimension.notification_large_icon_width = global::ShopDiaryApp.Resource.Dimension.notification_large_icon_width;
+			global::ZXing.Mobile.Resource.Dimension.notification_main_column_padding_top = global::ShopDiaryApp.Resource.Dimension.notification_main_column_padding_top;
+			global::ZXing.Mobile.Resource.Dimension.notification_media_narrow_margin = global::ShopDiaryApp.Resource.Dimension.notification_media_narrow_margin;
+			global::ZXing.Mobile.Resource.Dimension.notification_right_icon_size = global::ShopDiaryApp.Resource.Dimension.notification_right_icon_size;
+			global::ZXing.Mobile.Resource.Dimension.notification_right_side_padding_top = global::ShopDiaryApp.Resource.Dimension.notification_right_side_padding_top;
+			global::ZXing.Mobile.Resource.Dimension.notification_small_icon_background_padding = global::ShopDiaryApp.Resource.Dimension.notification_small_icon_background_padding;
+			global::ZXing.Mobile.Resource.Dimension.notification_small_icon_size_as_large = global::ShopDiaryApp.Resource.Dimension.notification_small_icon_size_as_large;
+			global::ZXing.Mobile.Resource.Dimension.notification_subtext_size = global::ShopDiaryApp.Resource.Dimension.notification_subtext_size;
+			global::ZXing.Mobile.Resource.Dimension.notification_top_pad = global::ShopDiaryApp.Resource.Dimension.notification_top_pad;
+			global::ZXing.Mobile.Resource.Dimension.notification_top_pad_large_text = global::ShopDiaryApp.Resource.Dimension.notification_top_pad_large_text;
+			global::ZXing.Mobile.Resource.Drawable.notification_action_background = global::ShopDiaryApp.Resource.Drawable.notification_action_background;
+			global::ZXing.Mobile.Resource.Drawable.notification_bg = global::ShopDiaryApp.Resource.Drawable.notification_bg;
+			global::ZXing.Mobile.Resource.Drawable.notification_bg_low = global::ShopDiaryApp.Resource.Drawable.notification_bg_low;
+			global::ZXing.Mobile.Resource.Drawable.notification_bg_low_normal = global::ShopDiaryApp.Resource.Drawable.notification_bg_low_normal;
+			global::ZXing.Mobile.Resource.Drawable.notification_bg_low_pressed = global::ShopDiaryApp.Resource.Drawable.notification_bg_low_pressed;
+			global::ZXing.Mobile.Resource.Drawable.notification_bg_normal = global::ShopDiaryApp.Resource.Drawable.notification_bg_normal;
+			global::ZXing.Mobile.Resource.Drawable.notification_bg_normal_pressed = global::ShopDiaryApp.Resource.Drawable.notification_bg_normal_pressed;
+			global::ZXing.Mobile.Resource.Drawable.notification_icon_background = global::ShopDiaryApp.Resource.Drawable.notification_icon_background;
+			global::ZXing.Mobile.Resource.Drawable.notification_template_icon_bg = global::ShopDiaryApp.Resource.Drawable.notification_template_icon_bg;
+			global::ZXing.Mobile.Resource.Drawable.notification_template_icon_low_bg = global::ShopDiaryApp.Resource.Drawable.notification_template_icon_low_bg;
+			global::ZXing.Mobile.Resource.Drawable.notification_tile_bg = global::ShopDiaryApp.Resource.Drawable.notification_tile_bg;
+			global::ZXing.Mobile.Resource.Drawable.notify_panel_notification_icon_bg = global::ShopDiaryApp.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::ZXing.Mobile.Resource.Id.action0 = global::ShopDiaryApp.Resource.Id.action0;
+			global::ZXing.Mobile.Resource.Id.action_container = global::ShopDiaryApp.Resource.Id.action_container;
+			global::ZXing.Mobile.Resource.Id.action_divider = global::ShopDiaryApp.Resource.Id.action_divider;
+			global::ZXing.Mobile.Resource.Id.action_image = global::ShopDiaryApp.Resource.Id.action_image;
+			global::ZXing.Mobile.Resource.Id.action_text = global::ShopDiaryApp.Resource.Id.action_text;
+			global::ZXing.Mobile.Resource.Id.actions = global::ShopDiaryApp.Resource.Id.actions;
+			global::ZXing.Mobile.Resource.Id.cancel_action = global::ShopDiaryApp.Resource.Id.cancel_action;
+			global::ZXing.Mobile.Resource.Id.chronometer = global::ShopDiaryApp.Resource.Id.chronometer;
+			global::ZXing.Mobile.Resource.Id.contentFrame = global::ShopDiaryApp.Resource.Id.contentFrame;
+			global::ZXing.Mobile.Resource.Id.end_padder = global::ShopDiaryApp.Resource.Id.end_padder;
+			global::ZXing.Mobile.Resource.Id.icon = global::ShopDiaryApp.Resource.Id.icon;
+			global::ZXing.Mobile.Resource.Id.icon_group = global::ShopDiaryApp.Resource.Id.icon_group;
+			global::ZXing.Mobile.Resource.Id.info = global::ShopDiaryApp.Resource.Id.info;
+			global::ZXing.Mobile.Resource.Id.line1 = global::ShopDiaryApp.Resource.Id.line1;
+			global::ZXing.Mobile.Resource.Id.line3 = global::ShopDiaryApp.Resource.Id.line3;
+			global::ZXing.Mobile.Resource.Id.media_actions = global::ShopDiaryApp.Resource.Id.media_actions;
+			global::ZXing.Mobile.Resource.Id.normal = global::ShopDiaryApp.Resource.Id.normal;
+			global::ZXing.Mobile.Resource.Id.notification_background = global::ShopDiaryApp.Resource.Id.notification_background;
+			global::ZXing.Mobile.Resource.Id.notification_main_column = global::ShopDiaryApp.Resource.Id.notification_main_column;
+			global::ZXing.Mobile.Resource.Id.notification_main_column_container = global::ShopDiaryApp.Resource.Id.notification_main_column_container;
+			global::ZXing.Mobile.Resource.Id.right_icon = global::ShopDiaryApp.Resource.Id.right_icon;
+			global::ZXing.Mobile.Resource.Id.right_side = global::ShopDiaryApp.Resource.Id.right_side;
+			global::ZXing.Mobile.Resource.Id.status_bar_latest_event_content = global::ShopDiaryApp.Resource.Id.status_bar_latest_event_content;
+			global::ZXing.Mobile.Resource.Id.text = global::ShopDiaryApp.Resource.Id.text;
+			global::ZXing.Mobile.Resource.Id.text2 = global::ShopDiaryApp.Resource.Id.text2;
+			global::ZXing.Mobile.Resource.Id.time = global::ShopDiaryApp.Resource.Id.time;
+			global::ZXing.Mobile.Resource.Id.title = global::ShopDiaryApp.Resource.Id.title;
+			global::ZXing.Mobile.Resource.Integer.cancel_button_image_alpha = global::ShopDiaryApp.Resource.Integer.cancel_button_image_alpha;
+			global::ZXing.Mobile.Resource.Integer.status_bar_notification_info_maxnum = global::ShopDiaryApp.Resource.Integer.status_bar_notification_info_maxnum;
+			global::ZXing.Mobile.Resource.Layout.notification_action = global::ShopDiaryApp.Resource.Layout.notification_action;
+			global::ZXing.Mobile.Resource.Layout.notification_action_tombstone = global::ShopDiaryApp.Resource.Layout.notification_action_tombstone;
+			global::ZXing.Mobile.Resource.Layout.notification_media_action = global::ShopDiaryApp.Resource.Layout.notification_media_action;
+			global::ZXing.Mobile.Resource.Layout.notification_media_cancel_action = global::ShopDiaryApp.Resource.Layout.notification_media_cancel_action;
+			global::ZXing.Mobile.Resource.Layout.notification_template_big_media = global::ShopDiaryApp.Resource.Layout.notification_template_big_media;
+			global::ZXing.Mobile.Resource.Layout.notification_template_big_media_custom = global::ShopDiaryApp.Resource.Layout.notification_template_big_media_custom;
+			global::ZXing.Mobile.Resource.Layout.notification_template_big_media_narrow = global::ShopDiaryApp.Resource.Layout.notification_template_big_media_narrow;
+			global::ZXing.Mobile.Resource.Layout.notification_template_big_media_narrow_custom = global::ShopDiaryApp.Resource.Layout.notification_template_big_media_narrow_custom;
+			global::ZXing.Mobile.Resource.Layout.notification_template_custom_big = global::ShopDiaryApp.Resource.Layout.notification_template_custom_big;
+			global::ZXing.Mobile.Resource.Layout.notification_template_icon_group = global::ShopDiaryApp.Resource.Layout.notification_template_icon_group;
+			global::ZXing.Mobile.Resource.Layout.notification_template_lines_media = global::ShopDiaryApp.Resource.Layout.notification_template_lines_media;
+			global::ZXing.Mobile.Resource.Layout.notification_template_media = global::ShopDiaryApp.Resource.Layout.notification_template_media;
+			global::ZXing.Mobile.Resource.Layout.notification_template_media_custom = global::ShopDiaryApp.Resource.Layout.notification_template_media_custom;
+			global::ZXing.Mobile.Resource.Layout.notification_template_part_chronometer = global::ShopDiaryApp.Resource.Layout.notification_template_part_chronometer;
+			global::ZXing.Mobile.Resource.Layout.notification_template_part_time = global::ShopDiaryApp.Resource.Layout.notification_template_part_time;
+			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::ShopDiaryApp.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::ShopDiaryApp.Resource.Layout.zxingscannerfragmentlayout;
+			global::ZXing.Mobile.Resource.String.status_bar_notification_info_overflow = global::ShopDiaryApp.Resource.String.status_bar_notification_info_overflow;
 		}
 		
 		public partial class Animation
@@ -2328,8 +2410,8 @@ namespace ShopDiaryApp
 			// aapt resource value: 0x7f0700c8
 			public const int action_divider = 2131165384;
 			
-			// aapt resource value: 0x7f0700e4
-			public const int action_edit = 2131165412;
+			// aapt resource value: 0x7f0700e5
+			public const int action_edit = 2131165413;
 			
 			// aapt resource value: 0x7f0700c2
 			public const int action_image = 2131165378;
@@ -2349,11 +2431,11 @@ namespace ShopDiaryApp
 			// aapt resource value: 0x7f070043
 			public const int action_mode_close_button = 2131165251;
 			
-			// aapt resource value: 0x7f0700e5
-			public const int action_save = 2131165413;
+			// aapt resource value: 0x7f0700e6
+			public const int action_save = 2131165414;
 			
-			// aapt resource value: 0x7f0700e3
-			public const int action_search = 2131165411;
+			// aapt resource value: 0x7f0700e4
+			public const int action_search = 2131165412;
 			
 			// aapt resource value: 0x7f0700c3
 			public const int action_text = 2131165379;
@@ -2444,6 +2526,9 @@ namespace ShopDiaryApp
 			
 			// aapt resource value: 0x7f070075
 			public const int container = 2131165301;
+			
+			// aapt resource value: 0x7f0700d8
+			public const int contentFrame = 2131165400;
 			
 			// aapt resource value: 0x7f07004e
 			public const int contentPanel = 2131165262;
@@ -2652,8 +2737,8 @@ namespace ShopDiaryApp
 			// aapt resource value: 0x7f070091
 			public const int main_content = 2131165329;
 			
-			// aapt resource value: 0x7f0700d9
-			public const int masked = 2131165401;
+			// aapt resource value: 0x7f0700da
+			public const int masked = 2131165402;
 			
 			// aapt resource value: 0x7f0700c7
 			public const int media_actions = 2131165383;
@@ -2667,32 +2752,32 @@ namespace ShopDiaryApp
 			// aapt resource value: 0x7f070019
 			public const int multiply = 2131165209;
 			
-			// aapt resource value: 0x7f0700da
-			public const int nav_home_1 = 2131165402;
-			
 			// aapt resource value: 0x7f0700db
-			public const int nav_home_2 = 2131165403;
+			public const int nav_home_1 = 2131165403;
 			
 			// aapt resource value: 0x7f0700dc
-			public const int nav_home_additems = 2131165404;
-			
-			// aapt resource value: 0x7f0700de
-			public const int nav_home_categories = 2131165406;
-			
-			// aapt resource value: 0x7f0700e0
-			public const int nav_home_runout = 2131165408;
-			
-			// aapt resource value: 0x7f0700e2
-			public const int nav_home_setting = 2131165410;
-			
-			// aapt resource value: 0x7f0700df
-			public const int nav_home_shoplis = 2131165407;
+			public const int nav_home_2 = 2131165404;
 			
 			// aapt resource value: 0x7f0700dd
-			public const int nav_home_storages = 2131165405;
+			public const int nav_home_additems = 2131165405;
+			
+			// aapt resource value: 0x7f0700df
+			public const int nav_home_categories = 2131165407;
 			
 			// aapt resource value: 0x7f0700e1
-			public const int nav_home_summary = 2131165409;
+			public const int nav_home_runout = 2131165409;
+			
+			// aapt resource value: 0x7f0700e3
+			public const int nav_home_setting = 2131165411;
+			
+			// aapt resource value: 0x7f0700e0
+			public const int nav_home_shoplis = 2131165408;
+			
+			// aapt resource value: 0x7f0700de
+			public const int nav_home_storages = 2131165406;
+			
+			// aapt resource value: 0x7f0700e2
+			public const int nav_home_summary = 2131165410;
 			
 			// aapt resource value: 0x7f0700b8
 			public const int nav_view = 2131165368;
@@ -2976,8 +3061,8 @@ namespace ShopDiaryApp
 			// aapt resource value: 0x7f07000e
 			public const int view_offset_helper = 2131165198;
 			
-			// aapt resource value: 0x7f0700d8
-			public const int visible = 2131165400;
+			// aapt resource value: 0x7f0700d9
+			public const int visible = 2131165401;
 			
 			// aapt resource value: 0x7f070027
 			public const int withText = 2131165223;
@@ -3253,6 +3338,12 @@ namespace ShopDiaryApp
 			
 			// aapt resource value: 0x7f030046
 			public const int toolbar = 2130903110;
+			
+			// aapt resource value: 0x7f030047
+			public const int zxingscanneractivitylayout = 2130903111;
+			
+			// aapt resource value: 0x7f030048
+			public const int zxingscannerfragmentlayout = 2130903112;
 			
 			static Layout()
 			{
