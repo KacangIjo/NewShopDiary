@@ -45,8 +45,14 @@ namespace ShopDiaryApp
             
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.main);
-            
+
             #region toolbar and navigation bar
+            var bottomToolbar = FindViewById<Android.Widget.Toolbar>(Resource.Id.secondToolbar);
+            bottomToolbar.Title = "Editing";
+            bottomToolbar.InflateMenu(Resource.Menu.HomeShortcutMenu);
+            bottomToolbar.MenuItemClick += (sender, e) => {
+                Toast.MakeText(this, "Bottom toolbar tapped: " + e.Item.TitleFormatted, ToastLength.Short).Show();
+            };
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
             {

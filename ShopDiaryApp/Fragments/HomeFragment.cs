@@ -47,48 +47,48 @@ namespace ShopDiaryApp.Fragments
             mProductDataService = new ProductDataService();
             mStorageDataService = new StorageDataService();
         }
+
+
+
+        #region Fragment Properties
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             #region field
-            mStorage = View.FindViewById<ImageButton>(Resource.Id.imageButtonHomeStorages);
-            mUse = View.FindViewById<ImageButton>(Resource.Id.imageButtonUseItem);
-            mAdd = View.FindViewById<ImageButton>(Resource.Id.imageButtonHomeAdd);
-            mShopList = View.FindViewById<ImageButton>(Resource.Id.imageButtonHomeCategories);
-            mRunOut = View.FindViewById<ImageButton>(Resource.Id.imageButtonHomeRunOut);
+
             #endregion
+
+
             //mStorage.Click += BtnOption_Click;
             //mUse.Click += BtnOption_Click;
             //mAdd.Click += BtnOption_Click;
             //mShopList.Click += BtnOption_Click;
             //mRunOut.Click += BtnOption_Click;
 
-            
+
 
         }
-        ////Belum bisa
-        //public void BtnOption_Click(object sender, EventArgs e)
-        //{
-        //    // Fire the event to the MainActivity
-        //    OptionButtonWasClicked(this, sender);
-        //}
-
-
-        #region Fragment Properties
-
         public static HomeFragment NewInstance()
         {
             var frag1 = new HomeFragment { Arguments = new Bundle() };
             return frag1;
         }
-
+        #endregion
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+
             var ignored = base.OnCreateView(inflater, container, savedInstanceState);
             var view= inflater.Inflate(Resource.Layout.HomeLayout, null);
-            return view;
+            mRunOut = view.FindViewById<ImageButton>(Resource.Id.imageButtonHomeRunOut);
+            mRunOut.Click += (object sender, EventArgs args) =>
+            {
+                
+                Toast.MakeText(this.Activity, "OK", ToastLength.Long).Show();
+            };
+
+           return view;
         }
-        #endregion
+       
     }
 }

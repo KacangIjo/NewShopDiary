@@ -1,0 +1,27 @@
+﻿<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+       android:id="@+id/homeShortcutStorage"
+       android:icon="@drawable/IconStorage"
+       android:showAsAction="ifRoom"
+       android:title="Storage" />
+  <item
+       android:id="@+id/homeShortcutUse"
+       android:icon="@drawable/IconUse"
+       android:showAsAction="ifRoom"
+       android:title="Use" />
+  <item
+       android:id="@+id/homeShortcutAdd"
+       android:icon="@drawable/IconAdd"
+       android:showAsAction="ifRoom"
+       android:title="Add" />
+  <item
+       android:id="@+id/homeShortcutRunout"
+       android:icon="@drawable/IconRunOut"
+       android:showAsAction="ifRoom"
+       android:title="RunOut" />
+  <item
+      android:id="@+id/homeShortcutShopList"
+      android:icon="@drawable/IconShopList"
+      android:showAsAction="ifRoom"
+      android:title="ShopList" />
+</menu>

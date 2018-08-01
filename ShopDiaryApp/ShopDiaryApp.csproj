@@ -126,6 +126,7 @@
     <Compile Include="Class\User.cs" />
     <Compile Include="Class\UserLocation.cs" />
     <Compile Include="Fragments\InventoriesFragment.cs" />
+    <Compile Include="Fragments\LocationAddFragment.cs" />
     <Compile Include="Fragments\StoragesFragment.cs" />
     <Compile Include="Helper\LoginHelper.cs" />
     <Compile Include="Helper\UrlHelper.cs" />
@@ -270,6 +271,15 @@
     <AndroidResource Include="Resources\layout\AdapterListHome.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\ManageLocationAdd.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\HomeShortcutMenu.xml" />
+    <AndroidResource Include="Resources\drawable\IconShopList.ico" />
+    <AndroidResource Include="Resources\drawable\IconStorage.ico" />
+    <AndroidResource Include="Resources\drawable\IconUse.ico" />
+    <AndroidResource Include="Resources\drawable\IconAdd.ico" />
+    <AndroidResource Include="Resources\drawable\IconRunOut.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
