@@ -10,17 +10,17 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textviewHomeName" />
+        android:id="@+id/textviewHomeAdapterName" />
     <TextView
         android:text="ExpDate"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textviewHomeExpDate" />
+        android:id="@+id/textviewHomeAdapterExpDate" />
     <TextView
         android:text="Status"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textviewHomeStatus" />
+        android:id="@+id/textviewHomeAdapterStatus" />
 </LinearLayout>

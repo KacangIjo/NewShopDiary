@@ -14,27 +14,39 @@ using Android.Widget;
 using ShopDiaryApp.Services;
 using ShopDiaryApp.Models.ViewModels;
 using System.Collections.Generic;
+using ShopDiaryApp.Adapter;
+using Android.Support.V7.Widget;
+using System;
 
 namespace ShopDiaryApp
 {
     [Activity(Label = "@string/app_name", MainLauncher = false, LaunchMode = LaunchMode.SingleTop, Icon = "@drawable/Icon")]
     public class MainActivity : AppCompatActivity
     {
+        #region properties
+        //main
         
 
+
+        // drawer
         DrawerLayout drawerLayout;
         NavigationView navigationView;
+        IMenuItem previousItem;
+
+        #endregion
 
         public MainActivity()
         {
             
         }
-        IMenuItem previousItem;
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.main);
+            
+            #region toolbar and navigation bar
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
             {
@@ -79,15 +91,18 @@ namespace ShopDiaryApp
                 drawerLayout.CloseDrawers();
             };
 
-
             //if first time you will want to go ahead and click first item.
             if (savedInstanceState == null)
             {
                 navigationView.SetCheckedItem(Resource.Id.nav_home_1);
                 ListItemClicked(0);
             }
+            #endregion
+
+
         }
 
+        #region navigation bar function and menu toolbar
         int oldPosition = -1;
         private void ListItemClicked(int position)
         {
@@ -101,7 +116,6 @@ namespace ShopDiaryApp
             switch (position)
             {
                 case 0:
-                    
                     fragment = HomeFragment.NewInstance();
                     
                     break;
@@ -132,6 +146,12 @@ namespace ShopDiaryApp
               
             }
             return base.OnOptionsItemSelected(item);
+        }
+        #endregion
+
+        private void InitFields()
+        {
+            
         }
 
         
