@@ -72,9 +72,6 @@ namespace ShopDiaryApp
                     StaticUserClass.ID = Guid.Parse(temp);
                     //intent.PutExtra("AuthorizedUserId", UserInfo.ID.ToString());
                     UpgradeProgress();
-                 
-                    
-
                     if (isLogin)
                     {
                         RunOnUiThread(() => mProgressBar.Visibility = Android.Views.ViewStates.Invisible);

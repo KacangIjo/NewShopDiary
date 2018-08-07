@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item android:id="@+id/action_LocationAdd"
+      android:title="Add"
+      android:icon="@android:drawable/ic_menu_edit"
+      android:showAsAction="ifRoom"/>
+
+  <item android:id="@+id/action_LocationEdit"
+         android:title="Edit"
+         android:icon="@android:drawable/ic_menu_save"
+         android:showAsAction="ifRoom|withText"/>
+
+</menu>

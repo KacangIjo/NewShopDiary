@@ -25,7 +25,19 @@ namespace ShopDiaryApp
     {
         #region properties
         //main
-        
+        private readonly InventoryDataService mInventoryDataService;
+        private readonly ProductDataService mProductDataService;
+        private readonly StorageDataService mStorageDataService;
+        private readonly LocationDataService mLocationDataService;
+        private readonly CategoryDataService mCategoryDataService;
+        private readonly ConsumeDataService mConsumeDataService;
+
+        public static List<InventoryViewModel> mInventories;
+        public static List<ProductViewModel> mProducts;
+        public static List<StorageViewModel> mStorages;
+        public static List<RoleLocationViewModel> mRoles;
+        public static List<UserLocationViewModel> mUserLoc;
+
 
 
         // drawer
@@ -47,12 +59,10 @@ namespace ShopDiaryApp
             SetContentView(Resource.Layout.main);
 
             #region toolbar and navigation bar
-            var bottomToolbar = FindViewById<Android.Widget.Toolbar>(Resource.Id.secondToolbar);
-            bottomToolbar.Title = "Editing";
-            bottomToolbar.InflateMenu(Resource.Menu.HomeShortcutMenu);
-            bottomToolbar.MenuItemClick += (sender, e) => {
-                Toast.MakeText(this, "Bottom toolbar tapped: " + e.Item.TitleFormatted, ToastLength.Short).Show();
-            };
+
+            
+            #region TOP TOOLBAR
+            //TopToolbar
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
             {
@@ -105,6 +115,49 @@ namespace ShopDiaryApp
             }
             #endregion
 
+            #region BOTTOM TOOLBAR
+            //bottomToolbar
+            var bottomToolbar = FindViewById<Android.Widget.Toolbar>(Resource.Id.secondToolbar);
+            bottomToolbar.InflateMenu(Resource.Menu.HomeShortcutMenu);
+            bottomToolbar.MenuItemClick += (sender, e) => {
+                var trans = SupportFragmentManager.BeginTransaction();
+                var aweu = e.Item.TitleFormatted.ToString();
+                switch (e.Item.ToString())
+                {
+                    case "Storage":
+                        trans.Replace(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
+                        trans.Commit();
+                        break;
+                    case "Use":
+                        trans.Replace(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
+                        trans.Commit();
+                        break;
+                    case "Add":
+                        trans.Replace(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
+                        trans.Commit();
+                        break;
+                    case "RunOut":
+                        trans.Replace(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
+                        trans.Commit();
+                        break;
+                    case "ShopList":
+                        trans.Replace(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
+                        trans.Commit();
+                        break;
+                       
+                }
+            };
+
+            #region ShortCut Fragment Manager
+
+           
+
+            #endregion
+            #endregion
+
+            #endregion
+
+
 
         }
 
@@ -144,21 +197,32 @@ namespace ShopDiaryApp
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
+            var trans = SupportFragmentManager.BeginTransaction();
             switch (item.ItemId)
             {
+                
                 case Android.Resource.Id.Home:
                     drawerLayout.OpenDrawer(GravityCompat.Start);
                     return true;
-              
+                case Resource.Id.homeShortcutStorage:
+                   
+                    trans.Add(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
+                    trans.Commit();
+                    return true;
+                case Resource.Id.homeShortcutRunout:
+                   
+                    trans.Add(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
+                    trans.Commit();
+                    return true;
+
+
             }
             return base.OnOptionsItemSelected(item);
         }
+
         #endregion
 
-        private void InitFields()
-        {
-            
-        }
+
 
         
     }

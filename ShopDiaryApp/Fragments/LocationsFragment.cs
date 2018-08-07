@@ -3,13 +3,15 @@ using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.View;
 using Android.Views;
+using Android.Widget;
 
 namespace ShopDiaryApp.Fragments
 {
     public class LocationsFragment : Fragment
     {
-        Android.Support.V7.Widget.SearchView searchView;
-        
+        Android.Support.V7.Widget.SearchView mSearchView;
+        FragmentTransaction mFragmentTransaction;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -35,27 +37,41 @@ namespace ShopDiaryApp.Fragments
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
+            //SearchMenu
             inflater.Inflate(Resource.Menu.nav_search, menu);
-
             var searchItem = menu.FindItem(Resource.Id.action_search);
-
             var provider = MenuItemCompat.GetActionView(searchItem);
-
-            searchView = provider.JavaCast<Android.Support.V7.Widget.SearchView>();
-
-            searchView.QueryTextSubmit += (sender, args) =>
+            mSearchView = provider.JavaCast<Android.Support.V7.Widget.SearchView>();
+            mSearchView.QueryTextSubmit += (sender, args) =>
             {
-                //Toast.MakeText(this, "You searched: " + args.Query, ToastLength.Short).Show();
+                Toast.MakeText(this.Activity, "You searched: " + args.Query, ToastLength.Short).Show();
             };
 
+            //ActionMenu
+            var mBottomToolbar = this.Activity.FindViewById<Android.Widget.Toolbar>(Resource.Id.secondToolbar);
+            mBottomToolbar.InflateMenu(Resource.Menu.nav_manageLocation);
+            mBottomToolbar.MenuItemClick += (sender, e) =>
+            {
 
-            base.OnCreateOptionsMenu(menu,inflater);
+                switch (e.Item.ToString())
+                {
+                    case "Add":
+                        ReplaceFragment(new LocationAddFragment(), "addlocation");
+                        break;
+                    
+
+                }
+
+                base.OnCreateOptionsMenu(menu, inflater);
+
+            };
         }
-
-
-
-
-
-
+        public void ReplaceFragment(Fragment fragment, string tag)
+        {
+            mFragmentTransaction = FragmentManager.BeginTransaction();
+            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.AddToBackStack(tag);
+            mFragmentTransaction.CommitAllowingStateLoss();
+        }
     }
 }
