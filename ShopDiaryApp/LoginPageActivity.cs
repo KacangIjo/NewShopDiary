@@ -70,6 +70,8 @@ namespace ShopDiaryApp
                     var UserInfo = await mAccountDataService.GetUserInfo();
                     var temp = UserInfo.ID;
                     StaticUserClass.ID = Guid.Parse(temp);
+                    StaticUserClass.Username = UserInfo.Email;
+                    
                     //intent.PutExtra("AuthorizedUserId", UserInfo.ID.ToString());
                     UpgradeProgress();
                     if (isLogin)

@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapter\CategoryRecyclerAdapter.cs" />
+    <Compile Include="Adapter\LocationsRecycleAdapter.cs" />
     <Compile Include="Adapter\MainAdapter.cs" />
     <Compile Include="Class\Category.cs" />
     <Compile Include="Class\Inventory.cs" />
@@ -180,7 +181,7 @@
     <AndroidResource Include="Resources\layout\HomeLayout.axml" />
     <AndroidResource Include="Resources\layout\main.axml" />
     <AndroidResource Include="Resources\layout\nav_header.axml">
-      <SubType>AndroidResource</SubType>
+      <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +282,17 @@
     <AndroidResource Include="Resources\drawable\IconAdd.ico" />
     <AndroidResource Include="Resources\drawable\IconRunOut.ico" />
     <AndroidResource Include="Resources\menu\nav_manageLocation.xml" />
+    <AndroidResource Include="Resources\layout\TabbedManageStorageLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\addOrange.png" />
+    <AndroidResource Include="Resources\drawable\edit.png" />
+    <AndroidResource Include="Resources\layout\layout1.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AdapterLocations.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

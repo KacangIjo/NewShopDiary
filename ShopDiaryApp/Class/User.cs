@@ -17,6 +17,14 @@ namespace ShopDiaryApp.Class
     {
 
         private Guid _Id;
+        private string _Username;
+
+        public string Username
+        {
+            get { return _Username; }
+            set { _Username = value; }
+        }
+
 
         public Guid ID
         {

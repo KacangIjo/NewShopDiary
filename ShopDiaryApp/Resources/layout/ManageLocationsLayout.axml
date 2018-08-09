@@ -32,26 +32,35 @@
                 android:minWidth="25px"
                 android:minHeight="50dp"
                 android:layout_width="match_parent"
-                android:layout_height="50.0dp"
+                android:layout_height="45dp"
                 android:id="@+id/linearLayoutToolbarManageS"
-                android:background="#ff3f3f3f"
+                android:background="#ff03a9f4"
                 android:layout_gravity="right"
-                android:gravity="right">
+                android:gravity="center">
                 <ImageButton
-                    android:src="@drawable/iconadd"
+                    android:src="@drawable/addorange"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/imageButton1"
+                    android:id="@+id/imageButtonManageLocationAdd"
                     android:maxHeight="15dp"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter"
+                    android:hapticFeedbackEnabled="false"
+                    android:background="@android:color/transparent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_margin="3dp" />
                 <ImageButton
-                    android:src="@drawable/iconsearch"
+                    android:src="@drawable/edit"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/imageButton2"
-                    android:maxWidth="50dp"
+                    android:id="@+id/imageButtonManageLocationEdit"
+                    android:maxHeight="15dp"
+                    android:scaleType="fitCenter"
+                    android:hapticFeedbackEnabled="false"
+                    android:background="@android:color/transparent"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:scaleType="fitCenter" />
+                    android:layout_margin="3dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

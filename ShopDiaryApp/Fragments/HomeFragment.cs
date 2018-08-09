@@ -47,9 +47,6 @@ namespace ShopDiaryApp.Fragments
             mProductDataService = new ProductDataService();
             mStorageDataService = new StorageDataService();
         }
-
-
-
         #region Fragment Properties
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -57,13 +54,6 @@ namespace ShopDiaryApp.Fragments
             #region field
 
             #endregion
-
-
-            //mStorage.Click += BtnOption_Click;
-            //mUse.Click += BtnOption_Click;
-            //mAdd.Click += BtnOption_Click;
-            //mShopList.Click += BtnOption_Click;
-            //mRunOut.Click += BtnOption_Click;
 
 
 
@@ -78,17 +68,45 @@ namespace ShopDiaryApp.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
 
-            var ignored = base.OnCreateView(inflater, container, savedInstanceState);
-            var view= inflater.Inflate(Resource.Layout.HomeLayout, null);
+            View view = inflater.Inflate(Resource.Layout.HomeLayout, container, false);
+            mStorage = view.FindViewById<ImageButton>(Resource.Id.imageButtonHomeStorages);
+            mUse = view.FindViewById<ImageButton>(Resource.Id.imageButtonUseItem);
+            mAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonHomeAdd);
             mRunOut = view.FindViewById<ImageButton>(Resource.Id.imageButtonHomeRunOut);
+            mShopList = view.FindViewById<ImageButton>(Resource.Id.imageButtonUseItem);
+            #region button shortcut function
+            mStorage.Click += (object sender, EventArgs args) =>
+            {
+                ReplaceFragment(new StoragesFragment(), "Manage Storages");
+            };
+            mUse.Click += (object sender, EventArgs args) =>
+            {
+                ReplaceFragment(new StoragesFragment(), "Manage Storages");
+            };
+            mAdd.Click += (object sender, EventArgs args) =>
+            {
+                ReplaceFragment(new StoragesFragment(), "Manage Storages");
+            };
             mRunOut.Click += (object sender, EventArgs args) =>
             {
-                
-                Toast.MakeText(this.Activity, "OK", ToastLength.Long).Show();
+                ReplaceFragment(new StoragesFragment(), "Manage Storages");
             };
-
-           return view;
+            mShopList.Click += (object sender, EventArgs args) =>
+            {
+                ReplaceFragment(new StoragesFragment(), "Manage Storages");
+            };
+            #endregion
+            return view;
         }
-       
+
+        public void ReplaceFragment(Fragment fragment, string tag)
+        {
+            FragmentTransaction mFragmentTransaction;
+            mFragmentTransaction = FragmentManager.BeginTransaction();
+            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.AddToBackStack(tag);
+            mFragmentTransaction.CommitAllowingStateLoss();
+        }
+
     }
 }

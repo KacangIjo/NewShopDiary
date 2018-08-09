@@ -1,5 +1,6 @@
 using Android.OS;
 using Android.Support.V4.App;
+using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
 
@@ -7,10 +8,13 @@ namespace ShopDiaryApp.Fragments
 {
     public class StoragesFragment : Fragment
     {
+        ViewPager pager;
+       
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            //var mToolBar = this.Activity.FindViewById<Toolbar>(Resource.Id.secondToolbar);
+            //mToolBar.Visibility =  Android.Views.ViewStates.Invisible;
             // Create your fragment here
         }
 
@@ -26,7 +30,7 @@ namespace ShopDiaryApp.Fragments
         {
             HasOptionsMenu=true;
             var ignored = base.OnCreateView(inflater, container, savedInstanceState);
-            return inflater.Inflate(Resource.Layout.ManageLocationsLayout, null);
+            return inflater.Inflate(Resource.Layout.TabbedManageStorageLayout, null);
         }
 
       

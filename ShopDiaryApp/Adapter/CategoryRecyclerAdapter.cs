@@ -55,7 +55,7 @@
 //            var vh = new ViewHolder(v, this.OnClick);
 //            return vh;
 //        }
-        
+
 //        public class ViewHolder : RecyclerView.ViewHolder
 //        {
 //            public ViewHolder(IntPtr javaReference, JniHandleOwnership transfer)

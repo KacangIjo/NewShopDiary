@@ -17,12 +17,12 @@ namespace ShopDiaryApp.Fragments
 {
     public class LocationAddFragment : Android.Support.V4.App.Fragment
     {
-        EditText mLocationName;
-        EditText mLocationAddress;
-        EditText mLocationDescription;
-        Button mButtonAdd;
-        Button mButtonCancel;
-        ProgressBar mProgressBar;
+        private EditText mLocationName;
+        private EditText mLocationAddress;
+        private EditText mLocationDescription;
+        private Button mButtonAdd;
+        private Button mButtonCancel;
+        private ProgressBar mProgressBar;
 
         LocationDataService mLocationDataService;
 
@@ -35,6 +35,7 @@ namespace ShopDiaryApp.Fragments
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            
            
         }
 
@@ -83,9 +84,7 @@ namespace ShopDiaryApp.Fragments
                 {
                     this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed", ToastLength.Long).Show());
                 }
-
             })).Start();
-
 
         }
 

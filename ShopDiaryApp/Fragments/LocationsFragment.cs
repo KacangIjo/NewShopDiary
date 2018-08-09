@@ -2,21 +2,40 @@ using Android.OS;
 using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.View;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using ShopDiaryApp.Adapter;
+using ShopDiaryApp.Models.ViewModels;
+using ShopDiaryApp.Services;
+using System;
+using System.Collections.Generic;
 
 namespace ShopDiaryApp.Fragments
 {
     public class LocationsFragment : Fragment
     {
-        Android.Support.V7.Widget.SearchView mSearchView;
-        FragmentTransaction mFragmentTransaction;
+        private LocationsRecycleAdapter mLocationsAdapter;
+        public List<LocationViewModel> mLocations;
+        private LocationViewModel mSelectedLocationClass;
+        private readonly LocationDataService mLocationDataService;
 
+        private RecyclerView mListViewLocations;
+        private int mSelectedLocation = -1;
+        private FragmentTransaction mFragmentTransaction;
+        private ImageButton mButtonAdd;
+        private Android.Support.V7.Widget.SearchView mSearchView;
+
+        public LocationsFragment()
+        {
+            mLocationDataService = new LocationDataService();
+        }
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             HasOptionsMenu = true;
             // Create your fragment here
+         
 
         }
 
@@ -31,9 +50,48 @@ namespace ShopDiaryApp.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             HasOptionsMenu = true;
-            var ignored = base.OnCreateView(inflater, container, savedInstanceState);
-            return inflater.Inflate(Resource.Layout.ManageLocationsLayout, null);
+            View view = inflater.Inflate(Resource.Layout.ManageLocationsLayout, container, false);
+            mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageLocationAdd);
+            mListViewLocations = view.FindViewById<RecyclerView>(Resource.Id.recyclerViewManageLocations);
+            mListViewLocations.SetLayoutManager(new LinearLayoutManager(Activity));
+            mButtonAdd.Click += (object sender, EventArgs args) =>
+            {
+                ReplaceFragment(new LocationAddFragment(), "Add Location");
+            };
+            LoadLocationData();
+            return view;
         }
+
+        private async void LoadLocationData()
+        {
+            
+            List<LocationViewModel> mLocationsByUser = await mLocationDataService.GetAll();
+            mLocations = new List<LocationViewModel>();
+            for (int i = 0; mLocationsByUser.Count > i; i++)
+            {
+                if (mLocationsByUser[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
+                {
+                    mLocations.Add(mLocationsByUser[i]);
+                }
+            }
+            if (mLocations != null)
+            {
+
+                this.mLocationsAdapter = new LocationsRecycleAdapter(mLocations, this.Activity);
+                this.mLocationsAdapter.ItemClick += OnLocationClicked;
+                this.mListViewLocations.SetAdapter(this.mLocationsAdapter);
+            }
+        }
+
+        private void OnLocationClicked(object sender, int e)
+        {
+            mSelectedLocation = e;
+            mSelectedLocationClass = mLocations[e];
+            //mTextSelectedLocation.Text = mLocations[e].Name;
+            //LoginActivity.StaticLocationClass.Id = mLocations[e].Id;
+            //LoginActivity.StaticLocationClass.Name = mLocations[e].Name;
+        }
+
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
@@ -46,26 +104,23 @@ namespace ShopDiaryApp.Fragments
             {
                 Toast.MakeText(this.Activity, "You searched: " + args.Query, ToastLength.Short).Show();
             };
-
-            //ActionMenu
-            var mBottomToolbar = this.Activity.FindViewById<Android.Widget.Toolbar>(Resource.Id.secondToolbar);
-            mBottomToolbar.InflateMenu(Resource.Menu.nav_manageLocation);
-            mBottomToolbar.MenuItemClick += (sender, e) =>
-            {
-
-                switch (e.Item.ToString())
-                {
-                    case "Add":
-                        ReplaceFragment(new LocationAddFragment(), "addlocation");
-                        break;
-                    
-
-                }
-
-                base.OnCreateOptionsMenu(menu, inflater);
-
-            };
+            #region bottom toolbar function
+            ////ActionMenu
+            //var mBottomToolbar = this.Activity.FindViewById<Android.Widget.Toolbar>(Resource.Id.secondToolbar);
+            //mBottomToolbar.InflateMenu(Resource.Menu.nav_manageLocation);
+            //mBottomToolbar.MenuItemClick += (sender, e) =>
+            //{
+            //    switch (e.Item.ToString())
+            //    {
+            //        case "Add":
+            //            ReplaceFragment(new LocationAddFragment(), "addlocation");
+            //            break;
+            //    }
+            //    base.OnCreateOptionsMenu(menu, inflater);
+            //};
+            #endregion
         }
+
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
