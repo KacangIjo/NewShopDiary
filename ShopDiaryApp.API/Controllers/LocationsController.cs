@@ -92,8 +92,6 @@ namespace ShopDiaryApp.API.Controllers
                 return BadRequest(ModelState);
             }
 
-
-
             try
             {
                 _locationRepository.Add(location.ToModel());

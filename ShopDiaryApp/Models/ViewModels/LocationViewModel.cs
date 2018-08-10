@@ -9,7 +9,7 @@ namespace ShopDiaryApp.Models.ViewModels
         public string Name { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
-        public string AddedUserId { get; set; }
+        public string CreatedUserId { get; set; }
 
        
 
@@ -21,7 +21,7 @@ namespace ShopDiaryApp.Models.ViewModels
                 Name = Name,
                 Address = Address,
                 Description = Description,
-                AddedUserId = AddedUserId
+                CreatedUserId = CreatedUserId
             };
         }
         public LocationViewModel()
@@ -35,7 +35,7 @@ namespace ShopDiaryApp.Models.ViewModels
             this.Name = l.Name;
             this.Description = l.Description;
             this.Address = l.Address;
-            this.AddedUserId = l.AddedUserId;
+            this.CreatedUserId = l.CreatedUserId;
             
         }
        

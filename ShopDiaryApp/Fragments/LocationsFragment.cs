@@ -52,7 +52,7 @@ namespace ShopDiaryApp.Fragments
             HasOptionsMenu = true;
             View view = inflater.Inflate(Resource.Layout.ManageLocationsLayout, container, false);
             mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageLocationAdd);
-            mListViewLocations = view.FindViewById<RecyclerView>(Resource.Id.recyclerViewManageLocations);
+            mListViewLocations = view.FindViewById<RecyclerView>(Resource.Id.recyclerLocations);
             mListViewLocations.SetLayoutManager(new LinearLayoutManager(Activity));
             mButtonAdd.Click += (object sender, EventArgs args) =>
             {
@@ -69,7 +69,7 @@ namespace ShopDiaryApp.Fragments
             mLocations = new List<LocationViewModel>();
             for (int i = 0; mLocationsByUser.Count > i; i++)
             {
-                if (mLocationsByUser[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
+                if (mLocationsByUser[i].CreatedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
                 {
                     mLocations.Add(mLocationsByUser[i]);
                 }
@@ -77,9 +77,9 @@ namespace ShopDiaryApp.Fragments
             if (mLocations != null)
             {
 
-                this.mLocationsAdapter = new LocationsRecycleAdapter(mLocations, this.Activity);
-                this.mLocationsAdapter.ItemClick += OnLocationClicked;
-                this.mListViewLocations.SetAdapter(this.mLocationsAdapter);
+                mLocationsAdapter = new LocationsRecycleAdapter(mLocations, this.Activity);
+                mLocationsAdapter.ItemClick += OnLocationClicked;
+                mListViewLocations.SetAdapter(this.mLocationsAdapter);
             }
         }
 
