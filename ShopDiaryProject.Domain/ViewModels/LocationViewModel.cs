@@ -18,7 +18,7 @@ namespace ShopDiaryProject.Domain.ViewModels
         [MaxLength(250)]
         public string Description { get; set; }
 
-        public List<LocationViewModel> Locations { get; set; }
+        public List<UserLocation> UserLocations { get; set; }
         public List<StorageViewModel> Storages { get; set; }
         public LocationViewModel()
         {

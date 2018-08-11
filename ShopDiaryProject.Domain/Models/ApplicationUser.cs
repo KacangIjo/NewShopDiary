@@ -12,9 +12,6 @@ namespace ShopDiaryProject.Domain.Models
 {
     public class ApplicationUser : IdentityUser
     {
-
-
-        
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -22,9 +19,9 @@ namespace ShopDiaryProject.Domain.Models
             // Add custom user claims here
             return userIdentity;
         }
-        public virtual ICollection<Category> Categories { get; set; }
-
         public virtual ICollection<Location> Locations { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
+       
         
 
     }

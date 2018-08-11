@@ -30,7 +30,7 @@ namespace ShopDiaryProject.Domain.ViewModels
                 Description = loc.Description;
                 RoleLocationId = loc.RoleLocationId;
                 RegisteredUser = loc.RegisteredUser;
-                LocationId = loc.RoleLocationId;
+                LocationId = loc.LocationId;
                 CreatedUserId = loc.CreatedUserId;
                 IsDeleted = loc.IsDeleted;
             }

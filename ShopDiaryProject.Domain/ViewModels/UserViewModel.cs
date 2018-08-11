@@ -15,7 +15,7 @@ namespace ShopDiaryProject.Domain.ViewModels
         [MaxLength(200)]
         public string Email { get; set; }
 
-        //public ICollection<ProductViewModels> Products { get; set; }
+        public List<Location> Locations { get; set; }
 
         public ApplicationUser ToModel()
         {
