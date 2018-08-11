@@ -24,7 +24,7 @@ namespace ShopDiaryProject.Domain.Models
         }
         public virtual ICollection<Category> Categories { get; set; }
 
-        public virtual ICollection<UserLocation> UserLocations { get; set; }
+        public virtual ICollection<Location> Locations { get; set; }
         
 
     }

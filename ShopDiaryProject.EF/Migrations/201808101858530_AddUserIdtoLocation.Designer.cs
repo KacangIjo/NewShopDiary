@@ -7,13 +7,13 @@ namespace ShopDiaryProject.EF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddStorageIdOnInventory : IMigrationMetadata
+    public sealed partial class AddUserIdtoLocation : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddStorageIdOnInventory));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddUserIdtoLocation));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707180312064_AddStorageIdOnInventory"; }
+            get { return "201808101858530_AddUserIdtoLocation"; }
         }
         
         string IMigrationMetadata.Source

@@ -11,12 +11,11 @@ namespace ShopDiaryProject.Domain.ViewModels
     public class UserLocationViewModel : FullAuditedEntity
     {
         public Guid ID { get; set; }
-
+        public Guid RegisteredUser { get; set; }
         [MaxLength(250)]
         public string Description { get; set; }
 
         public Guid RoleLocationId { get; set; }
-        public Guid UserId { get; set; }
         public Guid LocationId { get; set; }
 
         public UserLocationViewModel()
@@ -30,7 +29,7 @@ namespace ShopDiaryProject.Domain.ViewModels
                 ID = loc.Id;
                 Description = loc.Description;
                 RoleLocationId = loc.RoleLocationId;
-                UserId = loc.UserId;
+                RegisteredUser = loc.RegisteredUser;
                 LocationId = loc.RoleLocationId;
                 CreatedUserId = loc.CreatedUserId;
                 IsDeleted = loc.IsDeleted;
@@ -44,7 +43,7 @@ namespace ShopDiaryProject.Domain.ViewModels
                 IsDeleted = this.IsDeleted,
                 CreatedUserId = this.CreatedUserId,
                 Description = this.Description,
-                UserId = this.UserId,
+                RegisteredUser = this.RegisteredUser,
                 LocationId=this.LocationId,
                 RoleLocationId=this.RoleLocationId,
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id

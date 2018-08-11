@@ -15,6 +15,7 @@ namespace ShopDiaryProject.EF
         public ShopDiaryDbContext() : base("DefaultConnection")
         {
             this.Configuration.LazyLoadingEnabled = false;
+          
         }
 
         public static ShopDiaryDbContext Create()

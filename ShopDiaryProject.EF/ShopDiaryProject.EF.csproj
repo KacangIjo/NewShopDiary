@@ -85,58 +85,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201703240639436_initial-database.cs" />
-    <Compile Include="Migrations\201703240639436_initial-database.Designer.cs">
-      <DependentUpon>201703240639436_initial-database.cs</DependentUpon>
+    <Compile Include="Migrations\201808101840156_initial-database.cs" />
+    <Compile Include="Migrations\201808101840156_initial-database.Designer.cs">
+      <DependentUpon>201808101840156_initial-database.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703240742097_TestModel.cs" />
-    <Compile Include="Migrations\201705310248355_changeProduct.cs" />
-    <Compile Include="Migrations\201706191007322_ModifyModel.cs" />
-    <Compile Include="Migrations\201707170631209_changeProductModel.cs" />
-    <Compile Include="Migrations\201707170652556_EditProductModelLagi.cs" />
-    <Compile Include="Migrations\201707180312064_AddStorageIdOnInventory.cs" />
-    <Compile Include="Migrations\201707190243206_ChangeRepository.cs" />
-    <Compile Include="Migrations\201708091124374_EditInventory.cs" />
-    <Compile Include="Migrations\201803130702299_testBoom.cs" />
-    <Compile Include="Migrations\201803131038246_addshop.cs" />
-    <Compile Include="Migrations\201803131038246_addshop.Designer.cs">
-      <DependentUpon>201803131038246_addshop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803131254064_updatedatabasekarnaerror.cs" />
-    <Compile Include="Migrations\201803131254064_updatedatabasekarnaerror.Designer.cs">
-      <DependentUpon>201803131254064_updatedatabasekarnaerror.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803140401237_gantiviewmodel.cs" />
-    <Compile Include="Migrations\201803140401237_gantiviewmodel.Designer.cs">
-      <DependentUpon>201803140401237_gantiviewmodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803140613049_updatecontroller.cs" />
-    <Compile Include="Migrations\201803140613049_updatecontroller.Designer.cs">
-      <DependentUpon>201803140613049_updatecontroller.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803170446528_addinventorylogmodel.cs" />
-    <Compile Include="Migrations\201803170446528_addinventorylogmodel.Designer.cs">
-      <DependentUpon>201803170446528_addinventorylogmodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803170454098_editinventorylogmodel.cs" />
-    <Compile Include="Migrations\201803170454098_editinventorylogmodel.Designer.cs">
-      <DependentUpon>201803170454098_editinventorylogmodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803170900017_editinventorylogmodel1.cs" />
-    <Compile Include="Migrations\201803170900017_editinventorylogmodel1.Designer.cs">
-      <DependentUpon>201803170900017_editinventorylogmodel1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803171047587_addRoleAndUserLocations.cs" />
-    <Compile Include="Migrations\201803171047587_addRoleAndUserLocations.Designer.cs">
-      <DependentUpon>201803171047587_addRoleAndUserLocations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803171159100_editfullauditedentityaddsemicollon.cs" />
-    <Compile Include="Migrations\201803171159100_editfullauditedentityaddsemicollon.Designer.cs">
-      <DependentUpon>201803171159100_editfullauditedentityaddsemicollon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803171213400_addAddedUserIdFullAuditedEnntity.cs" />
-    <Compile Include="Migrations\201803171213400_addAddedUserIdFullAuditedEnntity.Designer.cs">
-      <DependentUpon>201803171213400_addAddedUserIdFullAuditedEnntity.cs</DependentUpon>
+    <Compile Include="Migrations\201808101858530_AddUserIdtoLocation.cs" />
+    <Compile Include="Migrations\201808101858530_AddUserIdtoLocation.Designer.cs">
+      <DependentUpon>201808101858530_AddUserIdtoLocation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -153,38 +108,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703240639436_initial-database.resx">
-      <DependentUpon>201703240639436_initial-database.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808101840156_initial-database.resx">
+      <DependentUpon>201808101840156_initial-database.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803131038246_addshop.resx">
-      <DependentUpon>201803131038246_addshop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803131254064_updatedatabasekarnaerror.resx">
-      <DependentUpon>201803131254064_updatedatabasekarnaerror.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803140401237_gantiviewmodel.resx">
-      <DependentUpon>201803140401237_gantiviewmodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803140613049_updatecontroller.resx">
-      <DependentUpon>201803140613049_updatecontroller.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803170446528_addinventorylogmodel.resx">
-      <DependentUpon>201803170446528_addinventorylogmodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803170454098_editinventorylogmodel.resx">
-      <DependentUpon>201803170454098_editinventorylogmodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803170900017_editinventorylogmodel1.resx">
-      <DependentUpon>201803170900017_editinventorylogmodel1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803171047587_addRoleAndUserLocations.resx">
-      <DependentUpon>201803171047587_addRoleAndUserLocations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803171159100_editfullauditedentityaddsemicollon.resx">
-      <DependentUpon>201803171159100_editfullauditedentityaddsemicollon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803171213400_addAddedUserIdFullAuditedEnntity.resx">
-      <DependentUpon>201803171213400_addAddedUserIdFullAuditedEnntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808101858530_AddUserIdtoLocation.resx">
+      <DependentUpon>201808101858530_AddUserIdtoLocation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -50,7 +50,7 @@ namespace ShopDiaryApp.Services
                 new KeyValuePair<string, string>("Description", data.Description.ToString()),
                 new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString()),
                 new KeyValuePair<string, string>("RoleLocationId", data.RoleLocationId.ToString()),
-                new KeyValuePair<string, string>("UserId", data.UserId.ToString()),
+                new KeyValuePair<string, string>("UserId", data.RegisteredUser.ToString()),
                 new KeyValuePair<string, string>("LocationId", data.LocationId.ToString()),
 
 
@@ -75,7 +75,7 @@ namespace ShopDiaryApp.Services
                 new KeyValuePair<string, string>("Description", data.Description.ToString()),
                 new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString()),
                 new KeyValuePair<string, string>("RoleLocationId", data.RoleLocationId.ToString()),
-                new KeyValuePair<string, string>("UserId", data.UserId.ToString()),
+                new KeyValuePair<string, string>("UserId", data.RegisteredUser.ToString()),
                 new KeyValuePair<string, string>("LocationId", data.LocationId.ToString()),
 
 

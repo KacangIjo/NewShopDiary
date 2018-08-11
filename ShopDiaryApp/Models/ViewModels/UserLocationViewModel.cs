@@ -7,12 +7,11 @@ namespace ShopDiaryApp.Models.ViewModels
     public class UserLocationViewModel
     {
         public Guid Id { get; set; }
-
+        public Guid RegisteredUser { get; set; }
         public string Description { get; set; }
         public string AddedUserId { get; set; }
 
         public Guid RoleLocationId { get; set; }
-        public Guid UserId { get; set; }
         public Guid LocationId { get; set; }
 
         public UserLocationViewModel()
@@ -24,7 +23,6 @@ namespace ShopDiaryApp.Models.ViewModels
             Id = loc.Id;
             Description = loc.Description;
             RoleLocationId = loc.RoleLocationId;
-            UserId = loc.UserId;
             LocationId = loc.RoleLocationId;
             AddedUserId = loc.AddedUserId;
         }
@@ -34,7 +32,7 @@ namespace ShopDiaryApp.Models.ViewModels
             {
                 AddedUserId = this.AddedUserId,
                 Description = this.Description,
-                UserId = this.UserId,
+                
                 LocationId=this.LocationId,
                 RoleLocationId=this.RoleLocationId,
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id

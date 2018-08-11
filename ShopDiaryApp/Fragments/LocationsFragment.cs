@@ -69,7 +69,7 @@ namespace ShopDiaryApp.Fragments
             mLocations = new List<LocationViewModel>();
             for (int i = 0; mLocationsByUser.Count > i; i++)
             {
-                if (mLocationsByUser[i].CreatedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
+                if (mLocationsByUser[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
                 {
                     mLocations.Add(mLocationsByUser[i]);
                 }
