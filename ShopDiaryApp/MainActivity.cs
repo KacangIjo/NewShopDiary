@@ -35,7 +35,6 @@ namespace ShopDiaryApp
         public static List<InventoryViewModel> mInventories;
         public static List<ProductViewModel> mProducts;
         public static List<StorageViewModel> mStorages;
-        public static List<RoleLocationViewModel> mRoles;
         public static List<UserLocationViewModel> mUserLoc;
 
         private TextView mUsernameInfo;

@@ -73,9 +73,7 @@
     <Compile Include="Inventory\ProductRepository.cs" />
     <Compile Include="Location\ApplicationUserRepository.cs" />
     <Compile Include="Location\IApplicationUserRepository.cs" />
-    <Compile Include="Location\IRoleLocationRepository.cs" />
     <Compile Include="Location\IUserLocationRepository.cs" />
-    <Compile Include="Location\RoleLocationRepository.cs" />
     <Compile Include="Location\UserLocationRepository.cs" />
     <Compile Include="Product\CategoryRepository.cs" />
     <Compile Include="Product\ICategoryRepository.cs" />

@@ -3,7 +3,7 @@ namespace ShopDiaryProject.EF.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialdatabase : DbMigration
+    public partial class InitialDatabase : DbMigration
     {
         public override void Up()
         {
@@ -134,6 +134,7 @@ namespace ShopDiaryProject.EF.Migrations
                         Name = c.String(maxLength: 50),
                         Address = c.String(maxLength: 150),
                         Description = c.String(maxLength: 250),
+                        UserId = c.Guid(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(),
                         DeletedDate = c.DateTime(),
@@ -142,14 +143,11 @@ namespace ShopDiaryProject.EF.Migrations
                         ModifiedUserId = c.String(),
                         DeletedUserID = c.String(),
                         IsDeleted = c.Boolean(nullable: false),
-                        Location_Id = c.Guid(),
-                        ApplicationUser_Id = c.String(maxLength: 128),
+                        User_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Locations", t => t.Location_Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
-                .Index(t => t.Location_Id)
-                .Index(t => t.ApplicationUser_Id);
+                .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
+                .Index(t => t.User_Id);
             
             CreateTable(
                 "dbo.Storages",
@@ -226,8 +224,11 @@ namespace ShopDiaryProject.EF.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         RegisteredUser = c.Guid(nullable: false),
+                        Create = c.Int(nullable: false),
+                        Read = c.Int(nullable: false),
+                        Update = c.Int(nullable: false),
+                        Delete = c.Int(nullable: false),
                         Description = c.String(maxLength: 250),
-                        RoleLocationId = c.Guid(nullable: false),
                         LocationId = c.Guid(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(),
@@ -240,27 +241,7 @@ namespace ShopDiaryProject.EF.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Locations", t => t.LocationId, cascadeDelete: true)
-                .ForeignKey("dbo.RoleLocations", t => t.RoleLocationId, cascadeDelete: true)
-                .Index(t => t.RoleLocationId)
                 .Index(t => t.LocationId);
-            
-            CreateTable(
-                "dbo.RoleLocations",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        RoleCode = c.Int(nullable: false),
-                        Description = c.String(maxLength: 200),
-                        CreatedDate = c.DateTime(nullable: false),
-                        ModifiedDate = c.DateTime(),
-                        DeletedDate = c.DateTime(),
-                        AddedUserId = c.String(),
-                        CreatedUserId = c.String(),
-                        ModifiedUserId = c.String(),
-                        DeletedUserID = c.String(),
-                        IsDeleted = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUserLogins",
@@ -348,14 +329,12 @@ namespace ShopDiaryProject.EF.Migrations
             DropForeignKey("dbo.Consumes", "InventoryId", "dbo.Inventories");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Locations", "ApplicationUser_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.UserLocations", "RoleLocationId", "dbo.RoleLocations");
             DropForeignKey("dbo.UserLocations", "LocationId", "dbo.Locations");
+            DropForeignKey("dbo.Locations", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Storages", "LocationId", "dbo.Locations");
             DropForeignKey("dbo.Inventories", "StorageId", "dbo.Storages");
             DropForeignKey("dbo.Inventories", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Inventorylogs", "InventoryId", "dbo.Inventories");
-            DropForeignKey("dbo.Locations", "Location_Id", "dbo.Locations");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Categories", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Shopitems", "ShoplistId", "dbo.Shoplists");
@@ -368,13 +347,11 @@ namespace ShopDiaryProject.EF.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.UserLocations", new[] { "LocationId" });
-            DropIndex("dbo.UserLocations", new[] { "RoleLocationId" });
             DropIndex("dbo.Inventorylogs", new[] { "InventoryId" });
             DropIndex("dbo.Inventories", new[] { "ProductId" });
             DropIndex("dbo.Inventories", new[] { "StorageId" });
             DropIndex("dbo.Storages", new[] { "LocationId" });
-            DropIndex("dbo.Locations", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.Locations", new[] { "Location_Id" });
+            DropIndex("dbo.Locations", new[] { "User_Id" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Shopitems", new[] { "ShoplistId" });
@@ -386,7 +363,6 @@ namespace ShopDiaryProject.EF.Migrations
             DropTable("dbo.Consumes");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.RoleLocations");
             DropTable("dbo.UserLocations");
             DropTable("dbo.Inventorylogs");
             DropTable("dbo.Inventories");

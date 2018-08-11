@@ -10,6 +10,10 @@ namespace ShopDiaryApp.Models.ViewModels
         public Guid RegisteredUser { get; set; }
         public string Description { get; set; }
         public string AddedUserId { get; set; }
+        public int Create { get; set; }
+        public int Read { get; set; }
+        public int Update { get; set; }
+        public int Delete { get; set; }
 
         public Guid RoleLocationId { get; set; }
         public Guid LocationId { get; set; }
@@ -22,8 +26,10 @@ namespace ShopDiaryApp.Models.ViewModels
         {
             Id = loc.Id;
             Description = loc.Description;
-            RoleLocationId = loc.RoleLocationId;
-            LocationId = loc.RoleLocationId;
+            Create = loc.Create;
+            Read = loc.Read;
+            Update = loc.Update;
+            Delete = loc.Delete;
             AddedUserId = loc.AddedUserId;
         }
         public UserLocation ToModel()
@@ -32,9 +38,12 @@ namespace ShopDiaryApp.Models.ViewModels
             {
                 AddedUserId = this.AddedUserId,
                 Description = this.Description,
-                
-                LocationId=this.LocationId,
-                RoleLocationId=this.RoleLocationId,
+                LocationId = this.LocationId,
+                Create = this.Create,
+                Read = this.Read,
+                Update = this.Update,
+                Delete = this.Delete,
+
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id
             };
         }

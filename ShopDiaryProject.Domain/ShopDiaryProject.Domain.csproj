@@ -87,7 +87,6 @@
   <ItemGroup>
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\UserLocation.cs" />
-    <Compile Include="Models\RoleLocation.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Consume.cs" />
     <Compile Include="Models\FullAuditedEntity.cs" />
@@ -101,7 +100,6 @@
     <Compile Include="Models\Shoplist.cs" />
     <Compile Include="Models\Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\RoleLocationViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ConsumeViewModel.cs" />
     <Compile Include="ViewModels\InventoryViewModel.cs" />

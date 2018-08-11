@@ -22,9 +22,8 @@ namespace ShopDiaryProject.Android.Models.ViewModels
         {
             Id = loc.Id;
             Description = loc.Description;
-            RoleLocationId = loc.RoleLocationId;
-   
-            LocationId = loc.RoleLocationId;
+
+            LocationId = loc.LocationId;
             AddedUserId = loc.AddedUserId;
         }
         public UserLocation ToModel()
@@ -34,7 +33,7 @@ namespace ShopDiaryProject.Android.Models.ViewModels
                 AddedUserId = this.AddedUserId,
                 Description = this.Description,
                 LocationId=this.LocationId,
-                RoleLocationId=this.RoleLocationId,
+               
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id
             };
         }

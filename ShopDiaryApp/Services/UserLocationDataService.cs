@@ -22,7 +22,7 @@ namespace ShopDiaryApp.Services
                 try
                 {
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var builder = new UriBuilder(new Uri(UrlHelper.Userlocations_Url + @"/getLocations"));
+                    var builder = new UriBuilder(new Uri(UrlHelper.Userlocations_Url + @"/getUserLocations"));
                     var response = await client.GetAsync(builder.Uri);
                     if (!response.IsSuccessStatusCode)
                     {
@@ -49,7 +49,10 @@ namespace ShopDiaryApp.Services
                 new KeyValuePair<string, string>("Id", data.Id.ToString()),
                 new KeyValuePair<string, string>("Description", data.Description.ToString()),
                 new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString()),
-                new KeyValuePair<string, string>("RoleLocationId", data.RoleLocationId.ToString()),
+                new KeyValuePair<string, string>("Create", data.AddedUserId.ToString()),
+                new KeyValuePair<string, string>("Read", data.AddedUserId.ToString()),
+                new KeyValuePair<string, string>("Update", data.AddedUserId.ToString()),
+                new KeyValuePair<string, string>("Delete", data.AddedUserId.ToString()),
                 new KeyValuePair<string, string>("UserId", data.RegisteredUser.ToString()),
                 new KeyValuePair<string, string>("LocationId", data.LocationId.ToString()),
 
@@ -59,7 +62,7 @@ namespace ShopDiaryApp.Services
             try
             {
 
-                HttpResponseMessage resp = client.PostAsync(UrlHelper.Userlocations_Url + @"/PostLocation", content).Result;
+                HttpResponseMessage resp = client.PostAsync(UrlHelper.Userlocations_Url + @"/PostUserLocation", content).Result;
                 UserLocation t = JsonConvert.DeserializeObject<UserLocation>(resp.Content.ReadAsStringAsync().Result);
                 return true;
             }
@@ -74,7 +77,10 @@ namespace ShopDiaryApp.Services
             {
                 new KeyValuePair<string, string>("Description", data.Description.ToString()),
                 new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString()),
-                new KeyValuePair<string, string>("RoleLocationId", data.RoleLocationId.ToString()),
+                 new KeyValuePair<string, string>("Create", data.AddedUserId.ToString()),
+                new KeyValuePair<string, string>("Read", data.AddedUserId.ToString()),
+                new KeyValuePair<string, string>("Update", data.AddedUserId.ToString()),
+                new KeyValuePair<string, string>("Delete", data.AddedUserId.ToString()),
                 new KeyValuePair<string, string>("UserId", data.RegisteredUser.ToString()),
                 new KeyValuePair<string, string>("LocationId", data.LocationId.ToString()),
 
@@ -83,7 +89,7 @@ namespace ShopDiaryApp.Services
 
             try
             {
-                HttpResponseMessage resp = client.PutAsync(UrlHelper.Userlocations_Url + @"/PutLocation/" + id, content).Result;
+                HttpResponseMessage resp = client.PutAsync(UrlHelper.Userlocations_Url + @"/PutUserLocation/" + id, content).Result;
                 UserLocation t = JsonConvert.DeserializeObject<UserLocation>(resp.Content.ReadAsStringAsync().Result);
                 return true;
             }
@@ -98,7 +104,7 @@ namespace ShopDiaryApp.Services
             try
             {
 
-                HttpResponseMessage resp = client.DeleteAsync(UrlHelper.Userlocations_Url + @"/DeleteLocation/" + id).Result;
+                HttpResponseMessage resp = client.DeleteAsync(UrlHelper.Userlocations_Url + @"/DeleteUserLocation/" + id).Result;
                 UserLocation t = JsonConvert.DeserializeObject<UserLocation>(resp.Content.ReadAsStringAsync().Result);
                 return true;
             }

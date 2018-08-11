@@ -145,7 +145,6 @@
     <Compile Include="Models\ViewModels\LocationViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductViewModel.cs" />
     <Compile Include="Models\ViewModels\PurchaseViewModel.cs" />
-    <Compile Include="Models\ViewModels\RoleLocationViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopitemViewModel.cs" />
     <Compile Include="Models\ViewModels\ShoplistViewModel.cs" />
     <Compile Include="Models\ViewModels\StorageViewModel.cs" />
@@ -156,7 +155,6 @@
     <Compile Include="Services\InventoryDataService.cs" />
     <Compile Include="Services\LocationDataService.cs" />
     <Compile Include="Services\ProductDataService.cs" />
-    <Compile Include="Services\RoleLocationDataService.cs" />
     <Compile Include="Services\StorageDataService.cs" />
     <Compile Include="Services\UserLocationDataService.cs" />
     <Compile Include="SignupPageActivity.cs" />

@@ -10,6 +10,7 @@ namespace ShopDiaryProject.EF.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ShopDiaryProject.EF.ShopDiaryDbContext context)

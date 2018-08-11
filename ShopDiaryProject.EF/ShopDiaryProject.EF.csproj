@@ -85,25 +85,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201808101840156_initial-database.cs" />
-    <Compile Include="Migrations\201808101840156_initial-database.Designer.cs">
-      <DependentUpon>201808101840156_initial-database.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808101858530_AddUserIdtoLocation.cs" />
-    <Compile Include="Migrations\201808101858530_AddUserIdtoLocation.Designer.cs">
-      <DependentUpon>201808101858530_AddUserIdtoLocation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808111238439_ChangeUserId.cs" />
-    <Compile Include="Migrations\201808111238439_ChangeUserId.Designer.cs">
-      <DependentUpon>201808111238439_ChangeUserId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808111309459_AddColumnNameOnLocationo.cs" />
-    <Compile Include="Migrations\201808111309459_AddColumnNameOnLocationo.Designer.cs">
-      <DependentUpon>201808111309459_AddColumnNameOnLocationo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808111332226_ResetDatabase.cs" />
-    <Compile Include="Migrations\201808111332226_ResetDatabase.Designer.cs">
-      <DependentUpon>201808111332226_ResetDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201808111951151_Initial-Database.cs" />
+    <Compile Include="Migrations\201808111951151_Initial-Database.Designer.cs">
+      <DependentUpon>201808111951151_Initial-Database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,20 +104,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808101840156_initial-database.resx">
-      <DependentUpon>201808101840156_initial-database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808101858530_AddUserIdtoLocation.resx">
-      <DependentUpon>201808101858530_AddUserIdtoLocation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808111238439_ChangeUserId.resx">
-      <DependentUpon>201808111238439_ChangeUserId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808111309459_AddColumnNameOnLocationo.resx">
-      <DependentUpon>201808111309459_AddColumnNameOnLocationo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808111332226_ResetDatabase.resx">
-      <DependentUpon>201808111332226_ResetDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808111951151_Initial-Database.resx">
+      <DependentUpon>201808111951151_Initial-Database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -51,7 +51,7 @@ namespace ShopDiaryApp.Services
                 new KeyValuePair<string, string>("Address", data.Address.ToString()),
                 new KeyValuePair<string, string>("Description", data.Description.ToString()),
                 new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString()),
-
+                new KeyValuePair<string, string>("CreatedUserId", data.CreatedUserId.ToString()),
 
             });
 
