@@ -10,7 +10,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="610.3dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
             <TextView
                 android:text="Location Detail"
@@ -142,11 +142,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="#ff03a9f4"
-                android:layout_gravity="right"
                 android:gravity="center">
                 <ImageButton
                     android:src="@drawable/adduser"
-                    android:layout_width="50dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:id="@+id/imageButtonLocationDetailAddUser"
                     android:maxHeight="15dp"
@@ -158,7 +157,7 @@
                     android:layout_margin="3dp" />
                 <ImageButton
                     android:src="@drawable/savebutton"
-                    android:layout_width="50dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:id="@+id/imageButtonLocationDetailSave"
                     android:maxHeight="15dp"
@@ -170,7 +169,7 @@
                     android:layout_margin="3dp" />
                 <ImageButton
                     android:src="@drawable/trashpng"
-                    android:layout_width="50dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:id="@+id/imageButtonLocationDetailDelete"
                     android:maxHeight="15dp"

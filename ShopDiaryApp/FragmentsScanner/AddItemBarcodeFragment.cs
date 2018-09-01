@@ -112,41 +112,41 @@ namespace ShopDiaryApp.FragmentsScanner
         }
         public override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
-            this.Activity.SetContentView(Resource.Layout.AddItemLayout);
-            MobileBarcodeScanner.Initialize(this.Activity.Application);
-            scanner = new MobileBarcodeScanner();
+            //base.OnCreate(savedInstanceState);
+            //this.Activity.SetContentView(Resource.Layout.AddItemLayout);
+            //MobileBarcodeScanner.Initialize(this.Activity.Application);
+            //scanner = new MobileBarcodeScanner();
 
-            mScan.Click += async delegate {
+            //mScan.Click += async delegate {
 
-                scanner.UseCustomOverlay = false;
-                scanner.TopText = "Hold the camera up to the barcode\nAbout 6 inches away";
-                scanner.BottomText = "Wait for the barcode to automatically scan!";
+            //    scanner.UseCustomOverlay = false;
+            //    scanner.TopText = "Hold the camera up to the barcode\nAbout 6 inches away";
+            //    scanner.BottomText = "Wait for the barcode to automatically scan!";
 
-                var result = await scanner.Scan();
+            //    var result = await scanner.Scan();
 
-                HandleScanResult(result);
-                mBarcode.Text = result.Text;
-                for (int i = 0; mProducts.Count > i; i++)
-                {
-                    if (mBarcode.Text == mProducts[i].BarcodeId)
-                    {
-                        mProduct.Id = mProducts[i].Id;
-                        mName.Text = mProducts[i].Name;
-                        isBarcodeFound = true;
-                    }
-                }
-            };
+            //    HandleScanResult(result);
+            //    mBarcode.Text = result.Text;
+            //    for (int i = 0; mProducts.Count > i; i++)
+            //    {
+            //        if (mBarcode.Text == mProducts[i].BarcodeId)
+            //        {
+            //            mProduct.Id = mProducts[i].Id;
+            //            mName.Text = mProducts[i].Name;
+            //            isBarcodeFound = true;
+            //        }
+            //    }
+            //};
 
-            void HandleScanResult(ZXing.Result result)
-            {
-                string msg = "";
+            //void HandleScanResult(ZXing.Result result)
+            //{
+            //    string msg = "";
 
-                if (result != null && !string.IsNullOrEmpty(result.Text))
-                    msg = "Found Barcode: " + result.Text;
-                else
-                    msg = "Scanning Canceled!";
-            }
+            //    if (result != null && !string.IsNullOrEmpty(result.Text))
+            //        msg = "Found Barcode: " + result.Text;
+            //    else
+            //        msg = "Scanning Canceled!";
+            //}
 
         }
 
