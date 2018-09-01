@@ -6,21 +6,24 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/main_content"
-        android:gravity="fill_horizontal|bottom">
+        android:id="@+id/main_content">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="610.3dp"
-            android:layout_weight="1"
-            android:gravity="center|bottom">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/recyclerLocations"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
+            <ImageView
+                android:src="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
@@ -38,7 +41,7 @@
                 android:gravity="center">
                 <ImageButton
                     android:src="@drawable/addorange"
-                    android:layout_width="50dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:id="@+id/imageButtonManageLocationAdd"
                     android:maxHeight="15dp"
@@ -50,7 +53,7 @@
                     android:layout_margin="3dp" />
                 <ImageButton
                     android:src="@drawable/edit"
-                    android:layout_width="50dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:id="@+id/imageButtonManageLocationEdit"
                     android:maxHeight="15dp"
