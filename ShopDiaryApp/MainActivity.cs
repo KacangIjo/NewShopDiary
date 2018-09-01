@@ -37,6 +37,7 @@ namespace ShopDiaryApp
         public static List<StorageViewModel> mStorages;
         public static List<UserLocationViewModel> mUserLoc;
 
+        public static LocationViewModel StaticLocationClass = new LocationViewModel();
         private TextView mUsernameInfo;
 
 
@@ -98,7 +99,7 @@ namespace ShopDiaryApp
                         ListItemClicked(1);
                         break;
                     case Resource.Id.nav_home_additems:
-                        SupportActionBar.Title = "Use Items";
+                        SupportActionBar.Title = "Add Items";
                         ListItemClicked(2);
                         break;
                     case Resource.Id.nav_home_storages:

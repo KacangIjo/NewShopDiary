@@ -127,7 +127,11 @@
     <Compile Include="Class\Storage.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="Class\UserLocation.cs" />
+    <Compile Include="DialogFragments\DialogDatePickerActivity.cs" />
+    <Compile Include="FragmentsScanner\AddItemBarcodeFragment.cs" />
     <Compile Include="Fragments\InventoriesFragment.cs" />
+    <Compile Include="Fragments\LocationAddUserFragment.cs" />
+    <Compile Include="Fragments\LocationEditFragment.cs" />
     <Compile Include="Fragments\LocationAddFragment.cs" />
     <Compile Include="Fragments\StoragesFragment.cs" />
     <Compile Include="Helper\LoginHelper.cs" />
@@ -265,9 +269,6 @@
     <AndroidResource Include="Resources\layout\LocationDetail.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\DialogFragmentAddUser.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\AdapterListHome.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -292,6 +293,27 @@
     <AndroidResource Include="Resources\layout\AdapterLocations.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\AdapterStorages.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\addUser.png" />
+    <AndroidResource Include="Resources\drawable\save.ico" />
+    <AndroidResource Include="Resources\drawable\trash.ico" />
+    <AndroidResource Include="Resources\drawable\trashpng.png" />
+    <AndroidResource Include="Resources\layout\ManageLocationAddUser.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\savebutton.png" />
+    <AndroidResource Include="Resources\layout\DialogDatePicker.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AddItemLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AddItemFormLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\barcode.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -301,9 +323,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="DialogFragments\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ShopDiaryApp.API\ShopDiaryApp.API.csproj">
       <Project>{B369FCDD-F9B2-42DC-99FA-C1D813EEA5A7}</Project>

@@ -5,6 +5,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using ShopDiaryApp.Adapter;
+using ShopDiaryApp.FragmentsScanner;
 using ShopDiaryApp.Models.ViewModels;
 using ShopDiaryApp.Services;
 using System;
@@ -84,7 +85,7 @@ namespace ShopDiaryApp.Fragments
             };
             mAdd.Click += (object sender, EventArgs args) =>
             {
-                ReplaceFragment(new StoragesFragment(), "Manage Storages");
+                ReplaceFragment(new AddItemBarcodeFragment(), "Add Item");
             };
             mRunOut.Click += (object sender, EventArgs args) =>
             {

@@ -17,13 +17,14 @@ namespace ShopDiaryApp.Fragments
     {
         private LocationsRecycleAdapter mLocationsAdapter;
         public List<LocationViewModel> mLocations;
-        private LocationViewModel mSelectedLocationClass;
+        static LocationViewModel mSelectedLocationClass;
         private readonly LocationDataService mLocationDataService;
 
         private RecyclerView mListViewLocations;
         private int mSelectedLocation = -1;
         private FragmentTransaction mFragmentTransaction;
         private ImageButton mButtonAdd;
+        private ImageButton mButtonEdit;
         private Android.Support.V7.Widget.SearchView mSearchView;
 
         public LocationsFragment()
@@ -51,12 +52,18 @@ namespace ShopDiaryApp.Fragments
         {
             HasOptionsMenu = true;
             View view = inflater.Inflate(Resource.Layout.ManageLocationsLayout, container, false);
-            mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageLocationAdd);
+            
             mListViewLocations = view.FindViewById<RecyclerView>(Resource.Id.recyclerLocations);
             mListViewLocations.SetLayoutManager(new LinearLayoutManager(Activity));
+            mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageLocationAdd);
+            mButtonEdit = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageLocationEdit);
             mButtonAdd.Click += (object sender, EventArgs args) =>
             {
                 ReplaceFragment(new LocationAddFragment(), "Add Location");
+            };
+            mButtonEdit.Click += (object sender, EventArgs args) =>
+            {
+                ReplaceFragment(new LocationEditFragment(), "Edit Location");
             };
             LoadLocationData();
             return view;
@@ -88,8 +95,11 @@ namespace ShopDiaryApp.Fragments
             mSelectedLocation = e;
             mSelectedLocationClass = mLocations[e];
             //mTextSelectedLocation.Text = mLocations[e].Name;
-            //LoginActivity.StaticLocationClass.Id = mLocations[e].Id;
-            //LoginActivity.StaticLocationClass.Name = mLocations[e].Name;
+            MainActivity.StaticLocationClass.Id = mLocations[e].Id;
+            MainActivity.StaticLocationClass.Name = mLocations[e].Name;
+            MainActivity.StaticLocationClass.Address= mLocations[e].Address;
+
+            MainActivity.StaticLocationClass.Description = mLocations[e].Description;
         }
 
 

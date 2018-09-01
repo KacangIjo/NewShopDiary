@@ -10,7 +10,7 @@
         android:id="@+id/progressBarA" />
     <TextView
         android:text="Add User"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
@@ -31,14 +31,14 @@
             android:id="@+id/linearLayout5">
             <TextView
                 android:text="E-Mail"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/textView2"
                 android:width="100dp" />
             <TextView
                 android:text=":"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/textView3" />
@@ -56,14 +56,14 @@
             android:layout_marginTop="5dp">
             <TextView
                 android:text="Name"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/textView4"
                 android:width="100dp" />
             <TextView
                 android:text=":"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/textView5" />
@@ -81,14 +81,14 @@
             android:layout_marginTop="5dp">
             <TextView
                 android:text="Description"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/textView6"
                 android:width="100dp" />
             <TextView
                 android:text=":"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/textView7" />
@@ -113,7 +113,8 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_marginTop="5dp">
                 <CheckBox
                     android:text="Create"
                     android:id="@+id/checkBoxCreate"

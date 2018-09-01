@@ -65,9 +65,11 @@ namespace ShopDiaryApp.Fragments
             Location newLoc = new Location()
             {
                 Name = mLocationName.Text,
-                AddedUserId = mLocationAddress.Text,
+                Address=mLocationAddress.Text,
                 Description = mLocationDescription.Text,
-                CreatedUserId = mAuthorizedId.ToString()
+                CreatedUserId = mAuthorizedId.ToString(),
+                AddedUserId = mAuthorizedId.ToString()
+
             };
 
             new Thread(new ThreadStart(delegate

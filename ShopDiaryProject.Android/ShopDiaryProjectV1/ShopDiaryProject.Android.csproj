@@ -196,7 +196,6 @@
     <Compile Include="Models\StorageViewModel.cs" />
     <Compile Include="Models\ViewModels\InventorylogViewModel.cs" />
     <Compile Include="Models\ViewModels\PurchaseViewModel.cs" />
-    <Compile Include="Models\ViewModels\RoleLocationViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopitemViewModel.cs" />
     <Compile Include="Models\ViewModels\CategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\ConsumeViewModel.cs" />
@@ -211,7 +210,6 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Services\AccountDataService.cs" />
     <Compile Include="Services\CategoryDataService.cs" />
-    <Compile Include="Services\RoleLocationDataService.cs" />
     <Compile Include="Services\UserLocationDataService.cs" />
     <Compile Include="Services\ConsumeDataService.cs" />
     <Compile Include="Services\InventoryDataService.cs" />
