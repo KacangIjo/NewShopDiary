@@ -13,23 +13,23 @@ using System.Collections.Generic;
 
 namespace ShopDiaryApp.Fragments
 {
-    public class LocationsFragment : Fragment
+    public class CategoriesFragment : Fragment
     {
-        private LocationsRecycleAdapter mLocationsAdapter;
-        public List<LocationViewModel> mLocations;
-        static LocationViewModel mSelectedLocationClass;
-        private readonly LocationDataService mLocationDataService;
+        private CategoryRecyclerAdapter mCategoryAdapter;
+        public List<CategoryViewModel> mCategories;
+        static CategoryViewModel mSelectedCategoryClass;
+        private readonly CategoryDataService mCategoryDataService;
 
-        private RecyclerView mListViewLocations;
-        private int mSelectedLocation = -1;
+        private RecyclerView mListViewCategory;
+        private int mSelectedCategory = -1;
         private FragmentTransaction mFragmentTransaction;
         private ImageButton mButtonAdd;
         private ImageButton mButtonEdit;
         private Android.Support.V7.Widget.SearchView mSearchView;
 
-        public LocationsFragment()
+        public CategoriesFragment()
         {
-            mLocationDataService = new LocationDataService();
+            mCategoryDataService = new CategoryDataService();
         }
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -40,9 +40,9 @@ namespace ShopDiaryApp.Fragments
 
         }
 
-        public static LocationsFragment NewInstance()
+        public static CategoriesFragment NewInstance()
         {
-            var frag2 = new LocationsFragment { Arguments = new Bundle() };
+            var frag2 = new CategoriesFragment { Arguments = new Bundle() };
             return frag2;
         }
 
@@ -51,75 +51,73 @@ namespace ShopDiaryApp.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             HasOptionsMenu = true;
-            View view = inflater.Inflate(Resource.Layout.ManageLocationsLayout, container, false);
+            View view = inflater.Inflate(Resource.Layout.ManageCategoriesLayout, container, false);
             
-            mListViewLocations = view.FindViewById<RecyclerView>(Resource.Id.recyclerLocations);
-            mListViewLocations.SetLayoutManager(new LinearLayoutManager(Activity));
-            mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageLocationAdd);
+            mListViewCategory = view.FindViewById<RecyclerView>(Resource.Id.recyclerCategories);
+            mListViewCategory.SetLayoutManager(new LinearLayoutManager(Activity));
+            mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageCategoriesAdd);
             mButtonEdit = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageLocationEdit);
             mButtonAdd.Click += (object sender, EventArgs args) =>
             {
-                ReplaceFragment(new LocationAddFragment(), "Add Location");
+                ReplaceFragment(new CategoryAddFragment(), "Add Category");
             };
             mButtonEdit.Click += (object sender, EventArgs args) =>
             {
-                ReplaceFragment(new LocationEditFragment(), "Edit Location");
+                ReplaceFragment(new CategoryEditFragment(), "Edit Category");
             };
-            LoadLocationData();
+            LoadCategoriesData();
             return view;
         }
 
-        private async void LoadLocationData()
+        private async void LoadCategoriesData()
         {
             
-            List<LocationViewModel> mLocationsByUser = await mLocationDataService.GetAll();
-            mLocations = new List<LocationViewModel>();
-            for (int i = 0; mLocationsByUser.Count > i; i++)
+            List<CategoryViewModel> mCategoriesByUser = await mCategoryDataService.GetAll();
+            mCategories = new List<CategoryViewModel>();
+            for (int i = 0; mCategoriesByUser.Count > i; i++)
             {
-                if (mLocationsByUser[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
+                if (mCategoriesByUser[i].UserId == LoginPageActivity.StaticUserClass.ID.ToString())
                 {
-                    mLocations.Add(mLocationsByUser[i]);
+                    mCategories.Add(mCategoriesByUser[i]);
                 }
             }
-            if (mLocations != null)
+            if (mCategories != null)
             {
 
-                mLocationsAdapter = new LocationsRecycleAdapter(mLocations, this.Activity);
-                mLocationsAdapter.ItemClick += OnLocationClicked;
-                mListViewLocations.SetAdapter(this.mLocationsAdapter);
+                mCategoryAdapter = new CategoryRecyclerAdapter(mCategories, this.Activity);
+                mCategoryAdapter.ItemClick += OnLocationClicked;
+                mListViewCategory.SetAdapter(this.mCategoryAdapter);
             }
         }
 
         private void OnLocationClicked(object sender, int e)
         {
-            mSelectedLocation = e;
-            mSelectedLocationClass = mLocations[e];
+            mSelectedCategory = e;
+            mSelectedCategoryClass = mCategories[e];
             //mTextSelectedLocation.Text = mLocations[e].Name;
-            MainActivity.StaticLocationClass.Id = mLocations[e].Id;
-            MainActivity.StaticLocationClass.Name = mLocations[e].Name;
-            MainActivity.StaticLocationClass.Address= mLocations[e].Address;
-
-            MainActivity.StaticLocationClass.Description = mLocations[e].Description;
+            MainActivity.StaticLocationClass.Id = mCategories[e].Id;
+            MainActivity.StaticLocationClass.Name = mCategories[e].Name;
+            MainActivity.StaticLocationClass.Description = mCategories[e].Description;
         }
 
 
-        public override void OnCreateOptionsMenu(IMenu menu,MenuInflater menuInflater)
+        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
             //SearchMenu
-            menuInflater.Inflate(Resource.Menu.nav_search, menu);
+            inflater.Inflate(Resource.Menu.nav_search, menu);
             var searchItem = menu.FindItem(Resource.Id.action_search);
             var provider = MenuItemCompat.GetActionView(searchItem);
             mSearchView = provider.JavaCast<Android.Support.V7.Widget.SearchView>();
-            mSearchView.QueryTextChange += (s, e) => mLocationsAdapter.Filter.InvokeFilter(e.NewText);
+            mSearchView.QueryTextChange += (s, e) => mCategoryAdapter.Filter.InvokeFilter(e.NewText);
             mSearchView.QueryTextSubmit += (s, e) =>
             {
                 Toast.MakeText(this.Activity, "You searched: " + e.Query, ToastLength.Short).Show();
                 e.Handled = true;
             };
-            MenuItemCompat.SetOnActionExpandListener(searchItem, new SearchViewExpandListener(mLocationsAdapter));
-            
+            MenuItemCompat.SetOnActionExpandListener(searchItem, new SearchViewExpandListener(mCategoryAdapter));
 
         }
+
         private class SearchViewExpandListener : Java.Lang.Object, MenuItemCompat.IOnActionExpandListener
         {
             private readonly IFilterable _adapter;

@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using ShopDiaryProject.Domain.Models;
-using ShopDiaryApp.Models;
+
 using ShopDiaryApp.Helper;
+using ShopDiaryApp.Models.ViewModels;
 
 namespace ShopDiaryApp.Services
 {
@@ -47,9 +48,12 @@ namespace ShopDiaryApp.Services
         {
             var content = new FormUrlEncodedContent(new[]
             {
-                new KeyValuePair<string, string>("Price", data.Name.ToString()),
-                new KeyValuePair<string, string>("Qty", data.Description.ToString()),
+                new KeyValuePair<string, string>("Name", data.Name.ToString()),
+                new KeyValuePair<string, string>("Description", data.Description.ToString()),
                 new KeyValuePair<string, string>("CategoryId", data.Id.ToString()),
+                new KeyValuePair<string, string>("UserId", data.UserId.ToString()),
+                new KeyValuePair<string, string>("AddedUserId", data.CreatedUserId.ToString()),
+                new KeyValuePair<string, string>("CreatedUserId", data.AddedUserId.ToString()),
 
             });
 
@@ -69,9 +73,12 @@ namespace ShopDiaryApp.Services
         {
             var content = new FormUrlEncodedContent(new[]
             {
-                new KeyValuePair<string, string>("Price", data.Name.ToString()),
-                new KeyValuePair<string, string>("Qty", data.Description.ToString()),
+                 new KeyValuePair<string, string>("Name", data.Name.ToString()),
+                new KeyValuePair<string, string>("Description", data.Description.ToString()),
                 new KeyValuePair<string, string>("CategoryId", data.Id.ToString()),
+                new KeyValuePair<string, string>("UserId", data.UserId.ToString()),
+                new KeyValuePair<string, string>("AddedUserId", data.CreatedUserId.ToString()),
+                new KeyValuePair<string, string>("CreatedUserId", data.AddedUserId.ToString()),
 
             });
 

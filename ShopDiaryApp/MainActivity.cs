@@ -122,42 +122,8 @@ namespace ShopDiaryApp
                 ListItemClicked(0);
             }
             #endregion
-            #region BOTTOM TOOLBAR
-            ////bottomToolbar
-            //var bottomToolbar = FindViewById<Android.Widget.Toolbar>(Resource.Id.secondToolbar);
-            //bottomToolbar.InflateMenu(Resource.Menu.HomeShortcutMenu);
-            //bottomToolbar.MenuItemClick += (sender, e) => {
-            //    var trans = SupportFragmentManager.BeginTransaction();
-            //    var aweu = e.Item.TitleFormatted.ToString();
-            //    switch (e.Item.ToString())
-            //    {
-            //        case "Storage":
-            //            trans.Replace(Resource.Id.content_frame, new StoragesFragment(), "Manage Storages");
-            //            trans.Commit();
-            //            break;
-            //        case "Use":
-            //            trans.Replace(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
-            //            trans.Commit();
-            //            break;
-            //        case "Add":
-            //            trans.Replace(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
-            //            trans.Commit();
-            //            break;
-            //        case "RunOut":
-            //            trans.Replace(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
-            //            trans.Commit();
-            //            break;
-            //        case "ShopList":
-            //            trans.Replace(Resource.Id.content_frame, new LocationsFragment(), "Manage Locations");
-            //            trans.Commit();
-            //            break;
-                       
-            //    }
-            //};
+            #endregion
 
-           
-            #endregion
-            #endregion
         }
 
         #region navigation bar function and menu toolbar
@@ -185,6 +151,13 @@ namespace ShopDiaryApp
                 case 3:
                     fragment = StoragesFragment.NewInstance();
                     break;
+                case 4:
+                    fragment = CategoriesFragment.NewInstance();
+                    break;
+                case 5:
+                    fragment = CategoriesFragment.NewInstance();
+                    break;
+
             }
 
             SupportFragmentManager.BeginTransaction()

@@ -28,6 +28,7 @@ namespace ShopDiaryApp.FragmentsScanner
         public ProductViewModel mProductForBarcode;
         public StorageViewModel mStorage;
         public CategoryViewModel mCategory;
+        public static string scannedBarcode = "-";
 
         private readonly InventoryDataService mInventoryDataService;
         private readonly ProductDataService mProductDataService;
@@ -39,8 +40,8 @@ namespace ShopDiaryApp.FragmentsScanner
 
         private Spinner mSpinnerStorages;
         private Spinner mSpinnerCategories;
-        private Button mAddtoInventory;
-        private Button mExpDateChoose;
+        private ImageButton mAddtoInventory;
+        private ImageButton mExpDateChoose;
         private ImageButton mScan;
         private DateTime DateTemp;
         private TextView mBarcode;
@@ -62,17 +63,17 @@ namespace ShopDiaryApp.FragmentsScanner
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View view = inflater.Inflate(Resource.Layout.ManageLocationAddUser, container, false);
+            View view = inflater.Inflate(Resource.Layout.AddItemFormLayout, container, false);
 
             mBarcode = view.FindViewById<TextView>(Resource.Id.textViewAddBarcodeId);
             mName = view.FindViewById<EditText>(Resource.Id.editTextAddName);
             mPrice = view.FindViewById<EditText>(Resource.Id.editTextAddPrice);
             mSpinnerCategories = view.FindViewById<Spinner>(Resource.Id.spinnerAddItemCategory);
             mSpinnerStorages = view.FindViewById<Spinner>(Resource.Id.spinnerAddItemStorage);
-            mExpDateChoose = view.FindViewById<Button>(Resource.Id.buttonAddExpDate);
-            mAddtoInventory = view.FindViewById<Button>(Resource.Id.buttonAddAddToInventory);
+            mExpDateChoose = view.FindViewById<ImageButton>(Resource.Id.buttonAddExpDate);
+            mAddtoInventory = view.FindViewById<ImageButton>(Resource.Id.buttonAddAddToInventory);
             mScan = view.FindViewById<ImageButton>(Resource.Id.imageButtonAddScan2);
-            //mBarcode.Text = ItemAddActivity.scannedBarcode.ToString();
+            mBarcode.Text = scannedBarcode.ToString();
             mPrice.Text = "0";
             MobileBarcodeScanner.Initialize(this.Activity.Application);
             scanner = new MobileBarcodeScanner();
@@ -110,45 +111,7 @@ namespace ShopDiaryApp.FragmentsScanner
             }
             return view;
         }
-        public override void OnCreate(Bundle savedInstanceState)
-        {
-            //base.OnCreate(savedInstanceState);
-            //this.Activity.SetContentView(Resource.Layout.AddItemLayout);
-            //MobileBarcodeScanner.Initialize(this.Activity.Application);
-            //scanner = new MobileBarcodeScanner();
 
-            //mScan.Click += async delegate {
-
-            //    scanner.UseCustomOverlay = false;
-            //    scanner.TopText = "Hold the camera up to the barcode\nAbout 6 inches away";
-            //    scanner.BottomText = "Wait for the barcode to automatically scan!";
-
-            //    var result = await scanner.Scan();
-
-            //    HandleScanResult(result);
-            //    mBarcode.Text = result.Text;
-            //    for (int i = 0; mProducts.Count > i; i++)
-            //    {
-            //        if (mBarcode.Text == mProducts[i].BarcodeId)
-            //        {
-            //            mProduct.Id = mProducts[i].Id;
-            //            mName.Text = mProducts[i].Name;
-            //            isBarcodeFound = true;
-            //        }
-            //    }
-            //};
-
-            //void HandleScanResult(ZXing.Result result)
-            //{
-            //    string msg = "";
-
-            //    if (result != null && !string.IsNullOrEmpty(result.Text))
-            //        msg = "Found Barcode: " + result.Text;
-            //    else
-            //        msg = "Scanning Canceled!";
-            //}
-
-        }
 
         private void AddProductData()
         {

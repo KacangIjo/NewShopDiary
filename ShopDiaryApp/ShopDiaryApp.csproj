@@ -130,9 +130,12 @@
     <Compile Include="DialogFragments\DialogDatePickerActivity.cs" />
     <Compile Include="FragmentsScanner\AddItemBarcodeFragment.cs" />
     <Compile Include="Fragments\InventoriesFragment.cs" />
+    <Compile Include="Fragments\CategoryAddFragment.cs" />
     <Compile Include="Fragments\LocationAddUserFragment.cs" />
+    <Compile Include="Fragments\CategoryEditFragment.cs" />
     <Compile Include="Fragments\LocationEditFragment.cs" />
     <Compile Include="Fragments\LocationAddFragment.cs" />
+    <Compile Include="Fragments\CategoriesFragment.cs" />
     <Compile Include="Fragments\StoragesFragment.cs" />
     <Compile Include="Helper\LoginHelper.cs" />
     <Compile Include="Helper\UrlHelper.cs" />
@@ -153,6 +156,7 @@
     <Compile Include="Models\ViewModels\ShoplistViewModel.cs" />
     <Compile Include="Models\ViewModels\StorageViewModel.cs" />
     <Compile Include="Models\ViewModels\UserLocationViewModel.cs" />
+    <Compile Include="Adapter\ObjectExtension.cs" />
     <Compile Include="Services\AccountDataService.cs" />
     <Compile Include="Services\CategoryDataService.cs" />
     <Compile Include="Services\ConsumeDataService.cs" />
@@ -314,6 +318,21 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\barcode.png" />
+    <AndroidResource Include="Resources\layout\ManageCategoriesLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ManageCategoryAdd.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ManageStorageAdd.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AdapterCategories.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\CategoryDetail.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
