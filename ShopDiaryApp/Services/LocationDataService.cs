@@ -5,9 +5,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using ShopDiaryApp.Helper;
 using ShopDiaryProject.Domain.Models;
 using ShopDiaryApp.Models.ViewModels;
-using ShopDiaryApp.Helper;
 
 namespace ShopDiaryApp.Services
 {
@@ -71,10 +71,12 @@ namespace ShopDiaryApp.Services
         {
             var content = new FormUrlEncodedContent(new[]
             {
+                 new KeyValuePair<string, string>("Id", data.Id.ToString()),
                 new KeyValuePair<string, string>("Name", data.Name.ToString()),
                 new KeyValuePair<string, string>("Address", data.Address.ToString()),
                 new KeyValuePair<string, string>("Description", data.Description.ToString()),
-                new KeyValuePair<string, string>("LocationId", data.Id.ToString()),
+                new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString()),
+                new KeyValuePair<string, string>("CreatedUserId", data.CreatedUserId.ToString()),
 
 
             });

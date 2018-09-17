@@ -9,6 +9,9 @@ namespace ShopDiaryApp.Models.ViewModels
         public string Name { get; set; }
         public string Area { get; set; }
         public string Description { get; set; }
+        public string AddedUserId { get; set; }
+        public string CreatedUserId { get; set; }
+
 
         public Guid LocationId { get; set; }
        
@@ -19,9 +22,10 @@ namespace ShopDiaryApp.Models.ViewModels
             {
                 Id = (Id == Guid.Empty) ? Guid.NewGuid() : Id,
                 Name = Name,
-
                 Area = Area,
                 Description = Description,
+                AddedUserId= AddedUserId,
+                CreatedUserId = CreatedUserId,
                 LocationId = LocationId
             };
         }
@@ -36,7 +40,8 @@ namespace ShopDiaryApp.Models.ViewModels
             this.Name = s.Name;
             this.Description = s.Description;
             this.Area = s.Area;
-
+            this.AddedUserId = s.AddedUserId;
+            this.CreatedUserId = s.CreatedUserId;
             this.LocationId = s.LocationId;
             
         }

@@ -5,9 +5,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
-using ShopDiaryProject.Domain.Models;
+
 using ShopDiaryApp.Helper;
-using ShopDiaryApp.Models;
+using ShopDiaryProject.Domain.Models;
+using ShopDiaryApp.Models.ViewModels;
 
 namespace ShopDiaryApp.Services
 {
@@ -50,6 +51,8 @@ namespace ShopDiaryApp.Services
                 new KeyValuePair<string, string>("Area", data.Area.ToString()),
                 new KeyValuePair<string, string>("Description", data.Description.ToString()),
                 new KeyValuePair<string, string>("LocationId", data.LocationId.ToString()),
+                new KeyValuePair<string, string>("CreatedUserId", data.CreatedUserId.ToString()),
+                new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString()),
 
             });
 
@@ -70,9 +73,12 @@ namespace ShopDiaryApp.Services
             var content = new FormUrlEncodedContent(new[]
             {
                 new KeyValuePair<string, string>("Name", data.Name.ToString()),
-                new KeyValuePair<string, string>("SeatSize", data.Area.ToString()),
-                new KeyValuePair<string, string>("IsEmpty", data.Description.ToString()),
-                
+                new KeyValuePair<string, string>("Area", data.Area.ToString()),
+                new KeyValuePair<string, string>("Description", data.Description.ToString()),
+                new KeyValuePair<string, string>("LocationId", data.LocationId.ToString()),
+                new KeyValuePair<string, string>("CreatedUserId", data.CreatedUserId.ToString()),
+                new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString()),
+
 
 
             });
@@ -93,7 +99,6 @@ namespace ShopDiaryApp.Services
         {
             try
             {
-
                 HttpResponseMessage resp = client.DeleteAsync(UrlHelper.Storages_Url + @"/DeleteStorage/" + id).Result;
                 Storage t = JsonConvert.DeserializeObject<Storage>(resp.Content.ReadAsStringAsync().Result);
                 return true;
