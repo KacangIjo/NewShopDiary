@@ -38,6 +38,7 @@ namespace ShopDiaryApp
         public static List<UserLocationViewModel> mUserLoc;
 
         public static LocationViewModel StaticLocationClass = new LocationViewModel();
+        public static StorageViewModel StaticStorageClass = new StorageViewModel();
         private TextView mUsernameInfo;
 
 

@@ -4,6 +4,7 @@ using Android.Support.V4.View;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using ShopDiaryApp.Adapter;
 using ShopDiaryApp.Models.ViewModels;
 using ShopDiaryApp.Services;
 using System;
@@ -13,7 +14,7 @@ namespace ShopDiaryApp.Fragments
 {
     public class StoragesFragment : Fragment
     {
-        private StorageRecycleAdapter mStoragesAdapter;
+        private StoragesRecycleAdapter mStoragesAdapter;
         public List<StorageViewModel> mStorages;
         static StorageViewModel mSelectedStorageClass;
         private readonly StorageDataService mStorageDataService;
@@ -44,7 +45,7 @@ namespace ShopDiaryApp.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            HasOptionsMenu=true;
+            HasOptionsMenu = true;
             HasOptionsMenu = true;
             View view = inflater.Inflate(Resource.Layout.ManageStoragesLayout, container, false);
 
@@ -68,22 +69,38 @@ namespace ShopDiaryApp.Fragments
 
             List<StorageViewModel> mStoragesByUser = await mStorageDataService.GetAll();
             mStorages = new List<StorageViewModel>();
-            for (int i = 0; mStorageByUser.Count > i; i++)
+            for (int i = 0; mStoragesByUser.Count > i; i++)
             {
                 if (mStoragesByUser[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
                 {
                     mStorages.Add(mStoragesByUser[i]);
                 }
             }
-            if (mLocations != null)
+            if (mStorages != null)
             {
 
-                mLocationsAdapter = new LocationsRecycleAdapter(mLocations, this.Activity);
-                mLocationsAdapter.ItemClick += OnLocationClicked;
-                mListViewLocations.SetAdapter(this.mLocationsAdapter);
+                mStoragesAdapter = new StoragesRecycleAdapter(mStorages, this.Activity);
+                mStoragesAdapter.ItemClick += OnLocationClicked;
+                mListViewStorage.SetAdapter(this.mStoragesAdapter);
             }
 
-
-
         }
+        private void OnLocationClicked(object sender, int e)
+        {
+            mSelectedStorage = e;
+            mSelectedStorageClass = mStorages[e];
+            //mTextSelectedLocation.Text = mLocations[e].Name;
+            MainActivity.StaticStorageClass.Id = mStorages[e].Id;
+            MainActivity.StaticStorageClass.Name = mStorages[e].Name;
+            MainActivity.StaticStorageClass.Area = mStorages[e].Area;
+            MainActivity.StaticStorageClass.Description = mStorages[e].Description;
+        }
+        public void ReplaceFragment(Fragment fragment, string tag)
+        {
+            mFragmentTransaction = FragmentManager.BeginTransaction();
+            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.AddToBackStack(tag);
+            mFragmentTransaction.CommitAllowingStateLoss();
+        }
+    }
 }

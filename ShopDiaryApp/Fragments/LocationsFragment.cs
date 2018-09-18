@@ -98,7 +98,6 @@ namespace ShopDiaryApp.Fragments
             MainActivity.StaticLocationClass.Id = mLocations[e].Id;
             MainActivity.StaticLocationClass.Name = mLocations[e].Name;
             MainActivity.StaticLocationClass.Address= mLocations[e].Address;
-
             MainActivity.StaticLocationClass.Description = mLocations[e].Description;
         }
 
