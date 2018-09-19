@@ -51,8 +51,8 @@ namespace ShopDiaryApp.Fragments
 
             mListViewStorage = view.FindViewById<RecyclerView>(Resource.Id.recylerStorages);
             mListViewStorage.SetLayoutManager(new LinearLayoutManager(Activity));
-            mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageLocationAdd);
-            mButtonEdit = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageLocationEdit);
+            mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageStorageAdd);
+            mButtonEdit = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageStoragesEdit);
             mButtonAdd.Click += (object sender, EventArgs args) =>
             {
                 ReplaceFragment(new LocationAddFragment(), "Add Location");

@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Android.Content;
 using Android.OS;
 using Android.Widget;
 using ShopDiaryProject.Domain.Models;
@@ -13,6 +11,8 @@ using ShopDiaryApp.DialogFragments;
 using System.Threading;
 using Android.Views;
 using Android.Support.V4.App;
+using ShopDiaryApp.Adapter;
+using ShopDiaryApp.Fragments;
 
 namespace ShopDiaryApp.FragmentsScanner
 {
@@ -37,7 +37,7 @@ namespace ShopDiaryApp.FragmentsScanner
 
         MobileBarcodeScanner scanner;
 
-
+        private FragmentTransaction mFragmentTransaction;
         private Spinner mSpinnerStorages;
         private Spinner mSpinnerCategories;
         private ImageButton mAddtoInventory;
@@ -75,6 +75,7 @@ namespace ShopDiaryApp.FragmentsScanner
             mScan = view.FindViewById<ImageButton>(Resource.Id.imageButtonAddScan2);
             mBarcode.Text = scannedBarcode.ToString();
             mPrice.Text = "0";
+            LoadItemData();
             MobileBarcodeScanner.Initialize(this.Activity.Application);
             scanner = new MobileBarcodeScanner();
             mScan.Click += async delegate {
@@ -123,117 +124,124 @@ namespace ShopDiaryApp.FragmentsScanner
             new Thread(new ThreadStart(delegate
             {
                 var isProductAdded = mProductDataService.Add(mProduct.ToModel());
-                //if (isProductAdded)
-                //{
-                //    this.Activity.RunOnUiThread(() => Toast.MakeText(this, "Product Added", ToastLength.Long).Show());
-                //}
-                //else
-                //{
-                //    RunOnUiThread(() => Toast.MakeText(this, "Failed to add, please check again form's field", ToastLength.Long).Show());
-                //}
+                if (isProductAdded)
+                {
+                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Product Added", ToastLength.Long).Show());
+                }
+                else
+                {
+                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed to add, please check again form's field", ToastLength.Long).Show());
+                }
 
             })).Start();
         }
-        //private void AddInventoryData()
-        //{
+        private void AddInventoryData()
+        {
 
-        //    for (int i = 0; mProducts.Count > i; i++)
-        //    {
-        //        if (mName.Text == mProducts[i].Name)
-        //        {
-        //            mProduct.Id = mProducts[i].Id;
-        //            mProduct.Name = mProducts[i].Name;
-        //        }
-        //    }
-        //    Inventory newInventory = new Inventory()
-        //    {
-        //        ExpirationDate = DateTemp,
-        //        StorageId = mStorage.Id,
-        //        ItemName = mName.Text,
-        //        Price = decimal.Parse(mPrice.Text),
-        //        ProductId = mProduct.Id
-
-
-        //    };
-
-        //    var progressDialog = ProgressDialog.Show(this, "Please wait...", "Adding To Inventory...", true);
-        //    new Thread(new ThreadStart(delegate
-        //    {
-
-        //        var isInventoryAdded = mInventoryDataService.Add(newInventory);
-        //        RunOnUiThread(() => progressDialog.Hide());
-
-        //        if (isInventoryAdded)
-        //        {
-        //            RunOnUiThread(() => Toast.MakeText(this, "Inventory Added", ToastLength.Long).Show());
-        //            this.StartActivity(intent);
-        //        }
-        //        else
-        //        {
-        //            RunOnUiThread(() => Toast.MakeText(this, "Failed to add, please check again form's field", ToastLength.Long).Show());
-        //        }
-
-        //    })).Start();
-        //}
-
-        //private async void LoadItemData()
-        //{
-        //    mProgressDialog = ProgressDialog.Show(this, "Please wait...", "Getting data...", true);
-
-        //    //Spinner Adapter Category
-        //    this.mCategories = await mCategoryDataService.GetAll();
-        //    var adapterCategories = new SpinnerCategoryAdapter(this, mCategories);
-        //    mSpinnerCategories.Adapter = adapterCategories;
-        //    mSpinnerCategories.ItemSelected += SpinnerCategory_ItemSelected;
-
-        //    //Spinner Adapter Storage
-        //    List<StorageViewModel> tempStorages = new List<StorageViewModel>();
-        //    tempStorages = await mStorageDataService.GetAll();
-        //    for (int i = 0; tempStorages.Count() > i; i++)
-        //    {
-        //        if (tempStorages[i].LocationId == LoginActivity.StaticLocationClass.Id)
-        //        {
-        //            mStorages.Add(tempStorages[i]);
-        //        }
-        //    }
-
-        //    var adapterStorages = new SpinnerStorageAdapter(this, mStorages);
-        //    mSpinnerStorages.Adapter = adapterStorages;
-        //    mSpinnerStorages.ItemSelected += SpinnerStorage_ItemSelected;
-
-        //    //Get data product
-        //    this.mProducts = new List<ProductViewModel>();
-        //    this.mProducts = await mProductDataService.GetAll();
-        //    this.mProducts.Count();
-
-        //    mProgressDialog.Dismiss();
-
-        //}
-        //private void SpinnerStorage_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        //{
-        //    Spinner spinner = (Spinner)sender;
-        //    mStorage = mStorages[e.Position];
-        //    string toast = string.Format("{0} selected", mStorage.Name);
-        //    Toast.MakeText(this, toast, ToastLength.Long).Show();
-        //    //LoadRecyclerAdapter(mStorage,mCategory);
+            for (int i = 0; mProducts.Count > i; i++)
+            {
+                if (mName.Text == mProducts[i].Name)
+                {
+                    mProduct.Id = mProducts[i].Id;
+                    mProduct.Name = mProducts[i].Name;
+                }
+            }
+            Inventory newInventory = new Inventory()
+            {
+                ExpirationDate = DateTemp,
+                StorageId = mStorage.Id,
+                ItemName = mName.Text,
+                Price = decimal.Parse(mPrice.Text),
+                ProductId = mProduct.Id
 
 
-        //}
-        //private void SpinnerCategory_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        //{
-        //    Spinner spinner = (Spinner)sender;
-        //    mCategory = mCategories[e.Position];
+            };
 
-        //    string toast = string.Format("{0} selected", mCategory.Name);
-        //    Toast.MakeText(this, toast, ToastLength.Long).Show();
-        //    //LoadRecyclerAdapter(mStorage, mCategory);
+           
+            new Thread(new ThreadStart(delegate
+            {
 
-        //}
+                var isInventoryAdded = mInventoryDataService.Add(newInventory);
+               
+
+                if (isInventoryAdded)
+                {
+                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Inventory Added", ToastLength.Long).Show());
+                    ReplaceFragment(new HomeFragment(), "Home");
+                }
+                else
+                {
+                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed to add, please check again form's field", ToastLength.Long).Show());
+                }
+
+            })).Start();
+        }
+
+        private async void LoadItemData()
+        {
+            
+            //Spinner Adapter Category
+            this.mCategories = await mCategoryDataService.GetAll();
+            var adapterCategories = new SpinnerCategoryAdapter(this.Activity, mCategories);
+            mSpinnerCategories.Adapter = adapterCategories;
+            mSpinnerCategories.ItemSelected += SpinnerCategory_ItemSelected;
+
+            //Spinner Adapter Storage
+            List<StorageViewModel> tempStorages = new List<StorageViewModel>();
+            tempStorages = await mStorageDataService.GetAll();
+            for (int i = 0; tempStorages.Count() > i; i++)
+            {
+                if (tempStorages[i].LocationId == MainActivity.StaticLocationClass.Id)
+                {
+                    mStorages.Add(tempStorages[i]);
+                }
+            }
+
+            var adapterStorages = new SpinnerStorageAdapter(this.Activity, mStorages);
+            mSpinnerStorages.Adapter = adapterStorages;
+            mSpinnerStorages.ItemSelected += SpinnerStorage_ItemSelected;
+
+            //Get data product
+            this.mProducts = new List<ProductViewModel>();
+            this.mProducts = await mProductDataService.GetAll();
+            this.mProducts.Count();
+
+      
+
+        }
+        private void SpinnerStorage_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            Spinner spinner = (Spinner)sender;
+            mStorage = mStorages[e.Position];
+            string toast = string.Format("{0} selected", mStorage.Name);
+            Toast.MakeText(this.Activity, toast, ToastLength.Long).Show();
+            //LoadRecyclerAdapter(mStorage, mCategory);
+
+
+        }
+        private void SpinnerCategory_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            Spinner spinner = (Spinner)sender;
+            mCategory = mCategories[e.Position];
+
+            string toast = string.Format("{0} selected", mCategory.Name);
+            Toast.MakeText(this.Activity, toast, ToastLength.Long).Show();
+            //LoadRecyclerAdapter(mStorage, mCategory);
+
+        }
 
         private void DatePickerDialogue_OnComplete(object sender, OnDatePickedEventArgs e)
         {
             DateTemp = e.Date;
             Toast.MakeText(this.Activity, "Expired Date Added", ToastLength.Short).Show();
+        }
+
+        public void ReplaceFragment(Fragment fragment, string tag)
+        {
+            mFragmentTransaction = FragmentManager.BeginTransaction();
+            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.AddToBackStack(tag);
+            mFragmentTransaction.CommitAllowingStateLoss();
         }
 
     }

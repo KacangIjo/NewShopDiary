@@ -73,7 +73,7 @@ namespace ShopDiaryApp.Adapter
             {
                 this.StorageName = itemView.FindViewById<TextView>(Resource.Id.textviewStoragesAdapterName);
                 this.StorageArea = itemView.FindViewById<TextView>(Resource.Id.textviewStoragesAdapterArea);
-                this.StorageDescription = itemView.FindViewById<TextView>(Resource.Id.textviewStoragesrDescription);
+                this.StorageDescription = itemView.FindViewById<TextView>(Resource.Id.textviewStoragesAdapterDescription);
                 itemView.Click += (sender, e) => listener(this.LayoutPosition);
             }
 
