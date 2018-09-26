@@ -28,7 +28,10 @@ namespace ShopDiaryApp.FragmentsScanner
         public ProductViewModel mProductForBarcode;
         public StorageViewModel mStorage;
         public CategoryViewModel mCategory;
+        public List<String> mProductAdapter = new List<string>();
+
         public static string scannedBarcode = "-";
+        
 
         private readonly InventoryDataService mInventoryDataService;
         private readonly ProductDataService mProductDataService;
@@ -36,7 +39,8 @@ namespace ShopDiaryApp.FragmentsScanner
         private readonly StorageDataService mStorageDataService;
 
         MobileBarcodeScanner scanner;
-
+    
+        
         private FragmentTransaction mFragmentTransaction;
         private Spinner mSpinnerStorages;
         private Spinner mSpinnerCategories;
@@ -45,7 +49,7 @@ namespace ShopDiaryApp.FragmentsScanner
         private ImageButton mScan;
         private DateTime DateTemp;
         private TextView mBarcode;
-        private EditText mName;
+        private AutoCompleteTextView mName;
         private EditText mPrice;
         private bool isBarcodeFound = false;
         #endregion
@@ -66,7 +70,8 @@ namespace ShopDiaryApp.FragmentsScanner
             View view = inflater.Inflate(Resource.Layout.AddItemFormLayout, container, false);
 
             mBarcode = view.FindViewById<TextView>(Resource.Id.textViewAddBarcodeId);
-            mName = view.FindViewById<EditText>(Resource.Id.editTextAddName);
+            mName = view.FindViewById<AutoCompleteTextView>(Resource.Id.editTextAddName);
+            
             mPrice = view.FindViewById<EditText>(Resource.Id.editTextAddPrice);
             mSpinnerCategories = view.FindViewById<Spinner>(Resource.Id.spinnerAddItemCategory);
             mSpinnerStorages = view.FindViewById<Spinner>(Resource.Id.spinnerAddItemStorage);
@@ -76,6 +81,7 @@ namespace ShopDiaryApp.FragmentsScanner
             mBarcode.Text = scannedBarcode.ToString();
             mPrice.Text = "0";
             LoadItemData();
+            
             MobileBarcodeScanner.Initialize(this.Activity.Application);
             scanner = new MobileBarcodeScanner();
             mScan.Click += async delegate {
@@ -154,7 +160,6 @@ namespace ShopDiaryApp.FragmentsScanner
                 Price = decimal.Parse(mPrice.Text),
                 ProductId = mProduct.Id
 
-
             };
 
            
@@ -184,7 +189,9 @@ namespace ShopDiaryApp.FragmentsScanner
             this.mCategories = await mCategoryDataService.GetAll();
             var adapterCategories = new SpinnerCategoryAdapter(this.Activity, mCategories);
             mSpinnerCategories.Adapter = adapterCategories;
+            
             mSpinnerCategories.ItemSelected += SpinnerCategory_ItemSelected;
+            mSpinnerCategories.SetSelection(1);
 
             //Spinner Adapter Storage
             List<StorageViewModel> tempStorages = new List<StorageViewModel>();
@@ -200,22 +207,32 @@ namespace ShopDiaryApp.FragmentsScanner
             var adapterStorages = new SpinnerStorageAdapter(this.Activity, mStorages);
             mSpinnerStorages.Adapter = adapterStorages;
             mSpinnerStorages.ItemSelected += SpinnerStorage_ItemSelected;
+            mSpinnerStorages.SetSelection(1);
+
 
             //Get data product
             this.mProducts = new List<ProductViewModel>();
             this.mProducts = await mProductDataService.GetAll();
             this.mProducts.Count();
-
-      
+            List<ProductViewModel> tempProduct = new List<ProductViewModel>();
+            tempProduct = await mProductDataService.GetAll();
+            for (int i = 0; tempProduct.Count() > i; i++)
+            {
+                mProductAdapter.Add(tempProduct[i].Name);
+            }
+            var adapter = new ArrayAdapter<String>(this.Activity, Resource.Layout.support_simple_spinner_dropdown_item, mProductAdapter);
+            mName.Adapter = adapter;
 
         }
         private void SpinnerStorage_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
             mStorage = mStorages[e.Position];
+
             string toast = string.Format("{0} selected", mStorage.Name);
             Toast.MakeText(this.Activity, toast, ToastLength.Long).Show();
             //LoadRecyclerAdapter(mStorage, mCategory);
+          
 
 
         }

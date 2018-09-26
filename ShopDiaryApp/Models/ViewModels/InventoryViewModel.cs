@@ -12,7 +12,7 @@ namespace ShopDiaryApp.Models.ViewModels
         public bool IsConsumed { get; set; }
         public decimal Price { get; set; }
         public string AddedUserId { get; set; }
-
+        public string CreatedUserId { get; set; }
 
         public Guid ProductId { get; set; }
         public Guid StorageId { get; set; }
@@ -30,6 +30,7 @@ namespace ShopDiaryApp.Models.ViewModels
                 StorageId=StorageId,
                 ItemName=ItemName,
                 AddedUserId=AddedUserId,
+                CreatedUserId = CreatedUserId
             };
         }
         public InventoryViewModel()
@@ -47,6 +48,7 @@ namespace ShopDiaryApp.Models.ViewModels
             this.ItemName = i.ItemName;
             this.IsConsumed =i.IsConsumed;
             this.AddedUserId = i.AddedUserId;
+            this.CreatedUserId = i.CreatedUserId;
 
 
         }

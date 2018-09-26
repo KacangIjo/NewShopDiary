@@ -122,9 +122,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\HomeInventoryRecycleAdapter.cs" />
     <Compile Include="Adapter\CategoryRecyclerAdapter.cs" />
     <Compile Include="Adapter\LocationsRecycleAdapter.cs" />
-    <Compile Include="Adapter\MainAdapter.cs" />
     <Compile Include="Adapter\SpinnerCategoryAdapter.cs" />
     <Compile Include="Adapter\SpinnerStorageAdapter.cs" />
     <Compile Include="Adapter\StoragesRecycleAdapter.cs" />
@@ -138,6 +138,7 @@
     <Compile Include="Class\UserLocation.cs" />
     <Compile Include="DialogFragments\DialogDatePickerActivity.cs" />
     <Compile Include="FragmentsScanner\AddItemBarcodeFragment.cs" />
+    <Compile Include="Fragments\StorageEditFragment.cs" />
     <Compile Include="Fragments\InventoriesFragment.cs" />
     <Compile Include="Fragments\CategoryAddFragment.cs" />
     <Compile Include="Fragments\LocationAddUserFragment.cs" />
@@ -145,6 +146,8 @@
     <Compile Include="Fragments\LocationEditFragment.cs" />
     <Compile Include="Fragments\LocationAddFragment.cs" />
     <Compile Include="Fragments\CategoriesFragment.cs" />
+    <Compile Include="Fragments\RunOutItemsFragment.cs" />
+    <Compile Include="Fragments\StorageAddFragment.cs" />
     <Compile Include="Fragments\StoragesFragment.cs" />
     <Compile Include="Helper\LoginHelper.cs" />
     <Compile Include="Helper\UrlHelper.cs" />
@@ -338,6 +341,15 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\CategoryDetail.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\RunOutItemsLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\UseItemsLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\StorageDetail.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

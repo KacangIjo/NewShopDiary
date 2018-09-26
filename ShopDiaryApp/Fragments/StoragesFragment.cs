@@ -55,11 +55,11 @@ namespace ShopDiaryApp.Fragments
             mButtonEdit = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageStoragesEdit);
             mButtonAdd.Click += (object sender, EventArgs args) =>
             {
-                ReplaceFragment(new LocationAddFragment(), "Add Location");
+                ReplaceFragment(new StorageAddFragment(), "Add Storage");
             };
             mButtonEdit.Click += (object sender, EventArgs args) =>
             {
-                ReplaceFragment(new LocationEditFragment(), "Edit Location");
+                ReplaceFragment(new StorageEditFragment(), "Edit Storage");
             };
             LoadStorageData();
             return view;

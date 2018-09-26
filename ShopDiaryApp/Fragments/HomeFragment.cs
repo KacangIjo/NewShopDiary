@@ -10,19 +10,22 @@ using ShopDiaryApp.Models.ViewModels;
 using ShopDiaryApp.Services;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace ShopDiaryApp.Fragments
 {
     public class HomeFragment : Fragment
     {
         #region Layout Properties
-        private MainAdapter mInventoryAdapter;
+        private HomeInventoryRecycleAdapter mInventoryAdapter;
         private RecyclerView mListViewInventory;
 
         public List<InventoryViewModel> mInventories;
         public List<ProductViewModel> mProducts;
         public List<StorageViewModel> mStorages;
         public List<UserLocationViewModel> mUserLoc;
+
+        private int mSelectedInventory = -1;
 
         private readonly InventoryDataService mInventoryDataService;
         private readonly ProductDataService mProductDataService;
@@ -31,6 +34,7 @@ namespace ShopDiaryApp.Fragments
         private TextView mExpCounter;
         private TextView mRunOutCounter;
         private TextView mStockCounter;
+        private ProgressBar mProgressBar;
         private ImageButton mStorage;
         private ImageButton mUse;
         private ImageButton mAdd;
@@ -67,8 +71,10 @@ namespace ShopDiaryApp.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-
             View view = inflater.Inflate(Resource.Layout.HomeLayout, container, false);
+            mListViewInventory = view.FindViewById<RecyclerView>(Resource.Id.recyclerHomePage);
+            mListViewInventory.SetLayoutManager(new LinearLayoutManager(Activity));
+            mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarHome);
             mStorage = view.FindViewById<ImageButton>(Resource.Id.imageButtonHomeStorages);
             mUse = view.FindViewById<ImageButton>(Resource.Id.imageButtonUseItem);
             mAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonHomeAdd);
@@ -97,6 +103,38 @@ namespace ShopDiaryApp.Fragments
             };
             #endregion
             return view;
+        }
+
+        private async void LoadInventoryData()
+        {
+            
+            mStorages = await mStorageDataService.GetAll();
+            this.mInventories = await mInventoryDataService.GetAll();
+            this.mProducts = await mProductDataService.GetAll();
+            UpgradeProgress();
+            if (mInventories != null)
+            {
+                this.mInventoryAdapter = new HomeInventoryRecycleAdapter(this.mInventories, this.mProducts, this.Activity);
+                this.mInventoryAdapter.ItemClick += OnInventoryClick;
+                this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
+            }
+            
+        }
+
+        private void OnInventoryClick(object sender, int e)
+        {
+            mSelectedInventory = e;
+        }
+
+        private void UpgradeProgress()
+        {
+            while (progressvalue < 100)
+            {
+                progressvalue += 10;
+                mProgressBar.Progress = progressvalue;
+                Thread.Sleep(300);
+            }
+
         }
 
         public void ReplaceFragment(Fragment fragment, string tag)

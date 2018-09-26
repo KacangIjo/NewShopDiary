@@ -1,28 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
-using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
 using ShopDiaryApp.Models.ViewModels;
-using Android;
 
 namespace ShopDiaryApp.Adapter
 {
-    public class MainAdapter : RecyclerView.Adapter
+    public class HomeInventoryRecycleAdapter : RecyclerView.Adapter
     {
         private readonly Activity mActivity;
         private readonly List<ProductViewModel> mProducts;
         private readonly List<InventoryViewModel> mInventories;
         private int mSelectedPosition = -1;
 
-        public MainAdapter(List<InventoryViewModel> inventories, List<ProductViewModel> products, Activity activity)
+        public HomeInventoryRecycleAdapter(List<InventoryViewModel> inventories, List<ProductViewModel> products, Activity activity)
         {
             this.mProducts = products;
             this.mInventories = inventories;
@@ -49,15 +45,14 @@ namespace ShopDiaryApp.Adapter
                 if (vh != null)
                 {
                     var inv = this.mInventories[position];
-                    //int i;
-                    //for (i=0; i < mProducts.Count(); i++)
-                    //{
-                    //    if (inv.ProductId == mProducts[i].Id )
-                    //    {
-                    //        vh.ItemName.Text = mProducts[i].Name;
-                    //    }
-                    //}
-                    vh.ItemName.Text = inv.ItemName.ToString();
+                    int i;
+                    for (i = 0; i < mProducts.Count(); i++)
+                    {
+                        if (inv.ProductId == mProducts[i].Id)
+                        {
+                            vh.ItemName.Text = mProducts[i].Name;
+                        }
+                    }
                     vh.ItemExpDate.Text = inv.ExpirationDate.ToString();
                     vh.ItemView.Selected = (mSelectedPosition == position);
                 }
@@ -81,16 +76,16 @@ namespace ShopDiaryApp.Adapter
             public ViewHolder(View itemView, Action<int> listener)
                 : base(itemView)
             {
-                this.ItemName = itemView.FindViewById<TextView>(Resource.Id.textviewHomeAdapterName);
-                this.ItemExpDate = itemView.FindViewById<TextView>(Resource.Id.textviewHomeAdapterExpDate);
-                this.ItemQuantity = itemView.FindViewById<TextView>(Resource.Id.textviewHomeAdapterStatus);
+                this.ItemName = itemView.FindViewById<TextView>(Resource.Id.textViewAdapterHomeInventoriesName);
+                this.ItemStatus = itemView.FindViewById<TextView>(Resource.Id.textViewAdapterHomeInventoriesStatus);
+                this.ItemExpDate = itemView.FindViewById<TextView>(Resource.Id.textViewAdapterHomeInventoriesExpDate);
 
                 itemView.Click += (sender, e) => listener(this.LayoutPosition);
             }
 
             public TextView ItemName { get; }
             public TextView ItemExpDate { get; }
-            public TextView ItemQuantity { get; }
+            public TextView ItemStatus { get; }
 
         }
 
