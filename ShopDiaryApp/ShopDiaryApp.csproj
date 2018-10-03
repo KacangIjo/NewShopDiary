@@ -126,6 +126,7 @@
     <Compile Include="Adapter\CategoryRecyclerAdapter.cs" />
     <Compile Include="Adapter\LocationsRecycleAdapter.cs" />
     <Compile Include="Adapter\SpinnerCategoryAdapter.cs" />
+    <Compile Include="Adapter\SpinnerLocationAdapter.cs" />
     <Compile Include="Adapter\SpinnerStorageAdapter.cs" />
     <Compile Include="Adapter\StoragesRecycleAdapter.cs" />
     <Compile Include="Class\Category.cs" />
@@ -352,6 +353,7 @@
     <AndroidResource Include="Resources\layout\StorageDetail.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\locationmap.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

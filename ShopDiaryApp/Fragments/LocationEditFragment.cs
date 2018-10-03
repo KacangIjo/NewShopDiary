@@ -1,15 +1,10 @@
 ﻿using Android.OS;
-using Android.Runtime;
 using Android.Support.V4.App;
-using Android.Support.V4.View;
-using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using ShopDiaryApp.Adapter;
-using ShopDiaryApp.Models.ViewModels;
 using ShopDiaryApp.Services;
+using ShopDiaryProject.Domain.Models;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace ShopDiaryApp.Fragments
@@ -21,7 +16,7 @@ namespace ShopDiaryApp.Fragments
         private EditText mLocationAddress;
         private EditText mLocationDescription;
         private ImageButton mButtonAddUser;
-        private ImageButton mButtonDeleteUser;
+        private ImageButton mButtonDelete;
         private ImageButton mButtonSave;
         private ProgressBar mProgressBar;
 
@@ -37,12 +32,7 @@ namespace ShopDiaryApp.Fragments
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            
-
         }
-
-        
-
         public static LocationAddFragment NewInstance()
         {
             var frag2 = new LocationAddFragment { Arguments = new Bundle() };
@@ -53,7 +43,8 @@ namespace ShopDiaryApp.Fragments
             View view = inflater.Inflate(Resource.Layout.LocationDetail,container,false);
             mLocationTitle = view.FindViewById<TextView>(Resource.Id.textviewLocationDetailTitle);
             mButtonAddUser = view.FindViewById<ImageButton>(Resource.Id.imageButtonLocationDetailAddUser);
-            mButtonDeleteUser = view.FindViewById<ImageButton>(Resource.Id.imageButtonLocationDetailAddUser);
+            mButtonSave = view.FindViewById<ImageButton>(Resource.Id.imageButtonLocationDetailSave);
+            mButtonDelete = view.FindViewById<ImageButton>(Resource.Id.imageButtonLocationDetailDelete);
             mLocationName = view.FindViewById<EditText>(Resource.Id.editTextLocationDetailName);
             mLocationAddress = view.FindViewById<EditText>(Resource.Id.editTextLocationDetailAddress);
             mLocationDescription = view.FindViewById<EditText>(Resource.Id.editTextLocationDetailDescription);
@@ -62,9 +53,40 @@ namespace ShopDiaryApp.Fragments
             mLocationAddress.Text = MainActivity.StaticLocationClass.Address.ToString();
             mLocationDescription.Text = MainActivity.StaticLocationClass.Description.ToString();
             mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarAddLocation);
+
             mButtonAddUser.Click += (object sender, EventArgs args) =>
             {
                 ReplaceFragment(new LocationAddUserFragment(), "Add User");
+            };
+            mButtonSave.Click += (object sender, EventArgs args) =>
+            {
+                Location newLoc = new Location()
+                {
+                    Name = mLocationName.Text,
+                    Address = mLocationAddress.Text,
+                    Description = mLocationDescription.Text,
+
+                };
+                new Thread(new ThreadStart(delegate
+                {
+                    var isEdited = mLocationDataService.Edit(LocationsFragment.mSelectedLocationClass.Id, newLoc);
+         
+                    if (isEdited)
+                    {
+                        
+                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Location Editted", ToastLength.Long).Show());
+                    }
+                    else
+                    {
+                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed to Edit, please check again form's field", ToastLength.Long).Show());
+                    }
+
+                })).Start();
+                ReplaceFragment(new LocationsFragment(), "Manage Locations");
+            };
+            mButtonDelete.Click += (object sender, EventArgs args) =>
+            {
+                ReplaceFragment(new LocationsFragment(), "Manage Locations");
             };
             return view;
         }

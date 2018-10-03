@@ -45,7 +45,7 @@ namespace ShopDiaryApp.FragmentsScanner
         private Spinner mSpinnerStorages;
         private Spinner mSpinnerCategories;
         private ImageButton mAddtoInventory;
-        private ImageButton mExpDateChoose;
+        private EditText mExpDateChoose;
         private ImageButton mScan;
         private DateTime DateTemp;
         private TextView mBarcode;
@@ -72,16 +72,24 @@ namespace ShopDiaryApp.FragmentsScanner
             mBarcode = view.FindViewById<TextView>(Resource.Id.textViewAddBarcodeId);
             mName = view.FindViewById<AutoCompleteTextView>(Resource.Id.editTextAddName);
             
-            mPrice = view.FindViewById<EditText>(Resource.Id.editTextAddPrice);
+            mPrice = view.FindViewById<EditText>(Resource.Id.editTextAddItemPrice);
             mSpinnerCategories = view.FindViewById<Spinner>(Resource.Id.spinnerAddItemCategory);
             mSpinnerStorages = view.FindViewById<Spinner>(Resource.Id.spinnerAddItemStorage);
-            mExpDateChoose = view.FindViewById<ImageButton>(Resource.Id.buttonAddExpDate);
+            mExpDateChoose = view.FindViewById<EditText>(Resource.Id.editTextAddItemExpDate);
             mAddtoInventory = view.FindViewById<ImageButton>(Resource.Id.buttonAddAddToInventory);
             mScan = view.FindViewById<ImageButton>(Resource.Id.imageButtonAddScan2);
             mBarcode.Text = scannedBarcode.ToString();
             mPrice.Text = "0";
             LoadItemData();
-            
+            mExpDateChoose.Click += (object sender, EventArgs args) =>
+            {
+                //ngeluarin dialog
+                FragmentTransaction transaction = FragmentManager.BeginTransaction();
+                DialogDatePickerActivity DatePickerDialog = new DialogDatePickerActivity();
+                DatePickerDialog.Show(transaction, "dialogue fragment");
+                DatePickerDialog.OnPickDateComplete += DatePickerDialogue_OnComplete;
+
+            };
             MobileBarcodeScanner.Initialize(this.Activity.Application);
             scanner = new MobileBarcodeScanner();
             mScan.Click += async delegate {
@@ -122,20 +130,19 @@ namespace ShopDiaryApp.FragmentsScanner
 
         private void AddProductData()
         {
-
-            mProduct.Name = mName.Text;
-            mProduct.BarcodeId = mBarcode.Text;
-            mProduct.CategoryId = mCategory.Id;
-
+            ProductViewModel product = new ProductViewModel()
+            {
+                Name = mName.Text,
+                BarcodeId = mBarcode.Text,
+                CategoryId = mCategory.Id
+            };
             new Thread(new ThreadStart(delegate
             {
                 var isProductAdded = mProductDataService.Add(mProduct.ToModel());
-                if (isProductAdded)
-                {
+                if (isProductAdded){
                     this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Product Added", ToastLength.Long).Show());
                 }
-                else
-                {
+                else{
                     this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed to add, please check again form's field", ToastLength.Long).Show());
                 }
 
@@ -192,6 +199,7 @@ namespace ShopDiaryApp.FragmentsScanner
             
             mSpinnerCategories.ItemSelected += SpinnerCategory_ItemSelected;
             mSpinnerCategories.SetSelection(1);
+            
 
             //Spinner Adapter Storage
             List<StorageViewModel> tempStorages = new List<StorageViewModel>();

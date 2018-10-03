@@ -32,11 +32,9 @@ namespace ShopDiaryApp
         private readonly CategoryDataService mCategoryDataService;
         private readonly ConsumeDataService mConsumeDataService;
 
-        public static List<InventoryViewModel> mInventories;
-        public static List<ProductViewModel> mProducts;
-        public static List<StorageViewModel> mStorages;
-        public static List<UserLocationViewModel> mUserLoc;
+        
 
+        public static LocationViewModel StaticActiveLocationClass = new LocationViewModel();
         public static LocationViewModel StaticLocationClass = new LocationViewModel();
         public static StorageViewModel StaticStorageClass = new StorageViewModel();
         private TextView mUsernameInfo;

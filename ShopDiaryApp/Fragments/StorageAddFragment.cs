@@ -11,6 +11,8 @@ using Android.Support.V4.App;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using ShopDiaryApp.Adapter;
+using ShopDiaryApp.Models.ViewModels;
 using ShopDiaryApp.Services;
 using ShopDiaryProject.Domain.Models;
 
@@ -21,11 +23,14 @@ namespace ShopDiaryApp.Fragments
         private EditText mStorageName;
         private EditText mStorageArea;
         private EditText mStorageDescription;
+        private Spinner mSpinnerLocation;
         private Button mButtonAdd;
         private Button mButtonCancel;
         private ProgressBar mProgressBar;
 
         StorageDataService mStorageDataService;
+        public List<LocationViewModel> mLocations;
+        private Guid mSelectedLocationId;
 
         private FragmentTransaction mFragmentTransaction;
         Guid mAuthorizedId = LoginPageActivity.StaticUserClass.ID;
@@ -33,6 +38,7 @@ namespace ShopDiaryApp.Fragments
         public StorageAddFragment()
         {
             mStorageDataService = new StorageDataService();
+            mLocations = new List<LocationViewModel>();
         }
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -51,11 +57,13 @@ namespace ShopDiaryApp.Fragments
             View view = inflater.Inflate(Resource.Layout.ManageStorageAdd,container,false);
             mButtonAdd = view.FindViewById<Button>(Resource.Id.buttonAddStorage);
             mButtonCancel = view.FindViewById<Button>(Resource.Id.buttonCancelLocation);
-            mStorageName = view.FindViewById<EditText>(Resource.Id.editTextAddLocationName);
+            mSpinnerLocation = view.FindViewById<Spinner>(Resource.Id.spinnerAddStorageLocation);
+            mStorageName = view.FindViewById<EditText>(Resource.Id.editTextAddStorageName);
             mStorageArea = view.FindViewById<EditText>(Resource.Id.editTextAddStorageArea);
             mStorageDescription = view.FindViewById<EditText>(Resource.Id.editTextAddStorageDescription);
             mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarAddStorage);
             mButtonAdd.Click += MButtonAdd_Click;
+            LoadInventoryData();
             return view;
         }
 
@@ -65,8 +73,9 @@ namespace ShopDiaryApp.Fragments
             Storage newStorage = new Storage()
             {
                 Name = mStorageName.Text,
-                Area=mStorageArea.Text,
+                Area = mStorageArea.Text,
                 Description = mStorageDescription.Text,
+                LocationId = mSelectedLocationId,
                 CreatedUserId = mAuthorizedId.ToString(),
                 AddedUserId = mAuthorizedId.ToString()
 
@@ -89,6 +98,29 @@ namespace ShopDiaryApp.Fragments
                 }
             })).Start();
 
+        }
+        private void LoadInventoryData()
+        {
+            mProgressBar.Visibility = Android.Views.ViewStates.Visible;
+            //ActiveLocationData
+            
+
+            for (int i = 0; LoginPageActivity.mGlobalLocations.Count() > i; i++)
+            {
+                if (Guid.Parse(LoginPageActivity.mGlobalLocations[i].AddedUserId) == LoginPageActivity.StaticUserClass.ID)
+                {
+                    mLocations.Add(LoginPageActivity.mGlobalLocations[i]);
+                }
+            }
+            var adapterLocation = new SpinnerLocationAdapter(this.Activity, mLocations);
+            mSpinnerLocation.Adapter = adapterLocation;
+            mSpinnerLocation.ItemSelected += SpinnerLocation_ItemSelected;
+        }
+
+        private void SpinnerLocation_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            Spinner spinner = (Spinner)sender;
+           mSelectedLocationId = mLocations[e.Position].Id;
         }
 
         private void UpgradeProgress()

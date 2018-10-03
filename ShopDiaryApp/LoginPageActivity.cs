@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using ShopDiaryApp.Models.ViewModels;
 using ShopDiaryApp.Services;
 
 namespace ShopDiaryApp
@@ -17,7 +18,7 @@ namespace ShopDiaryApp
     public class LoginPageActivity : Activity
     {
         public static Guid mAuthorizedUserId;
-        private readonly AccountDataService mAccountDataService;
+        
 
         private Button mBtnLogIn;
         private Button mBtnSignUp;
@@ -26,14 +27,35 @@ namespace ShopDiaryApp
         private ProgressBar mProgressBar;
         int progressvalue = 0;
 
+        private readonly AccountDataService mAccountDataService;
+        private readonly InventoryDataService mInventoryDataService;
+        private readonly ProductDataService mProductDataService;
+        private readonly StorageDataService mStorageDataService;
+        private readonly LocationDataService mLocationDataService;
+        private readonly CategoryDataService mCategoryDataService;
+        private readonly ConsumeDataService mConsumeDataService;
+        private readonly UserLocationDataService mUserLocationDataService;
+
         public static Class.User StaticUserClass = new Class.User();
         public static Class.Location StaticLocationClass = new Class.Location();
         public static Class.Storage StaticStorageClass = new Class.Storage();
         public static Class.UserLocation StaticUserLocationClass = new Class.UserLocation();
 
+        public static List<InventoryViewModel> mGlobalInventories=new List<InventoryViewModel>();
+        public static List<ProductViewModel> mGlobalProducts=new List<ProductViewModel>();
+        public static List<StorageViewModel> mGlobalStorages=new List<StorageViewModel>();
+        public static List<LocationViewModel> mGlobalLocations = new List<LocationViewModel>();
+        public static List<CategoryViewModel> mGlobalCategories = new List<CategoryViewModel>();
+        public static List<UserLocationViewModel> mUserLocs = new List<UserLocationViewModel>();
         public LoginPageActivity()
         {
             mAccountDataService = new AccountDataService();
+            mInventoryDataService = new InventoryDataService();
+            mProductDataService = new ProductDataService();
+            mStorageDataService = new StorageDataService();
+            mLocationDataService = new LocationDataService();
+            mCategoryDataService = new CategoryDataService();
+            mConsumeDataService = new ConsumeDataService();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -71,11 +93,12 @@ namespace ShopDiaryApp
                     var temp = UserInfo.ID;
                     StaticUserClass.ID = Guid.Parse(temp);
                     StaticUserClass.Username = UserInfo.Email;
-                    
+                    LoadData();
                     //intent.PutExtra("AuthorizedUserId", UserInfo.ID.ToString());
                     UpgradeProgress();
                     if (isLogin)
                     {
+                        
                         RunOnUiThread(() => mProgressBar.Visibility = Android.Views.ViewStates.Invisible);
                         this.StartActivity(intent);
                     }
@@ -90,7 +113,16 @@ namespace ShopDiaryApp
                 this.StartActivity(intent);
             };
         }
+        private async void LoadData()
+        {
+            mGlobalInventories = await mInventoryDataService.GetAll();
+            mGlobalLocations = await mLocationDataService.GetAll();
+            mGlobalProducts = await mProductDataService.GetAll();
+            mGlobalStorages = await mStorageDataService.GetAll();
+            mGlobalCategories = await mCategoryDataService.GetAll();
+            //mUserLocs = await mUserLocationDataService.GetAll();
 
+        }
         private void UpgradeProgress()
         {
             while (progressvalue < 100)

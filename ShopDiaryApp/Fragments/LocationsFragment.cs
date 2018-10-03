@@ -17,7 +17,7 @@ namespace ShopDiaryApp.Fragments
     {
         private LocationsRecycleAdapter mLocationsAdapter;
         public List<LocationViewModel> mLocations;
-        static LocationViewModel mSelectedLocationClass;
+        public static LocationViewModel mSelectedLocationClass;
         private readonly LocationDataService mLocationDataService;
 
         private RecyclerView mListViewLocations;
@@ -35,9 +35,6 @@ namespace ShopDiaryApp.Fragments
         {
             base.OnCreate(savedInstanceState);
             HasOptionsMenu = true;
-            // Create your fragment here
-         
-
         }
 
         public static LocationsFragment NewInstance()

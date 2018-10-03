@@ -44,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/editTextAddStorageName"
+				android:layout_marginRight="10dp"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
         <LinearLayout
@@ -67,13 +68,14 @@
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+				android:layout_marginRight="10dp"
                 android:id="@+id/editTextAddStorageArea"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:gravity="top">
             <TextView
@@ -93,9 +95,34 @@
                 android:inputType="textMultiLine"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+				android:layout_marginRight="10dp"
                 android:id="@+id/editTextAddStorageDescription"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
+		<LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="Location"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" />
+                <TextView
+                    android:text=":"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" />
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerAddStorageLocation"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+            </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

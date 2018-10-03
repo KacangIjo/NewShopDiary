@@ -19,7 +19,6 @@ namespace ShopDiaryApp.API.Models.ViewModels
 
         public string AddedUserId { get; set; }
         public Guid LocationId { get; set; }
-        public Guid RoleLocationId { get; set; }
 
 
 
