@@ -35,9 +35,6 @@ namespace ShopDiaryApp.Fragments
         {
             base.OnCreate(savedInstanceState);
             HasOptionsMenu = true;
-            // Create your fragment here
-         
-
         }
 
         public static CategoriesFragment NewInstance()
@@ -45,8 +42,6 @@ namespace ShopDiaryApp.Fragments
             var frag2 = new CategoriesFragment { Arguments = new Bundle() };
             return frag2;
         }
-
-
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {

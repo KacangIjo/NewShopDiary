@@ -1,11 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using ShopDiaryApp.API.Models;
 using ShopDiaryProject.Domain.Models;
-using ShopDiaryProject.EF;
 
 namespace ShopDiaryApp.API
 {

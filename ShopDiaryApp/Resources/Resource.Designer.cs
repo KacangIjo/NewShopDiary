@@ -2532,8 +2532,8 @@ namespace ShopDiaryApp
 			// aapt resource value: 0x7f07007c
 			public const int action_context_bar = 2131165308;
 			
-			// aapt resource value: 0x7f070153
-			public const int action_delete = 2131165523;
+			// aapt resource value: 0x7f070154
+			public const int action_delete = 2131165524;
 			
 			// aapt resource value: 0x7f07011e
 			public const int action_divider = 2131165470;
@@ -2556,11 +2556,11 @@ namespace ShopDiaryApp
 			// aapt resource value: 0x7f07005b
 			public const int action_mode_close_button = 2131165275;
 			
-			// aapt resource value: 0x7f070154
-			public const int action_save = 2131165524;
+			// aapt resource value: 0x7f070155
+			public const int action_save = 2131165525;
 			
-			// aapt resource value: 0x7f070152
-			public const int action_search = 2131165522;
+			// aapt resource value: 0x7f070153
+			public const int action_search = 2131165523;
 			
 			// aapt resource value: 0x7f070119
 			public const int action_text = 2131165465;
@@ -3048,20 +3048,23 @@ namespace ShopDiaryApp
 			// aapt resource value: 0x7f07014d
 			public const int nav_home_categories = 2131165517;
 			
-			// aapt resource value: 0x7f07014f
-			public const int nav_home_runout = 2131165519;
-			
-			// aapt resource value: 0x7f070151
-			public const int nav_home_setting = 2131165521;
-			
 			// aapt resource value: 0x7f07014e
-			public const int nav_home_shoplis = 2131165518;
+			public const int nav_home_products = 2131165518;
+			
+			// aapt resource value: 0x7f070150
+			public const int nav_home_runout = 2131165520;
+			
+			// aapt resource value: 0x7f070152
+			public const int nav_home_setting = 2131165522;
+			
+			// aapt resource value: 0x7f07014f
+			public const int nav_home_shoplist = 2131165519;
 			
 			// aapt resource value: 0x7f07014c
 			public const int nav_home_storages = 2131165516;
 			
-			// aapt resource value: 0x7f070150
-			public const int nav_home_summary = 2131165520;
+			// aapt resource value: 0x7f070151
+			public const int nav_home_summary = 2131165521;
 			
 			// aapt resource value: 0x7f0700ed
 			public const int nav_view = 2131165421;

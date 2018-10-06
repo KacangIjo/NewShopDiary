@@ -11,7 +11,7 @@ namespace ShopDiaryProject.Domain.Models
 
         public int Quantity { get; set; }
         public decimal Price { get; set; }
-
+        public string Description { get; set; }
         public Guid ProductId { get; set; }
         public Product product { get; set; }
         public Guid ShoplistId { get; set; }
@@ -21,6 +21,7 @@ namespace ShopDiaryProject.Domain.Models
         {
             Quantity=0;
             Price = 0.0M;
+            Description = "";
         }
 
     }

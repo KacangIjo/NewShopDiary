@@ -14,7 +14,7 @@ namespace ShopDiaryProject.Domain.ViewModels
         [MaxLength(50)]
         public string Name { get; set; }
         [MaxLength(200)]
-        public string Market { get; set; }
+        public string Store { get; set; }
         [MaxLength(300)]
         public string Description { get; set; }
 
@@ -31,8 +31,9 @@ namespace ShopDiaryProject.Domain.ViewModels
             {
                 ID = shop.Id;
                 Name = shop.Name;
-                Market = shop.Market;
+                Store = shop.Store;
                 Description = shop.Description;
+                CreatedUserId = shop.CreatedUserId;
           
             }
         }
@@ -41,9 +42,8 @@ namespace ShopDiaryProject.Domain.ViewModels
             return new Shoplist
             {
                 Name = this.Name,
-                Market = this.Market,
+                Store = this.Store,
                 Description = this.Description,
-                CreatedDate = this.CreatedDate,
                 CreatedUserId=this.CreatedUserId,
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id
             };

@@ -31,6 +31,7 @@ namespace ShopDiaryApp.Helper
         public const string Shoplists_Url = Base_Url + "Shoplists";
         public const string Userlocations_Url = Base_Url + "UserLocations";
         public const string Rolelocations_Url = Base_Url + "RoleLocations";
+        public const string UserDatas_Url = Base_Url + "UserDatas";
         #endregion
 
         #region User

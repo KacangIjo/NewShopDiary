@@ -35,6 +35,7 @@ namespace ShopDiaryApp
         private readonly CategoryDataService mCategoryDataService;
         private readonly ConsumeDataService mConsumeDataService;
         private readonly UserLocationDataService mUserLocationDataService;
+        private readonly UserDataDataService mUserDataDataService;
 
         public static Class.User StaticUserClass = new Class.User();
         public static Class.Location StaticLocationClass = new Class.Location();
@@ -46,7 +47,8 @@ namespace ShopDiaryApp
         public static List<StorageViewModel> mGlobalStorages=new List<StorageViewModel>();
         public static List<LocationViewModel> mGlobalLocations = new List<LocationViewModel>();
         public static List<CategoryViewModel> mGlobalCategories = new List<CategoryViewModel>();
-        public static List<UserLocationViewModel> mUserLocs = new List<UserLocationViewModel>();
+        public static List<UserLocationViewModel> mGlobalUserLocs = new List<UserLocationViewModel>();
+        public static List<UserDataViewModel> mGlobalUserDatas = new List<UserDataViewModel>();
         public LoginPageActivity()
         {
             mAccountDataService = new AccountDataService();
@@ -56,6 +58,8 @@ namespace ShopDiaryApp
             mLocationDataService = new LocationDataService();
             mCategoryDataService = new CategoryDataService();
             mConsumeDataService = new ConsumeDataService();
+            mUserDataDataService = new UserDataDataService();
+            mUserLocationDataService = new UserLocationDataService();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -120,7 +124,8 @@ namespace ShopDiaryApp
             mGlobalProducts = await mProductDataService.GetAll();
             mGlobalStorages = await mStorageDataService.GetAll();
             mGlobalCategories = await mCategoryDataService.GetAll();
-            //mUserLocs = await mUserLocationDataService.GetAll();
+            mGlobalUserLocs = await mUserLocationDataService.GetAll();
+            mGlobalUserDatas = await mUserDataDataService.GetAll();
 
         }
         private void UpgradeProgress()

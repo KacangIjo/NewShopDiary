@@ -22,8 +22,12 @@
        android:id="@+id/nav_home_categories"
        android:icon="@drawable/ic_home_2"
        android:title="Categories" />
+     <item
+       android:id="@+id/nav_home_products"
+       android:icon="@drawable/ic_home_2"
+       android:title="Products" />
     <item
-       android:id="@+id/nav_home_shoplis"
+       android:id="@+id/nav_home_shoplist"
        android:icon="@drawable/ic_home_2"
        android:title="Shop List" />
     <item

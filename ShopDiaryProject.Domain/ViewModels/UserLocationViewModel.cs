@@ -8,34 +8,56 @@ using System.Threading.Tasks;
 
 namespace ShopDiaryProject.Domain.ViewModels
 {
-    public class UserDataViewModel : FullAuditedEntity
+    public class UserLocationViewModel : FullAuditedEntity
     {
-        public Guid Id { get; set; }
-        public Guid UserId { get; set; }
-        public string Email { get; set; }
+        public Guid ID { get; set; }
+        public Guid RegisteredUser { get; set; }
 
+        public int Create { get; set; }
+        public int Read { get; set; }
+        public int Update { get; set; }
+        public int Delete { get; set; }
 
-        public UserDataViewModel()
+        [MaxLength(250)]
+        public string Description { get; set; }
+
+        public Guid RoleLocationId { get; set; }
+        public Guid LocationId { get; set; }
+
+        public UserLocationViewModel()
         {
 
         }
-        public UserDataViewModel(UserData loc)
+        public UserLocationViewModel(UserLocation loc)
         {
             if (loc != null)
             {
-                Id = loc.Id;
-                UserId = loc.UserId;
-                Email = loc.Email;
-             
+                ID = loc.Id;
+                Description = loc.Description;
+                Create = loc.Create;
+                Read = loc.Read;
+                Update = loc.Update;
+                Delete = loc.Delete;
+                RegisteredUser = loc.RegisteredUser;
+                LocationId = loc.LocationId;
+                CreatedUserId = loc.CreatedUserId;
+                IsDeleted = loc.IsDeleted;
             }
         }
-        public UserData ToModel()
+        public UserLocation ToModel()
         {
-            return new UserData
+            return new UserLocation
             {
-               
-                UserId = this.UserId,
-                Email = this.Email,
+                Create = this.Create,
+                Read = this.Read,
+                Update = this.Update,
+                Delete = this.Delete,
+                IsDeleted = this.IsDeleted,
+                CreatedUserId = this.CreatedUserId,
+                Description = this.Description,
+                RegisteredUser = this.RegisteredUser,
+                LocationId = this.LocationId,
+
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id
             };
         }

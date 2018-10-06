@@ -25,7 +25,7 @@ namespace ShopDiaryProject.Android.Models.ViewModels
             return new Purchase
             {
                 PurchaseDate = this.PurchaseDate,
-                Market = this.Market,
+                Store = this.Market,
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id
             };
         }
@@ -33,7 +33,7 @@ namespace ShopDiaryProject.Android.Models.ViewModels
         public PurchaseViewModel(Purchase p)
         {
             this.PurchaseDate = p.PurchaseDate;
-            this.Market = p.Market;
+            this.Market = p.Store;
             this.Id = p.Id;
         }
     }

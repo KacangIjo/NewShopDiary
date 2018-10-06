@@ -11,7 +11,7 @@ namespace ShopDiaryProject.Domain.Models
 
         public DateTime PurchaseDate { get; set; }
         [MaxLength(250)]
-        public string Market { get; set; }
+        public string Store { get; set; }
 
         public Guid InventoryId { get; set; }
         public Inventory Inventory { get; set; }

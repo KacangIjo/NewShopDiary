@@ -79,8 +79,7 @@ namespace ShopDiaryProject.EF
         public virtual DbSet<Shoplist> Shoplists { get; set; }
         public virtual DbSet<UserLocation> UserLocations { get; set; }
         public virtual DbSet<UserData> UserDatas { get; set; }
-
-
+     
 
     }
     

@@ -12,7 +12,7 @@ namespace ShopDiaryApp.Models.ViewModels
     {
         public Guid Id { get; set; }
         public DateTime PurchaseDate { get; set; }
-        public string Market { get; set; }
+        public string Store { get; set; }
 
         //public Guid InventoryId { get; set; }
         //public Inventory Inventory { get; set; }
@@ -25,7 +25,7 @@ namespace ShopDiaryApp.Models.ViewModels
             return new Purchase
             {
                 PurchaseDate = this.PurchaseDate,
-                Market = this.Market,
+                Store = this.Store,
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id
             };
         }
@@ -33,7 +33,7 @@ namespace ShopDiaryApp.Models.ViewModels
         public PurchaseViewModel(Purchase p)
         {
             this.PurchaseDate = p.PurchaseDate;
-            this.Market = p.Market;
+            this.Store = p.Store;
             this.Id = p.Id;
         }
     }

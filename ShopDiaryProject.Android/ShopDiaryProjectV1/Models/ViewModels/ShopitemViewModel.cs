@@ -13,7 +13,7 @@ namespace ShopDiaryProject.Android.Models.ViewModels
         public Guid Id { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
-
+        public string Description { get; set; }
         public Guid ProductID{ get; set; }
         public Guid ShoplistID { get; set; }
 
@@ -23,6 +23,7 @@ namespace ShopDiaryProject.Android.Models.ViewModels
             {
                 Quantity = this.Quantity,
                 Price = this.Price,
+                Description = this.Description,
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id
             };
         }

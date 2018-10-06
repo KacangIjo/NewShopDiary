@@ -104,8 +104,8 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ConsumeViewModel.cs" />
     <Compile Include="ViewModels\InventoryViewModel.cs" />
-    <Compile Include="ViewModels\UserLocationViewModel - Copy.cs" />
     <Compile Include="ViewModels\UserLocationViewModel.cs" />
+    <Compile Include="ViewModels\UserDataViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="ViewModels\InventorylogViewModel.cs" />
     <Compile Include="ViewModels\ShopitemViewModel.cs" />

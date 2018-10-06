@@ -121,17 +121,20 @@ namespace ShopDiaryApp.Fragments
             return view;
         }
 
-        private void LoadInventoryData()
+        public  void LoadInventoryData()
         {
             mProgressBar.Visibility = Android.Views.ViewStates.Visible;
             //ActiveLocationData
             List<LocationViewModel> tempLocations = new List<LocationViewModel>();
-            
+
             for (int i = 0; LoginPageActivity.mGlobalLocations.Count() > i; i++)
             {
-                if (Guid.Parse(LoginPageActivity.mGlobalLocations[i].AddedUserId) == LoginPageActivity.StaticUserClass.ID)
+                if (LoginPageActivity.mGlobalLocations.Count() != 0)
                 {
-                    mLocations.Add(LoginPageActivity.mGlobalLocations[i]);
+                    if (Guid.Parse(LoginPageActivity.mGlobalLocations[i].AddedUserId) == LoginPageActivity.StaticUserClass.ID)
+                    {
+                        mLocations.Add(LoginPageActivity.mGlobalLocations[i]);
+                    }
                 }
             }
             var adapterLocation = new SpinnerLocationAdapter (this.Activity, mLocations);
@@ -177,9 +180,7 @@ namespace ShopDiaryApp.Fragments
                 mProgressBar.Progress = progressvalue;
                 Thread.Sleep(300);
             }
-
         }
-
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             FragmentTransaction mFragmentTransaction;

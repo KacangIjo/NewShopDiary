@@ -14,8 +14,11 @@ namespace ShopDiaryApp.Fragments
     public class LocationAddUserFragment : Fragment
     {
         private readonly UserLocationDataService mUserLocationDataService;
+        private readonly UserDataDataService mUserDataDataService;
         List<UserLocationViewModel> mUserLocations;
         UserLocationViewModel mSelectedUserLocation;
+        List<UserDataViewModel> mUserDatas;
+        UserDataViewModel mSelectedUserData;
 
         private EditText mEmail;
         private EditText mName;
@@ -36,6 +39,7 @@ namespace ShopDiaryApp.Fragments
         public LocationAddUserFragment()
         {
             mUserLocationDataService = new UserLocationDataService();
+            mUserDataDataService = new UserDataDataService();
         }
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -84,32 +88,43 @@ namespace ShopDiaryApp.Fragments
             };
             mButtonAdd.Click += (object sender, EventArgs args) =>
             {
-                UserLocation newLoc = new UserLocation()
+                for (int i = 0; i < LoginPageActivity.mGlobalUserDatas.Count;i++)
                 {
-                    RegisteredUser = new Guid(),
-                    Description = mDescription.Text,
-                    Create = mCreateValue,
-                    Update = mUpdateValue,
-                    Read = mReadValue,
-                    Delete = mDeleteValue,
-                    AddedUserId = LoginPageActivity.StaticUserClass.ID.ToString(),
-                    LocationId= LocationsFragment.mSelectedLocationClass.Id
-                };
-                new Thread(new ThreadStart(delegate
-                {
-                    var isRoleAdded = mUserLocationDataService.Add(newLoc);
-                    if (isRoleAdded)
+                    if(mEmail.Text==LoginPageActivity.mGlobalUserDatas[i].Email)
                     {
-                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "User Added", ToastLength.Long).Show());
+                        UserLocation newLoc = new UserLocation()
+                        {
+
+                            RegisteredUser = LoginPageActivity.mGlobalUserDatas[i].UserId,
+                            Description = mDescription.Text,
+                            Create = mCreateValue,
+                            Update = mUpdateValue,
+                            Read = mReadValue,
+                            Delete = mDeleteValue,
+                            AddedUserId = LoginPageActivity.StaticUserClass.ID.ToString(),
+                            LocationId = LocationsFragment.mSelectedLocationClass.Id
+                        };
+                        new Thread(new ThreadStart(delegate
+                        {
+                            var isRoleAdded = mUserLocationDataService.Add(newLoc);
+                            if (isRoleAdded)
+                            {
+                                this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "User Added", ToastLength.Long).Show());
+                            }
+                            else
+                            {
+                                this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed to add, please check again form's field", ToastLength.Long).Show());
+                            }
+
+                        })).Start();
+                        ReplaceFragment(new LocationEditFragment(), "Location Detail");
                     }
                     else
                     {
-                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed to add, please check again form's field", ToastLength.Long).Show());
+                       this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Email not Found", ToastLength.Long).Show());
                     }
-
-                })).Start();
-
-                ReplaceFragment(new LocationEditFragment(), "Location Detail");
+                }
+              
             };
             mButtonCancel.Click += (object sender, EventArgs args) =>
             {

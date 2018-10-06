@@ -7,7 +7,7 @@ namespace ShopDiaryApp.Models.ViewModels
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Market { get; set; }
+        public string Store { get; set; }
         public string Description { get; set; }
         public string AddedUserId { get; set; }
 
@@ -16,16 +16,16 @@ namespace ShopDiaryApp.Models.ViewModels
 
         }
 
-        public ShoplistViewModel(Shoplist shop)
+        public ShoplistViewModel(Shoplist shops)
         {
 
-            if (shop != null)
+            if (shops != null)
             {
-                Id = shop.Id;
-                Name = shop.Name;
-                Market = shop.Market;
-                AddedUserId = shop.AddedUserId;
-                Description = shop.Description;
+                Id = shops.Id;
+                Name = shops.Name;
+                Store = shops.Store;
+                AddedUserId = shops.AddedUserId;
+                Description = shops.Description;
           
             }
         }
@@ -34,7 +34,7 @@ namespace ShopDiaryApp.Models.ViewModels
             return new Shoplist
             {
                 Name = this.Name,
-                Market = this.Market,
+                Store = this.Store,
                 Description = this.Description,
                 AddedUserId = this.AddedUserId,
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id

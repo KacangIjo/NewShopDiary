@@ -51,7 +51,7 @@ namespace ShopDiaryApp.FragmentsScanner
         private TextView mBarcode;
         private AutoCompleteTextView mName;
         private EditText mPrice;
-        private bool isBarcodeFound = false;
+        private bool isBarcodeFound;
         #endregion
         public AddItemBarcodeFragment()
         {
@@ -62,6 +62,7 @@ namespace ShopDiaryApp.FragmentsScanner
             mProducts = new List<ProductViewModel>();
             mStorages = new List<StorageViewModel>();
             mCategories = new List<CategoryViewModel>();
+            isBarcodeFound = false;
         }
 
 

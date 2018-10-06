@@ -7,7 +7,7 @@ namespace ShopDiaryProject.Android.Models.ViewModels
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Market { get; set; }
+        public string Store { get; set; }
         public string Description { get; set; }
         public string AddedUserId { get; set; }
 
@@ -23,7 +23,7 @@ namespace ShopDiaryProject.Android.Models.ViewModels
             {
                 Id = shop.Id;
                 Name = shop.Name;
-                Market = shop.Market;
+                Store = shop.Store;
                 AddedUserId = shop.AddedUserId;
                 Description = shop.Description;
           
@@ -34,7 +34,7 @@ namespace ShopDiaryProject.Android.Models.ViewModels
             return new Shoplist
             {
                 Name = this.Name,
-                Market = this.Market,
+                Store = this.Store,
                 Description = this.Description,
                 AddedUserId = this.AddedUserId,
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id

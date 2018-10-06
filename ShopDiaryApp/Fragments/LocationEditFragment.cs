@@ -117,7 +117,6 @@ namespace ShopDiaryApp.Fragments
                 mProgressBar.Progress = progressvalue;
                 Thread.Sleep(300);
             }
-
         }
 
 
