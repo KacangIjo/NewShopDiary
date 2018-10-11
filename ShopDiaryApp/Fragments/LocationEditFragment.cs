@@ -1,10 +1,14 @@
 ﻿using Android.OS;
 using Android.Support.V4.App;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using ShopDiaryApp.Adapter;
+using ShopDiaryApp.Models.ViewModels;
 using ShopDiaryApp.Services;
 using ShopDiaryProject.Domain.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace ShopDiaryApp.Fragments
@@ -19,15 +23,23 @@ namespace ShopDiaryApp.Fragments
         private ImageButton mButtonDelete;
         private ImageButton mButtonSave;
         private ProgressBar mProgressBar;
+        private RecyclerView mListViewSharedLocation;
 
+
+        UserLocationRecyclerAdapter userLocationAdapter;
+        UserLocationDataService userLocationDataService;
         LocationDataService mLocationDataService;
+        List<UserLocationViewModel> mUserLocations;
+
         private FragmentTransaction mFragmentTransaction;
 
+        int mSelectedLocation = -1;
         Guid mAuthorizedId = LoginPageActivity.StaticUserClass.ID;
 
         public LocationEditFragment()
         {
             mLocationDataService = new LocationDataService();
+            userLocationDataService = new UserLocationDataService();
         }
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -53,7 +65,9 @@ namespace ShopDiaryApp.Fragments
             mLocationAddress.Text = MainActivity.StaticLocationClass.Address.ToString();
             mLocationDescription.Text = MainActivity.StaticLocationClass.Description.ToString();
             mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarAddLocation);
-
+            mListViewSharedLocation = view.FindViewById<RecyclerView>(Resource.Id.recyclerViewLocationUser);
+            mListViewSharedLocation.SetLayoutManager(new LinearLayoutManager(Activity));
+            LoadLocationData();
             mButtonAddUser.Click += (object sender, EventArgs args) =>
             {
                 ReplaceFragment(new LocationAddUserFragment(), "Add User");
@@ -91,7 +105,34 @@ namespace ShopDiaryApp.Fragments
             return view;
         }
 
-        
+        private async void LoadLocationData()
+        {
+
+            List<UserLocationViewModel> mSharedUserByLocation = await userLocationDataService.GetAll();
+            int test=mSharedUserByLocation.Count;
+            List<UserLocationViewModel> mTempUserLocation = new List<UserLocationViewModel>();
+            for (int i = 0; mSharedUserByLocation.Count > i; i++)
+            {
+                if(mSharedUserByLocation[i].LocationId==MainActivity.StaticActiveLocationClass.Id)
+                {
+                    mTempUserLocation.Add(mSharedUserByLocation[i]);
+                }
+            }
+            if (mTempUserLocation != null)
+            {
+                userLocationAdapter = new UserLocationRecyclerAdapter(mTempUserLocation, this.Activity);
+                userLocationAdapter.ItemClick += OnLocationClicked;
+                mListViewSharedLocation.SetAdapter(this.userLocationAdapter);
+            }
+        }
+
+        private void OnLocationClicked(object sender, int e)
+        {
+            mSelectedLocation = e;
+            MainActivity.StaticUserLocationClass = mUserLocations[e];
+            
+          
+        }
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {

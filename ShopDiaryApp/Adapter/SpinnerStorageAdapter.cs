@@ -7,18 +7,18 @@ using ShopDiaryApp.Models.ViewModels;
 
 namespace ShopDiaryApp.Adapter
 {
-    public class SpinnerCategoryAdapter : BaseAdapter
+    public class SpinnerStorageAdapter : BaseAdapter
     {
         readonly Activity mActivity;
-        private List<CategoryViewModel> mCategories;
-        public SpinnerCategoryAdapter(Activity activity, List<CategoryViewModel> categories)
+        private List<StorageViewModel> mStorages;
+        public SpinnerStorageAdapter(Activity activity, List<StorageViewModel> storages)
         {
             mActivity = activity;
-            mCategories = categories;
+            mStorages = storages;
         }
         public override int Count
         {
-            get { return mCategories.Count; }
+            get { return mStorages.Count; }
         }
 
         public override Java.Lang.Object GetItem(int position)
@@ -33,7 +33,7 @@ namespace ShopDiaryApp.Adapter
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            var item = mCategories[position];
+            var item = mStorages[position];
             var view = (convertView ?? mActivity.LayoutInflater.Inflate(Android.Resource.Layout.SimpleSpinnerDropDownItem,
                 parent,
                 false));
@@ -42,9 +42,9 @@ namespace ShopDiaryApp.Adapter
             return view;
         }
 
-        public CategoryViewModel GetItemAtPosition(int position)
+        public StorageViewModel GetItemAtPosition(int position)
         {
-            return mCategories[position];
+            return mStorages[position];
         }
     }
 }

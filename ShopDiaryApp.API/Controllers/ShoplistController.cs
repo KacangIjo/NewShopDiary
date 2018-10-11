@@ -27,7 +27,7 @@ namespace ShopDiaryApp.API.Controllers
         }
 
         // GET: api/Categories
-        public IHttpActionResult GetStorages()
+        public IHttpActionResult GetShopLists()
         {
             IEnumerable<ShoplistViewModel> sto = _shoplistRepository.GetAll().ToList().Select(e=>new ShoplistViewModel(e)).ToList();
             return Ok(sto);
@@ -35,7 +35,7 @@ namespace ShopDiaryApp.API.Controllers
 
         // GET: api/Categories/5
         [ResponseType(typeof(ShoplistViewModel))]
-        public IHttpActionResult GetStorage(Guid id)
+        public IHttpActionResult GetShopList(Guid id)
         {
             ShoplistViewModel storage = new ShoplistViewModel(_shoplistRepository.GetSingle(e => e.Id == id));
             if (storage == null)
@@ -48,7 +48,7 @@ namespace ShopDiaryApp.API.Controllers
 
         // PUT: api/Categories/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutStorage(Guid id, ShoplistViewModel storage)
+        public async Task<IHttpActionResult> PutShopList(Guid id, ShoplistViewModel storage)
         {
             if (!ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace ShopDiaryApp.API.Controllers
 
         // POST: api/Categories
         [ResponseType(typeof(ShoplistViewModel))]
-        public IHttpActionResult PostStorage(ShoplistViewModel storage)
+        public IHttpActionResult PostShopList(ShoplistViewModel storage)
         {
             if (!ModelState.IsValid)
             {
@@ -112,7 +112,7 @@ namespace ShopDiaryApp.API.Controllers
 
         // DELETE: api/Categories/5
         [ResponseType(typeof(Shoplist))]
-        public async Task<IHttpActionResult> DeleteStorage(Guid id)
+        public async Task<IHttpActionResult> DeleteShopList(Guid id)
         {
             Shoplist storage = _shoplistRepository.GetSingle(e => e.Id == id);
             if (storage == null)

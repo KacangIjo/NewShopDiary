@@ -35,11 +35,8 @@ namespace ShopDiaryApp.Fragments
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            
            
         }
-
-        
 
         public static LocationAddFragment NewInstance()
         {
@@ -69,16 +66,16 @@ namespace ShopDiaryApp.Fragments
                 Description = mLocationDescription.Text,
                 CreatedUserId = mAuthorizedId.ToString(),
                 AddedUserId = mAuthorizedId.ToString()
-
             };
-
             new Thread(new ThreadStart(delegate
             {
-                UpgradeProgress();
+               
                 var isAdded = mLocationDataService.Add(newLoc);
 
                 if (isAdded)
                 {
+                    LoadData();
+                    UpgradeProgress();
                     this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Location Added", ToastLength.Long).Show());
                     mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
                 }
@@ -87,7 +84,14 @@ namespace ShopDiaryApp.Fragments
                     this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed", ToastLength.Long).Show());
                 }
             })).Start();
+           
 
+        }
+
+        private async void LoadData()
+        {
+            LoginPageActivity.mGlobalLocations.Clear();
+            LoginPageActivity.mGlobalLocations = await mLocationDataService.GetAll();
         }
 
         private void UpgradeProgress()

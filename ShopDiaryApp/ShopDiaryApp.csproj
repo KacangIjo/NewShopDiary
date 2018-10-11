@@ -122,12 +122,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\UserLocationRecyclerAdapter.cs" />
+    <Compile Include="Adapter\ProductRecyclerAdapter.cs" />
     <Compile Include="Adapter\HomeInventoryRecycleAdapter.cs" />
     <Compile Include="Adapter\CategoryRecyclerAdapter.cs" />
     <Compile Include="Adapter\LocationsRecycleAdapter.cs" />
-    <Compile Include="Adapter\SpinnerCategoryAdapter.cs" />
-    <Compile Include="Adapter\SpinnerLocationAdapter.cs" />
     <Compile Include="Adapter\SpinnerStorageAdapter.cs" />
+    <Compile Include="Adapter\SpinnerLocationAdapter.cs" />
+    <Compile Include="Adapter\SpinnerCategoryAdapter.cs" />
     <Compile Include="Adapter\StoragesRecycleAdapter.cs" />
     <Compile Include="Class\Category.cs" />
     <Compile Include="Class\Inventory.cs" />
@@ -149,6 +151,7 @@
     <Compile Include="Fragments\CategoriesFragment.cs" />
     <Compile Include="Fragments\RunOutItemsFragment.cs" />
     <Compile Include="Fragments\StorageAddFragment.cs" />
+    <Compile Include="Fragments\ProductsFragment.cs" />
     <Compile Include="Fragments\StoragesFragment.cs" />
     <Compile Include="Helper\LoginHelper.cs" />
     <Compile Include="Helper\UrlHelper.cs" />
@@ -356,6 +359,24 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\locationmap.png" />
+    <AndroidResource Include="Resources\layout\ManageProducts.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AdapterProducts.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ManageShopList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ShopListDetail.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AdapterSharedLocations.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AdapterUserList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

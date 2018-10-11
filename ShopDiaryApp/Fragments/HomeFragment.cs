@@ -140,10 +140,11 @@ namespace ShopDiaryApp.Fragments
             var adapterLocation = new SpinnerLocationAdapter (this.Activity, mLocations);
             mSpinnerActiveLocation.Adapter = adapterLocation;
             mSpinnerActiveLocation.ItemSelected += SpinnerLocation_ItemSelected;
-            
-
+            if (LoginPageActivity.mGlobalLocations.Count() != 0)
+            {
+                mSpinnerActiveLocation.SetSelection(0);
+            }
             //Inventories Data
-
             if (LoginPageActivity.mGlobalInventories!= null)
             {
                 this.mInventoryAdapter = new HomeInventoryRecycleAdapter(LoginPageActivity.mGlobalInventories,LoginPageActivity.mGlobalProducts, this.Activity);
@@ -161,15 +162,10 @@ namespace ShopDiaryApp.Fragments
 
             string toast = string.Format("{0} selected", MainActivity.StaticActiveLocationClass.Name);
             Toast.MakeText(this.Activity, toast, ToastLength.Long).Show();
-            //LoadRecyclerAdapter(mStorage, mCategory);
-
-
-
         }
         private void OnInventoryClick(object sender, int e)
         {
             mSelectedInventory = e;
-            
         }
 
         private void UpgradeProgress()

@@ -48,22 +48,17 @@ namespace ShopDiaryApp.Services
             string expirationDate = string.Format("{0}-{1}-{2}T00:00:00", data.ExpirationDate.Year, data.ExpirationDate.Month, data.ExpirationDate.Day);
             var content = new FormUrlEncodedContent(new[]
             {
-                
-                new KeyValuePair<string, string>("Id", data.Id.ToString()),
                 new KeyValuePair<string, string>("ExpirationDate", expirationDate),
                 new KeyValuePair<string, string>("Price", data.Price.ToString()),             
                 new KeyValuePair<string, string>("ProductId", data.ProductId.ToString()),
                 new KeyValuePair<string, string>("StorageId", data.StorageId.ToString()),
                 new KeyValuePair<string, string>("IsDeleted", false.ToString()),
                 new KeyValuePair<string, string>("IsConsumed", false.ToString()),
-                 new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString()),
-                new KeyValuePair<string, string>("ItemName", data.ItemName.ToString()),
-
+                 new KeyValuePair<string, string>("ItemName","-"),
+                new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString())
             });
-
             try
             {
-
                 HttpResponseMessage resp = client.PostAsync(UrlHelper.Inventories_Url + @"/PostInventory", content).Result;
                 Inventory t = JsonConvert.DeserializeObject<Inventory>(resp.Content.ReadAsStringAsync().Result);
                 return true;

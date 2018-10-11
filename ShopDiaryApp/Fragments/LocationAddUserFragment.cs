@@ -94,7 +94,6 @@ namespace ShopDiaryApp.Fragments
                     {
                         UserLocation newLoc = new UserLocation()
                         {
-
                             RegisteredUser = LoginPageActivity.mGlobalUserDatas[i].UserId,
                             Description = mDescription.Text,
                             Create = mCreateValue,

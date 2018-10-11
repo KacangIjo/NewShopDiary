@@ -50,7 +50,7 @@ namespace ShopDiaryApp.Services
                 new KeyValuePair<string, string>("Name", data.Name.ToString()),
                 new KeyValuePair<string, string>("BarcodeId", data.BarcodeId.ToString()),
                 new KeyValuePair<string, string>("CategoryId", data.CategoryId.ToString()),
-
+                new KeyValuePair<string, string>("AddedUserId", data.AddedUserId.ToString()),
             });
 
             try
@@ -72,10 +72,7 @@ namespace ShopDiaryApp.Services
                 new KeyValuePair<string, string>("Name", data.Name.ToString()),
                 new KeyValuePair<string, string>("SeatSize", data.BarcodeId.ToString()),
                 new KeyValuePair<string, string>("ProductId", data.Id.ToString()),
-
-
             });
-
             try
             {
                 HttpResponseMessage resp = client.PutAsync(UrlHelper.Products_Url + @"/PutProduct/" + id, content).Result;
@@ -92,7 +89,6 @@ namespace ShopDiaryApp.Services
         {
             try
             {
-
                 HttpResponseMessage resp = client.DeleteAsync(UrlHelper.Products_Url + @"/DeleteProduct/" + id).Result;
                 Product t = JsonConvert.DeserializeObject<Product>(resp.Content.ReadAsStringAsync().Result);
                 return true;

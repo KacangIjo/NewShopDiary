@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using ShopDiaryApp.Adapter;
 using Android.Support.V7.Widget;
 using System;
+using ShopDiaryApp.FragmentsScanner;
 
 namespace ShopDiaryApp
 {
@@ -35,6 +36,7 @@ namespace ShopDiaryApp
         
 
         public static LocationViewModel StaticActiveLocationClass = new LocationViewModel();
+        public static UserLocationViewModel StaticUserLocationClass = new UserLocationViewModel();
         public static LocationViewModel StaticLocationClass = new LocationViewModel();
         public static StorageViewModel StaticStorageClass = new StorageViewModel();
         private TextView mUsernameInfo;
@@ -109,6 +111,10 @@ namespace ShopDiaryApp
                         SupportActionBar.Title = "Manage Categories";
                         ListItemClicked(4);
                         break;
+                    case Resource.Id.nav_home_products:
+                        SupportActionBar.Title = "Manage Products";
+                        ListItemClicked(5);
+                        break;
                 }
 
 
@@ -145,7 +151,7 @@ namespace ShopDiaryApp
                     fragment = LocationsFragment.NewInstance();
                     break;
                 case 2:
-                    fragment = StoragesFragment.NewInstance();
+                    fragment = AddItemBarcodeFragment.NewInstance();
                     break;
                 case 3:
                     fragment = StoragesFragment.NewInstance();
@@ -154,7 +160,7 @@ namespace ShopDiaryApp
                     fragment = CategoriesFragment.NewInstance();
                     break;
                 case 5:
-                    fragment = CategoriesFragment.NewInstance();
+                    fragment = ProductsFragment.NewInstance();
                     break;
 
             }

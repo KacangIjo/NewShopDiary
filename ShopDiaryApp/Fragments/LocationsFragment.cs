@@ -80,7 +80,6 @@ namespace ShopDiaryApp.Fragments
             }
             if (mLocations != null)
             {
-
                 mLocationsAdapter = new LocationsRecycleAdapter(mLocations, this.Activity);
                 mLocationsAdapter.ItemClick += OnLocationClicked;
                 mListViewLocations.SetAdapter(this.mLocationsAdapter);
@@ -91,6 +90,7 @@ namespace ShopDiaryApp.Fragments
         {
             mSelectedLocation = e;
             mSelectedLocationClass = mLocations[e];
+            MainActivity.StaticActiveLocationClass = mLocations[e];
             //mTextSelectedLocation.Text = mLocations[e].Name;
             MainActivity.StaticLocationClass.Id = mLocations[e].Id;
             MainActivity.StaticLocationClass.Name = mLocations[e].Name;
