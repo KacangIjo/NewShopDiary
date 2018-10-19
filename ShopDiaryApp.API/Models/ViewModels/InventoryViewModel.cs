@@ -50,8 +50,6 @@ namespace ShopDiaryApp.API.Models.ViewModels
             this.StorageId = i.StorageId;
             this.ItemName = i.ItemName;
             this.AddedUserId = i.AddedUserId;
-
-
         }
        
     }

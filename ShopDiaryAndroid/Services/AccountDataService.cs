@@ -4,10 +4,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ShopDiaryApp.API.Models;
-using ShopDiaryApp.Models;
 using ShopDiaryAndroid.Helper;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using ShopDiaryAndroid.Models;
 
 namespace ShopDiaryAndroid.Services
 {

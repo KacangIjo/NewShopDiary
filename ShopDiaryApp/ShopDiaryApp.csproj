@@ -23,6 +23,7 @@
     </NuGetPackageImportStamp>
     <!-- Other properties -->
     <AndroidErrorOnCustomJavaObject>false</AndroidErrorOnCustomJavaObject>
+    <AndroidKeyStore>true</AndroidKeyStore>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,7 +42,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidStoreUncompressedFileExtensions>
     </AndroidStoreUncompressedFileExtensions>
     <JavaMaximumHeapSize>1024m</JavaMaximumHeapSize>
@@ -49,6 +50,10 @@
     </JavaOptions>
     <AndroidSupportedAbis>
     </AndroidSupportedAbis>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <Debugger>Xamarin</Debugger>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FastAndroidCamera, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -122,6 +127,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\HomeStorageAdapter.cs" />
+    <Compile Include="Adapter\HomeAdapter.cs" />
     <Compile Include="Adapter\UserLocationRecyclerAdapter.cs" />
     <Compile Include="Adapter\ProductRecyclerAdapter.cs" />
     <Compile Include="Adapter\HomeInventoryRecycleAdapter.cs" />
@@ -141,6 +148,7 @@
     <Compile Include="Class\UserLocation.cs" />
     <Compile Include="DialogFragments\DialogDatePickerActivity.cs" />
     <Compile Include="FragmentsScanner\AddItemBarcodeFragment.cs" />
+    <Compile Include="Fragments\HomeStoragesFragment.cs" />
     <Compile Include="Fragments\StorageEditFragment.cs" />
     <Compile Include="Fragments\InventoriesFragment.cs" />
     <Compile Include="Fragments\CategoryAddFragment.cs" />
@@ -375,6 +383,19 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AdapterUserList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AdapterHome.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AdapterHomeStorage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\house.png" />
+    <AndroidResource Include="Resources\layout\AdapterHomeInventories.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\HomeStoragesLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

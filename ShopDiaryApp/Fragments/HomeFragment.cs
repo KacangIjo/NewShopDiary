@@ -18,7 +18,7 @@ namespace ShopDiaryApp.Fragments
     public class HomeFragment : Fragment
     {
         #region Layout Properties
-        private HomeInventoryRecycleAdapter mInventoryAdapter;
+        private HomeAdapter mInventoryAdapter;
         private RecyclerView mListViewInventory;
 
         public List<InventoryViewModel> mInventories;
@@ -46,6 +46,9 @@ namespace ShopDiaryApp.Fragments
         private ImageButton mAdd;
         private ImageButton mShopList;
         private ImageButton mRunOut;
+
+        public static ProductViewModel mHomeSelectedProduct;
+        public static List<InventoryViewModel> mInventoriesByProduct;
 
         public event EventHandler OptionButtonWasClicked;
 
@@ -144,10 +147,12 @@ namespace ShopDiaryApp.Fragments
             {
                 mSpinnerActiveLocation.SetSelection(0);
             }
+
+
             //Inventories Data
             if (LoginPageActivity.mGlobalInventories!= null)
             {
-                this.mInventoryAdapter = new HomeInventoryRecycleAdapter(LoginPageActivity.mGlobalInventories,LoginPageActivity.mGlobalProducts, this.Activity);
+                this.mInventoryAdapter = new HomeAdapter(LoginPageActivity.mGlobalInventories,LoginPageActivity.mGlobalProducts,LoginPageActivity.mGlobalStorages,MainActivity.StaticActiveLocationClass, this.Activity);
                 this.mInventoryAdapter.ItemClick += OnInventoryClick;
                 this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
             }
@@ -166,6 +171,16 @@ namespace ShopDiaryApp.Fragments
         private void OnInventoryClick(object sender, int e)
         {
             mSelectedInventory = e;
+            mHomeSelectedProduct = LoginPageActivity.mGlobalProducts[mSelectedInventory];
+            mInventoriesByProduct = new List<InventoryViewModel>();
+            for(int i=0; i < LoginPageActivity.mGlobalInventories.Count; i++)
+            {
+                if (LoginPageActivity.mGlobalInventories[i].ProductId == mHomeSelectedProduct.Id)
+                {
+                    mInventoriesByProduct.Add(LoginPageActivity.mGlobalInventories[i]);
+                }
+            }
+            ReplaceFragment(new HomeStoragesFragment(), mHomeSelectedProduct.Name.ToString());
         }
 
         private void UpgradeProgress()
