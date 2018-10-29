@@ -119,14 +119,26 @@ namespace ShopDiaryApp
         }
         private async void LoadData()
         {
-            mGlobalInventories = await mInventoryDataService.GetAll();
+            List<InventoryViewModel> tempInventories = await mInventoryDataService.GetAll();
             mGlobalLocations = await mLocationDataService.GetAll();
             mGlobalProducts = await mProductDataService.GetAll();
             mGlobalStorages = await mStorageDataService.GetAll();
             mGlobalCategories = await mCategoryDataService.GetAll();
             mGlobalUserLocs = await mUserLocationDataService.GetAll();
             mGlobalUserDatas = await mUserDataDataService.GetAll();
-
+            mGlobalInventories = new List<InventoryViewModel>();
+            for(int i = 0; i < tempInventories.Count(); i++)
+            {
+                for (int j = 0; j < mGlobalProducts.Count(); j++)
+                {
+                    
+                    if (tempInventories[i].ProductId == mGlobalProducts[j].Id)
+                    {
+                        tempInventories[i].ItemName = mGlobalProducts[j].Name;
+                        mGlobalInventories.Add(tempInventories[i]);
+                    }
+                }
+            }
         }
         private void UpgradeProgress()
         {

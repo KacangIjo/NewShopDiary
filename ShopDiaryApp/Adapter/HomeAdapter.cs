@@ -50,10 +50,12 @@ namespace ShopDiaryApp.Adapter
                 if (vh != null)
                 {
                     var inv = this.mProducts[position];
+
                     vh.ItemName.Text = inv.Name;
-                    for(int i=0;i<mInventories.Count();i++)
+                    for (int i = 0; i < mInventories.Count(); i++)
                     {
-                        if(mInventories[i].ProductId==inv.Id)
+
+                        if (mInventories[i].ProductId == inv.Id)
                         {
                             if (mInventories[i].ExpirationDate == DateTime.Now)
                             {
@@ -66,7 +68,8 @@ namespace ShopDiaryApp.Adapter
                             }
                         }
                     }
-                   
+
+
                     vh.ItemView.Selected = (mSelectedPosition == position);
                 }
             }
@@ -93,7 +96,8 @@ namespace ShopDiaryApp.Adapter
                 this.ExpiredItem = itemView.FindViewById<TextView>(Resource.Id.homeAdapterExpiredCounter);
                 this.WarningItem = itemView.FindViewById<TextView>(Resource.Id.HomeAdapterWarningCounter);
                 this.GoodItem = itemView.FindViewById<TextView>(Resource.Id.HomeAdapterGoodCounter);
-
+                //this.SelectedRow = itemView.FindViewById<LinearLayout>(Resource.Id.homeAdapterLayoutParent);
+                //this.SelectedRow.Click += (sender, e) => SelectedRow.Selected = true;
                 itemView.Click += (sender, e) => listener(this.LayoutPosition);
             }
 
@@ -101,6 +105,7 @@ namespace ShopDiaryApp.Adapter
             public TextView ExpiredItem { get; }
             public TextView WarningItem { get; }
             public TextView GoodItem { get; }
+            public LinearLayout SelectedRow { get; }
 
         }
 

@@ -10,16 +10,18 @@ using ShopDiaryApp.Models.ViewModels;
 using ShopDiaryApp.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ShopDiaryApp.Fragments
 {
     public class LocationsFragment : Fragment
     {
         private LocationsRecycleAdapter mLocationsAdapter;
-        public List<LocationViewModel> mLocations;
+        
         public static LocationViewModel mSelectedLocationClass;
         private readonly LocationDataService mLocationDataService;
-
+        public List<LocationViewModel> mFilteredLocation;
+        public List<LocationViewModel> mLocations;
         private RecyclerView mListViewLocations;
         private int mSelectedLocation = -1;
         private FragmentTransaction mFragmentTransaction;
@@ -66,10 +68,11 @@ namespace ShopDiaryApp.Fragments
             return view;
         }
 
-        private async void LoadLocationData()
+        private void LoadLocationData()
         {
-            
-            List<LocationViewModel> mLocationsByUser = await mLocationDataService.GetAll();
+
+            List<LocationViewModel> mLocationsByUser = LoginPageActivity.mGlobalLocations;
+            List<UserLocationViewModel> mSharedLocation = LoginPageActivity.mGlobalUserLocs;
             mLocations = new List<LocationViewModel>();
             for (int i = 0; mLocationsByUser.Count > i; i++)
             {
@@ -77,10 +80,25 @@ namespace ShopDiaryApp.Fragments
                 {
                     mLocations.Add(mLocationsByUser[i]);
                 }
+                else
+                {
+                    for (int j = 0; j < mSharedLocation.Count; j++)
+                    {
+                        if (mSharedLocation[i].RegisteredUser == LoginPageActivity.StaticUserClass.ID)
+                        {
+                            mLocationsByUser[i].IsSharedLocation = true;
+                            mLocations.Add(mLocationsByUser[i]);
+                            
+                        }
+                    }
+                }
             }
+            
+            mFilteredLocation = mLocations.GroupBy(s => s.Id).Select(group => group.First()).ToList();
+            var test = mLocations.Count;
             if (mLocations != null)
             {
-                mLocationsAdapter = new LocationsRecycleAdapter(mLocations, this.Activity);
+                mLocationsAdapter = new LocationsRecycleAdapter(mFilteredLocation, this.Activity);
                 mLocationsAdapter.ItemClick += OnLocationClicked;
                 mListViewLocations.SetAdapter(this.mLocationsAdapter);
             }
@@ -91,11 +109,8 @@ namespace ShopDiaryApp.Fragments
             mSelectedLocation = e;
             mSelectedLocationClass = mLocations[e];
             MainActivity.StaticActiveLocationClass = mLocations[e];
-            //mTextSelectedLocation.Text = mLocations[e].Name;
-            MainActivity.StaticLocationClass.Id = mLocations[e].Id;
-            MainActivity.StaticLocationClass.Name = mLocations[e].Name;
-            MainActivity.StaticLocationClass.Address= mLocations[e].Address;
-            MainActivity.StaticLocationClass.Description = mLocations[e].Description;
+           
+            MainActivity.StaticLocationClass = mLocations[e];
         }
 
 
@@ -104,38 +119,17 @@ namespace ShopDiaryApp.Fragments
             //SearchMenu
             menuInflater.Inflate(Resource.Menu.nav_search, menu);
             var searchItem = menu.FindItem(Resource.Id.action_search);
-            var provider = MenuItemCompat.GetActionView(searchItem);
-            mSearchView = provider.JavaCast<Android.Support.V7.Widget.SearchView>();
-            mSearchView.QueryTextChange += (s, e) => mLocationsAdapter.Filter.InvokeFilter(e.NewText);
-            mSearchView.QueryTextSubmit += (s, e) =>
-            {
-                Toast.MakeText(this.Activity, "You searched: " + e.Query, ToastLength.Short).Show();
-                e.Handled = true;
-            };
-            MenuItemCompat.SetOnActionExpandListener(searchItem, new SearchViewExpandListener(mLocationsAdapter));
-            
-
+            //var provider = MenuItemCompat.GetActionView(searchItem);
+            //mSearchView = provider.JavaCast<Android.Support.V7.Widget.SearchView>();
+            //mSearchView.QueryTextChange += (s, e) => mLocationsAdapter.Filter.InvokeFilter(e.NewText);
+            //mSearchView.QueryTextSubmit += (s, e) =>
+            //{
+            //    Toast.MakeText(this.Activity, "You searched: " + e.Query, ToastLength.Short).Show();
+            //    e.Handled = true;
+            //};
+            //MenuItemCompat.SetOnActionExpandListener(searchItem, new SearchViewExpandListener(mLocationsAdapter));
         }
-        private class SearchViewExpandListener : Java.Lang.Object, MenuItemCompat.IOnActionExpandListener
-        {
-            private readonly IFilterable _adapter;
-
-            public SearchViewExpandListener(IFilterable adapter)
-            {
-                _adapter = adapter;
-            }
-
-            public bool OnMenuItemActionCollapse(IMenuItem item)
-            {
-                _adapter.Filter.InvokeFilter("");
-                return true;
-            }
-
-            public bool OnMenuItemActionExpand(IMenuItem item)
-            {
-                return true;
-            }
-        }
+       
 
         public void ReplaceFragment(Fragment fragment, string tag)
         {

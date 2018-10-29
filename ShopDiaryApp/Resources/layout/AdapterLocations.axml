@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="65dp"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+	android:id="@+id/linearLayoutLocationsAdapter">
     <TextView
         android:text="Location Name"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -17,10 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textviewLocationAdapterAddress" />
-    <TextView
-        android:text="Location Description"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textviewLocationAdapterDescription" />
+	<TextView
+		android:text="Location Description"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="324.0dp"
+		android:layout_height="wrap_content"
+		android:id="@+id/textviewLocationAdapterDescription" />
 </LinearLayout>

@@ -22,7 +22,7 @@ namespace ShopDiaryApp.Services
                 try
                 {
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var builder = new UriBuilder(new Uri(UrlHelper.Userlocations_Url + @"/getUserLocations"));
+                    var builder = new UriBuilder(new Uri(UrlHelper.Userlocations_Url + @"/getLocations"));
                     var response = await client.GetAsync(builder.Uri);
                     if (!response.IsSuccessStatusCode)
                     {
@@ -62,7 +62,7 @@ namespace ShopDiaryApp.Services
             try
             {
 
-                HttpResponseMessage resp = client.PostAsync(UrlHelper.Userlocations_Url + @"/PostUserLocation", content).Result;
+                HttpResponseMessage resp = client.PostAsync(UrlHelper.Userlocations_Url + @"/PostLocation", content).Result;
                 UserLocation t = JsonConvert.DeserializeObject<UserLocation>(resp.Content.ReadAsStringAsync().Result);
                 return true;
             }
@@ -89,7 +89,7 @@ namespace ShopDiaryApp.Services
 
             try
             {
-                HttpResponseMessage resp = client.PutAsync(UrlHelper.Userlocations_Url + @"/PutUserLocation/" + id, content).Result;
+                HttpResponseMessage resp = client.PutAsync(UrlHelper.Userlocations_Url + @"/PutLocation/" + id, content).Result;
                 UserLocation t = JsonConvert.DeserializeObject<UserLocation>(resp.Content.ReadAsStringAsync().Result);
                 return true;
             }
@@ -104,7 +104,7 @@ namespace ShopDiaryApp.Services
             try
             {
 
-                HttpResponseMessage resp = client.DeleteAsync(UrlHelper.Userlocations_Url + @"/DeleteUserLocation/" + id).Result;
+                HttpResponseMessage resp = client.DeleteAsync(UrlHelper.Userlocations_Url + @"/DeleteLocation/" + id).Result;
                 UserLocation t = JsonConvert.DeserializeObject<UserLocation>(resp.Content.ReadAsStringAsync().Result);
                 return true;
             }

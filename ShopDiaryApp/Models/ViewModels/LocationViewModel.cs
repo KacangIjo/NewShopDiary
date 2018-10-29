@@ -11,6 +11,7 @@ namespace ShopDiaryApp.Models.ViewModels
         public string Description { get; set; }
         public string CreatedUserId { get; set; }
         public string AddedUserId { get; set; }
+        public bool IsSharedLocation { get; set; }
 
 
         public Location ToModel()
@@ -38,6 +39,7 @@ namespace ShopDiaryApp.Models.ViewModels
             this.Address = l.Address;
             this.CreatedUserId = l.CreatedUserId;
             this.AddedUserId = l.AddedUserId;
+            this.IsSharedLocation = false;
         }
        
     }

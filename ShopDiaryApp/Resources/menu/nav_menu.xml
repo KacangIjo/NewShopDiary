@@ -31,10 +31,6 @@
        android:icon="@drawable/ic_home_2"
        android:title="Shop List" />
     <item
-       android:id="@+id/nav_home_runout"
-       android:icon="@drawable/ic_home_2"
-       android:title="Run Out" />
-    <item
        android:id="@+id/nav_home_summary"
        android:icon="@drawable/ic_home_2"
        android:title="Summary" />

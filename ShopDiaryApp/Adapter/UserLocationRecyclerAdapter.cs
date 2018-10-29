@@ -16,19 +16,21 @@ namespace ShopDiaryApp.Adapter
     public class UserLocationRecyclerAdapter : RecyclerView.Adapter, IFilterable
     {
         private readonly Activity mActivity;
-        private List<UserLocationViewModel> mCategories;
+        private List<UserLocationViewModel> mUserLocation;
+        private List<UserDataViewModel> mUserData;
         private List<UserLocationViewModel> mFilteredCategories;
         private int mSelectedPosition = -1;
 
         public Filter Filter { get; private set; }
 
-        public UserLocationRecyclerAdapter(List<UserLocationViewModel> categories, Activity activity)
+        public UserLocationRecyclerAdapter(List<UserLocationViewModel> categories,List<UserDataViewModel> userdata, Activity activity)
         {
-            this.mCategories = categories;
+            this.mUserLocation = categories;
+            this.mUserData = userdata;
             this.mActivity = activity;
         }
 
-        public override int ItemCount => this.mCategories.Count;
+        public override int ItemCount => this.mUserLocation.Count;
         
 
         public event EventHandler<int> ItemClick;
@@ -43,13 +45,20 @@ namespace ShopDiaryApp.Adapter
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            if (this.mCategories.Count > 0)
+            if (this.mUserLocation.Count > 0)
             {
                 var vh = holder as ViewHolder;
                 if (vh != null)
                 {
-                    var cat = this.mCategories[position];
-                    vh.ItemName.Text = cat.Id.ToString();
+                    var user = this.mUserLocation[position];
+                    for(int i = 0; i < mUserData.Count(); i++)
+                    {
+                        if (user.RegisteredUser == mUserData[i].UserId)
+                        {
+                            vh.ItemName.Text = mUserData[i].Email;
+                        }
+                    }
+                   
                     vh.ItemDescription.Text = "Create Read Update Delete";
                     vh.ItemView.Selected = (mSelectedPosition == position);
                 }

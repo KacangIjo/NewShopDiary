@@ -40,19 +40,17 @@ namespace ShopDiaryApp.Fragments
         private TextView mExpCounter;
         private TextView mRunOutCounter;
         private TextView mStockCounter;
-        private ProgressBar mProgressBar;
-        private ImageButton mStorage;
-        private ImageButton mUse;
-        private ImageButton mAdd;
-        private ImageButton mShopList;
-        private ImageButton mRunOut;
+        //private ImageButton mStorage;
+        //private ImageButton mUse;
+        //private ImageButton mAdd;
+        //private ImageButton mShopList;
+        //private ImageButton mRunOut;
 
         public static ProductViewModel mHomeSelectedProduct;
         public static List<InventoryViewModel> mInventoriesByProduct;
 
         public event EventHandler OptionButtonWasClicked;
-
-        private int progressvalue = 0;
+        
         #endregion
         public HomeFragment()
         {
@@ -91,42 +89,38 @@ namespace ShopDiaryApp.Fragments
             mSpinnerActiveLocation = view.FindViewById<Spinner>(Resource.Id.spinnerHomeActiveLocation);
             mListViewInventory = view.FindViewById<RecyclerView>(Resource.Id.recyclerHomePage);
             mListViewInventory.SetLayoutManager(new LinearLayoutManager(Activity));
-            mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarHome);
-            mStorage = view.FindViewById<ImageButton>(Resource.Id.imageButtonHomeStorages);
-            mUse = view.FindViewById<ImageButton>(Resource.Id.imageButtonUseItem);
-            mAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonHomeAdd);
-            mRunOut = view.FindViewById<ImageButton>(Resource.Id.imageButtonHomeRunOut);
-            mShopList = view.FindViewById<ImageButton>(Resource.Id.imageButtonUseItem);
+           
+          
             
             LoadInventoryData();
             #region button shortcut function
-            mStorage.Click += (object sender, EventArgs args) =>
-            {
-                ReplaceFragment(new StoragesFragment(), "Manage Storages");
-            };
-            mUse.Click += (object sender, EventArgs args) =>
-            {
-                ReplaceFragment(new StoragesFragment(), "Manage Storages");
-            };
-            mAdd.Click += (object sender, EventArgs args) =>
-            {
-                ReplaceFragment(new AddItemBarcodeFragment(), "Add Item");
-            };
-            mRunOut.Click += (object sender, EventArgs args) =>
-            {
-                ReplaceFragment(new StoragesFragment(), "Manage Storages");
-            };
-            mShopList.Click += (object sender, EventArgs args) =>
-            {
-                ReplaceFragment(new StoragesFragment(), "Manage Storages");
-            };
+            //mStorage.Click += (object sender, EventArgs args) =>
+            //{
+            //    ReplaceFragment(new StoragesFragment(), "Manage Storages");
+            //};
+            //mUse.Click += (object sender, EventArgs args) =>
+            //{
+            //    ReplaceFragment(new StoragesFragment(), "Manage Storages");
+            //};
+            //mAdd.Click += (object sender, EventArgs args) =>
+            //{
+            //    ReplaceFragment(new AddItemBarcodeFragment(), "Add Item");
+            //};
+            //mRunOut.Click += (object sender, EventArgs args) =>
+            //{
+            //    ReplaceFragment(new StoragesFragment(), "Manage Storages");
+            //};
+            //mShopList.Click += (object sender, EventArgs args) =>
+            //{
+            //    ReplaceFragment(new StoragesFragment(), "Manage Storages");
+            //};
             #endregion
             return view;
         }
 
         public  void LoadInventoryData()
         {
-            mProgressBar.Visibility = Android.Views.ViewStates.Visible;
+            
             //ActiveLocationData
             List<LocationViewModel> tempLocations = new List<LocationViewModel>();
 
@@ -148,25 +142,26 @@ namespace ShopDiaryApp.Fragments
                 mSpinnerActiveLocation.SetSelection(0);
             }
 
-
-            //Inventories Data
-            if (LoginPageActivity.mGlobalInventories!= null)
-            {
-                this.mInventoryAdapter = new HomeAdapter(LoginPageActivity.mGlobalInventories,LoginPageActivity.mGlobalProducts,LoginPageActivity.mGlobalStorages,MainActivity.StaticActiveLocationClass, this.Activity);
-                this.mInventoryAdapter.ItemClick += OnInventoryClick;
-                this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
-            }
-            UpgradeProgress();
-            mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
-
         }
         private void SpinnerLocation_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
             MainActivity.StaticActiveLocationClass = mLocations[e.Position];
-
-            string toast = string.Format("{0} selected", MainActivity.StaticActiveLocationClass.Name);
-            Toast.MakeText(this.Activity, toast, ToastLength.Long).Show();
+            List<ProductViewModel> mProductByUser = new List<ProductViewModel>();
+            List<ProductViewModel> tempProduct = LoginPageActivity.mGlobalProducts;
+            for (int i = 0; i < tempProduct.Count; i++)
+            {
+                if (tempProduct[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
+                {
+                    mProductByUser.Add(tempProduct[i]);
+                }
+            }
+            if (LoginPageActivity.mGlobalInventories != null)
+            {
+                this.mInventoryAdapter = new HomeAdapter(LoginPageActivity.mGlobalInventories,mProductByUser, LoginPageActivity.mGlobalStorages, MainActivity.StaticActiveLocationClass, this.Activity);
+                this.mInventoryAdapter.ItemClick += OnInventoryClick;
+                this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
+            }
         }
         private void OnInventoryClick(object sender, int e)
         {
@@ -177,21 +172,14 @@ namespace ShopDiaryApp.Fragments
             {
                 if (LoginPageActivity.mGlobalInventories[i].ProductId == mHomeSelectedProduct.Id)
                 {
+                    
                     mInventoriesByProduct.Add(LoginPageActivity.mGlobalInventories[i]);
                 }
             }
             ReplaceFragment(new HomeStoragesFragment(), mHomeSelectedProduct.Name.ToString());
         }
 
-        private void UpgradeProgress()
-        {
-            while (progressvalue < 100)
-            {
-                progressvalue += 10;
-                mProgressBar.Progress = progressvalue;
-                Thread.Sleep(300);
-            }
-        }
+
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             FragmentTransaction mFragmentTransaction;

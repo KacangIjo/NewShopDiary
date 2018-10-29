@@ -109,30 +109,30 @@ namespace ShopDiaryApp.Fragments
                 Toast.MakeText(this.Activity, "You searched: " + e.Query, ToastLength.Short).Show();
                 e.Handled = true;
             };
-            MenuItemCompat.SetOnActionExpandListener(searchItem, new SearchViewExpandListener(mCategoryAdapter));
+            //MenuItemCompat.SetOnActionExpandListener(searchItem, new SearchViewExpandListener(mCategoryAdapter));
 
         }
 
-        private class SearchViewExpandListener : Java.Lang.Object, MenuItemCompat.IOnActionExpandListener
-        {
-            private readonly IFilterable _adapter;
+        //private class SearchViewExpandListener : Java.Lang.Object, MenuItemCompat.IOnActionExpandListener
+        //{
+        //    private readonly IFilterable _adapter;
 
-            public SearchViewExpandListener(IFilterable adapter)
-            {
-                _adapter = adapter;
-            }
+        //    public SearchViewExpandListener(IFilterable adapter)
+        //    {
+        //        _adapter = adapter;
+        //    }
 
-            public bool OnMenuItemActionCollapse(IMenuItem item)
-            {
-                _adapter.Filter.InvokeFilter("");
-                return true;
-            }
+        //    public bool OnMenuItemActionCollapse(IMenuItem item)
+        //    {
+        //        _adapter.Filter.InvokeFilter("");
+        //        return true;
+        //    }
 
-            public bool OnMenuItemActionExpand(IMenuItem item)
-            {
-                return true;
-            }
-        }
+        //    public bool OnMenuItemActionExpand(IMenuItem item)
+        //    {
+        //        return true;
+        //    }
+        //}
 
         public void ReplaceFragment(Fragment fragment, string tag)
         {

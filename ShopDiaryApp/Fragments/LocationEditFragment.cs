@@ -111,6 +111,7 @@ namespace ShopDiaryApp.Fragments
             List<UserLocationViewModel> mSharedUserByLocation = await userLocationDataService.GetAll();
             int test=mSharedUserByLocation.Count;
             List<UserLocationViewModel> mTempUserLocation = new List<UserLocationViewModel>();
+            List<UserDataViewModel> mUserData = LoginPageActivity.mGlobalUserDatas;
             for (int i = 0; mSharedUserByLocation.Count > i; i++)
             {
                 if(mSharedUserByLocation[i].LocationId==MainActivity.StaticActiveLocationClass.Id)
@@ -120,7 +121,7 @@ namespace ShopDiaryApp.Fragments
             }
             if (mTempUserLocation != null)
             {
-                userLocationAdapter = new UserLocationRecyclerAdapter(mTempUserLocation, this.Activity);
+                userLocationAdapter = new UserLocationRecyclerAdapter(mTempUserLocation,mUserData, this.Activity);
                 userLocationAdapter.ItemClick += OnLocationClicked;
                 mListViewSharedLocation.SetAdapter(this.userLocationAdapter);
             }

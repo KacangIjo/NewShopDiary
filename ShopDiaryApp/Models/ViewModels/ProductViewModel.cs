@@ -8,7 +8,7 @@ namespace ShopDiaryApp.Models.ViewModels
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string BarcodeId { get; set; }
-
+        public string AddedUserId { get; set; }
         public Guid CategoryId { get; set; }
 
 
@@ -19,7 +19,8 @@ namespace ShopDiaryApp.Models.ViewModels
                 Id = (Id == Guid.Empty) ? Guid.NewGuid() : Id,
                 Name = Name,
                 BarcodeId = BarcodeId,
-                CategoryId = CategoryId
+                CategoryId = CategoryId,
+                AddedUserId=AddedUserId
                
             };
         }
@@ -34,6 +35,7 @@ namespace ShopDiaryApp.Models.ViewModels
             this.Name = p.Name;
             this.BarcodeId = p.BarcodeId;
             this.CategoryId = p.CategoryId;
+            this.AddedUserId = p.AddedUserId;
 
 
         }

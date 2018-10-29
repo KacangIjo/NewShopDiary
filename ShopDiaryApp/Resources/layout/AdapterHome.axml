@@ -56,7 +56,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="match_parent"
 				android:width="55dp"
-				android:background="@android:color/holo_orange_light"
+				android:background="#ffffbb33"
 				android:gravity="center"
 				android:layout_marginRight="2dp" />
 			<TextView

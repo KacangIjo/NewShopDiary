@@ -41,6 +41,7 @@ namespace ShopDiaryApp
         public static StorageViewModel StaticStorageClass = new StorageViewModel();
         private TextView mUsernameInfo;
 
+        private bool _canClose = true;
 
         // drawer
         DrawerLayout drawerLayout;
@@ -193,8 +194,26 @@ namespace ShopDiaryApp
         #endregion
 
 
+        public override void OnBackPressed()
+        {
+            if (SupportActionBar.Title == "Home")
+            {
+                Android.App.FragmentTransaction transaction = FragmentManager.BeginTransaction();
+                DialogFragmentLogout dialogLocation = new DialogFragmentLogout();
+                dialogLocation.Show(transaction, "dialogue fragment");
+            }
+            else
+            {
+                base.OnBackPressed();
+            }
+            
+            // This prevents a user from being able to hit the back button and leave the login page.
+            
+           
+            
+        }
 
-        
+
     }
 
 }

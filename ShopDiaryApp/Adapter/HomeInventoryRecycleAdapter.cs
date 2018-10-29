@@ -14,13 +14,13 @@ namespace ShopDiaryApp.Adapter
     public class HomeInventoryRecycleAdapter : RecyclerView.Adapter
     {
         private readonly Activity mActivity;
-        private readonly List<ProductViewModel> mProducts;
+        private readonly ProductViewModel mSelectedProduct;
         private readonly List<InventoryViewModel> mInventories;
         private int mSelectedPosition = -1;
 
-        public HomeInventoryRecycleAdapter(List<InventoryViewModel> inventories, List<ProductViewModel> products, Activity activity)
+        public HomeInventoryRecycleAdapter(List<InventoryViewModel> inventories, ProductViewModel products, Activity activity)
         {
-            this.mProducts = products;
+            this.mSelectedProduct = products;
             this.mInventories = inventories;
             this.mActivity = activity;
         }
@@ -45,15 +45,13 @@ namespace ShopDiaryApp.Adapter
                 if (vh != null)
                 {
                     var inv = this.mInventories[position];
-                    int i;
-                    for (i = 0; i < mProducts.Count(); i++)
+                    if (inv.ProductId == mSelectedProduct.Id)
                     {
-                        if (inv.ProductId == mProducts[i].Id)
-                        {
-                            vh.ItemName.Text = mProducts[i].Name;
-                        }
+                        vh.ItemName.Text = mSelectedProduct.Name.ToString();
+                        vh.ItemExpDate.Text = inv.ExpirationDate.ToString();
+                        vh.ItemStatus.Text = inv.ExpirationDate.ToString();
                     }
-                    vh.ItemExpDate.Text = inv.ExpirationDate.ToString();
+                  
                     vh.ItemView.Selected = (mSelectedPosition == position);
                 }
             }
@@ -61,7 +59,7 @@ namespace ShopDiaryApp.Adapter
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            var v = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.AdapterListHome, parent, false);
+            var v = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.AdapterHomeInventories, parent, false);
             var vh = new ViewHolder(v, this.OnClick);
             return vh;
         }
@@ -76,9 +74,9 @@ namespace ShopDiaryApp.Adapter
             public ViewHolder(View itemView, Action<int> listener)
                 : base(itemView)
             {
-                this.ItemName = itemView.FindViewById<TextView>(Resource.Id.textViewAdapterHomeInventoriesName);
-                this.ItemStatus = itemView.FindViewById<TextView>(Resource.Id.textViewAdapterHomeInventoriesStatus);
-                this.ItemExpDate = itemView.FindViewById<TextView>(Resource.Id.textViewAdapterHomeInventoriesExpDate);
+                this.ItemName = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterItemName);
+                this.ItemExpDate = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterExpDate);
+                this.ItemStatus = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterExpStatus);
 
                 itemView.Click += (sender, e) => listener(this.LayoutPosition);
             }

@@ -80,20 +80,19 @@ namespace ShopDiaryApp.Fragments
             {
 
                 mStoragesAdapter = new StoragesRecycleAdapter(mStorages, this.Activity);
-                mStoragesAdapter.ItemClick += OnLocationClicked;
+                mStoragesAdapter.ItemClick += OnStorageClicked;
                 mListViewStorage.SetAdapter(this.mStoragesAdapter);
             }
 
         }
-        private void OnLocationClicked(object sender, int e)
+        private void OnStorageClicked(object sender, int e)
         {
             mSelectedStorage = e;
             mSelectedStorageClass = mStorages[e];
             //mTextSelectedLocation.Text = mLocations[e].Name;
-            MainActivity.StaticStorageClass.Id = mStorages[e].Id;
-            MainActivity.StaticStorageClass.Name = mStorages[e].Name;
-            MainActivity.StaticStorageClass.Area = mStorages[e].Area;
-            MainActivity.StaticStorageClass.Description = mStorages[e].Description;
+            MainActivity.StaticStorageClass = mStorages[e];
+            ReplaceFragment(new InventoriesFragment(), mStorages[e].Name.ToString());
+
         }
         public void ReplaceFragment(Fragment fragment, string tag)
         {

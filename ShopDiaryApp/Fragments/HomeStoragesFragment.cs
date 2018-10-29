@@ -56,7 +56,7 @@ namespace ShopDiaryApp.Fragments
             return view;
         }
 
-        private async void LoadLocationData()
+        private void LoadLocationData()
         {
 
             List<StorageViewModel> mStoragesByUser = LoginPageActivity.mGlobalStorages;
@@ -96,12 +96,7 @@ namespace ShopDiaryApp.Fragments
         {
             mSelectedStorage = e;
             mSelectedStorageClass = mFilteredStorage[e];
-            //MainActivity.StaticActiveLocationClass = mLocations[e];
-            ////mTextSelectedLocation.Text = mLocations[e].Name;
-            //MainActivity.StaticLocationClass.Id = mLocations[e].Id;
-            //MainActivity.StaticLocationClass.Name = mLocations[e].Name;
-            //MainActivity.StaticLocationClass.Address= mLocations[e].Address;
-            //MainActivity.StaticLocationClass.Description = mLocations[e].Description;
+            ReplaceFragment(new HomeInventoriesFragment(), mSelectedStorageClass.Name.ToString());
         }
 
 
