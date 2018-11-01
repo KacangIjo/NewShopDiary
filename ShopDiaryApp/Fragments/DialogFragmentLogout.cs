@@ -25,9 +25,10 @@ namespace ShopDiaryApp.Fragments
         {
             AlertDialog.Builder alert = new AlertDialog.Builder(Activity);
             alert.SetTitle("Logout");
-            alert.SetMessage("Are You Sure Want To LogOut?");
+            alert.SetMessage("Are you sure want to logout?");
             alert.SetPositiveButton("Logout", (senderAlert, args) => {
-                Toast.MakeText(Activity, "Deleted!", ToastLength.Short).Show();
+                var intent = new Intent(this.Activity, typeof(LoginPageActivity));
+                this.StartActivity(intent);
             });
 
             alert.SetNegativeButton("Cancel", (senderAlert, args) => {

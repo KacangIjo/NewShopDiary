@@ -75,7 +75,7 @@ namespace ShopDiaryApp
             mPassword = FindViewById<EditText>(Resource.Id.editTextLoginPagePassword);
             mProgressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
             mPassword.Text = "Ganteng@123";
-            mEmail.Text = "balabalarebus@gmail.com";
+            mEmail.Text = "priambododo@gmail.com";
             DateTime test = System.DateTime.Now;
 
             // Button Function
@@ -119,7 +119,7 @@ namespace ShopDiaryApp
         }
         private async void LoadData()
         {
-            List<InventoryViewModel> tempInventories = await mInventoryDataService.GetAll();
+            
             mGlobalLocations = await mLocationDataService.GetAll();
             mGlobalProducts = await mProductDataService.GetAll();
             mGlobalStorages = await mStorageDataService.GetAll();
@@ -127,7 +127,9 @@ namespace ShopDiaryApp
             mGlobalUserLocs = await mUserLocationDataService.GetAll();
             mGlobalUserDatas = await mUserDataDataService.GetAll();
             mGlobalInventories = new List<InventoryViewModel>();
-            for(int i = 0; i < tempInventories.Count(); i++)
+
+            List<InventoryViewModel> tempInventories = await mInventoryDataService.GetAll();
+            for (int i = 0; i < tempInventories.Count(); i++)
             {
                 for (int j = 0; j < mGlobalProducts.Count(); j++)
                 {

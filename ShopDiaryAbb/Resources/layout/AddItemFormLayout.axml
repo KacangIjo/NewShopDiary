@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp">
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:gravity="center_vertical">
+				<TextView
+					android:text="Barcode ID"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="120dp"
+					android:layout_height="wrap_content"
+					android:gravity="center_vertical" />
+				<TextView
+					android:text=":"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="center_vertical" />
+				<TextView
+					android:text="-"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/textViewAddBarcodeId"
+					android:gravity="center_vertical"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp" />
+			</LinearLayout>
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:gravity="center_vertical">
+				<TextView
+					android:text="Name"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="120dp"
+					android:layout_height="wrap_content"
+					android:gravity="center_vertical" />
+				<TextView
+					android:text=":"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="center_vertical" />
+				<AutoCompleteTextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/editTextAddName"
+					android:gravity="center_vertical"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp" />
+			</LinearLayout>
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_marginTop="10dp"
+				android:layout_gravity="center_vertical"
+				android:gravity="center_vertical"
+				android:foregroundGravity="center_vertical">
+				<TextView
+					android:text="Category"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="120dp"
+					android:layout_height="wrap_content"
+					android:gravity="center_vertical" />
+				<TextView
+					android:text=":"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="center_vertical" />
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/spinnerAddItemCategory"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:prompt="@string/spinnercategory" />
+			</LinearLayout>
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_marginTop="10dp"
+				android:foregroundGravity="center_vertical"
+				android:gravity="center_vertical">
+				<TextView
+					android:text="Storage"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="120dp"
+					android:layout_height="wrap_content" />
+				<TextView
+					android:text=":"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/spinnerAddItemStorage"
+					android:layout_marginRight="10dp"
+					android:layout_marginLeft="10dp"
+					android:autofillHints="Select Storage" />
+			</LinearLayout>
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_marginTop="10dp"
+				android:gravity="center_vertical"
+				android:clickable="true">
+				<TextView
+					android:text="Expired Date"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="120dp"
+					android:layout_height="match_parent"
+					android:gravity="center_vertical" />
+				<TextView
+					android:text=":"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:gravity="center_vertical"/>
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextAddItemExpDate"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:clickable="true"
+                    android:contextClickable="true"
+                    android:focusable="false" />
+			</LinearLayout>
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_marginTop="10dp"
+				android:gravity="center_vertical">
+				<TextView
+					android:text="Price"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="120dp"
+					android:layout_height="wrap_content"
+					android:gravity="center_vertical" />
+				<TextView
+					android:text=":"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="center_vertical" />
+				<EditText
+					android:inputType="numberDecimal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/editTextAddItemPrice"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp" />
+			</LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:id="@+id/toolbarWithoutScanBottom"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:background="@color/primary">
+            <ImageButton
+                android:src="@drawable/barcode"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/imageButtonAddScan2"
+                android:layout_margin="2dp"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+            <ImageButton
+                android:src="@drawable/addorange"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/buttonAddAddToInventory"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:layout_margin="2dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

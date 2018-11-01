@@ -10,6 +10,7 @@ using ShopDiaryApp.Models.ViewModels;
 using Java.Lang;
 using System.Linq;
 using ShopDiaryApp.Fragments;
+using Android.Graphics.Drawables;
 
 namespace ShopDiaryApp.Adapter
 {
@@ -19,6 +20,7 @@ namespace ShopDiaryApp.Adapter
         private List<LocationViewModel> mLocations;
         private List<LocationViewModel> mFilteredLocations;
         private int mSelectedPosition = -1;
+        
 
         public LocationsRecycleAdapter(List<LocationViewModel> locations, Activity activity)
         {
@@ -55,8 +57,7 @@ namespace ShopDiaryApp.Adapter
                     vh.LocationAddress.Text = location.Address;
                     vh.LocationDescription.Text = location.Description;
                     vh.ItemView.Selected = (mSelectedPosition == position);
-
-
+                    
 
                 }
             }
@@ -71,6 +72,7 @@ namespace ShopDiaryApp.Adapter
 
         public class ViewHolder : RecyclerView.ViewHolder
         {
+            private bool isClicked = false;
             public ViewHolder(IntPtr javaReference, JniHandleOwnership transfer)
                 : base(javaReference, transfer)
             {
@@ -82,13 +84,18 @@ namespace ShopDiaryApp.Adapter
                 this.LocationName = itemView.FindViewById<TextView>(Resource.Id.textviewLocationsAdapterName);
                 this.LocationAddress = itemView.FindViewById<TextView>(Resource.Id.textviewLocationAdapterAddress);
                 this.LocationDescription = itemView.FindViewById<TextView>(Resource.Id.textviewLocationAdapterDescription);
-
-                itemView.Click += (sender, e) => listener(this.LayoutPosition);
+                this.AdapterLocation= itemView.FindViewById<LinearLayout>(Resource.Id.linearLayoutLocationsAdapter);
+               
+                itemView.Click += (sender, e) => {
+                   AdapterLocation.SetBackgroundColor(Android.Graphics.Color.Orange);
+                    listener(this.LayoutPosition);
+                };
             }
 
             public TextView LocationName { get; }
             public TextView LocationAddress { get; }
             public TextView LocationDescription { get; }
+            public LinearLayout AdapterLocation { get; set; }
 
         }
         private class LocationFilter : Filter

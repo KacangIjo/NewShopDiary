@@ -14,8 +14,6 @@ namespace ShopDiaryApp.Adapter
     public class InventoriesRecyclerAdapter : RecyclerView.Adapter
     {
         private readonly Activity mActivity;
-        private readonly StorageViewModel mSelectedStorage;
-       
         private readonly List<InventoryViewModel> mInventories;
         private int mSelectedPosition = -1;
 
@@ -48,9 +46,16 @@ namespace ShopDiaryApp.Adapter
                     var inv = this.mInventories[position];
                     vh.ItemName.Text = inv.ItemName.ToString();
                     vh.ItemExpDate.Text = inv.ExpirationDate.ToString();
-                    vh.ItemStatus.Text = inv.ExpirationDate.ToString();
-                    
-                  
+                    if(inv.ExpirationDate<DateTime.Now)
+                    {
+                        vh.ItemStatus.SetBackgroundColor(Android.Graphics.Color.Red);
+                        vh.ItemStatus.Text = "Expired";
+                    }
+                    if (inv.ExpirationDate > DateTime.Now)
+                    {
+                        vh.ItemStatus.SetBackgroundColor(Android.Graphics.Color.Green);
+                        vh.ItemStatus.Text = "Good";
+                    }
                     vh.ItemView.Selected = (mSelectedPosition == position);
                 }
             }

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/main_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+			<TextView
+				android:text="Location Detail"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/textviewShopListDetailTitle"
+				android:layout_marginTop="10dp"
+				android:gravity="center" />
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="match_parent"
+				android:layout_height="152.3dp"
+				android:id="@+id/linearLayout1"
+				android:layout_marginTop="20dp"
+				android:layout_marginRight="20dp"
+				android:layout_marginLeft="20dp"
+				android:layout_marginBottom="0.0dp">
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:id="@+id/linearLayout2">
+					<TextView
+						android:text="Name"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:width="100dp"
+						android:gravity="left|center" />
+					<TextView
+						android:text=":"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:layout_height="40dp"
+						android:gravity="top" />
+					<android.support.design.widget.TextInputEditText
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/editTextShopListDetailName" />
+				</LinearLayout>
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:id="@+id/linearLayout3"
+					android:layout_marginTop="5dp">
+					<TextView
+						android:text="Market"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:width="100dp"
+						android:gravity="center|left" />
+					<TextView
+						android:text=":"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:id="@+id/textView5"
+						android:gravity="center" />
+					<android.support.design.widget.TextInputEditText
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/editTextShopListDetailStore" />
+				</LinearLayout>
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="45dp"
+					android:id="@+id/linearLayout4"
+					android:layout_marginTop="5dp"
+					android:gravity="top">
+					<TextView
+						android:text="Description"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:width="100dp"
+						android:gravity="center|left" />
+					<TextView
+						android:text=":"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:id="@+id/textView7"
+						android:gravity="center" />
+					<EditText
+						android:inputType="textMultiLine"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/editTextShopListDetailDescription" />
+				</LinearLayout>
+			</LinearLayout>
+			<TextView
+				android:text="Shop List's Item"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:gravity="center" />
+			<android.support.v7.widget.RecyclerView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/recyclerViewShopList"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+				android:layout_marginTop="20dp" />
+            <ImageView
+                android:src="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBarLocationDetail"
+                android:layout_marginTop="20dp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#ff03a9f4"
+                android:gravity="center">
+				<ImageButton
+					android:src="@drawable/addorange"
+					android:layout_width="45dp"
+					android:layout_height="match_parent"
+					android:id="@+id/imageButtonShopListDetailAddItem"
+					android:maxHeight="15dp"
+					android:scaleType="fitCenter"
+					android:hapticFeedbackEnabled="false"
+					android:background="@android:color/transparent"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					android:layout_margin="3dp" />
+				<ImageButton
+					android:src="@drawable/savebutton"
+					android:layout_width="45dp"
+					android:layout_height="match_parent"
+					android:id="@+id/imageButtonShopListDetailSave"
+					android:maxHeight="15dp"
+					android:scaleType="fitCenter"
+					android:hapticFeedbackEnabled="false"
+					android:background="@android:color/transparent"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					android:layout_margin="3dp" />
+				<ImageButton
+					android:src="@drawable/trashpng"
+					android:layout_width="45dp"
+					android:layout_height="match_parent"
+					android:id="@+id/imageButtonLocationShopListDelete"
+					android:maxHeight="15dp"
+					android:scaleType="fitCenter"
+					android:hapticFeedbackEnabled="false"
+					android:background="@android:color/transparent"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					android:layout_margin="3dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

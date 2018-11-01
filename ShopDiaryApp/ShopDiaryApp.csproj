@@ -143,6 +143,7 @@
     <Compile Include="Adapter\InventoriesRecyclerAdapter.cs" />
     <Compile Include="Adapter\HomeStorageAdapter.cs" />
     <Compile Include="Adapter\HomeAdapter.cs" />
+    <Compile Include="Adapter\InventoryLogsRecyclerAdapter.cs" />
     <Compile Include="Adapter\UserLocationRecyclerAdapter.cs" />
     <Compile Include="Adapter\ProductRecyclerAdapter.cs" />
     <Compile Include="Adapter\HomeInventoryRecycleAdapter.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Fragments\DialogFragmentLogout.cs" />
     <Compile Include="Fragments\HomeInventoriesFragment.cs" />
     <Compile Include="Fragments\HomeStoragesFragment.cs" />
+    <Compile Include="Fragments\InventoryLogsFragment.cs" />
     <Compile Include="Fragments\StorageEditFragment.cs" />
     <Compile Include="Fragments\InventoriesFragment.cs" />
     <Compile Include="Fragments\CategoryAddFragment.cs" />
@@ -176,6 +178,8 @@
     <Compile Include="Fragments\RunOutItemsFragment.cs" />
     <Compile Include="Fragments\StorageAddFragment.cs" />
     <Compile Include="Fragments\ProductsFragment.cs" />
+    <Compile Include="Fragments\ShopListFragment.cs" />
+    <Compile Include="Fragments\SummaryFragment.cs" />
     <Compile Include="Fragments\StoragesFragment.cs" />
     <Compile Include="Helper\LoginHelper.cs" />
     <Compile Include="Helper\UrlHelper.cs" />
@@ -201,6 +205,7 @@
     <Compile Include="Services\AccountDataService.cs" />
     <Compile Include="Services\CategoryDataService.cs" />
     <Compile Include="Services\ConsumeDataService.cs" />
+    <Compile Include="Services\InventoryLogDataService.cs" />
     <Compile Include="Services\InventoryDataService.cs" />
     <Compile Include="Services\LocationDataService.cs" />
     <Compile Include="Services\ProductDataService.cs" />
@@ -424,6 +429,15 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\row_selector.xml" />
+    <AndroidResource Include="Resources\layout\ManageInvetoriesLogLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AdapterInventoriesLog.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\NotificationLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

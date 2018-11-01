@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/main_content"
+        android:background="@android:color/background_light">
+        <SurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="518.7dp"
+            android:id="@+id/cameraPreview" />
+        <TextView
+            android:text="Scan Your Barcode"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textScannedBarcode"
+            android:gravity="center"
+            android:layout_marginTop="10dp" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:id="@+id/linearMenuQuick"
+            android:layout_gravity="bottom"
+            android:background="@color/primary"
+            android:gravity="center">
+            <Button
+                android:text="Without Scan"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonAddWithoutScan1" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

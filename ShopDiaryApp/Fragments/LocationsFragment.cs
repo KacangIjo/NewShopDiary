@@ -82,15 +82,17 @@ namespace ShopDiaryApp.Fragments
                 }
                 else
                 {
+
                     for (int j = 0; j < mSharedLocation.Count; j++)
                     {
-                        if (mSharedLocation[i].RegisteredUser == LoginPageActivity.StaticUserClass.ID)
+                        if (mSharedLocation[j].RegisteredUser == LoginPageActivity.StaticUserClass.ID)
                         {
                             mLocationsByUser[i].IsSharedLocation = true;
                             mLocations.Add(mLocationsByUser[i]);
-                            
+
                         }
                     }
+
                 }
             }
             

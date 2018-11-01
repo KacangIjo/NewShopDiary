@@ -18,6 +18,7 @@ using ShopDiaryApp.Adapter;
 using Android.Support.V7.Widget;
 using System;
 using ShopDiaryApp.FragmentsScanner;
+using Android.Content;
 
 namespace ShopDiaryApp
 {
@@ -39,6 +40,9 @@ namespace ShopDiaryApp
         public static UserLocationViewModel StaticUserLocationClass = new UserLocationViewModel();
         public static LocationViewModel StaticLocationClass = new LocationViewModel();
         public static StorageViewModel StaticStorageClass = new StorageViewModel();
+        public static InventoryViewModel StaticInventoryClass = new InventoryViewModel();
+
+        private Android.Support.V4.App.FragmentTransaction mFragmentTransaction;
         private TextView mUsernameInfo;
 
         private bool _canClose = true;
@@ -47,6 +51,10 @@ namespace ShopDiaryApp
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         IMenuItem previousItem;
+
+        static readonly int NOTIFICATION_ID = 1000;
+        static readonly string CHANNEL_ID = "location_notification";
+        internal static readonly string COUNT_KEY = "count";
 
         #endregion
 
@@ -60,7 +68,7 @@ namespace ShopDiaryApp
             
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.main);
-            
+            SendNotification();
             #region toolbar and navigation bar
             #region TOP TOOLBAR
             //TopToolbar
@@ -116,6 +124,14 @@ namespace ShopDiaryApp
                         SupportActionBar.Title = "Manage Products";
                         ListItemClicked(5);
                         break;
+                    case Resource.Id.nav_home_shoplist:
+                        SupportActionBar.Title = "Manage ShopList";
+                        ListItemClicked(6);
+                        break;
+                    case Resource.Id.nav_home_summary:
+                        SupportActionBar.Title = " Summary";
+                        ListItemClicked(7);
+                        break;
                 }
 
 
@@ -134,6 +150,9 @@ namespace ShopDiaryApp
 
         #region navigation bar function and menu toolbar
         int oldPosition = -1;
+
+      
+
         private void ListItemClicked(int position)
         {
             //this way we don't load twice, but you might want to modify this a bit.
@@ -162,6 +181,12 @@ namespace ShopDiaryApp
                     break;
                 case 5:
                     fragment = ProductsFragment.NewInstance();
+                    break;
+                case 6:
+                    fragment = ShopListFragment.NewInstance();
+                    break;
+                case 7:
+                    fragment = SummaryFragment.NewInstance();
                     break;
 
             }
@@ -204,13 +229,36 @@ namespace ShopDiaryApp
             }
             else
             {
-                base.OnBackPressed();
+                SupportFragmentManager.BeginTransaction()
+               .Replace(Resource.Id.content_frame, HomeFragment.NewInstance())
+               .Commit();
             }
-            
-            // This prevents a user from being able to hit the back button and leave the login page.
-            
+        }
+
+        public void SendNotification()
+        {
            
+
+            // When the user clicks the notification, SecondActivity will start up.
+            var resultIntent = new Intent(this, typeof(MainActivity));
             
+
+            // Construct a back stack for cross-task navigation:
+           
+
+            // Build the notification:
+            var builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                          .SetAutoCancel(true) // Dismiss the notification from the notification area when the user clicks on it
+                          
+                          .SetContentTitle("ShopDiaryApp") // Set the title
+                          .SetSmallIcon(Resource.Drawable.Icon) // This is the icon to display
+                          .SetContentText("You Have Expired Items"); // the message to display.
+
+            // Finally, publish the notification:
+            var notificationManager = NotificationManagerCompat.From(this);
+            notificationManager.Notify(NOTIFICATION_ID, builder.Build());
+
+
         }
 
 

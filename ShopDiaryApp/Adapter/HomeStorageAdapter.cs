@@ -17,18 +17,16 @@ namespace ShopDiaryApp.Adapter
         
         private readonly List<InventoryViewModel> mInventories;
         private readonly List<StorageViewModel> mStorages;
-        private readonly InventoryViewModel mSelectedInventory;
-        private readonly ProductViewModel mSelectedProduct;
 
         private int mSelectedPosition = -1;
 
         public HomeStorageAdapter(List<InventoryViewModel> inventories, List<StorageViewModel> storages, ProductViewModel selectedproduct, Activity activity)
         {
-            this.mSelectedProduct = selectedproduct;
-            this.mInventories = inventories;
-            this.mStorages = storages.ToList();
+           
+            mInventories = inventories;
+            mStorages = storages.ToList();
             
-            this.mActivity = activity;
+            mActivity = activity;
         }
 
         public override int ItemCount => this.mStorages.Count;

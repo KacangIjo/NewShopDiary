@@ -89,8 +89,13 @@ namespace ShopDiaryApp.Fragments
             mSpinnerActiveLocation = view.FindViewById<Spinner>(Resource.Id.spinnerHomeActiveLocation);
             mListViewInventory = view.FindViewById<RecyclerView>(Resource.Id.recyclerHomePage);
             mListViewInventory.SetLayoutManager(new LinearLayoutManager(Activity));
-           
-          
+            mRunOutCounter = view.FindViewById<TextView>(Resource.Id.textViewMainRunningOutCounter);
+            mExpCounter = view.FindViewById<TextView>(Resource.Id.textViewMainExpiredCounter);
+            mStockCounter = view.FindViewById<TextView>(Resource.Id.textViewMainStockCounter);
+            mRunOutCounter.Text = "6";
+            mStockCounter.Text = "27";
+            mExpCounter.Text = "4";
+        
             
             LoadInventoryData();
             #region button shortcut function
@@ -188,6 +193,6 @@ namespace ShopDiaryApp.Fragments
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }
-
+       
     }
 }
