@@ -53,10 +53,10 @@ namespace ShopDiaryAbb.Fragments
             mStorageArea = view.FindViewById<EditText>(Resource.Id.editTextStoragesDetailArea);
             mStorageDescription = view.FindViewById<EditText>(Resource.Id.editTextStoragesDetailDescription);
             //Set Text Collumn
-            mStorageTitle.Text = MainActivity.StaticStorageClass.Name.ToString();
-            mStorageName.Text = MainActivity.StaticStorageClass.Name.ToString();
-            mStorageArea.Text = MainActivity.StaticStorageClass.Area.ToString();
-            mStorageDescription.Text = MainActivity.StaticStorageClass.Description.ToString();
+            mStorageTitle.Text = LoginPageActivity.StaticStorageClass.Name.ToString();
+            mStorageName.Text = LoginPageActivity.StaticStorageClass.Name.ToString();
+            mStorageArea.Text = LoginPageActivity.StaticStorageClass.Area.ToString();
+            mStorageDescription.Text = LoginPageActivity.StaticStorageClass.Description.ToString();
             mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarAddLocation);
             mButtonSave.Click += (object sender, EventArgs args) =>
             {

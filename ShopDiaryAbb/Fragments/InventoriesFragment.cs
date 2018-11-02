@@ -5,9 +5,9 @@ using Android.Views;
 using Android.Widget;
 using ShopDiaryAbb.Adapter;
 using ShopDiaryAbb.Class;
+using ShopDiaryAbb.Models;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
-using ShopDiaryProject.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,7 +81,7 @@ namespace ShopDiaryAbb.Fragments
         {
             List<InventoryViewModel> mInventories = LoginPageActivity.mGlobalInventories;
 
-            StorageViewModel SelectedStorage = MainActivity.StaticStorageClass;     
+            StorageViewModel SelectedStorage = LoginPageActivity.StaticStorageClass;     
 
             mFilteredInventories = new List<InventoryViewModel>();
             for (int i = 0; i < mInventories.Count; i++)
@@ -107,7 +107,7 @@ namespace ShopDiaryAbb.Fragments
         private void OnInventoryClicked(object sender, int e)
         {
             mSelectedInventoryClass = mFilteredInventories[e];
-            MainActivity.StaticInventoryClass = mSelectedInventoryClass;
+            LoginPageActivity.StaticInventoryClass = mSelectedInventoryClass;
         }
         private void OnRemoveClicked(object sender, EventArgs e)
         {

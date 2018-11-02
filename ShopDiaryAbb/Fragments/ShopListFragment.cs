@@ -77,7 +77,7 @@ namespace ShopDiaryAbb.Fragments
             mSelectedStorage = e;
             mSelectedStorageClass = mStorages[e];
             //mTextSelectedLocation.Text = mLocations[e].Name;
-            MainActivity.StaticStorageClass = mStorages[e];
+            LoginPageActivity.StaticStorageClass = mStorages[e];
             ReplaceFragment(new InventoriesFragment(), mStorages[e].Name.ToString());
 
         }

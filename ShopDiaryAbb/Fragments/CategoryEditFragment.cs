@@ -50,9 +50,9 @@ namespace ShopDiaryAbb.Fragments
             //mCategoryTitle = view.FindViewById<TextView>(Resource.Id.textviewCategoryDetailTitle);
             //mCategoryName = view.FindViewById<EditText>(Resource.Id.editTextCategoryDetailName);
             mCategoryDescription = view.FindViewById<EditText>(Resource.Id.editTextLocationDetailDescription);
-            mCategoryTitle.Text = MainActivity.StaticLocationClass.Name.ToString();
-            mCategoryName.Text = MainActivity.StaticLocationClass.Name.ToString();
-            mCategoryDescription.Text = MainActivity.StaticLocationClass.Description.ToString();
+            mCategoryTitle.Text = LoginPageActivity.StaticLocationClass.Name.ToString();
+            mCategoryName.Text = LoginPageActivity.StaticLocationClass.Name.ToString();
+            mCategoryDescription.Text = LoginPageActivity.StaticLocationClass.Description.ToString();
             mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarAddLocation);
             mButtonSave.Click += (object sender, EventArgs args) =>
             {

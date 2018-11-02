@@ -1,6 +1,4 @@
-﻿
-using ShopDiaryProject.Domain.Models;
-using System;
+﻿using System;
 
 namespace ShopDiaryAbb.Models.ViewModels
 {

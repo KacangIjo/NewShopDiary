@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Android.Views;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using System.Net.Http;
-using ShopDiaryAbb.API.Models;
 using ShopDiaryAbb.Helper;
-using System.Net.Http.Headers;
 using ShopDiaryAbb.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace ShopDiaryAbb.Services
 {

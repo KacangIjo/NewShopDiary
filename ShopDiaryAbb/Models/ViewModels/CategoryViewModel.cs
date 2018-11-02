@@ -1,5 +1,5 @@
 ﻿
-using ShopDiaryProject.Domain.Models;
+
 using System;
 
 namespace ShopDiaryAbb.Models.ViewModels

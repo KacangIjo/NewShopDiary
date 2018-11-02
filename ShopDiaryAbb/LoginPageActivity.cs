@@ -36,9 +36,11 @@ namespace ShopDiaryAbb
         private readonly UserDataDataService mUserDataDataService;
 
         public static Class.User StaticUserClass = new Class.User();
-        public static Class.Location StaticLocationClass = new Class.Location();
-        public static Class.Storage StaticStorageClass = new Class.Storage();
-        public static Class.UserLocation StaticUserLocationClass = new Class.UserLocation();
+        public static LocationViewModel StaticActiveLocationClass = new LocationViewModel();
+        public static UserLocationViewModel StaticUserLocationClass = new UserLocationViewModel();
+        public static LocationViewModel StaticLocationClass = new LocationViewModel();
+        public static StorageViewModel StaticStorageClass = new StorageViewModel();
+        public static InventoryViewModel StaticInventoryClass = new InventoryViewModel();
 
         public static List<InventoryViewModel> mGlobalInventories=new List<InventoryViewModel>();
         public static List<ProductViewModel> mGlobalProducts=new List<ProductViewModel>();

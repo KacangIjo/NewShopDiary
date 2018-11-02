@@ -4,9 +4,9 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using ShopDiaryAbb.Adapter;
+using ShopDiaryAbb.Models;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
-using ShopDiaryProject.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -60,10 +60,10 @@ namespace ShopDiaryAbb.Fragments
             mLocationName = view.FindViewById<EditText>(Resource.Id.editTextLocationDetailName);
             mLocationAddress = view.FindViewById<EditText>(Resource.Id.editTextLocationDetailAddress);
             mLocationDescription = view.FindViewById<EditText>(Resource.Id.editTextLocationDetailDescription);
-            mLocationTitle.Text = MainActivity.StaticLocationClass.Name.ToString();
-            mLocationName.Text = MainActivity.StaticLocationClass.Name.ToString();
-            mLocationAddress.Text = MainActivity.StaticLocationClass.Address.ToString();
-            mLocationDescription.Text = MainActivity.StaticLocationClass.Description.ToString();
+            mLocationTitle.Text = LoginPageActivity.StaticLocationClass.Name.ToString();
+            mLocationName.Text = LoginPageActivity.StaticLocationClass.Name.ToString();
+            mLocationAddress.Text = LoginPageActivity.StaticLocationClass.Address.ToString();
+            mLocationDescription.Text = LoginPageActivity.StaticLocationClass.Description.ToString();
             mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarAddLocation);
             mListViewSharedLocation = view.FindViewById<RecyclerView>(Resource.Id.recyclerViewLocationUser);
             mListViewSharedLocation.SetLayoutManager(new LinearLayoutManager(Activity));
@@ -114,7 +114,7 @@ namespace ShopDiaryAbb.Fragments
             List<UserDataViewModel> mUserData = LoginPageActivity.mGlobalUserDatas;
             for (int i = 0; mSharedUserByLocation.Count > i; i++)
             {
-                if(mSharedUserByLocation[i].LocationId==MainActivity.StaticActiveLocationClass.Id)
+                if(mSharedUserByLocation[i].LocationId== LoginPageActivity.StaticActiveLocationClass.Id)
                 {
                     mTempUserLocation.Add(mSharedUserByLocation[i]);
                 }
@@ -130,7 +130,7 @@ namespace ShopDiaryAbb.Fragments
         private void OnLocationClicked(object sender, int e)
         {
             mSelectedLocation = e;
-            MainActivity.StaticUserLocationClass = mUserLocations[e];
+            LoginPageActivity.StaticUserLocationClass = mUserLocations[e];
             
           
         }

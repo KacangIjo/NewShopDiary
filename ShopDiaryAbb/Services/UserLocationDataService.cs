@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
+
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
-using ShopDiaryProject.Domain.Models;
-using ShopDiaryAbb.Models.ViewModels;
+using ShopDiaryAbb.Models;
 using ShopDiaryAbb.Helper;
+using ShopDiaryAbb.Models.ViewModels;
 
 namespace ShopDiaryAbb.Services
 {

@@ -14,7 +14,6 @@ using Android.Widget;
 using ShopDiaryAbb.Adapter;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
-using ShopDiaryProject.Domain.Models;
 
 namespace ShopDiaryAbb.Fragments
 {
@@ -70,7 +69,7 @@ namespace ShopDiaryAbb.Fragments
         private void MButtonAdd_Click(object sender, EventArgs e)
         {
             mProgressBar.Visibility = Android.Views.ViewStates.Visible;
-            Storage newStorage = new Storage()
+            StorageViewModel newStorage = new StorageViewModel()
             {
                 Name = mStorageName.Text,
                 Area = mStorageArea.Text,
@@ -84,7 +83,7 @@ namespace ShopDiaryAbb.Fragments
             new Thread(new ThreadStart(delegate
             {
                 UpgradeProgress();
-                var isAdded = mStorageDataService.Add(newStorage);
+                var isAdded = mStorageDataService.Add(newStorage.ToModel());
 
                 if (isAdded)
                 {

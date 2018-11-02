@@ -110,9 +110,9 @@ namespace ShopDiaryAbb.Fragments
         {
             mSelectedLocation = e;
             mSelectedLocationClass = mLocations[e];
-            MainActivity.StaticActiveLocationClass = mLocations[e];
-           
-            MainActivity.StaticLocationClass = mLocations[e];
+            LoginPageActivity.StaticActiveLocationClass = mLocations[e];
+
+            LoginPageActivity.StaticLocationClass = mLocations[e];
         }
 
 

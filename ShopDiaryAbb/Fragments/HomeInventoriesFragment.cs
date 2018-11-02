@@ -63,7 +63,7 @@ namespace ShopDiaryAbb.Fragments
             List<InventoryViewModel> mInventories = HomeFragment.mInventoriesByProduct;
           
             StorageViewModel SelectedStorage = HomeStoragesFragment.mSelectedStorageClass;
-            LocationViewModel mSelectedStorage = MainActivity.StaticActiveLocationClass;
+            LocationViewModel mSelectedStorage = LoginPageActivity.StaticActiveLocationClass;
 
             ProductViewModel mSelectedProduct = HomeFragment.mHomeSelectedProduct;
 

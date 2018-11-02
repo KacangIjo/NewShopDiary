@@ -2,16 +2,11 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Android.Widget;
 using ShopDiaryAbb.Adapter;
 using ShopDiaryAbb.Class;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
-using ShopDiaryProject.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 
 namespace ShopDiaryAbb.Fragments
 {
@@ -67,7 +62,7 @@ namespace ShopDiaryAbb.Fragments
         {
             List<InventoryViewModel> mInventories = LoginPageActivity.mGlobalInventories;
             List<InventorylogViewModel> mInventoryLogs = await mInventoryLogDataService.GetAll();
-            StorageViewModel SelectedStorage = MainActivity.StaticStorageClass;     
+            StorageViewModel SelectedStorage = LoginPageActivity.StaticStorageClass;     
 
             mFilteredInventories = new List<InventoryViewModel>();
             for (int i = 0; i < mInventories.Count; i++)

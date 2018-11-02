@@ -10,8 +10,8 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
-using ShopDiaryProject.Domain.Models;
 
 namespace ShopDiaryAbb.Fragments
 {
@@ -59,7 +59,7 @@ namespace ShopDiaryAbb.Fragments
         private void MButtonAdd_Click(object sender, EventArgs e)
         {
             mProgressBar.Visibility = Android.Views.ViewStates.Visible;
-            Location newLoc = new Location()
+            LocationViewModel newLoc = new LocationViewModel()
             {
                 Name = mLocationName.Text,
                 Address=mLocationAddress.Text,
@@ -70,7 +70,7 @@ namespace ShopDiaryAbb.Fragments
             new Thread(new ThreadStart(delegate
             {
                
-                var isAdded = mLocationDataService.Add(newLoc);
+                var isAdded = mLocationDataService.Add(newLoc.ToModel());
 
                 if (isAdded)
                 {

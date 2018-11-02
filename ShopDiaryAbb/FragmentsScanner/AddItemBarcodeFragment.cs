@@ -11,8 +11,8 @@ using Android.Views;
 using Android.Support.V4.App;
 using ShopDiaryAbb.Adapter;
 using ShopDiaryAbb.Fragments;
-using ShopDiaryProject.Domain.Models;
 using ZXing.Mobile;
+using ShopDiaryAbb.Models;
 
 namespace ShopDiaryAbb.FragmentsScanner
 {
@@ -234,7 +234,7 @@ namespace ShopDiaryAbb.FragmentsScanner
             tempStorages = await mStorageDataService.GetAll();
             for (int i = 0; i<tempStorages.Count(); i++)
             {
-                if (tempStorages[i].LocationId == MainActivity.StaticActiveLocationClass.Id)
+                if (tempStorages[i].LocationId == LoginPageActivity.StaticActiveLocationClass.Id)
                 {
                     mStorages.Add(tempStorages[i]);
                 }

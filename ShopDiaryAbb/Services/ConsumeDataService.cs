@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
-using ShopDiaryProject.Domain.Models;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Helper;
+using ShopDiaryAbb.Models;
 
 namespace ShopDiaryAbb.Services
 {

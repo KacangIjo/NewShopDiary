@@ -5,9 +5,9 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
-using ShopDiaryAbb.API.Models.ViewModels;
+using ShopDiaryAbb.Models;
+using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
-using ShopDiaryProject.Domain.Models;
 
 namespace ShopDiaryAbb.Fragments
 {

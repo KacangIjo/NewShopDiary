@@ -90,9 +90,9 @@ namespace ShopDiaryAbb.Fragments
             mSelectedCategory = e;
             mSelectedCategoryClass = mCategories[e];
             //mTextSelectedLocation.Text = mLocations[e].Name;
-            MainActivity.StaticLocationClass.Id = mCategories[e].Id;
-            MainActivity.StaticLocationClass.Name = mCategories[e].Name;
-            MainActivity.StaticLocationClass.Description = mCategories[e].Description;
+            //LoginPageActivity.StaticLocationClass.Id = mCategories[e].Id;
+            //LoginPageActivity.StaticLocationClass.Name = mCategories[e].Name;
+            //LoginPageActivity.StaticLocationClass.Description = mCategories[e].Description;
         }
 
 
@@ -100,15 +100,15 @@ namespace ShopDiaryAbb.Fragments
         {
             //SearchMenu
             inflater.Inflate(Resource.Menu.nav_search, menu);
-            var searchItem = menu.FindItem(Resource.Id.action_search);
-            var provider = MenuItemCompat.GetActionView(searchItem);
-            mSearchView = provider.JavaCast<Android.Support.V7.Widget.SearchView>();
-            mSearchView.QueryTextChange += (s, e) => mCategoryAdapter.Filter.InvokeFilter(e.NewText);
-            mSearchView.QueryTextSubmit += (s, e) =>
-            {
-                Toast.MakeText(this.Activity, "You searched: " + e.Query, ToastLength.Short).Show();
-                e.Handled = true;
-            };
+            //var searchItem = menu.FindItem(Resource.Id.action_search);
+            //var provider = MenuItemCompat.GetActionView(searchItem);
+            //mSearchView = provider.JavaCast<Android.Support.V7.Widget.SearchView>();
+            //mSearchView.QueryTextChange += (s, e) => mCategoryAdapter.Filter.InvokeFilter(e.NewText);
+            //mSearchView.QueryTextSubmit += (s, e) =>
+            //{
+            //    Toast.MakeText(this.Activity, "You searched: " + e.Query, ToastLength.Short).Show();
+            //    e.Handled = true;
+            //};
             //MenuItemCompat.SetOnActionExpandListener(searchItem, new SearchViewExpandListener(mCategoryAdapter));
 
         }

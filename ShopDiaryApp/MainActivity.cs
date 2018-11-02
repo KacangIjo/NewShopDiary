@@ -34,13 +34,13 @@ namespace ShopDiaryApp
         private readonly CategoryDataService mCategoryDataService;
         private readonly ConsumeDataService mConsumeDataService;
 
-        
 
         public static LocationViewModel StaticActiveLocationClass = new LocationViewModel();
         public static UserLocationViewModel StaticUserLocationClass = new UserLocationViewModel();
         public static LocationViewModel StaticLocationClass = new LocationViewModel();
         public static StorageViewModel StaticStorageClass = new StorageViewModel();
         public static InventoryViewModel StaticInventoryClass = new InventoryViewModel();
+
 
         private Android.Support.V4.App.FragmentTransaction mFragmentTransaction;
         private TextView mUsernameInfo;

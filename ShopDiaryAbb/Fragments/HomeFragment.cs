@@ -151,7 +151,7 @@ namespace ShopDiaryAbb.Fragments
         private void SpinnerLocation_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
-            MainActivity.StaticActiveLocationClass = mLocations[e.Position];
+            LoginPageActivity.StaticActiveLocationClass = mLocations[e.Position];
             List<ProductViewModel> mProductByUser = new List<ProductViewModel>();
             List<ProductViewModel> tempProduct = LoginPageActivity.mGlobalProducts;
             for (int i = 0; i < tempProduct.Count; i++)
@@ -163,7 +163,7 @@ namespace ShopDiaryAbb.Fragments
             }
             if (LoginPageActivity.mGlobalInventories != null)
             {
-                this.mInventoryAdapter = new HomeAdapter(LoginPageActivity.mGlobalInventories,mProductByUser, LoginPageActivity.mGlobalStorages, MainActivity.StaticActiveLocationClass, this.Activity);
+                this.mInventoryAdapter = new HomeAdapter(LoginPageActivity.mGlobalInventories,mProductByUser, LoginPageActivity.mGlobalStorages, LoginPageActivity.StaticActiveLocationClass, this.Activity);
                 this.mInventoryAdapter.ItemClick += OnInventoryClick;
                 this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
             }
