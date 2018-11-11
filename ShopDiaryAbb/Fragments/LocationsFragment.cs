@@ -74,9 +74,10 @@ namespace ShopDiaryAbb.Fragments
             List<LocationViewModel> mLocationsByUser = LoginPageActivity.mGlobalLocations;
             List<UserLocationViewModel> mSharedLocation = LoginPageActivity.mGlobalUserLocs;
             mLocations = new List<LocationViewModel>();
+            //mLocations = mLocationsByUser.Where(s => s.AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString()).ToList();
             for (int i = 0; mLocationsByUser.Count > i; i++)
             {
-                if (mLocationsByUser[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
+                if (mLocationsByUser[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString()) 
                 {
                     mLocations.Add(mLocationsByUser[i]);
                 }
@@ -136,7 +137,7 @@ namespace ShopDiaryAbb.Fragments
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }

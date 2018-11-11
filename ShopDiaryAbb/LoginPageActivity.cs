@@ -7,12 +7,13 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using ShopDiaryAbb.LocalDomain;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
 
 namespace ShopDiaryAbb
 {
-    [Activity(Label = "LoginPageActivity",MainLauncher =true)]
+    [Activity(Label = "LoginPageActivity",MainLauncher =false)]
     public class LoginPageActivity : Activity
     {
         public static Guid mAuthorizedUserId;
@@ -44,6 +45,7 @@ namespace ShopDiaryAbb
 
         public static List<InventoryViewModel> mGlobalInventories=new List<InventoryViewModel>();
         public static List<ProductViewModel> mGlobalProducts=new List<ProductViewModel>();
+        public static List<ProductViewModel> mGlobalProductsByUser=new List<ProductViewModel>();
         public static List<StorageViewModel> mGlobalStorages=new List<StorageViewModel>();
         public static List<LocationViewModel> mGlobalLocations = new List<LocationViewModel>();
         public static List<CategoryViewModel> mGlobalCategories = new List<CategoryViewModel>();
@@ -102,12 +104,18 @@ namespace ShopDiaryAbb
                     UpgradeProgress();
                     if (isLogin)
                     {
-                        
+                        UserInfoLocal userInfoLocal = new UserInfoLocal()
+                        {
+                            Id = 1,
+                            IsLogin = 1,
+                            UserInfoId = StaticUserClass.ID.ToString(),
+                        };
+                        SplashScreenActivity.db.UpdateTable(userInfoLocal);
                         RunOnUiThread(() => mProgressBar.Visibility = Android.Views.ViewStates.Invisible);
                         this.StartActivity(intent);
                     }
                     else
-                        RunOnUiThread(() => Toast.MakeText(this, "Failed to login in, please check again your username & password", ToastLength.Long).Show());
+                        RunOnUiThread(() => Toast.MakeText(this, "Failed to login", ToastLength.Long).Show());
                 })).Start();
             };
 
@@ -133,11 +141,14 @@ namespace ShopDiaryAbb
             {
                 for (int j = 0; j < mGlobalProducts.Count(); j++)
                 {
-                    
                     if (tempInventories[i].ProductId == mGlobalProducts[j].Id)
                     {
                         tempInventories[i].ItemName = mGlobalProducts[j].Name;
                         mGlobalInventories.Add(tempInventories[i]);
+                    }
+                    if (mGlobalProducts[j].AddedUserId == StaticUserClass.ID.ToString())
+                    {
+                        mGlobalProductsByUser.Add(mGlobalProducts[j]);
                     }
                 }
             }

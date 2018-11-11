@@ -5,7 +5,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:minWidth="25px"
-	android:minHeight="25px">
+	android:minHeight="25px"
+	android:id="@+id/homeAdapterLayout">
 	<TextView
 		android:text="Item Name"
 		android:textAppearance="?android:attr/textAppearanceMedium"
@@ -17,7 +18,8 @@
 		android:minWidth="25px"
 		android:minHeight="25px"
 		android:layout_width="314.0dp"
-		android:layout_height="wrap_content">
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="10dp">
 		<LinearLayout
 			android:orientation="horizontal"
 			android:minWidth="25px"

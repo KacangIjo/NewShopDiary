@@ -8,28 +8,25 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
 using ShopDiaryAbb.Models.ViewModels;
+using Android.Graphics;
 
 namespace ShopDiaryAbb.Adapter
 {
     public class HomeAdapter : RecyclerView.Adapter
     {
         private readonly Activity mActivity;
-        private readonly List<ProductViewModel> mProducts;
         private readonly List<InventoryViewModel> mInventories;
-        private readonly LocationViewModel mSelectedLocation;
-        private readonly List<StorageViewModel> mStorages;
+      
         private int mSelectedPosition = -1;
 
-        public HomeAdapter(List<InventoryViewModel> inventories, List<ProductViewModel> products,List<StorageViewModel> storages,LocationViewModel selectedlocation, Activity activity)
+        public HomeAdapter(List<InventoryViewModel> minventory, Activity activity)
         {
-            this.mProducts = products;
-            this.mInventories = inventories;
-            this.mSelectedLocation = selectedlocation;
-            this.mStorages = storages;
+            this.mInventories = minventory;
             this.mActivity = activity;
+            
         }
 
-        public override int ItemCount => this.mProducts.Count;
+        public override int ItemCount => this.mInventories.Count;
 
         public event EventHandler<int> ItemClick;
 
@@ -43,33 +40,30 @@ namespace ShopDiaryAbb.Adapter
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            if (this.mProducts.Count > 0)
+            if (this.mInventories.Count > 0)
             {
                 int ExpCounter = 0;
-                var vh = holder as ViewHolder;
-                if (vh != null)
+                if (holder is ViewHolder vh)
                 {
-                    var inv = this.mProducts[position];
-
-                    vh.ItemName.Text = inv.Name;
-                    for (int i = 0; i < mInventories.Count(); i++)
+                    
+                    var inv = this.mInventories[position];
+                    if (position % 2 == 0)
                     {
-
-                        if (mInventories[i].ProductId == inv.Id)
-                        {
-                            if (mInventories[i].ExpirationDate == DateTime.Now)
-                            {
-                                vh.ExpiredItem.Text = (ExpCounter + 1).ToString();
-                            }
-                            else
-                            {
-                                vh.WarningItem.Text = (ExpCounter + 1).ToString();
-                                vh.GoodItem.Text = (ExpCounter + 1).ToString();
-                            }
-                        }
+                        
+                        vh.ItemName.Text = inv.ItemName;
+                        vh.ExpiredItem.Text = (ExpCounter + 1).ToString();
+                        vh.WarningItem.Text = (ExpCounter + 1).ToString();
+                        vh.GoodItem.Text = (ExpCounter + 1).ToString();
+                        vh.SelectedRow.SetBackgroundColor(Color.LightGray);
                     }
-
-
+                    else
+                    {
+                        vh.ItemName.Text = inv.ItemName;
+                        vh.ExpiredItem.Text = (ExpCounter + 1).ToString();
+                        vh.WarningItem.Text = (ExpCounter + 1).ToString();
+                        vh.GoodItem.Text = (ExpCounter + 1).ToString();
+                        vh.SelectedRow.SetBackgroundColor(Color.WhiteSmoke);
+                    }
                     vh.ItemView.Selected = (mSelectedPosition == position);
                 }
             }
@@ -92,6 +86,7 @@ namespace ShopDiaryAbb.Adapter
             public ViewHolder(View itemView, Action<int> listener)
                 : base(itemView)
             {
+                this.SelectedRow = itemView.FindViewById<LinearLayout>(Resource.Id.homeAdapterLayout);
                 this.ItemName = itemView.FindViewById<TextView>(Resource.Id.homeAdapterItemName);
                 this.ExpiredItem = itemView.FindViewById<TextView>(Resource.Id.homeAdapterExpiredCounter);
                 this.WarningItem = itemView.FindViewById<TextView>(Resource.Id.HomeAdapterWarningCounter);

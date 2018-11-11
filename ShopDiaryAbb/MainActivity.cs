@@ -8,6 +8,8 @@ using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
+using ShopDiaryAbb.Fragments;
+using ShopDiaryAbb.FragmentsScanner;
 using ShopDiaryAbb.Models.ViewModels;
 
 namespace ShopDiaryAbb
@@ -35,6 +37,14 @@ namespace ShopDiaryAbb
 
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
+
+            
+            if (savedInstanceState == null)
+            {
+                navigationView.SetCheckedItem(Resource.Id.nav_home_1);
+                ListItemClicked(0);
+            }
+
         }
 
         public override void OnBackPressed()
@@ -76,37 +86,106 @@ namespace ShopDiaryAbb
 
         public bool OnNavigationItemSelected(IMenuItem item)
         {
+           
             int id = item.ItemId;
 
-            if (id == Resource.Id.nav_camera)
+            if (id == Resource.Id.menuHome)
             {
-                // Handle the camera action
+                SupportActionBar.Title = "Home";
+                ListItemClicked(0);
             }
-            else if (id == Resource.Id.nav_gallery)
+            else if (id == Resource.Id.menuLocations)
             {
-
+                SupportActionBar.Title = "Manage Locations";
+                ListItemClicked(1);
             }
-            else if (id == Resource.Id.nav_slideshow)
+            else if (id == Resource.Id.menuStorages)
             {
-
+                SupportActionBar.Title = "Manage Storages";
+                ListItemClicked(2);
             }
-            else if (id == Resource.Id.nav_manage)
+            else if (id == Resource.Id.menuAddItem)
             {
-
+                SupportActionBar.Title = "Add Item To Inventory";
+                ListItemClicked(3);
             }
-            else if (id == Resource.Id.nav_share)
+            else if (id == Resource.Id.menuShoplist)
             {
-
+                SupportActionBar.Title = "Manage Shop List";
+                ListItemClicked(4);
             }
-            else if (id == Resource.Id.nav_send)
+            else if (id == Resource.Id.menuCategories)
             {
-
+                SupportActionBar.Title = "Manage Categories";
+                ListItemClicked(5);
+            }
+            else if (id == Resource.Id.menuProducts)
+            {
+                SupportActionBar.Title = "Manage Products";
+                ListItemClicked(6);
+            }
+            else if (id == Resource.Id.menuSummary)
+            {
+                SupportActionBar.Title = "Summary";
+                ListItemClicked(7);
+            }
+            else if (id == Resource.Id.menuLogout)
+            {
+                Android.App.FragmentTransaction transaction = FragmentManager.BeginTransaction();
+                DialogFragmentLogout dialogLocation = new DialogFragmentLogout();
+                dialogLocation.Show(transaction, "dialogue fragment");
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             drawer.CloseDrawer(GravityCompat.Start);
             return true;
         }
+
+
+        int oldPosition = -1;
+        private void ListItemClicked(int position)
+        {
+            //this way we don't load twice, but you might want to modify this a bit.
+            if (position == oldPosition)
+                return;
+
+            oldPosition = position;
+
+            Android.Support.V4.App.Fragment fragment = null;
+            switch (position)
+            {
+                case 0:
+                    fragment = HomeFragment.NewInstance();
+                    break;
+                case 1:
+                    fragment = LocationsFragment.NewInstance();
+                    break;
+                case 2:
+                    fragment = StoragesFragment.NewInstance();
+                    break;
+                case 3:
+                    fragment = AddItemBarcodeFragment.NewInstance();
+                    break;
+                case 4:
+                    fragment = ShopListFragment.NewInstance();
+                    break;
+                case 5:
+                    fragment = CategoriesFragment.NewInstance();
+                    break;
+                case 6:
+                    fragment = ProductsFragment.NewInstance();
+                    break;
+                case 7:
+                    fragment = SummaryFragment.NewInstance();
+                    break;
+
+            }
+
+            SupportFragmentManager.BeginTransaction()
+                .Replace(Resource.Id.main_frame, fragment)
+                .Commit();
+        }
+
     }
 }
 

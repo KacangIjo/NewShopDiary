@@ -9,6 +9,7 @@ using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace ShopDiaryAbb.Fragments
@@ -45,9 +46,9 @@ namespace ShopDiaryAbb.Fragments
         {
             base.OnCreate(savedInstanceState);
         }
-        public static LocationAddFragment NewInstance()
+        public static LocationEditFragment NewInstance()
         {
-            var frag2 = new LocationAddFragment { Arguments = new Bundle() };
+            LocationEditFragment frag2 = new LocationEditFragment { Arguments = new Bundle() };
             return frag2;
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -79,7 +80,6 @@ namespace ShopDiaryAbb.Fragments
                     Name = mLocationName.Text,
                     Address = mLocationAddress.Text,
                     Description = mLocationDescription.Text,
-
                 };
                 new Thread(new ThreadStart(delegate
                 {
@@ -109,16 +109,8 @@ namespace ShopDiaryAbb.Fragments
         {
 
             List<UserLocationViewModel> mSharedUserByLocation = await userLocationDataService.GetAll();
-            int test=mSharedUserByLocation.Count;
-            List<UserLocationViewModel> mTempUserLocation = new List<UserLocationViewModel>();
+            List<UserLocationViewModel> mTempUserLocation = mSharedUserByLocation.Where(s => s.LocationId == LoginPageActivity.StaticActiveLocationClass.Id).ToList();
             List<UserDataViewModel> mUserData = LoginPageActivity.mGlobalUserDatas;
-            for (int i = 0; mSharedUserByLocation.Count > i; i++)
-            {
-                if(mSharedUserByLocation[i].LocationId== LoginPageActivity.StaticActiveLocationClass.Id)
-                {
-                    mTempUserLocation.Add(mSharedUserByLocation[i]);
-                }
-            }
             if (mTempUserLocation != null)
             {
                 userLocationAdapter = new UserLocationRecyclerAdapter(mTempUserLocation,mUserData, this.Activity);
@@ -130,9 +122,6 @@ namespace ShopDiaryAbb.Fragments
         private void OnLocationClicked(object sender, int e)
         {
             mSelectedLocation = e;
-            LoginPageActivity.StaticUserLocationClass = mUserLocations[e];
-            
-          
         }
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
@@ -145,7 +134,7 @@ namespace ShopDiaryAbb.Fragments
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }

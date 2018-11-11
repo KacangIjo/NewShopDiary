@@ -81,16 +81,13 @@ namespace ShopDiaryApp
             // Button Function
             mBtnLogIn.Click += (object sender, EventArgs e) =>
             {
-
                 mProgressBar.Visibility = Android.Views.ViewStates.Visible;
-                
                 new Thread(new ThreadStart(async delegate
                 {
                     
                     var intent = new Intent(this, typeof(MainActivity));
                     var user = mEmail.Text;
                     var pass = mPassword.Text;
-
 
                     var isLogin = await mAccountDataService.Login(user, pass);
                     var UserInfo = await mAccountDataService.GetUserInfo();

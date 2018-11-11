@@ -18,7 +18,6 @@ namespace ShopDiaryAbb.Adapter
         private readonly Activity mActivity;
         private List<UserLocationViewModel> mUserLocation;
         private List<UserDataViewModel> mUserData;
-        private List<UserLocationViewModel> mFilteredCategories;
         private int mSelectedPosition = -1;
 
         public Filter Filter { get; private set; }
@@ -45,24 +44,21 @@ namespace ShopDiaryAbb.Adapter
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            if (this.mUserLocation.Count > 0)
+            if (holder is ViewHolder vh)
             {
-                var vh = holder as ViewHolder;
-                if (vh != null)
+                var user = this.mUserLocation[position];
+                for (int i = 0; i <= mUserData.Count(); i++)
                 {
-                    var user = this.mUserLocation[position];
-                    for(int i = 0; i < mUserData.Count(); i++)
+                    if (user.RegisteredUser == mUserData[i].UserId)
                     {
-                        if (user.RegisteredUser == mUserData[i].UserId)
-                        {
-                            vh.ItemName.Text = mUserData[i].Email;
-                        }
+                        vh.ItemName.Text = mUserData[i].Email;
                     }
-                   
-                    vh.ItemDescription.Text = "Create Read Update Delete";
-                    vh.ItemView.Selected = (mSelectedPosition == position);
                 }
+
+                vh.ItemDescription.Text = "Create Read Update Delete";
+                vh.ItemView.Selected = (mSelectedPosition == position);
             }
+
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

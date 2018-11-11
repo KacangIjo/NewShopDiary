@@ -9,6 +9,7 @@ using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ShopDiaryAbb.Fragments
 {
@@ -64,18 +65,9 @@ namespace ShopDiaryAbb.Fragments
             LoadStorageData();
             return view;
         }
-        private async void LoadStorageData()
+        private void LoadStorageData()
         {
-
-            List<StorageViewModel> mStoragesByUser = await mStorageDataService.GetAll();
-            mStorages = new List<StorageViewModel>();
-            for (int i = 0; mStoragesByUser.Count > i; i++)
-            {
-                if (mStoragesByUser[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
-                {
-                    mStorages.Add(mStoragesByUser[i]);
-                }
-            }
+            mStorages = LoginPageActivity.mGlobalStorages.Where(s => s.LocationId == LoginPageActivity.StaticActiveLocationClass.Id).ToList();
             if (mStorages != null)
             {
 

@@ -13,21 +13,7 @@ namespace ShopDiaryAbb.Models.ViewModels
 
 
         public Guid LocationId { get; set; }
-       
 
-        public Storage ToModel()
-        {
-            return new Storage
-            {
-                Id = (Id == Guid.Empty) ? Guid.NewGuid() : Id,
-                Name = Name,
-                Area = Area,
-                Description = Description,
-                AddedUserId= AddedUserId,
-                CreatedUserId = CreatedUserId,
-                LocationId = LocationId
-            };
-        }
         public StorageViewModel()
         {
 
@@ -42,8 +28,27 @@ namespace ShopDiaryAbb.Models.ViewModels
             this.AddedUserId = s.AddedUserId;
             this.CreatedUserId = s.CreatedUserId;
             this.LocationId = s.LocationId;
-            
+
         }
+
+
+
+        public Storage ToModel()
+        {
+            return new Storage
+            {
+                Id = (Id == Guid.Empty) ? Guid.NewGuid() : Id,
+                Name = Name,
+                Area = Area,
+                Description = Description,
+                AddedUserId= AddedUserId,
+                CreatedUserId = CreatedUserId,
+                LocationId = LocationId
+            };
+        }
+      
+
+        
        
     }
 }

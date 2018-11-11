@@ -5,33 +5,45 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/menuHome"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/menuLocations"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Locations" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/menuStorages"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Storages" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/menuAddItem"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Add Item" />
+      <item
+            android:id="@+id/menuShoplist"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Shop List" />
+      <item
+            android:id="@+id/menuCategories"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Categories" />
+      <item
+            android:id="@+id/menuProducts"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Products" />
+    <item
+            android:id="@+id/menuSummary"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Summary" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Account">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/menuLogout"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Logout" />
         </menu>
     </item>
 

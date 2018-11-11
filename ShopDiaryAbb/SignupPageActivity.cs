@@ -26,7 +26,6 @@ namespace ShopDiaryAbb
         {
             base.OnCreate(savedInstanceState);
             Window.RequestFeature(WindowFeatures.NoTitle);
-            SetContentView(Resource.Layout.LoginPageStart);
 
             // Create your application here
             mButtonSignUp = FindViewById<Button>(Resource.Id.buttonSignUpSignUp);

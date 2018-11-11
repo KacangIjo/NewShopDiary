@@ -72,7 +72,7 @@ namespace ShopDiaryAbb.Adapter
 
         public class ViewHolder : RecyclerView.ViewHolder
         {
-            private bool isClicked = false;
+            
             public ViewHolder(IntPtr javaReference, JniHandleOwnership transfer)
                 : base(javaReference, transfer)
             {

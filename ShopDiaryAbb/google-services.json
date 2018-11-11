@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "107034278578",
+    "firebase_url": "https://shopdiaryproject-99201.firebaseio.com",
+    "project_id": "shopdiaryproject-99201",
+    "storage_bucket": "shopdiaryproject-99201.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107034278578:android:799e5ada007eac1b",
+        "android_client_info": {
+          "package_name": "com.company.shopdiaryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107034278578-8utf3gc48ktu4jb23o3g9kv7c58hqk66.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.shopdiaryapp",
+            "certificate_hash": "f2c2d79db0736804e9391a91c0f73e065867eec9"
+          }
+        },
+        {
+          "client_id": "107034278578-6mfjpbaptqc8e4je8s2mvb4q9sa38ln1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdJw68gGBHgIBu73M8BWMHKUOZzY3dYW0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107034278578-6mfjpbaptqc8e4je8s2mvb4q9sa38ln1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

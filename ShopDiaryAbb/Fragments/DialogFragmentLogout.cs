@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using ShopDiaryAbb.LocalDomain;
 
 namespace ShopDiaryAbb.Fragments
 {
@@ -27,6 +28,13 @@ namespace ShopDiaryAbb.Fragments
             alert.SetTitle("Logout");
             alert.SetMessage("Are you sure want to logout?");
             alert.SetPositiveButton("Logout", (senderAlert, args) => {
+                UserInfoLocal userInfoLocal = new UserInfoLocal()
+                {
+                    Id = 1,
+                    IsLogin = 0,
+                    UserInfoId = "",
+                };
+                SplashScreenActivity.db.UpdateTable(userInfoLocal);
                 var intent = new Intent(this.Activity, typeof(LoginPageActivity));
                 this.StartActivity(intent);
             });

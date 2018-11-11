@@ -127,43 +127,30 @@ namespace ShopDiaryAbb.Fragments
         {
             
             //ActiveLocationData
-            List<LocationViewModel> tempLocations = new List<LocationViewModel>();
-
-            for (int i = 0; LoginPageActivity.mGlobalLocations.Count() > i; i++)
+ 
+            mLocations = LoginPageActivity.mGlobalLocations.Where(l => l.AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString()).ToList();
+            if (mLocations != null)
             {
-                if (LoginPageActivity.mGlobalLocations.Count() != 0)
-                {
-                    if (Guid.Parse(LoginPageActivity.mGlobalLocations[i].AddedUserId) == LoginPageActivity.StaticUserClass.ID)
-                    {
-                        mLocations.Add(LoginPageActivity.mGlobalLocations[i]);
-                    }
-                }
-            }
-            var adapterLocation = new SpinnerLocationAdapter (this.Activity, mLocations);
-            mSpinnerActiveLocation.Adapter = adapterLocation;
-            mSpinnerActiveLocation.ItemSelected += SpinnerLocation_ItemSelected;
-            if (LoginPageActivity.mGlobalLocations.Count() != 0)
-            {
+                var adapterLocation = new SpinnerLocationAdapter(this.Activity, mLocations);
+                mSpinnerActiveLocation.Adapter = adapterLocation;
+                mSpinnerActiveLocation.ItemSelected += SpinnerLocation_ItemSelected;
                 mSpinnerActiveLocation.SetSelection(0);
             }
+            
 
         }
         private void SpinnerLocation_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
             LoginPageActivity.StaticActiveLocationClass = mLocations[e.Position];
-            List<ProductViewModel> mProductByUser = new List<ProductViewModel>();
-            List<ProductViewModel> tempProduct = LoginPageActivity.mGlobalProducts;
-            for (int i = 0; i < tempProduct.Count; i++)
-            {
-                if (tempProduct[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
-                {
-                    mProductByUser.Add(tempProduct[i]);
-                }
-            }
+            List<StorageViewModel> StorageByLocation = LoginPageActivity.mGlobalStorages.Where(s => s.LocationId == mLocations[e.Position].Id).ToList();
+            List<InventoryViewModel> mInventories = LoginPageActivity.mGlobalInventories;
+            List<InventoryViewModel> InventoriesByLocation = mInventories.Join(StorageByLocation, i => i.StorageId, s => s.Id, (i, s) => i).Where(i=> i.ExpirationDate<DateTime.Now).ToList();
+            List<InventoryViewModel> temp =InventoriesByLocation.GroupBy(s => s.ProductId).Select(group => group.First()).ToList();
+
             if (LoginPageActivity.mGlobalInventories != null)
             {
-                this.mInventoryAdapter = new HomeAdapter(LoginPageActivity.mGlobalInventories,mProductByUser, LoginPageActivity.mGlobalStorages, LoginPageActivity.StaticActiveLocationClass, this.Activity);
+                this.mInventoryAdapter = new HomeAdapter(temp, this.Activity);
                 this.mInventoryAdapter.ItemClick += OnInventoryClick;
                 this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
             }
@@ -172,6 +159,7 @@ namespace ShopDiaryAbb.Fragments
         {
             mSelectedInventory = e;
             mHomeSelectedProduct = LoginPageActivity.mGlobalProducts[mSelectedInventory];
+            
             mInventoriesByProduct = new List<InventoryViewModel>();
             for(int i=0; i < LoginPageActivity.mGlobalInventories.Count; i++)
             {
@@ -189,7 +177,7 @@ namespace ShopDiaryAbb.Fragments
         {
             FragmentTransaction mFragmentTransaction;
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }
