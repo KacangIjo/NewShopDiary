@@ -58,35 +58,24 @@ namespace ShopDiaryAbb.Fragments
 
         private void LoadLocationData()
         {
+            //List<InventoryViewModel> mInventories = LoginPageActivity.mGlobalInventories;
+            //List<StorageViewModel> tempStorage = new List<StorageViewModel>();
+            //LocationViewModel mSelectedLocation = LoginPageActivity.StaticActiveLocationClass;
+            //List<InventoryViewModel> InventoriesByLocation = mInventories.Join(StorageByLocation, i => i.StorageId, s => s.Id, (i, s) => i).Where(i => i.ExpirationDate < DateTime.Now).ToList();
+            //List<StorageViewModel> mStoragesByUser = LoginPageActivity.mGlobalStorages.Where(s => s.LocationId == mSelectedLocation.Id).ToList();
+            //mStoragesByUser.Join(mInventories,i=>i.st)
 
-            List<StorageViewModel> mStoragesByUser = LoginPageActivity.mGlobalStorages;
-            List<InventoryViewModel> mInventories = HomeFragment.mInventoriesByProduct;
-            List<StorageViewModel> tempStorage = new List<StorageViewModel>();
-            LocationViewModel mSelectedLocation = LoginPageActivity.StaticActiveLocationClass;
+            List<StorageViewModel> mStoragesByUser = HomeFragment.mStorages;
+            List<InventoryViewModel> temp = HomeFragment.mInventories;
+            List<StorageViewModel> StorageContainsInventory = mStoragesByUser.Join(temp, i => i.Id, s => s.StorageId, (i, s) => i)
+                 .GroupBy(i => i.Id)
+                 .Select(g => g.First())
+                 .ToList();
 
-            ProductViewModel mSelectedProduct = HomeFragment.mHomeSelectedProduct;
 
-            mFilteredStorage = new List<StorageViewModel>();
-            for (int i = 0; i< mStoragesByUser.Count ; i++)
+            if (StorageContainsInventory != null)
             {
-                if (mStoragesByUser[i].LocationId == mSelectedLocation.Id)
-                {
-                    for (int j = 0; j < mInventories.Count; j++)
-                    {
-                        if (mStoragesByUser[i].Id == mInventories[j].StorageId)
-                        {
-                            tempStorage.Add(mStoragesByUser[i]);
-                        }
-                    }
-                }
-            }
-            mFilteredStorage = tempStorage.GroupBy(s => s.Id).Select(group => group.First()).ToList();
-                
-
-
-            if (mFilteredStorage != null)
-            {
-                this.mStorageAdapter = new HomeStorageAdapter(mInventories, mFilteredStorage, mSelectedProduct , this.Activity);
+                this.mStorageAdapter = new HomeStorageAdapter(StorageContainsInventory, this.Activity);
                 this.mStorageAdapter.ItemClick += OnStorageClicked;
                 this.mListViewStorages.SetAdapter(this.mStorageAdapter);
             }

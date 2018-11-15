@@ -20,12 +20,9 @@ namespace ShopDiaryAbb.Adapter
 
         private int mSelectedPosition = -1;
 
-        public HomeStorageAdapter(List<InventoryViewModel> inventories, List<StorageViewModel> storages, ProductViewModel selectedproduct, Activity activity)
+        public HomeStorageAdapter(List<StorageViewModel> storages, Activity activity)
         {
-           
-            mInventories = inventories;
-            mStorages = storages.ToList();
-            
+            mStorages = storages.ToList();   
             mActivity = activity;
         }
 
@@ -42,33 +39,15 @@ namespace ShopDiaryAbb.Adapter
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
-        {
-            if (this.mStorages.Count > 0)
+        {   
+            if (holder is ViewHolder vh)
             {
-                int ExpCounter = 0;
-                var vh = holder as ViewHolder;
-                if (vh != null)
-                {
-                    var storage = this.mStorages[position];
-                    vh.ItemName.Text = storage.Name;
-                    for (int i=0;i<mInventories.Count();i++)
-                    {
-                            if (mInventories[i].ExpirationDate == DateTime.Now)
-                            {
-                                vh.ExpiredItem.Text = (ExpCounter + 1).ToString();
-                            }
-                            else
-                            {
-                                vh.WarningItem.Text = (ExpCounter + 1).ToString();
-                                vh.GoodItem.Text = (ExpCounter + 1).ToString();
-                            }
-                      
-                    }
-                   
-                    vh.ItemView.Selected = (mSelectedPosition == position);
-                }
+                var storage = this.mStorages[position];
+                vh.ItemName.Text = storage.Name;
+                vh.ItemView.Selected = (mSelectedPosition == position);
             }
         }
+        
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {

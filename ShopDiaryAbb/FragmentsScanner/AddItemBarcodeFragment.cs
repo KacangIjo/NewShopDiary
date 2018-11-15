@@ -52,7 +52,6 @@ namespace ShopDiaryAbb.FragmentsScanner
         private TextView mBarcode;
         private AutoCompleteTextView mName;
         private NumberPicker mStock;
-        private bool isBarcodeFound;
         #endregion
         public AddItemBarcodeFragment()
         {
@@ -64,7 +63,6 @@ namespace ShopDiaryAbb.FragmentsScanner
             mProducts = LoginPageActivity.mGlobalProducts;
             mStorages = LoginPageActivity.mGlobalStorages;
             mCategories = LoginPageActivity.mGlobalCategories;
-            isBarcodeFound = false;
         }
 
         public static AddItemBarcodeFragment NewInstance()
@@ -144,7 +142,6 @@ namespace ShopDiaryAbb.FragmentsScanner
                     {
                         mProduct.Id = mProducts[i].Id;
                         mName.Text = mProducts[i].Name;
-                        isBarcodeFound = true;
                     }
                 }
             };

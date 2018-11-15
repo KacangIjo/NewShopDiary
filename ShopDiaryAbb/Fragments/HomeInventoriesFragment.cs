@@ -58,31 +58,33 @@ namespace ShopDiaryAbb.Fragments
             return view;
         }
 
-        private  void LoadInventoriesData()
+        private void LoadInventoriesData()
         {
-            List<InventoryViewModel> mInventories = HomeFragment.mInventoriesByProduct;
-          
-            StorageViewModel SelectedStorage = HomeStoragesFragment.mSelectedStorageClass;
-            LocationViewModel mSelectedStorage = LoginPageActivity.StaticActiveLocationClass;
+            //List<InventoryViewModel> mInventories = HomeFragment.mInventoriesByProduct;
 
-            ProductViewModel mSelectedProduct = HomeFragment.mHomeSelectedProduct;
+            //StorageViewModel SelectedStorage = HomeStoragesFragment.mSelectedStorageClass;
+            //LocationViewModel mSelectedStorage = LoginPageActivity.StaticActiveLocationClass;
 
-            mFilteredInventories = new List<InventoryViewModel>();
-            for (int i = 0; i< mInventories.Count ; i++)
-            {
-                if (mInventories[i].StorageId == SelectedStorage.Id)
-                {
-                    mFilteredInventories.Add(mInventories[i]);
-                }
-            }
+            //ProductViewModel mSelectedProduct = HomeFragment.mHomeSelectedProduct;
 
-            if (mFilteredInventories != null)
-            {
-                this.mHomeInventoriesAdapter = new HomeInventoryRecycleAdapter(mFilteredInventories, mSelectedProduct , this.Activity);
-                this.mHomeInventoriesAdapter.ItemClick += OnStorageClicked;
-                this.mListViewStorages.SetAdapter(this.mHomeInventoriesAdapter);
-            }
+            //mFilteredInventories = new List<InventoryViewModel>();
+            //for (int i = 0; i< mInventories.Count ; i++)
+            //{
+            //    if (mInventories[i].StorageId == SelectedStorage.Id)
+            //    {
+            //        mFilteredInventories.Add(mInventories[i]);
+            //    }
+            //}
+
+            //if (mFilteredInventories != null)
+            //{
+            //    this.mHomeInventoriesAdapter = new HomeInventoryRecycleAdapter(mFilteredInventories, mSelectedProduct , this.Activity);
+            //    this.mHomeInventoriesAdapter.ItemClick += OnStorageClicked;
+            //    this.mListViewStorages.SetAdapter(this.mHomeInventoriesAdapter);
+            //}
+            
         }
+        
 
         private void OnStorageClicked(object sender, int e)
         {

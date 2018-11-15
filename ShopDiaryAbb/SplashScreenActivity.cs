@@ -61,8 +61,13 @@ namespace ShopDiaryAbb
             Window.RequestFeature(WindowFeatures.NoTitle);
             SetContentView(Resource.Layout.SplashScreenLayout);
             mProgressBar = FindViewById<ProgressBar>(Resource.Id.progressBarSplashScreen);
+            mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
             db.CreateDatabase();
             ListSource = db.SelectTable();
+            for (int i = 0; i < ListSource.Count; i++)
+            {
+                var pro = ListSource[i].Id;
+            }
             mProgressBar.Visibility = Android.Views.ViewStates.Visible;
             if (db.SelectTable(1))
             {

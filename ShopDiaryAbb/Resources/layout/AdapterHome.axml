@@ -1,100 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	android:minWidth="25px"
-	android:minHeight="25px"
-	android:id="@+id/homeAdapterLayout">
-	<TextView
-		android:text="Item Name"
-		android:textAppearance="?android:attr/textAppearanceMedium"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:id="@+id/homeAdapterLayout">
+    <TextView
+        android:text="Item Name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/homeAdapterItemName" />
+    <TextView
+        android:text="Status"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/homeAdapterStatus" />
+	<ImageView
+		android:src="@android:drawable/ic_menu_gallery"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/homeAdapterItemName" />
-	<LinearLayout
-		android:orientation="horizontal"
-		android:minWidth="25px"
-		android:minHeight="25px"
-		android:layout_width="314.0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="10dp">
-		<LinearLayout
-			android:orientation="horizontal"
-			android:minWidth="25px"
-			android:minHeight="25px"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="2dp">
-			<TextView
-				android:text="Expired"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:width="55dp"
-				android:background="@android:color/holo_red_dark"
-				android:gravity="center"
-				android:layout_marginRight="2dp" />
-			<TextView
-				android:text="0"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:id="@+id/homeAdapterExpiredCounter"
-				android:layout_marginRight="2dp"
-				android:textColor="@android:color/holo_red_light" />
-		</LinearLayout>
-		<LinearLayout
-			android:orientation="horizontal"
-			android:minWidth="25px"
-			android:minHeight="25px"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="2dp">
-			<TextView
-				android:text="Warning"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:width="55dp"
-				android:background="#ffffbb33"
-				android:gravity="center"
-				android:layout_marginRight="2dp" />
-			<TextView
-				android:text="0"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:id="@+id/HomeAdapterWarningCounter"
-				android:layout_marginRight="2dp"
-				android:textColor="@android:color/holo_orange_light" />
-		</LinearLayout>
-		<LinearLayout
-			android:orientation="horizontal"
-			android:minWidth="25px"
-			android:minHeight="25px"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="2dp">
-			<TextView
-				android:text="Good"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:width="60dp"
-				android:background="@android:color/holo_green_light"
-				android:layout_gravity="center"
-				android:gravity="center"
-				android:layout_marginRight="2dp" />
-			<TextView
-				android:text="0"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:id="@+id/HomeAdapterGoodCounter"
-				android:layout_marginRight="2dp"
-				android:textColor="@android:color/holo_green_light" />
-		</LinearLayout>
-	</LinearLayout>
+		android:background="@android:color/darker_gray"
+		android:layout_height="1dp"
+		android:layout_marginBottom="5dp"
+		android:layout_marginRight="10dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginTop="2dp" />
+S
 </LinearLayout>

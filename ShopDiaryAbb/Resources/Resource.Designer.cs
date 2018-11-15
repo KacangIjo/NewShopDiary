@@ -2628,31 +2628,25 @@ namespace ShopDiaryAbb
 			public const int FUNCTION = 2131427388;
 			
 			// aapt resource value: 0x7f0b009a
-			public const int HomeAdapterGoodCounter = 2131427482;
-			
-			// aapt resource value: 0x7f0b0099
-			public const int HomeAdapterWarningCounter = 2131427481;
+			public const int HomeInventoriesAdapterExpDate = 2131427482;
 			
 			// aapt resource value: 0x7f0b009c
-			public const int HomeInventoriesAdapterExpDate = 2131427484;
+			public const int HomeInventoriesAdapterExpStatus = 2131427484;
+			
+			// aapt resource value: 0x7f0b0099
+			public const int HomeInventoriesAdapterItemName = 2131427481;
 			
 			// aapt resource value: 0x7f0b009e
-			public const int HomeInventoriesAdapterExpStatus = 2131427486;
-			
-			// aapt resource value: 0x7f0b009b
-			public const int HomeInventoriesAdapterItemName = 2131427483;
+			public const int HomeStorageAdapterExpiredCounter = 2131427486;
 			
 			// aapt resource value: 0x7f0b00a0
-			public const int HomeStorageAdapterExpiredCounter = 2131427488;
+			public const int HomeStorageAdapterGoodCounter = 2131427488;
 			
-			// aapt resource value: 0x7f0b00a2
-			public const int HomeStorageAdapterGoodCounter = 2131427490;
+			// aapt resource value: 0x7f0b009d
+			public const int HomeStorageAdapterItemName = 2131427485;
 			
 			// aapt resource value: 0x7f0b009f
-			public const int HomeStorageAdapterItemName = 2131427487;
-			
-			// aapt resource value: 0x7f0b00a1
-			public const int HomeStorageAdapterWarningCounter = 2131427489;
+			public const int HomeStorageAdapterWarningCounter = 2131427487;
 			
 			// aapt resource value: 0x7f0b003d
 			public const int META = 2131427389;
@@ -2666,11 +2660,11 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b014b
 			public const int action0 = 2131427659;
 			
-			// aapt resource value: 0x7f0b019a
-			public const int action_LocationAdd = 2131427738;
+			// aapt resource value: 0x7f0b0192
+			public const int action_LocationAdd = 2131427730;
 			
-			// aapt resource value: 0x7f0b019b
-			public const int action_LocationEdit = 2131427739;
+			// aapt resource value: 0x7f0b0193
+			public const int action_LocationEdit = 2131427731;
 			
 			// aapt resource value: 0x7f0b0083
 			public const int action_bar = 2131427459;
@@ -2699,8 +2693,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0084
 			public const int action_context_bar = 2131427460;
 			
-			// aapt resource value: 0x7f0b01a6
-			public const int action_delete = 2131427750;
+			// aapt resource value: 0x7f0b019e
+			public const int action_delete = 2131427742;
 			
 			// aapt resource value: 0x7f0b014f
 			public const int action_divider = 2131427663;
@@ -2723,14 +2717,14 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0063
 			public const int action_mode_close_button = 2131427427;
 			
-			// aapt resource value: 0x7f0b01a7
-			public const int action_save = 2131427751;
+			// aapt resource value: 0x7f0b019f
+			public const int action_save = 2131427743;
 			
-			// aapt resource value: 0x7f0b01a5
-			public const int action_search = 2131427749;
+			// aapt resource value: 0x7f0b019d
+			public const int action_search = 2131427741;
 			
-			// aapt resource value: 0x7f0b0199
-			public const int action_settings = 2131427737;
+			// aapt resource value: 0x7f0b0191
+			public const int action_settings = 2131427729;
 			
 			// aapt resource value: 0x7f0b014a
 			public const int action_text = 2131427658;
@@ -2759,9 +2753,6 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0040
 			public const int always = 2131427392;
 			
-			// aapt resource value: 0x7f0b017e
-			public const int appbarManageStorage = 2131427710;
-			
 			// aapt resource value: 0x7f0b005d
 			public const int async = 2131427421;
 			
@@ -2777,14 +2768,14 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0045
 			public const int bottom = 2131427397;
 			
-			// aapt resource value: 0x7f0b00bf
-			public const int buttonAddAddToInventory = 2131427519;
+			// aapt resource value: 0x7f0b00bd
+			public const int buttonAddAddToInventory = 2131427517;
 			
 			// aapt resource value: 0x7f0b0115
 			public const int buttonAddCategory = 2131427605;
 			
-			// aapt resource value: 0x7f0b00dd
-			public const int buttonAddExpDateOk = 2131427549;
+			// aapt resource value: 0x7f0b00db
+			public const int buttonAddExpDateOk = 2131427547;
 			
 			// aapt resource value: 0x7f0b0122
 			public const int buttonAddLocation = 2131427618;
@@ -2792,8 +2783,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b013f
 			public const int buttonAddStorage = 2131427647;
 			
-			// aapt resource value: 0x7f0b00c4
-			public const int buttonAddWithoutScan1 = 2131427524;
+			// aapt resource value: 0x7f0b00c2
+			public const int buttonAddWithoutScan1 = 2131427522;
 			
 			// aapt resource value: 0x7f0b0116
 			public const int buttonCancelCategory = 2131427606;
@@ -2804,14 +2795,14 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0140
 			public const int buttonCancelStorage = 2131427648;
 			
-			// aapt resource value: 0x7f0b00e2
-			public const int buttonHomeInventoriesRemove = 2131427554;
-			
-			// aapt resource value: 0x7f0b00e1
-			public const int buttonHomeInventoriesThrow = 2131427553;
-			
 			// aapt resource value: 0x7f0b00e0
-			public const int buttonHomeInventoriesUse = 2131427552;
+			public const int buttonHomeInventoriesRemove = 2131427552;
+			
+			// aapt resource value: 0x7f0b00df
+			public const int buttonHomeInventoriesThrow = 2131427551;
+			
+			// aapt resource value: 0x7f0b00de
+			public const int buttonHomeInventoriesUse = 2131427550;
 			
 			// aapt resource value: 0x7f0b012d
 			public const int buttonLocationDetailAddUserAdd = 2131427629;
@@ -2846,8 +2837,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0104
 			public const int buttonSignUpSignUp = 2131427588;
 			
-			// aapt resource value: 0x7f0b00c1
-			public const int cameraPreview = 2131427521;
+			// aapt resource value: 0x7f0b00bf
+			public const int cameraPreview = 2131427519;
 			
 			// aapt resource value: 0x7f0b014c
 			public const int cancel_action = 2131427660;
@@ -2888,11 +2879,11 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0041
 			public const int collapseActionView = 2131427393;
 			
-			// aapt resource value: 0x7f0b00d0
-			public const int container = 2131427536;
+			// aapt resource value: 0x7f0b00ce
+			public const int container = 2131427534;
 			
-			// aapt resource value: 0x7f0b0188
-			public const int contentFrame = 2131427720;
+			// aapt resource value: 0x7f0b0180
+			public const int contentFrame = 2131427712;
 			
 			// aapt resource value: 0x7f0b006d
 			public const int contentPanel = 2131427437;
@@ -2900,8 +2891,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b010d
 			public const int content_frame = 2131427597;
 			
-			// aapt resource value: 0x7f0b00d1
-			public const int coordinator = 2131427537;
+			// aapt resource value: 0x7f0b00cf
+			public const int coordinator = 2131427535;
 			
 			// aapt resource value: 0x7f0b0074
 			public const int custom = 2131427444;
@@ -2912,8 +2903,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0024
 			public const int dark = 2131427364;
 			
-			// aapt resource value: 0x7f0b00dc
-			public const int datePickerAddExpDate = 2131427548;
+			// aapt resource value: 0x7f0b00da
+			public const int datePickerAddExpDate = 2131427546;
 			
 			// aapt resource value: 0x7f0b0081
 			public const int decor_content_parent = 2131427457;
@@ -2921,20 +2912,20 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0067
 			public const int default_activity_button = 2131427431;
 			
-			// aapt resource value: 0x7f0b00d3
-			public const int design_bottom_sheet = 2131427539;
-			
-			// aapt resource value: 0x7f0b00da
-			public const int design_menu_item_action_area = 2131427546;
-			
-			// aapt resource value: 0x7f0b00d9
-			public const int design_menu_item_action_area_stub = 2131427545;
+			// aapt resource value: 0x7f0b00d1
+			public const int design_bottom_sheet = 2131427537;
 			
 			// aapt resource value: 0x7f0b00d8
-			public const int design_menu_item_text = 2131427544;
+			public const int design_menu_item_action_area = 2131427544;
 			
 			// aapt resource value: 0x7f0b00d7
-			public const int design_navigation_view = 2131427543;
+			public const int design_menu_item_action_area_stub = 2131427543;
+			
+			// aapt resource value: 0x7f0b00d6
+			public const int design_menu_item_text = 2131427542;
+			
+			// aapt resource value: 0x7f0b00d5
+			public const int design_navigation_view = 2131427541;
 			
 			// aapt resource value: 0x7f0b0029
 			public const int disableHome = 2131427369;
@@ -2948,8 +2939,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0113
 			public const int editTextAddCategoryName = 2131427603;
 			
-			// aapt resource value: 0x7f0b00bc
-			public const int editTextAddItemExpDate = 2131427516;
+			// aapt resource value: 0x7f0b00ba
+			public const int editTextAddItemExpDate = 2131427514;
 			
 			// aapt resource value: 0x7f0b0120
 			public const int editTextAddLocationAddress = 2131427616;
@@ -2960,8 +2951,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b011f
 			public const int editTextAddLocationName = 2131427615;
 			
-			// aapt resource value: 0x7f0b00b6
-			public const int editTextAddName = 2131427510;
+			// aapt resource value: 0x7f0b00b4
+			public const int editTextAddName = 2131427508;
 			
 			// aapt resource value: 0x7f0b013c
 			public const int editTextAddStorageArea = 2131427644;
@@ -2972,11 +2963,11 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b013b
 			public const int editTextAddStorageName = 2131427643;
 			
-			// aapt resource value: 0x7f0b00c9
-			public const int editTextCategoryDetailDescription = 2131427529;
+			// aapt resource value: 0x7f0b00c7
+			public const int editTextCategoryDetailDescription = 2131427527;
 			
-			// aapt resource value: 0x7f0b00c8
-			public const int editTextCategoryDetailName = 2131427528;
+			// aapt resource value: 0x7f0b00c6
+			public const int editTextCategoryDetailName = 2131427526;
 			
 			// aapt resource value: 0x7f0b0127
 			public const int editTextLocationDetailAddUserDescription = 2131427623;
@@ -2984,14 +2975,14 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0126
 			public const int editTextLocationDetailAddUserName = 2131427622;
 			
-			// aapt resource value: 0x7f0b00f7
-			public const int editTextLocationDetailAddress = 2131427575;
+			// aapt resource value: 0x7f0b00f4
+			public const int editTextLocationDetailAddress = 2131427572;
 			
-			// aapt resource value: 0x7f0b00f9
-			public const int editTextLocationDetailDescription = 2131427577;
+			// aapt resource value: 0x7f0b00f8
+			public const int editTextLocationDetailDescription = 2131427576;
 			
-			// aapt resource value: 0x7f0b00f3
-			public const int editTextLocationDetailName = 2131427571;
+			// aapt resource value: 0x7f0b00f0
+			public const int editTextLocationDetailName = 2131427568;
 			
 			// aapt resource value: 0x7f0b0107
 			public const int editTextLoginPagePassword = 2131427591;
@@ -3050,8 +3041,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0079
 			public const int expanded_menu = 2131427449;
 			
-			// aapt resource value: 0x7f0b00c6
-			public const int fab = 2131427526;
+			// aapt resource value: 0x7f0b00c4
+			public const int fab = 2131427524;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int fill = 2131427415;
@@ -3065,9 +3056,6 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b005b
 			public const int @fixed = 2131427419;
 			
-			// aapt resource value: 0x7f0b00ef
-			public const int floatingActionButton1 = 2131427567;
-			
 			// aapt resource value: 0x7f0b005f
 			public const int forever = 2131427423;
 			
@@ -3077,32 +3065,32 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0005
 			public const int home = 2131427333;
 			
-			// aapt resource value: 0x7f0b0098
-			public const int homeAdapterExpiredCounter = 2131427480;
-			
 			// aapt resource value: 0x7f0b0097
 			public const int homeAdapterItemName = 2131427479;
 			
 			// aapt resource value: 0x7f0b0096
 			public const int homeAdapterLayout = 2131427478;
 			
+			// aapt resource value: 0x7f0b0098
+			public const int homeAdapterStatus = 2131427480;
+			
 			// aapt resource value: 0x7f0b002a
 			public const int homeAsUp = 2131427370;
 			
-			// aapt resource value: 0x7f0b0196
-			public const int homeShortcutAdd = 2131427734;
+			// aapt resource value: 0x7f0b018e
+			public const int homeShortcutAdd = 2131427726;
 			
-			// aapt resource value: 0x7f0b0197
-			public const int homeShortcutRunout = 2131427735;
+			// aapt resource value: 0x7f0b018f
+			public const int homeShortcutRunout = 2131427727;
 			
-			// aapt resource value: 0x7f0b0198
-			public const int homeShortcutShopList = 2131427736;
+			// aapt resource value: 0x7f0b0190
+			public const int homeShortcutShopList = 2131427728;
 			
-			// aapt resource value: 0x7f0b0194
-			public const int homeShortcutStorage = 2131427732;
+			// aapt resource value: 0x7f0b018c
+			public const int homeShortcutStorage = 2131427724;
 			
-			// aapt resource value: 0x7f0b0195
-			public const int homeShortcutUse = 2131427733;
+			// aapt resource value: 0x7f0b018d
+			public const int homeShortcutUse = 2131427725;
 			
 			// aapt resource value: 0x7f0b0069
 			public const int icon = 2131427433;
@@ -3119,17 +3107,14 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0066
 			public const int image = 2131427430;
 			
-			// aapt resource value: 0x7f0b00be
-			public const int imageButtonAddScan2 = 2131427518;
+			// aapt resource value: 0x7f0b00bc
+			public const int imageButtonAddScan2 = 2131427516;
 			
-			// aapt resource value: 0x7f0b00cc
-			public const int imageButtonCategoryDetailDelete = 2131427532;
+			// aapt resource value: 0x7f0b00ca
+			public const int imageButtonCategoryDetailDelete = 2131427530;
 			
-			// aapt resource value: 0x7f0b00cb
-			public const int imageButtonCategoryDetailSave = 2131427531;
-			
-			// aapt resource value: 0x7f0b0187
-			public const int imageButtonDeleteItem = 2131427719;
+			// aapt resource value: 0x7f0b00c9
+			public const int imageButtonCategoryDetailSave = 2131427529;
 			
 			// aapt resource value: 0x7f0b015f
 			public const int imageButtonDeleteRunOutItem = 2131427679;
@@ -3185,20 +3170,17 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b016e
 			public const int imageButtonStorageDetailSave = 2131427694;
 			
-			// aapt resource value: 0x7f0b0186
-			public const int imageButtonUseItem = 2131427718;
-			
 			// aapt resource value: 0x7f0b015e
 			public const int imageButtonUseRunOutItem = 2131427678;
 			
 			// aapt resource value: 0x7f0b0146
 			public const int imageView = 2131427654;
 			
-			// aapt resource value: 0x7f0b00ee
-			public const int imageView1 = 2131427566;
+			// aapt resource value: 0x7f0b00eb
+			public const int imageView1 = 2131427563;
 			
-			// aapt resource value: 0x7f0b00e3
-			public const int imageView2 = 2131427555;
+			// aapt resource value: 0x7f0b00e1
+			public const int imageView2 = 2131427553;
 			
 			// aapt resource value: 0x7f0b0155
 			public const int info = 2131427669;
@@ -3209,8 +3191,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0000
 			public const int item_touch_helper_previous_elevation = 2131427328;
 			
-			// aapt resource value: 0x7f0b00cf
-			public const int largeLabel = 2131427535;
+			// aapt resource value: 0x7f0b00cd
+			public const int largeLabel = 2131427533;
 			
 			// aapt resource value: 0x7f0b0050
 			public const int left = 2131427408;
@@ -3224,17 +3206,17 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0018
 			public const int line3 = 2131427352;
 			
-			// aapt resource value: 0x7f0b009d
-			public const int linearLayout1 = 2131427485;
+			// aapt resource value: 0x7f0b009b
+			public const int linearLayout1 = 2131427483;
 			
-			// aapt resource value: 0x7f0b00e5
-			public const int linearLayout2 = 2131427557;
+			// aapt resource value: 0x7f0b00ef
+			public const int linearLayout2 = 2131427567;
 			
-			// aapt resource value: 0x7f0b00f4
-			public const int linearLayout3 = 2131427572;
+			// aapt resource value: 0x7f0b00f1
+			public const int linearLayout3 = 2131427569;
 			
-			// aapt resource value: 0x7f0b00ea
-			public const int linearLayout4 = 2131427562;
+			// aapt resource value: 0x7f0b00f5
+			public const int linearLayout4 = 2131427573;
 			
 			// aapt resource value: 0x7f0b0125
 			public const int linearLayout5 = 2131427621;
@@ -3242,20 +3224,29 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b012c
 			public const int linearLayout6 = 2131427628;
 			
-			// aapt resource value: 0x7f0b0172
-			public const int linearLayout7 = 2131427698;
+			// aapt resource value: 0x7f0b0173
+			public const int linearLayout7 = 2131427699;
 			
-			// aapt resource value: 0x7f0b0176
-			public const int linearLayout8 = 2131427702;
+			// aapt resource value: 0x7f0b0177
+			public const int linearLayout8 = 2131427703;
 			
-			// aapt resource value: 0x7f0b017a
-			public const int linearLayout9 = 2131427706;
+			// aapt resource value: 0x7f0b017b
+			public const int linearLayout9 = 2131427707;
 			
-			// aapt resource value: 0x7f0b00a8
-			public const int linearLayoutLocationsAdapter = 2131427496;
+			// aapt resource value: 0x7f0b00e3
+			public const int linearLayoutExpiredCounter = 2131427555;
 			
-			// aapt resource value: 0x7f0b00c3
-			public const int linearMenuQuick = 2131427523;
+			// aapt resource value: 0x7f0b00e7
+			public const int linearLayoutGoodCondition = 2131427559;
+			
+			// aapt resource value: 0x7f0b00a6
+			public const int linearLayoutLocationsAdapter = 2131427494;
+			
+			// aapt resource value: 0x7f0b00e5
+			public const int linearLayoutNearlyExpiredCounter = 2131427557;
+			
+			// aapt resource value: 0x7f0b00c1
+			public const int linearMenuQuick = 2131427521;
 			
 			// aapt resource value: 0x7f0b0026
 			public const int listMode = 2131427366;
@@ -3263,47 +3254,47 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0068
 			public const int list_item = 2131427432;
 			
-			// aapt resource value: 0x7f0b00c0
-			public const int main_content = 2131427520;
+			// aapt resource value: 0x7f0b00be
+			public const int main_content = 2131427518;
 			
-			// aapt resource value: 0x7f0b00cd
-			public const int main_frame = 2131427533;
+			// aapt resource value: 0x7f0b00cb
+			public const int main_frame = 2131427531;
 			
-			// aapt resource value: 0x7f0b018a
-			public const int masked = 2131427722;
+			// aapt resource value: 0x7f0b0182
+			public const int masked = 2131427714;
 			
 			// aapt resource value: 0x7f0b014e
 			public const int media_actions = 2131427662;
 			
-			// aapt resource value: 0x7f0b018e
-			public const int menuAddItem = 2131427726;
+			// aapt resource value: 0x7f0b0186
+			public const int menuAddItem = 2131427718;
 			
-			// aapt resource value: 0x7f0b0190
-			public const int menuCategories = 2131427728;
+			// aapt resource value: 0x7f0b0188
+			public const int menuCategories = 2131427720;
+			
+			// aapt resource value: 0x7f0b0183
+			public const int menuHome = 2131427715;
+			
+			// aapt resource value: 0x7f0b0184
+			public const int menuLocations = 2131427716;
 			
 			// aapt resource value: 0x7f0b018b
-			public const int menuHome = 2131427723;
+			public const int menuLogout = 2131427723;
 			
-			// aapt resource value: 0x7f0b018c
-			public const int menuLocations = 2131427724;
+			// aapt resource value: 0x7f0b0189
+			public const int menuProducts = 2131427721;
 			
-			// aapt resource value: 0x7f0b0193
-			public const int menuLogout = 2131427731;
+			// aapt resource value: 0x7f0b0187
+			public const int menuShoplist = 2131427719;
 			
-			// aapt resource value: 0x7f0b0191
-			public const int menuProducts = 2131427729;
+			// aapt resource value: 0x7f0b0185
+			public const int menuStorages = 2131427717;
 			
-			// aapt resource value: 0x7f0b018f
-			public const int menuShoplist = 2131427727;
+			// aapt resource value: 0x7f0b018a
+			public const int menuSummary = 2131427722;
 			
-			// aapt resource value: 0x7f0b018d
-			public const int menuStorages = 2131427725;
-			
-			// aapt resource value: 0x7f0b0192
-			public const int menuSummary = 2131427730;
-			
-			// aapt resource value: 0x7f0b0182
-			public const int message = 2131427714;
+			// aapt resource value: 0x7f0b017f
+			public const int message = 2131427711;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int middle = 2131427385;
@@ -3314,38 +3305,38 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0030
 			public const int multiply = 2131427376;
 			
+			// aapt resource value: 0x7f0b0194
+			public const int nav_home_1 = 2131427732;
+			
+			// aapt resource value: 0x7f0b0195
+			public const int nav_home_2 = 2131427733;
+			
+			// aapt resource value: 0x7f0b0196
+			public const int nav_home_additems = 2131427734;
+			
+			// aapt resource value: 0x7f0b0198
+			public const int nav_home_categories = 2131427736;
+			
+			// aapt resource value: 0x7f0b0199
+			public const int nav_home_products = 2131427737;
+			
 			// aapt resource value: 0x7f0b019c
-			public const int nav_home_1 = 2131427740;
+			public const int nav_home_setting = 2131427740;
 			
-			// aapt resource value: 0x7f0b019d
-			public const int nav_home_2 = 2131427741;
+			// aapt resource value: 0x7f0b019a
+			public const int nav_home_shoplist = 2131427738;
 			
-			// aapt resource value: 0x7f0b019e
-			public const int nav_home_additems = 2131427742;
+			// aapt resource value: 0x7f0b0197
+			public const int nav_home_storages = 2131427735;
 			
-			// aapt resource value: 0x7f0b01a0
-			public const int nav_home_categories = 2131427744;
-			
-			// aapt resource value: 0x7f0b01a1
-			public const int nav_home_products = 2131427745;
-			
-			// aapt resource value: 0x7f0b01a4
-			public const int nav_home_setting = 2131427748;
-			
-			// aapt resource value: 0x7f0b01a2
-			public const int nav_home_shoplist = 2131427746;
-			
-			// aapt resource value: 0x7f0b019f
-			public const int nav_home_storages = 2131427743;
-			
-			// aapt resource value: 0x7f0b01a3
-			public const int nav_home_summary = 2131427747;
+			// aapt resource value: 0x7f0b019b
+			public const int nav_home_summary = 2131427739;
 			
 			// aapt resource value: 0x7f0b0093
 			public const int nav_view = 2131427475;
 			
-			// aapt resource value: 0x7f0b00d6
-			public const int navigation_header_container = 2131427542;
+			// aapt resource value: 0x7f0b00d4
+			public const int navigation_header_container = 2131427540;
 			
 			// aapt resource value: 0x7f0b0043
 			public const int never = 2131427395;
@@ -3365,11 +3356,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0150
 			public const int notification_main_column_container = 2131427664;
 			
-			// aapt resource value: 0x7f0b00bb
-			public const int numberPickerAddItemTotalItem = 2131427515;
-			
-			// aapt resource value: 0x7f0b0180
-			public const int pagerManageStorage = 2131427712;
+			// aapt resource value: 0x7f0b00b9
+			public const int numberPickerAddItemTotalItem = 2131427513;
 			
 			// aapt resource value: 0x7f0b0053
 			public const int parallax = 2131427411;
@@ -3398,11 +3386,11 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b013a
 			public const int progressBarAddStorage = 2131427642;
 			
-			// aapt resource value: 0x7f0b00ca
-			public const int progressBarCategoryDetail = 2131427530;
+			// aapt resource value: 0x7f0b00c8
+			public const int progressBarCategoryDetail = 2131427528;
 			
-			// aapt resource value: 0x7f0b00f1
-			public const int progressBarHomeStorage = 2131427569;
+			// aapt resource value: 0x7f0b00ed
+			public const int progressBarHomeStorage = 2131427565;
 			
 			// aapt resource value: 0x7f0b00fb
 			public const int progressBarLocationDetail = 2131427579;
@@ -3410,8 +3398,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b010f
 			public const int progressBarManageCategories = 2131427599;
 			
-			// aapt resource value: 0x7f0b00df
-			public const int progressBarManageHomeInventories = 2131427551;
+			// aapt resource value: 0x7f0b00dd
+			public const int progressBarManageHomeInventories = 2131427549;
 			
 			// aapt resource value: 0x7f0b0118
 			public const int progressBarManageInventories = 2131427608;
@@ -3437,9 +3425,6 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b016d
 			public const int progressBarStorageDetail = 2131427693;
 			
-			// aapt resource value: 0x7f0b0185
-			public const int progressBarUseItems = 2131427717;
-			
 			// aapt resource value: 0x7f0b0006
 			public const int progress_circular = 2131427334;
 			
@@ -3452,11 +3437,11 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b010e
 			public const int recyclerCategories = 2131427598;
 			
-			// aapt resource value: 0x7f0b00ed
-			public const int recyclerHomePage = 2131427565;
+			// aapt resource value: 0x7f0b00ea
+			public const int recyclerHomePage = 2131427562;
 			
-			// aapt resource value: 0x7f0b00f0
-			public const int recyclerHomeStorage = 2131427568;
+			// aapt resource value: 0x7f0b00ec
+			public const int recyclerHomeStorage = 2131427564;
 			
 			// aapt resource value: 0x7f0b011d
 			public const int recyclerInventoryLogs = 2131427613;
@@ -3470,17 +3455,14 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b015c
 			public const int recyclerRunOutItems = 2131427676;
 			
-			// aapt resource value: 0x7f0b0184
-			public const int recyclerUseItems = 2131427716;
-			
 			// aapt resource value: 0x7f0b00fa
 			public const int recyclerViewLocationUser = 2131427578;
 			
 			// aapt resource value: 0x7f0b0164
 			public const int recyclerViewShopList = 2131427684;
 			
-			// aapt resource value: 0x7f0b00de
-			public const int recylerHomeInventories = 2131427550;
+			// aapt resource value: 0x7f0b00dc
+			public const int recylerHomeInventories = 2131427548;
 			
 			// aapt resource value: 0x7f0b0117
 			public const int recylerInventories = 2131427607;
@@ -3575,17 +3557,14 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b002d
 			public const int showTitle = 2131427373;
 			
-			// aapt resource value: 0x7f0b00ce
-			public const int smallLabel = 2131427534;
+			// aapt resource value: 0x7f0b00cc
+			public const int smallLabel = 2131427532;
 			
-			// aapt resource value: 0x7f0b0181
-			public const int snackbar_ManageStorage = 2131427713;
+			// aapt resource value: 0x7f0b00d3
+			public const int snackbar_action = 2131427539;
 			
-			// aapt resource value: 0x7f0b00d5
-			public const int snackbar_action = 2131427541;
-			
-			// aapt resource value: 0x7f0b00d4
-			public const int snackbar_text = 2131427540;
+			// aapt resource value: 0x7f0b00d2
+			public const int snackbar_text = 2131427538;
 			
 			// aapt resource value: 0x7f0b004b
 			public const int snap = 2131427403;
@@ -3593,23 +3572,20 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b006b
 			public const int spacer = 2131427435;
 			
-			// aapt resource value: 0x7f0b00b7
-			public const int spinnerAddItemCategory = 2131427511;
+			// aapt resource value: 0x7f0b00b5
+			public const int spinnerAddItemCategory = 2131427509;
 			
-			// aapt resource value: 0x7f0b00b8
-			public const int spinnerAddItemStorage = 2131427512;
+			// aapt resource value: 0x7f0b00b6
+			public const int spinnerAddItemStorage = 2131427510;
 			
 			// aapt resource value: 0x7f0b013e
 			public const int spinnerAddStorageLocation = 2131427646;
 			
-			// aapt resource value: 0x7f0b00e4
-			public const int spinnerHomeActiveLocation = 2131427556;
+			// aapt resource value: 0x7f0b00e2
+			public const int spinnerHomeActiveLocation = 2131427554;
 			
 			// aapt resource value: 0x7f0b015b
 			public const int spinnerRunOutItemsStorage = 2131427675;
-			
-			// aapt resource value: 0x7f0b0183
-			public const int spinnerUseItemsStorage = 2131427715;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int split_action_bar = 2131427336;
@@ -3641,9 +3617,6 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0028
 			public const int tabMode = 2131427368;
 			
-			// aapt resource value: 0x7f0b017f
-			public const int tabsManageStorage = 2131427711;
-			
 			// aapt resource value: 0x7f0b0019
 			public const int tag_transition_group = 2131427353;
 			
@@ -3659,8 +3632,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0106
 			public const int textInputEditTextLoginPageEmail = 2131427590;
 			
-			// aapt resource value: 0x7f0b00c2
-			public const int textScannedBarcode = 2131427522;
+			// aapt resource value: 0x7f0b00c0
+			public const int textScannedBarcode = 2131427520;
 			
 			// aapt resource value: 0x7f0b0071
 			public const int textSpacerNoButtons = 2131427441;
@@ -3671,101 +3644,104 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0147
 			public const int textView = 2131427655;
 			
-			// aapt resource value: 0x7f0b00b9
-			public const int textView1 = 2131427513;
+			// aapt resource value: 0x7f0b00b7
+			public const int textView1 = 2131427511;
 			
-			// aapt resource value: 0x7f0b0170
-			public const int textView10 = 2131427696;
-			
-			// aapt resource value: 0x7f0b0173
-			public const int textView11 = 2131427699;
+			// aapt resource value: 0x7f0b0171
+			public const int textView10 = 2131427697;
 			
 			// aapt resource value: 0x7f0b0174
-			public const int textView12 = 2131427700;
+			public const int textView11 = 2131427700;
 			
-			// aapt resource value: 0x7f0b0177
-			public const int textView13 = 2131427703;
+			// aapt resource value: 0x7f0b0175
+			public const int textView12 = 2131427701;
 			
 			// aapt resource value: 0x7f0b0178
-			public const int textView14 = 2131427704;
+			public const int textView13 = 2131427704;
 			
-			// aapt resource value: 0x7f0b017b
-			public const int textView15 = 2131427707;
+			// aapt resource value: 0x7f0b0179
+			public const int textView14 = 2131427705;
 			
 			// aapt resource value: 0x7f0b017c
-			public const int textView16 = 2131427708;
-			
-			// aapt resource value: 0x7f0b00ba
-			public const int textView2 = 2131427514;
+			public const int textView15 = 2131427708;
 			
 			// aapt resource value: 0x7f0b017d
-			public const int textView20 = 2131427709;
+			public const int textView16 = 2131427709;
+			
+			// aapt resource value: 0x7f0b00b8
+			public const int textView2 = 2131427512;
+			
+			// aapt resource value: 0x7f0b017e
+			public const int textView20 = 2131427710;
 			
 			// aapt resource value: 0x7f0b0109
 			public const int textView3 = 2131427593;
 			
-			// aapt resource value: 0x7f0b00f5
-			public const int textView4 = 2131427573;
+			// aapt resource value: 0x7f0b00f2
+			public const int textView4 = 2131427570;
+			
+			// aapt resource value: 0x7f0b00f3
+			public const int textView5 = 2131427571;
 			
 			// aapt resource value: 0x7f0b00f6
-			public const int textView5 = 2131427574;
+			public const int textView6 = 2131427574;
 			
-			// aapt resource value: 0x7f0b00f8
-			public const int textView6 = 2131427576;
+			// aapt resource value: 0x7f0b00f7
+			public const int textView7 = 2131427575;
 			
-			// aapt resource value: 0x7f0b00e6
-			public const int textView7 = 2131427558;
+			// aapt resource value: 0x7f0b00f9
+			public const int textView8 = 2131427577;
 			
-			// aapt resource value: 0x7f0b00e8
-			public const int textView8 = 2131427560;
-			
-			// aapt resource value: 0x7f0b00eb
-			public const int textView9 = 2131427563;
-			
-			// aapt resource value: 0x7f0b00a7
-			public const int textViewAdapterHomeInventoriesExpDate = 2131427495;
+			// aapt resource value: 0x7f0b0170
+			public const int textView9 = 2131427696;
 			
 			// aapt resource value: 0x7f0b00a5
-			public const int textViewAdapterHomeInventoriesName = 2131427493;
+			public const int textViewAdapterHomeInventoriesExpDate = 2131427493;
 			
-			// aapt resource value: 0x7f0b00a6
-			public const int textViewAdapterHomeInventoriesStatus = 2131427494;
+			// aapt resource value: 0x7f0b00a3
+			public const int textViewAdapterHomeInventoriesName = 2131427491;
 			
-			// aapt resource value: 0x7f0b00ae
-			public const int textViewAdapterSharedLocationName = 2131427502;
+			// aapt resource value: 0x7f0b00a4
+			public const int textViewAdapterHomeInventoriesStatus = 2131427492;
 			
-			// aapt resource value: 0x7f0b00af
-			public const int textViewAdapterSharedLocationStatus = 2131427503;
+			// aapt resource value: 0x7f0b00ac
+			public const int textViewAdapterSharedLocationName = 2131427500;
+			
+			// aapt resource value: 0x7f0b00ad
+			public const int textViewAdapterSharedLocationStatus = 2131427501;
+			
+			// aapt resource value: 0x7f0b00b1
+			public const int textViewAdapterUserListName = 2131427505;
+			
+			// aapt resource value: 0x7f0b00b2
+			public const int textViewAdapterUserListStatus = 2131427506;
 			
 			// aapt resource value: 0x7f0b00b3
-			public const int textViewAdapterUserListName = 2131427507;
-			
-			// aapt resource value: 0x7f0b00b4
-			public const int textViewAdapterUserListStatus = 2131427508;
-			
-			// aapt resource value: 0x7f0b00b5
-			public const int textViewAddBarcodeId = 2131427509;
-			
-			// aapt resource value: 0x7f0b0171
-			public const int textViewItemAdded = 2131427697;
-			
-			// aapt resource value: 0x7f0b00e7
-			public const int textViewMainExpiredCounter = 2131427559;
+			public const int textViewAddBarcodeId = 2131427507;
 			
 			// aapt resource value: 0x7f0b00e9
-			public const int textViewMainRunningOutCounter = 2131427561;
+			public const int textViewHomeRecyclerTitle = 2131427561;
 			
-			// aapt resource value: 0x7f0b00ec
-			public const int textViewMainStockCounter = 2131427564;
+			// aapt resource value: 0x7f0b0172
+			public const int textViewItemAdded = 2131427698;
 			
-			// aapt resource value: 0x7f0b0175
-			public const int textViewMoneySpent = 2131427701;
+			// aapt resource value: 0x7f0b00e4
+			public const int textViewMainExpiredCounter = 2131427556;
 			
-			// aapt resource value: 0x7f0b0179
-			public const int textViewMoneySpentOnExpiredItem = 2131427705;
+			// aapt resource value: 0x7f0b00e8
+			public const int textViewMainGoodConditionCounter = 2131427560;
 			
-			// aapt resource value: 0x7f0b00db
-			public const int text_input_password_toggle = 2131427547;
+			// aapt resource value: 0x7f0b00e6
+			public const int textViewMainRunningOutCounter = 2131427558;
+			
+			// aapt resource value: 0x7f0b0176
+			public const int textViewMoneySpent = 2131427702;
+			
+			// aapt resource value: 0x7f0b017a
+			public const int textViewMoneySpentOnExpiredItem = 2131427706;
+			
+			// aapt resource value: 0x7f0b00d9
+			public const int text_input_password_toggle = 2131427545;
 			
 			// aapt resource value: 0x7f0b0014
 			public const int textinput_counter = 2131427348;
@@ -3779,32 +3755,32 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0094
 			public const int textviewCategoriesAdapterName = 2131427476;
 			
-			// aapt resource value: 0x7f0b00c7
-			public const int textviewCategoryDetailTitle = 2131427527;
+			// aapt resource value: 0x7f0b00c5
+			public const int textviewCategoryDetailTitle = 2131427525;
 			
-			// aapt resource value: 0x7f0b00a4
-			public const int textviewInventoryLogsDate = 2131427492;
+			// aapt resource value: 0x7f0b00a2
+			public const int textviewInventoryLogsDate = 2131427490;
 			
-			// aapt resource value: 0x7f0b00a3
-			public const int textviewInventoryLogsDescription = 2131427491;
+			// aapt resource value: 0x7f0b00a1
+			public const int textviewInventoryLogsDescription = 2131427489;
 			
-			// aapt resource value: 0x7f0b00aa
-			public const int textviewLocationAdapterAddress = 2131427498;
-			
-			// aapt resource value: 0x7f0b00ab
-			public const int textviewLocationAdapterDescription = 2131427499;
-			
-			// aapt resource value: 0x7f0b00f2
-			public const int textviewLocationDetailTitle = 2131427570;
+			// aapt resource value: 0x7f0b00a8
+			public const int textviewLocationAdapterAddress = 2131427496;
 			
 			// aapt resource value: 0x7f0b00a9
-			public const int textviewLocationsAdapterName = 2131427497;
+			public const int textviewLocationAdapterDescription = 2131427497;
 			
-			// aapt resource value: 0x7f0b00ad
-			public const int textviewProductsAdapterBarcodeId = 2131427501;
+			// aapt resource value: 0x7f0b00ee
+			public const int textviewLocationDetailTitle = 2131427566;
 			
-			// aapt resource value: 0x7f0b00ac
-			public const int textviewProductsAdapterName = 2131427500;
+			// aapt resource value: 0x7f0b00a7
+			public const int textviewLocationsAdapterName = 2131427495;
+			
+			// aapt resource value: 0x7f0b00ab
+			public const int textviewProductsAdapterBarcodeId = 2131427499;
+			
+			// aapt resource value: 0x7f0b00aa
+			public const int textviewProductsAdapterName = 2131427498;
 			
 			// aapt resource value: 0x7f0b0160
 			public const int textviewShopListDetailTitle = 2131427680;
@@ -3812,14 +3788,14 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0169
 			public const int textviewStorageDetailTitle = 2131427689;
 			
-			// aapt resource value: 0x7f0b00b1
-			public const int textviewStoragesAdapterArea = 2131427505;
-			
-			// aapt resource value: 0x7f0b00b2
-			public const int textviewStoragesAdapterDescription = 2131427506;
+			// aapt resource value: 0x7f0b00af
+			public const int textviewStoragesAdapterArea = 2131427503;
 			
 			// aapt resource value: 0x7f0b00b0
-			public const int textviewStoragesAdapterName = 2131427504;
+			public const int textviewStoragesAdapterDescription = 2131427504;
+			
+			// aapt resource value: 0x7f0b00ae
+			public const int textviewStoragesAdapterName = 2131427502;
 			
 			// aapt resource value: 0x7f0b0153
 			public const int time = 2131427667;
@@ -3833,11 +3809,11 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0076
 			public const int title_template = 2131427446;
 			
-			// aapt resource value: 0x7f0b00c5
-			public const int toolbar = 2131427525;
+			// aapt resource value: 0x7f0b00c3
+			public const int toolbar = 2131427523;
 			
-			// aapt resource value: 0x7f0b00bd
-			public const int toolbarWithoutScanBottom = 2131427517;
+			// aapt resource value: 0x7f0b00bb
+			public const int toolbarWithoutScanBottom = 2131427515;
 			
 			// aapt resource value: 0x7f0b010c
 			public const int toolbar_layout = 2131427596;
@@ -3848,8 +3824,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0075
 			public const int topPanel = 2131427445;
 			
-			// aapt resource value: 0x7f0b00d2
-			public const int touch_outside = 2131427538;
+			// aapt resource value: 0x7f0b00d0
+			public const int touch_outside = 2131427536;
 			
 			// aapt resource value: 0x7f0b000f
 			public const int transition_current_scene = 2131427343;
@@ -3878,8 +3854,8 @@ namespace ShopDiaryAbb
 			// aapt resource value: 0x7f0b0016
 			public const int view_offset_helper = 2131427350;
 			
-			// aapt resource value: 0x7f0b0189
-			public const int visible = 2131427721;
+			// aapt resource value: 0x7f0b0181
+			public const int visible = 2131427713;
 			
 			// aapt resource value: 0x7f0b0022
 			public const int wide = 2131427362;
@@ -4262,25 +4238,16 @@ namespace ShopDiaryAbb
 			public const int support_simple_spinner_dropdown_item = 2130968679;
 			
 			// aapt resource value: 0x7f040068
-			public const int TabbedManageStorageLayout = 2130968680;
+			public const int toolbar = 2130968680;
 			
 			// aapt resource value: 0x7f040069
-			public const int test = 2130968681;
+			public const int tooltip = 2130968681;
 			
 			// aapt resource value: 0x7f04006a
-			public const int toolbar = 2130968682;
+			public const int zxingscanneractivitylayout = 2130968682;
 			
 			// aapt resource value: 0x7f04006b
-			public const int tooltip = 2130968683;
-			
-			// aapt resource value: 0x7f04006c
-			public const int UseItemsLayout = 2130968684;
-			
-			// aapt resource value: 0x7f04006d
-			public const int zxingscanneractivitylayout = 2130968685;
-			
-			// aapt resource value: 0x7f04006e
-			public const int zxingscannerfragmentlayout = 2130968686;
+			public const int zxingscannerfragmentlayout = 2130968683;
 			
 			static Layout()
 			{
@@ -4509,6 +4476,9 @@ namespace ShopDiaryAbb
 			
 			// aapt resource value: 0x7f08003d
 			public const int drawer_open = 2131230781;
+			
+			// aapt resource value: 0x7f080045
+			public const int expired = 2131230789;
 			
 			// aapt resource value: 0x7f080011
 			public const int fcm_fallback_notification_channel_label = 2131230737;

@@ -25,7 +25,7 @@ namespace ShopDiaryAbb.Fragments
         private FragmentTransaction mFragmentTransaction;
         private ImageButton mButtonAdd;
         private ImageButton mButtonEdit;
-        private Android.Support.V7.Widget.SearchView mSearchView;
+        //private Android.Support.V7.Widget.SearchView mSearchView;
 
         public CategoriesFragment()
         {
