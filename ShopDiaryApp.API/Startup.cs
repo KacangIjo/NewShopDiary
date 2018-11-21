@@ -15,15 +15,7 @@ namespace ShopDiaryApp.API
     {
         public void Configuration(IAppBuilder app)
         {
-    //        services.AddIdentity<ApplicationUser, IdentityRole>()
-    //    .AddEntityFrameworkStores<ShopDiaryDbContext>()
-    //    .AddDefaultTokenProviders();
 
-    //        services.AddAuthentication().AddGoogle(googleOptions =>
-    //{
-    //    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
-    //    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-    //});
             ConfigureAuth(app);
         }
 
