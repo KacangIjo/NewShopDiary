@@ -18,8 +18,9 @@ namespace ShopDiaryAbb
     public class MainActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         #region Properties
-        
+
         #endregion
+        //AppCenter.Start("{Your App Secret}", typeof(Push));
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
