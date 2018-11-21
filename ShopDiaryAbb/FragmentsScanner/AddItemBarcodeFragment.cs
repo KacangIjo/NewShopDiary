@@ -51,7 +51,7 @@ namespace ShopDiaryAbb.FragmentsScanner
         private DateTime DateTemp;
         private TextView mBarcode;
         private AutoCompleteTextView mName;
-        private NumberPicker mStock;
+        private EditText mStock;
         #endregion
         public AddItemBarcodeFragment()
         {
@@ -79,14 +79,14 @@ namespace ShopDiaryAbb.FragmentsScanner
             mBarcode = view.FindViewById<TextView>(Resource.Id.textViewAddBarcodeId);
             mName = view.FindViewById<AutoCompleteTextView>(Resource.Id.editTextAddName);
 
-            mStock = view.FindViewById<NumberPicker>(Resource.Id.numberPickerAddItemTotalItem);
+            mStock = view.FindViewById<EditText>(Resource.Id.editTextAddItemTotalItem);
             mSpinnerCategories = view.FindViewById<Spinner>(Resource.Id.spinnerAddItemCategory);
             mSpinnerStorages = view.FindViewById<Spinner>(Resource.Id.spinnerAddItemStorage);
             mExpDateChoose = view.FindViewById<EditText>(Resource.Id.editTextAddItemExpDate);
             mAddtoInventory = view.FindViewById<ImageButton>(Resource.Id.buttonAddAddToInventory);
             mScan = view.FindViewById<ImageButton>(Resource.Id.imageButtonAddScan2);
             mBarcode.Text = "-";
-            mStock.Value = 1;
+            mStock.Text = "1";
             LoadItemData();
             mName.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) => {
                 ProductViewModel checkedProduct = mProducts.Find(p => p.Name == mName.Text);
@@ -197,7 +197,7 @@ namespace ShopDiaryAbb.FragmentsScanner
                 AddedUserId = LoginPageActivity.StaticUserClass.ID.ToString()
             };
             new Thread(new ThreadStart(delegate{
-                if (mStock.Value == 1)
+                if (int.Parse(mStock.Text) == 1)
                 {
 
                     var isInventoryAdded = mInventoryDataService.Add(newInventory);
@@ -211,9 +211,9 @@ namespace ShopDiaryAbb.FragmentsScanner
                         this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed to add, please check again form's field", ToastLength.Long).Show());
                     }
                 }
-                else if(mStock.Value > 1)
+                else if(int.Parse(mStock.Text) > 1)
                 {
-                    for(int i=0;i<=mStock.Value;i++)
+                    for(int i=0;i < int.Parse(mStock.Text); i++)
                     {
                         var isInventoryAdded = mInventoryDataService.Add(newInventory);
                         if (isInventoryAdded)

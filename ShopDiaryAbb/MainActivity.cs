@@ -8,6 +8,8 @@ using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Push;
 using ShopDiaryAbb.Fragments;
 using ShopDiaryAbb.FragmentsScanner;
 using ShopDiaryAbb.Models.ViewModels;
@@ -20,9 +22,34 @@ namespace ShopDiaryAbb
         #region Properties
 
         #endregion
-        //AppCenter.Start("{Your App Secret}", typeof(Push));
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            if (!AppCenter.Configured)
+            {
+                Push.PushNotificationReceived += (sender, e) =>
+                {
+                    // Add the notification message and title to the message
+                    var summary = $"Push notification received:" +
+                                        $"\n\tNotification title: {e.Title}" +
+                                        $"\n\tMessage: {e.Message}";
+
+                    // If there is custom data associated with the notification,
+                    // print the entries
+                    if (e.CustomData != null)
+                    {
+                        summary += "\n\tCustom data:\n";
+                        foreach (var key in e.CustomData.Keys)
+                        {
+                            summary += $"\t\t{key} : {e.CustomData[key]}\n";
+                        }
+                    }
+
+                    // Send the notification summary to debug output
+                    System.Diagnostics.Debug.WriteLine(summary);
+                };
+            }
+            AppCenter.Start("4ced249d-df1d-4780-a8d1-23dc63ddf900", typeof(Push));
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);

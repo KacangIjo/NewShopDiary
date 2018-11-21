@@ -19,27 +19,27 @@ namespace ShopDiaryAbb
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
     class ShopDiaryFireBaseMessagingService:FirebaseMessagingService
     {
-        public override void OnMessageReceived(RemoteMessage message)
-        {
-            base.OnMessageReceived(message);
-            SendNotification(message.GetNotification().Body);
-        }
+        //public override void OnMessageReceived(RemoteMessage message)
+    //    {
+    //        base.OnMessageReceived(message);
+    //        SendNotification(message.GetNotification().Body);
+    //    }
 
-        private void SendNotification(string body)
-        {
-            var intent = new Intent(this, typeof(MainActivity));
-            intent.AddFlags(ActivityFlags.ClearTop);
-            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
-            var defaultSoundUri = RingtoneManager.GetDefaultUri(RingtoneType.Notification);
-            var notificationBuilder = new NotificationCompat.Builder(this)
-                .SetSmallIcon(Resource.Drawable.logo)
-                .SetContentTitle("You Have Expired Items")
-                .SetContentText(body)
-                .SetAutoCancel(true)
-                .SetSound(defaultSoundUri)
-                .SetContentIntent(pendingIntent);
-            var notificationManager = NotificationManager.FromContext(this);
-            notificationManager.Notify(0, notificationBuilder.Build());
-        }
+    //    private void SendNotification(string body)
+    //    {
+    //        var intent = new Intent(this, typeof(MainActivity));
+    //        intent.AddFlags(ActivityFlags.ClearTop);
+    //        var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+    //        var defaultSoundUri = RingtoneManager.GetDefaultUri(RingtoneType.Notification);
+    //        var notificationBuilder = new NotificationCompat.Builder(this)
+    //            .SetSmallIcon(Resource.Drawable.logo)
+    //            .SetContentTitle("You Have Expired Items")
+    //            .SetContentText(body)
+    //            .SetAutoCancel(true)
+    //            .SetSound(defaultSoundUri)
+    //            .SetContentIntent(pendingIntent);
+    //        var notificationManager = NotificationManager.FromContext(this);
+    //        notificationManager.Notify(0, notificationBuilder.Build());
+    //    }
     }
 }
