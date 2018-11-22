@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
+using ShopDiaryApp.API.NotificationScheduler;
 using ShopDiaryProject.Domain.Models;
 using ShopDiaryProject.EF;
 
@@ -15,10 +16,7 @@ namespace ShopDiaryApp.API
     {
         public void Configuration(IAppBuilder app)
         {
-
             ConfigureAuth(app);
         }
-
-//      
     }
 }

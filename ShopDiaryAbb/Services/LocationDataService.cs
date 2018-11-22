@@ -45,7 +45,7 @@ namespace ShopDiaryAbb.Services
 
         public bool Add(Location data)
         {
-            var content = new FormUrlEncodedContent(new[]
+            FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
             {
                 new KeyValuePair<string, string>("Id", data.Id.ToString()),
                 new KeyValuePair<string, string>("Name", data.Name.ToString()),

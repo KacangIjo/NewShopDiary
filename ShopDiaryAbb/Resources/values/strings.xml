@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShopDiaryAbb</string>
+    <string name="app_name">ShopDiaryApp</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
@@ -18,4 +18,10 @@
   <string name="spinnerlocation">Choose Location</string>
 
   <string name="spinnerstorage">Choose Storage</string>
+  
+  <string name="Hello">Hello World, Click Me!</string>
+  <string name="ApplicationName">Notifications</string>
+
+  <string name="channel_name">Local Notifications</string>
+  <string name="channel_description">The count from MainActivity.</string>
 </resources>

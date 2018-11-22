@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDiaryApp", "ShopDiaryAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDiaryAbb", "ShopDiaryAbb\ShopDiaryAbb.csproj", "{07272096-7498-4F50-B9FC-AA5202BDA99D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushNotificationServer", "PushNotificationServer\PushNotificationServer.csproj", "{117A80C0-BD64-40B0-89A5-3E02053E0AD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU
@@ -187,6 +189,24 @@ Global
 		{07272096-7498-4F50-B9FC-AA5202BDA99D}.Release|x86.ActiveCfg = Release|Any CPU
 		{07272096-7498-4F50-B9FC-AA5202BDA99D}.Release|x86.Build.0 = Release|Any CPU
 		{07272096-7498-4F50-B9FC-AA5202BDA99D}.Release|x86.Deploy.0 = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.AppStore|x64.ActiveCfg = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.AppStore|x64.Build.0 = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.AppStore|x86.Build.0 = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Debug|x64.Build.0 = Debug|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Debug|x86.Build.0 = Debug|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Release|x64.ActiveCfg = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Release|x64.Build.0 = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Release|x86.ActiveCfg = Release|Any CPU
+		{117A80C0-BD64-40B0-89A5-3E02053E0AD4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

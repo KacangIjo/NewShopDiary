@@ -19,7 +19,8 @@ namespace ShopDiaryAbb.Services
             {
                 try
                 {
-                    //untuk ngelempar token
+                   
+
                     client.DefaultRequestHeaders.Authorization =
                         new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginHelper.Token);
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

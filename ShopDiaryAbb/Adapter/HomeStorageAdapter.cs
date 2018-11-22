@@ -15,7 +15,6 @@ namespace ShopDiaryAbb.Adapter
     {
         private readonly Activity mActivity;
         
-        private readonly List<InventoryViewModel> mInventories;
         private readonly List<StorageViewModel> mStorages;
 
         private int mSelectedPosition = -1;

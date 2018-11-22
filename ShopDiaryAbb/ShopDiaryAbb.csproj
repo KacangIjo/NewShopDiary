@@ -460,9 +460,6 @@
     <AndroidResource Include="Resources\layout\HomeStoragesLayout.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout1.axml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\LocationDetail.axml" />
   </ItemGroup>
   <ItemGroup>

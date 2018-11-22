@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{117A80C0-BD64-40B0-89A5-3E02053E0AD4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PushNotificationServer</RootNamespace>
+    <AssemblyName>PushNotificationServer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=3.0.7.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.3.0.7\lib\net452\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper\LoginHelper.cs" />
+    <Compile Include="Helper\UrlHelper.cs" />
+    <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Consume.cs" />
+    <Compile Include="Models\FullAuditedEntity.cs" />
+    <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\Inventorylog.cs" />
+    <Compile Include="Models\ISoftDelete.cs" />
+    <Compile Include="Models\JsonObjectModel.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\Shopitem.cs" />
+    <Compile Include="Models\Shoplist.cs" />
+    <Compile Include="Models\Storage.cs" />
+    <Compile Include="Models\UserData.cs" />
+    <Compile Include="Models\UserLocation.cs" />
+    <Compile Include="Models\ViewModels\CategoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\ConsumeViewModel.cs" />
+    <Compile Include="Models\ViewModels\InventorylogViewModel.cs" />
+    <Compile Include="Models\ViewModels\InventoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\LocationViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductViewModel.cs" />
+    <Compile Include="Models\ViewModels\PurchaseViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopitemViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShoplistViewModel.cs" />
+    <Compile Include="Models\ViewModels\StorageViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserDataViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserLocationViewModel.cs" />
+    <Compile Include="NotificationScheduler\JobScheduler.cs" />
+    <Compile Include="NotificationScheduler\JsonObjectNotification.cs" />
+    <Compile Include="NotificationScheduler\SentPushNotification.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountDataService.cs" />
+    <Compile Include="Services\CategoryDataService.cs" />
+    <Compile Include="Services\ConsumeDataService.cs" />
+    <Compile Include="Services\InventoryDataService.cs" />
+    <Compile Include="Services\InventoryLogDataService.cs" />
+    <Compile Include="Services\LocationDataService.cs" />
+    <Compile Include="Services\ProductDataService.cs" />
+    <Compile Include="Services\StorageDataService.cs" />
+    <Compile Include="Services\UserDataDataService.cs" />
+    <Compile Include="Services\UserLocationDataService.cs" />
+    <Compile Include="ShopDiaryApp\API.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

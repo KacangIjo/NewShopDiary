@@ -20,9 +20,11 @@ namespace ShopDiaryAbb
     public class MainActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         #region Properties
-
+        static readonly int NOTIFICATION_ID = 1000;
+        static readonly string CHANNEL_ID = "location_notification";
+        internal static readonly string COUNT_KEY = "count";
         #endregion
-        
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             if (!AppCenter.Configured)
@@ -49,14 +51,19 @@ namespace ShopDiaryAbb
                     System.Diagnostics.Debug.WriteLine(summary);
                 };
             }
+            CustomProperties properties = new CustomProperties();
+            properties.Set("UserId", LoginPageActivity.StaticUserClass.ID.ToString()); 
+            AppCenter.SetCustomProperties(properties);
+            AppCenter.SetEnabledAsync(true);
+            AppCenter.GetInstallIdAsync();
             AppCenter.Start("4ced249d-df1d-4780-a8d1-23dc63ddf900", typeof(Push));
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
-            FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            fab.Click += FabOnClick;
+            //FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            //fab.Click += FabOnClick;
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, Resource.String.navigation_drawer_open, Resource.String.navigation_drawer_close);
@@ -65,13 +72,15 @@ namespace ShopDiaryAbb
 
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
+            CreateNotificationChannel();
+            Notify();
 
-            
             if (savedInstanceState == null)
             {
                 navigationView.SetCheckedItem(Resource.Id.nav_home_1);
                 ListItemClicked(0);
             }
+            
 
         }
 
@@ -212,6 +221,40 @@ namespace ShopDiaryAbb
             SupportFragmentManager.BeginTransaction()
                 .Replace(Resource.Id.main_frame, fragment)
                 .Commit();
+        }
+
+        public void CreateNotificationChannel()
+        {
+            if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+            {
+                // Notification channels are new in API 26 (and not a part of the
+                // support library). There is no need to create a notification
+                // channel on older versions of Android.
+                return;
+            }
+
+            string channelName = Resources.GetString(Resource.String.channel_name);
+            string channelDescription = GetString(Resource.String.channel_description);
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
+            {
+                Description = channelDescription
+            };
+
+            NotificationManager notificationManager = (NotificationManager)GetSystemService(NotificationService);
+            notificationManager.CreateNotificationChannel(channel);
+        }
+
+        public new void Notify()
+        {
+            var builder = new Android.Support.V4.App.NotificationCompat.Builder(this, CHANNEL_ID)
+                 .SetAutoCancel(true) // Dismiss the notification from the notification area when the user clicks on it
+                 .SetContentTitle("Expired Items") // Set the title
+                 .SetSmallIcon(Resource.Drawable.Icon) // This is the icon to display
+                 .SetContentText("You have expired Items in your inventory"); // the message to display.
+
+            // Finally, publish the notification:
+            var notificationManager = Android.Support.V4.App.NotificationManagerCompat.From(this);
+            notificationManager.Notify(NOTIFICATION_ID, builder.Build());
         }
 
     }

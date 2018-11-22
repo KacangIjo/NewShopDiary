@@ -1,3 +1,4 @@
+
 using Android.Content;
 using Android.OS;
 using Android.Support.V4.App;
@@ -223,6 +224,7 @@ namespace ShopDiaryAbb.Fragments
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }
+       
        
     }
 }
