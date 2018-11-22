@@ -36,6 +36,7 @@ namespace ShopDiaryAbb
         private readonly UserLocationDataService mUserLocationDataService;
         private readonly UserDataDataService mUserDataDataService;
         private readonly ShoplistDataService mShopListDataService;
+        private readonly ShopItemDataService mShopItemDataService;
 
         public static Class.User StaticUserClass = new Class.User();
         public static LocationViewModel StaticActiveLocationClass = new LocationViewModel();
@@ -66,6 +67,7 @@ namespace ShopDiaryAbb
             mUserDataDataService = new UserDataDataService();
             mUserLocationDataService = new UserLocationDataService();
             mShopListDataService = new ShoplistDataService();
+            mShopItemDataService = new ShopItemDataService();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -138,6 +140,8 @@ namespace ShopDiaryAbb
             mGlobalCategories = await mCategoryDataService.GetAll();
             mGlobalUserLocs = await mUserLocationDataService.GetAll();
             mGlobalUserDatas = await mUserDataDataService.GetAll();
+            mGlobalShopList = await mShopListDataService.GetAll();
+            mGlobalShopItem = await mShopItemDataService.GetAll();
             mGlobalInventories = new List<InventoryViewModel>();
 
             List<InventoryViewModel> tempInventories = await mInventoryDataService.GetAll();

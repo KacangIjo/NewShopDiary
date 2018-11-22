@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace ShopDiaryAbb.Fragments
 {
-    public class ShopListFragment : Fragment
+    public class ShopItemsFragment : Fragment
     {
         private ShopListsRecylceAdapter mShopListAdapter;
         public List<StorageViewModel> mStorages;
@@ -29,7 +29,7 @@ namespace ShopDiaryAbb.Fragments
 
         ShoplistDataService shoplistDataService;
         public List<ShoplistViewModel> mShopLists;
-        public ShopListFragment()
+        public ShopItemsFragment()
         {
             mStorageDataService = new StorageDataService();
         }
@@ -39,9 +39,9 @@ namespace ShopDiaryAbb.Fragments
             HasOptionsMenu = true;
         }
 
-        public static ShopListFragment NewInstance()
+        public static ShopItemsFragment NewInstance()
         {
-            var frag2 = new ShopListFragment { Arguments = new Bundle() };
+            var frag2 = new ShopItemsFragment { Arguments = new Bundle() };
             return frag2;
         }
 
@@ -50,8 +50,8 @@ namespace ShopDiaryAbb.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             HasOptionsMenu = true;
-            View view = inflater.Inflate(Resource.Layout.ManageShopList, container, false);
-            mListViewShopList= view.FindViewById<RecyclerView>(Resource.Id.recylerShopLists);
+            View view = inflater.Inflate(Resource.Layout.ManageShopItemLayout, container, false);
+            mListViewShopList= view.FindViewById<RecyclerView>(Resource.Id.recylerShopItems);
             mListViewShopList.SetLayoutManager(new LinearLayoutManager(this.Activity));
             mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListAdd);
             mButtonView = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListView);

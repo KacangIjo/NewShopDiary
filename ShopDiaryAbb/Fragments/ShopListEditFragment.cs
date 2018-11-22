@@ -17,15 +17,15 @@ using ShopDiaryAbb.Services;
 
 namespace ShopDiaryAbb.Fragments
 {
-    public class ShopListAddFragement : Android.Support.V4.App.Fragment
+    public class ShopListEditFragment : Android.Support.V4.App.Fragment
     {
         private EditText mShopListName;
         private EditText mShopListDescription;
         private EditText mStoreLocation;
 
-        private Button mButtonAdd;
+        private Button mButtonSave;
+        private Button mButtonDelete;
         private Button mButtonCancel;
-        private ProgressBar mProgressBar;
 
         ShoplistDataService shoplistDataService;
         public List<ShoplistViewModel> mShopLists;
@@ -34,7 +34,7 @@ namespace ShopDiaryAbb.Fragments
         private FragmentTransaction mFragmentTransaction;
         Guid mAuthorizedId = LoginPageActivity.StaticUserClass.ID;
 
-        public ShopListAddFragement()
+        public ShopListEditFragment()
         {
             shoplistDataService = new ShoplistDataService();
             mShopLists = new List<ShoplistViewModel>();
@@ -46,20 +46,21 @@ namespace ShopDiaryAbb.Fragments
 
 
 
-        public static ShopListAddFragement NewInstance()
+        public static ShopListEditFragment NewInstance()
         {
-            var frag2 = new ShopListAddFragement { Arguments = new Bundle() };
+            var frag2 = new ShopListEditFragment { Arguments = new Bundle() };
             return frag2;
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View view = inflater.Inflate(Resource.Layout.ManageShopListAdd,container,false);
-            mButtonAdd = view.FindViewById<Button>(Resource.Id.buttonAddShopList);
-            mButtonCancel = view.FindViewById<Button>(Resource.Id.buttonCancelShopList);
-            mShopListName = view.FindViewById<EditText>(Resource.Id.editTextAddStorageName);
-            mShopListDescription = view.FindViewById<EditText>(Resource.Id.editTextAddShopListDescription);
-            mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarAddShopList);
-            mButtonAdd.Click += MButtonAdd_Click;
+            View view = inflater.Inflate(Resource.Layout.ShopListDetail,container,false);
+            mButtonSave = view.FindViewById<Button>(Resource.Id.buttonShopListEditSave);
+            mButtonDelete = view.FindViewById<Button>(Resource.Id.buttonShopListEditDelete);
+            mButtonCancel = view.FindViewById<Button>(Resource.Id.buttonShopListEditCancel);
+            mShopListName = view.FindViewById<EditText>(Resource.Id.editTextShopListDetailName);
+            mShopListDescription = view.FindViewById<EditText>(Resource.Id.editTextShopListDetailDescription);
+            mButtonSave.Click += MButtonSave_Click;
+            mButtonDelete.Click += MButtonDelete_Click;
             mButtonCancel.Click += MButtonCancel_Click;
             return view;
         }
@@ -68,10 +69,29 @@ namespace ShopDiaryAbb.Fragments
         {
             ReplaceFragment(new ShopListFragment(), "Manage ShopList");
         }
-
-        private void MButtonAdd_Click(object sender, EventArgs e)
+        private void MButtonDelete_Click(object sender, EventArgs e)
         {
-            mProgressBar.Visibility = Android.Views.ViewStates.Visible;
+            new Thread(new ThreadStart(async delegate
+            {
+
+                var isAdded = shoplistDataService.Delete(ShopListFragment.mSelectedShopList.Id);
+                if (isAdded)
+                {
+                    LoginPageActivity.mGlobalShopList = await shoplistDataService.GetAll();
+                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Success", ToastLength.Long).Show());
+
+                    ReplaceFragment(new ShopListFragment(), "Manage ShopLists");
+                }
+                else
+                {
+                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed", ToastLength.Long).Show());
+                }
+            })).Start();
+        }
+
+        private void MButtonSave_Click(object sender, EventArgs e)
+        {
+          
             ShoplistViewModel newShopList = new ShoplistViewModel()
             {
                 Name = mShopListName.Text,
@@ -83,14 +103,14 @@ namespace ShopDiaryAbb.Fragments
 
             new Thread(new ThreadStart(async delegate
             {
-                UpgradeProgress();
-                var isAdded = shoplistDataService.Add(newShopList.ToModel());
+             
+                var isAdded = shoplistDataService.Edit(ShopListFragment.mSelectedShopList.Id, newShopList.ToModel());
 
                 if (isAdded)
                 {
                     LoginPageActivity.mGlobalShopList = await shoplistDataService.GetAll();
-                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "ShopList Added", ToastLength.Long).Show());
-                    mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
+                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Success", ToastLength.Long).Show());
+                   
                     ReplaceFragment(new ShopListFragment(), "Manage ShopLists");
                 }
                 else
@@ -101,17 +121,6 @@ namespace ShopDiaryAbb.Fragments
 
         }
 
-        private void UpgradeProgress()
-        {
-            int progressvalue = 0;
-            while (progressvalue < 100)
-            {
-                progressvalue += 10;
-                mProgressBar.Progress = progressvalue;
-                Thread.Sleep(300);
-            }
-
-        }
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();

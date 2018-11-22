@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 			<TextView
-				android:text="Location Detail"
+				android:text="Shop List Detail"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
 			<LinearLayout
 				android:orientation="vertical"
 				android:layout_width="match_parent"
-				android:layout_height="152.3dp"
+				android:layout_height="139.0dp"
 				android:id="@+id/linearLayout1"
 				android:layout_marginTop="20dp"
 				android:layout_marginRight="20dp"
@@ -36,7 +36,7 @@
 					android:id="@+id/linearLayout2">
 					<TextView
 						android:text="Name"
-						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent"
 						android:width="100dp"
@@ -55,38 +55,13 @@
 				<LinearLayout
 					android:orientation="horizontal"
 					android:layout_width="match_parent"
-					android:layout_height="40dp"
-					android:id="@+id/linearLayout3"
-					android:layout_marginTop="5dp">
-					<TextView
-						android:text="Market"
-						android:textAppearance="?android:attr/textAppearanceSmall"
-						android:layout_width="wrap_content"
-						android:layout_height="match_parent"
-						android:width="100dp"
-						android:gravity="center|left" />
-					<TextView
-						android:text=":"
-						android:textAppearance="?android:attr/textAppearanceSmall"
-						android:layout_width="wrap_content"
-						android:layout_height="match_parent"
-						android:id="@+id/textView5"
-						android:gravity="center" />
-					<android.support.design.widget.TextInputEditText
-						android:layout_width="match_parent"
-						android:layout_height="match_parent"
-						android:id="@+id/editTextShopListDetailStore" />
-				</LinearLayout>
-				<LinearLayout
-					android:orientation="horizontal"
-					android:layout_width="match_parent"
 					android:layout_height="45dp"
 					android:id="@+id/linearLayout4"
 					android:layout_marginTop="5dp"
 					android:gravity="top">
 					<TextView
 						android:text="Description"
-						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent"
 						android:width="100dp"
@@ -105,75 +80,37 @@
 						android:id="@+id/editTextShopListDetailDescription" />
 				</LinearLayout>
 			</LinearLayout>
-			<TextView
-				android:text="Shop List's Item"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="10dp"
-				android:gravity="center" />
-			<android.support.v7.widget.RecyclerView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/recyclerViewShopList"
-				android:layout_marginLeft="20dp"
-				android:layout_marginRight="20dp"
-				android:layout_marginTop="20dp" />
-            <ImageView
-                android:src="@android:color/transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBarLocationDetail"
-                android:layout_marginTop="20dp" />
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:minWidth="25px"
-                android:minHeight="50dp"
+                android:minHeight="25px"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="#ff03a9f4"
-                android:gravity="center">
-				<ImageButton
-					android:src="@drawable/addorange"
-					android:layout_width="45dp"
-					android:layout_height="match_parent"
-					android:id="@+id/imageButtonShopListDetailAddItem"
-					android:maxHeight="15dp"
-					android:scaleType="fitCenter"
-					android:hapticFeedbackEnabled="false"
-					android:background="@android:color/transparent"
-					android:layout_marginLeft="5dp"
-					android:layout_marginRight="5dp"
-					android:layout_margin="3dp" />
-				<ImageButton
-					android:src="@drawable/savebutton"
-					android:layout_width="45dp"
-					android:layout_height="match_parent"
-					android:id="@+id/imageButtonShopListDetailSave"
-					android:maxHeight="15dp"
-					android:scaleType="fitCenter"
-					android:hapticFeedbackEnabled="false"
-					android:background="@android:color/transparent"
-					android:layout_marginLeft="5dp"
-					android:layout_marginRight="5dp"
-					android:layout_margin="3dp" />
-				<ImageButton
-					android:src="@drawable/trashpng"
-					android:layout_width="45dp"
-					android:layout_height="match_parent"
-					android:id="@+id/imageButtonLocationShopListDelete"
-					android:maxHeight="15dp"
-					android:scaleType="fitCenter"
-					android:hapticFeedbackEnabled="false"
-					android:background="@android:color/transparent"
-					android:layout_marginLeft="5dp"
-					android:layout_marginRight="5dp"
-					android:layout_margin="3dp" />
+                android:layout_height="50.0dp"
+                android:id="@+id/linearLayout5">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout6"
+                    android:gravity="center">
+					<Button
+						android:text="Save"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:id="@+id/buttonShopListEditSave" />
+					<Button
+						android:text="Delete"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:id="@+id/buttonShopListEditDelete" />
+					<Button
+						android:text="Cancel"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:id="@+id/buttonShopListEditCancel" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

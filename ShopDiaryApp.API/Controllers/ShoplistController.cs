@@ -88,9 +88,6 @@ namespace ShopDiaryApp.API.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-
-
             try
             {
                 _shoplistRepository.Add(storage.ToModel());

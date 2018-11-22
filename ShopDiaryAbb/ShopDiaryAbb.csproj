@@ -82,7 +82,9 @@
     <Compile Include="Class\User.cs" />
     <Compile Include="Class\UserLocation.cs" />
     <Compile Include="DialogFragments\DialogDatePickerActivity.cs" />
+    <Compile Include="Fragments\ShopListEditFragment.cs" />
     <Compile Include="Fragments\ShopListAddFragment.cs" />
+    <Compile Include="Fragments\ShopItemsFragment.cs" />
     <Compile Include="Services\ShopItemDataService.cs" />
     <Compile Include="Services\ShopListDataService.cs" />
     <Compile Include="ShopDiaryFireBaseMessagingService.cs" />
@@ -522,6 +524,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ManageShopListAdd.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ManageShopItemLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ManageShopItemAdd.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

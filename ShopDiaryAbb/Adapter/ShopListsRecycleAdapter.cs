@@ -42,10 +42,10 @@ namespace ShopDiaryAbb.Adapter
         {
             if (holder is ViewHolder vh)
             {
-                var storage = this.mShopList[position];
-                //vh.StorageName.Text = storage.Name;
-                //vh.StorageArea.Text = storage.Area;
-                //vh.StorageDescription.Text = storage.Description;
+                ShoplistViewModel sl = this.mShopList[position];
+                vh.ShopListName.Text = sl.Name;
+                vh.ShopListDescription.Text = sl.Description;
+              
                 vh.ItemView.Selected = (mSelectedPosition == position);
             }
 
@@ -68,7 +68,7 @@ namespace ShopDiaryAbb.Adapter
             public ViewHolder(View itemView, Action<int> listener)
                 : base(itemView)
             {
-                this.ShopListName = itemView.FindViewById<TextView>(Resource.Id.textviewShopListDetailTitle);
+                this.ShopListName = itemView.FindViewById<TextView>(Resource.Id.textviewShoplistAdapterName);
                 this.ShopListDescription = itemView.FindViewById<TextView>(Resource.Id.textviewShoplistAdapterDescription);
 
                 itemView.Click += (sender, e) => listener(this.LayoutPosition);

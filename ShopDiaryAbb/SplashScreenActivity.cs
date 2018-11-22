@@ -30,6 +30,8 @@ namespace ShopDiaryAbb
         private readonly ConsumeDataService mConsumeDataService;
         private readonly UserLocationDataService mUserLocationDataService;
         private readonly UserDataDataService mUserDataDataService;
+        private readonly ShoplistDataService mShopListDataService;
+        private readonly ShopItemDataService mShopItemDataService;
 
         List<UserInfoLocal> ListSource = new List<UserInfoLocal>();
         public static ShopDiaryLocalDatabase db= new ShopDiaryLocalDatabase();
@@ -47,7 +49,10 @@ namespace ShopDiaryAbb
             mConsumeDataService = new ConsumeDataService();
             mUserDataDataService = new UserDataDataService();
             mUserLocationDataService = new UserLocationDataService();
-            
+            mShopListDataService = new ShoplistDataService();
+            mShopItemDataService = new ShopItemDataService();
+
+
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -64,7 +69,7 @@ namespace ShopDiaryAbb
                 var pro = ListSource[i].Id;
             }
             mProgressBar.Visibility = Android.Views.ViewStates.Visible;
-            if (db.SelectTable(1))
+            if (db.SelectTable(0))
             {
                 var intent=new Intent();
                 for (int i = 0; i <= ListSource.Count + 1; i++)
@@ -117,6 +122,8 @@ namespace ShopDiaryAbb
             LoginPageActivity.mGlobalCategories = await mCategoryDataService.GetAll();
             LoginPageActivity.mGlobalUserLocs = await mUserLocationDataService.GetAll();
             LoginPageActivity.mGlobalUserDatas = await mUserDataDataService.GetAll();
+            LoginPageActivity.mGlobalShopList = await mShopListDataService.GetAll();
+            LoginPageActivity.mGlobalShopItem = await mShopItemDataService.GetAll();
             LoginPageActivity.mGlobalInventories = new List<InventoryViewModel>();
 
             List<InventoryViewModel> tempInventories = await mInventoryDataService.GetAll();
