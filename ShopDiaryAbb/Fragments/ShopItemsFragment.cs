@@ -15,20 +15,19 @@ namespace ShopDiaryAbb.Fragments
 {
     public class ShopItemsFragment : Fragment
     {
-        private ShopListsRecylceAdapter mShopListAdapter;
-        public List<StorageViewModel> mStorages;
-        public static ShoplistViewModel mSelectedShopList;
+        private ShopItemRecycleAdapter mShopItemAdapter;
+        public static ShopitemViewModel mSelectedShopItem;
         private readonly StorageDataService mStorageDataService;
 
         private RecyclerView mListViewShopList;
         private int mSelected = -1;
         private FragmentTransaction mFragmentTransaction;
-        private ImageButton mButtonAdd;
-        private ImageButton mButtonView;
-        private ImageButton mButtonEdit;
+        private Button mButtonAdd;
+        private Button mButtonRemove;
+
 
         ShoplistDataService shoplistDataService;
-        public List<ShoplistViewModel> mShopLists;
+        public List<ShopitemViewModel> mShopItems;
         public ShopItemsFragment()
         {
             mStorageDataService = new StorageDataService();
@@ -53,41 +52,38 @@ namespace ShopDiaryAbb.Fragments
             View view = inflater.Inflate(Resource.Layout.ManageShopItemLayout, container, false);
             mListViewShopList= view.FindViewById<RecyclerView>(Resource.Id.recylerShopItems);
             mListViewShopList.SetLayoutManager(new LinearLayoutManager(this.Activity));
-            mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListAdd);
-            mButtonView = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListView);
-            mButtonEdit = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListEdit);
+            mButtonAdd = view.FindViewById<Button>(Resource.Id.buttonShopItemAddNew);
+            mButtonRemove = view.FindViewById<Button>(Resource.Id.buttonShopItemRemove);
+           
             LoadData();
             mButtonAdd.Click += (object sender, EventArgs args) => {
                 ReplaceFragment(new ShopListAddFragement(), "Add Shop List");
             };
-            mButtonView.Click += (object sender, EventArgs args) => {
+            mButtonRemove.Click += (object sender, EventArgs args) => {
                 ReplaceFragment(new InventoriesFragment(), "Manage Shop Item");
             };
-            mButtonEdit.Click += (object sender, EventArgs args) => {
-                ReplaceFragment(new InventoriesFragment(), "Manage Shop Item");
-            };
-
+         
 
 
             return view;
         }
         private void LoadData()
         {
-            var temp = LoginPageActivity.mGlobalShopList;
-            mShopLists = LoginPageActivity.mGlobalShopList.Where(s => s.LocationId == LoginPageActivity.StaticActiveLocationClass.Id.ToString()).ToList();
-            if (mShopLists != null)
+            var temp = LoginPageActivity.mGlobalShopItem;
+            mShopItems = temp.Where(s => s.ShoplistID == ShopListFragment.mSelectedShopList.Id).ToList();
+            if (mShopItems != null)
             {
 
-                mShopListAdapter = new ShopListsRecylceAdapter(mShopLists, this.Activity);
-                mShopListAdapter.ItemClick += OnStorageClicked;
-                mListViewShopList.SetAdapter(this.mShopListAdapter);
+                mShopItemAdapter = new ShopItemRecycleAdapter(mShopItems, this.Activity);
+                mShopItemAdapter.ItemClick += OnStorageClicked;
+                mListViewShopList.SetAdapter(this.mShopItemAdapter);
             }
 
         }
         private void OnStorageClicked(object sender, int e)
         {
             mSelected = e;
-            mSelectedShopList = mShopLists[mSelected];
+            mSelectedShopItem = mShopItems[mSelected];
             
          
 

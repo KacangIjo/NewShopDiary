@@ -44,11 +44,6 @@
 					android:layout_height="match_parent"
 					android:id="@+id/buttonShopItemAddNew" />
 				<Button
-					android:text="Buy"
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:id="@+id/buttonShopItemBuy" />
-				<Button
 					android:text="Remove"
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"

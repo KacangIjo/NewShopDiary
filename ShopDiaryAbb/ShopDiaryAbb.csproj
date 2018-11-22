@@ -67,6 +67,7 @@
     <Compile Include="Adapter\LocationsRecycleAdapter.cs" />
     <Compile Include="Adapter\ObjectExtension.cs" />
     <Compile Include="Adapter\ProductRecyclerAdapter.cs" />
+    <Compile Include="Adapter\ShopItemRecycleAdapter.cs" />
     <Compile Include="Adapter\SpinnerCategoryAdapter.cs" />
     <Compile Include="Adapter\SpinnerLocationAdapter.cs" />
     <Compile Include="Adapter\SpinnerStorageAdapter.cs" />
@@ -534,6 +535,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ManageShopItemAdd.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AdapterShopItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

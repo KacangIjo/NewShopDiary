@@ -14,19 +14,19 @@ using ShopDiaryAbb.Models.ViewModels;
 
 namespace ShopDiaryAbb.Adapter
 {
-    public class ShopListsRecylceAdapter : RecyclerView.Adapter
+    public class ShopItemRecycleAdapter : RecyclerView.Adapter
     {
         private readonly Activity mActivity;
-        private readonly List<ShoplistViewModel> mShopList;
+        private readonly List<ShopitemViewModel> mShopItem;
         private int mSelectedPosition = -1;
 
-        public ShopListsRecylceAdapter(List<ShoplistViewModel> mshoplist, Activity activity)
+        public ShopItemRecycleAdapter(List<ShopitemViewModel> mshopitem, Activity activity)
         {
-            mShopList = mshoplist;
-            mActivity = activity;
+            this.mShopItem = mshopitem;
+            this.mActivity = activity;
         }
 
-        public override int ItemCount => this.mShopList.Count;
+        public override int ItemCount => this.mShopItem.Count;
 
         public event EventHandler<int> ItemClick;
 
@@ -42,9 +42,9 @@ namespace ShopDiaryAbb.Adapter
         {
             if (holder is ViewHolder vh)
             {
-                ShoplistViewModel sl = this.mShopList[position];
-                vh.ShopListName.Text = sl.Name;
-                vh.ShopListDescription.Text = sl.Description;
+                ShopitemViewModel sl = this.mShopItem[position];
+                //vh.ShopListName.Text = sl.Name;
+                //vh.ShopListDescription.Text = sl.Description;
               
                 vh.ItemView.Selected = (mSelectedPosition == position);
             }
@@ -53,7 +53,7 @@ namespace ShopDiaryAbb.Adapter
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            var v = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.AdapterShopList, parent, false);
+            var v = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.AdapterShopItem, parent, false);
             var vh = new ViewHolder(v, this.OnClick);
             return vh;
         }
@@ -68,14 +68,14 @@ namespace ShopDiaryAbb.Adapter
             public ViewHolder(View itemView, Action<int> listener)
                 : base(itemView)
             {
-                this.ShopListName = itemView.FindViewById<TextView>(Resource.Id.textviewShoplistAdapterName);
-                this.ShopListDescription = itemView.FindViewById<TextView>(Resource.Id.textviewShoplistAdapterDescription);
+                //this.Name = itemView.FindViewById<TextView>(Resource.Id.textviewShopItemAdapter);
+                //this.Desc = itemView.FindViewById<TextView>(Resource.Id.textviewadap);
 
                 itemView.Click += (sender, e) => listener(this.LayoutPosition);
             }
 
-            public TextView ShopListName { get; }
-            public TextView ShopListDescription { get; }
+            public TextView Name { get; }
+            public TextView Desc { get; }
 
         }
 
