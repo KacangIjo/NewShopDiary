@@ -278,6 +278,7 @@
     <Compile Include="Models\ViewModels\StorageViewModel.cs" />
     <Compile Include="Models\ViewModels\LocationViewModel.cs" />
     <Compile Include="NotificationScheduler\JobScheduler.cs" />
+    <Compile Include="NotificationScheduler\JsonObjectModel.cs" />
     <Compile Include="NotificationScheduler\JsonObjectNotification.cs" />
     <Compile Include="NotificationScheduler\SentPushNotification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

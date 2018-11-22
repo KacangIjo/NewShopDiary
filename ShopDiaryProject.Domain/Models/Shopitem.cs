@@ -8,7 +8,7 @@ namespace ShopDiaryProject.Domain.Models
 {
     public class Shopitem : FullAuditedEntity
     {
-
+        public string ItemName { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public string Description { get; set; }
@@ -19,6 +19,7 @@ namespace ShopDiaryProject.Domain.Models
         
         public Shopitem()
         {
+            ItemName = "";
             Quantity=0;
             Price = 0.0M;
             Description = "";

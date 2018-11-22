@@ -8,6 +8,7 @@ namespace ShopDiaryAbb.Models.ViewModels
         public string Name { get; set; }
         public string Store { get; set; }
         public string Description { get; set; }
+        public string LocationId { get; set; }
         public string AddedUserId { get; set; }
 
         public ShoplistViewModel()
@@ -23,6 +24,7 @@ namespace ShopDiaryAbb.Models.ViewModels
                 Id = shops.Id;
                 Name = shops.Name;
                 Store = shops.Store;
+                LocationId = shops.LocationId;
                 AddedUserId = shops.AddedUserId;
                 Description = shops.Description;
           
@@ -35,6 +37,7 @@ namespace ShopDiaryAbb.Models.ViewModels
                 Name = this.Name,
                 Store = this.Store,
                 Description = this.Description,
+                LocationId=this.LocationId,
                 AddedUserId = this.AddedUserId,
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id
             };

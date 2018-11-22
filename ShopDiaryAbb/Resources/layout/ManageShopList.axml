@@ -35,7 +35,7 @@
                 android:minHeight="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="#ff03a9f4"
+                android:background="#2c3e50"
                 android:layout_gravity="right"
                 android:gravity="center">
                 <ImageButton
@@ -50,6 +50,18 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_margin="3dp" />
+				<ImageButton
+					android:src="@drawable/view"
+					android:layout_width="45dp"
+					android:layout_height="match_parent"
+					android:id="@+id/imageButtonManageShopListView"
+					android:maxHeight="15dp"
+					android:scaleType="fitCenter"
+					android:hapticFeedbackEnabled="false"
+					android:background="@android:color/transparent"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					android:layout_margin="3dp" />
                 <ImageButton
                     android:src="@drawable/edit"
                     android:layout_width="45dp"

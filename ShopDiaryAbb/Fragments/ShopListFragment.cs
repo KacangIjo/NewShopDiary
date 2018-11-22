@@ -9,6 +9,7 @@ using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ShopDiaryAbb.Fragments
 {
@@ -19,12 +20,15 @@ namespace ShopDiaryAbb.Fragments
         static StorageViewModel mSelectedStorageClass;
         private readonly StorageDataService mStorageDataService;
 
-        private RecyclerView mListViewStorage;
+        private RecyclerView mListViewShopList;
         private int mSelectedStorage = -1;
         private FragmentTransaction mFragmentTransaction;
         private ImageButton mButtonAdd;
+        private ImageButton mButtonView;
         private ImageButton mButtonEdit;
-        private Android.Support.V7.Widget.SearchView mSearchView;
+
+        ShoplistDataService shoplistDataService;
+        public List<ShoplistViewModel> mShopLists;
         public ShopListFragment()
         {
             mStorageDataService = new StorageDataService();
@@ -47,28 +51,29 @@ namespace ShopDiaryAbb.Fragments
         {
             HasOptionsMenu = true;
             View view = inflater.Inflate(Resource.Layout.ManageShopList, container, false);
+            mListViewShopList= view.FindViewById<RecyclerView>(Resource.Id.recyclerViewShopList);
+            mListViewShopList.SetLayoutManager(new LinearLayoutManager(Activity));
+            mButtonView = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListAdd);
+            mButtonView = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListView);
+            mButtonView = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListEdit);
 
-         
+
+
             return view;
         }
         private async void LoadStorageData()
         {
 
-            List<StorageViewModel> mStoragesByUser = await mStorageDataService.GetAll();
-            mStorages = new List<StorageViewModel>();
-            for (int i = 0; mStoragesByUser.Count > i; i++)
-            {
-                if (mStoragesByUser[i].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
-                {
-                    mStorages.Add(mStoragesByUser[i]);
-                }
-            }
+          
+            mShopLists = LoginPageActivity.mGlobalShopList.Where(s => s.LocationId == LoginPageActivity.StaticActiveLocationClass.Id.ToString()).ToList();
+
+           
             if (mStorages != null)
             {
 
                 mStoragesAdapter = new StoragesRecycleAdapter(mStorages, this.Activity);
                 mStoragesAdapter.ItemClick += OnStorageClicked;
-                mListViewStorage.SetAdapter(this.mStoragesAdapter);
+                mListViewShopList.SetAdapter(this.mStoragesAdapter);
             }
 
         }

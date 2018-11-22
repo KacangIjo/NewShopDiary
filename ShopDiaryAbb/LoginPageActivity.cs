@@ -35,6 +35,7 @@ namespace ShopDiaryAbb
         private readonly ConsumeDataService mConsumeDataService;
         private readonly UserLocationDataService mUserLocationDataService;
         private readonly UserDataDataService mUserDataDataService;
+        private readonly ShoplistDataService mShopListDataService;
 
         public static Class.User StaticUserClass = new Class.User();
         public static LocationViewModel StaticActiveLocationClass = new LocationViewModel();
@@ -51,6 +52,8 @@ namespace ShopDiaryAbb
         public static List<CategoryViewModel> mGlobalCategories = new List<CategoryViewModel>();
         public static List<UserLocationViewModel> mGlobalUserLocs = new List<UserLocationViewModel>();
         public static List<UserDataViewModel> mGlobalUserDatas = new List<UserDataViewModel>();
+        public static List<ShoplistViewModel> mGlobalShopList = new List<ShoplistViewModel>();
+        public static List<ShopitemViewModel> mGlobalShopItem = new List<ShopitemViewModel>();
         public LoginPageActivity()
         {
             mAccountDataService = new AccountDataService();
@@ -62,6 +65,7 @@ namespace ShopDiaryAbb
             mConsumeDataService = new ConsumeDataService();
             mUserDataDataService = new UserDataDataService();
             mUserLocationDataService = new UserLocationDataService();
+            mShopListDataService = new ShoplistDataService();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)

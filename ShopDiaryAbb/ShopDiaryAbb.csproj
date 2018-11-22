@@ -70,6 +70,7 @@
     <Compile Include="Adapter\SpinnerCategoryAdapter.cs" />
     <Compile Include="Adapter\SpinnerLocationAdapter.cs" />
     <Compile Include="Adapter\SpinnerStorageAdapter.cs" />
+    <Compile Include="Adapter\ShopListsRecycleAdapter.cs" />
     <Compile Include="Adapter\StoragesRecycleAdapter.cs" />
     <Compile Include="Adapter\UserLocationRecyclerAdapter.cs" />
     <Compile Include="Class\Category.cs" />
@@ -81,6 +82,9 @@
     <Compile Include="Class\User.cs" />
     <Compile Include="Class\UserLocation.cs" />
     <Compile Include="DialogFragments\DialogDatePickerActivity.cs" />
+    <Compile Include="Fragments\ShopListAddFragment.cs" />
+    <Compile Include="Services\ShopItemDataService.cs" />
+    <Compile Include="Services\ShopListDataService.cs" />
     <Compile Include="ShopDiaryFireBaseMessagingService.cs" />
     <Compile Include="ShopDiaryFireBaseService.cs" />
     <Compile Include="FragmentsScanner\AddItemBarcodeFragment.cs" />
@@ -173,7 +177,6 @@
     <AndroidResource Include="Resources\layout\nav_header_main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\values\drawables.xml" />
     <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
@@ -508,6 +511,19 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\values.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AdapterShopList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ManageShopListAdd.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

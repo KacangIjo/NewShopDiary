@@ -17,14 +17,9 @@ namespace ShopDiaryAbb
     public class SplashScreenActivity : Activity
     {
         public static Guid mAuthorizedUserId;
-        
-
-        private Button mBtnLogIn;
-        private Button mBtnSignUp;
-        private EditText mEmail;
-        private EditText mPassword;
+      
         private ProgressBar mProgressBar;
-        int progressvalue = 0;
+        private int progressvalue = 0;
 
         private readonly AccountDataService mAccountDataService;
         private readonly InventoryDataService mInventoryDataService;

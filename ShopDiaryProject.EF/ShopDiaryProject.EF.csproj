@@ -89,6 +89,14 @@
     <Compile Include="Migrations\201810050728318_Initial-Database.Designer.cs">
       <DependentUpon>201810050728318_Initial-Database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811221747194_AddLocationIdToShopList.cs" />
+    <Compile Include="Migrations\201811221747194_AddLocationIdToShopList.Designer.cs">
+      <DependentUpon>201811221747194_AddLocationIdToShopList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221838522_AddItemNameToShopItem.cs" />
+    <Compile Include="Migrations\201811221838522_AddItemNameToShopItem.Designer.cs">
+      <DependentUpon>201811221838522_AddItemNameToShopItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopDairyDbContext.cs" />
@@ -106,6 +114,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810050728318_Initial-Database.resx">
       <DependentUpon>201810050728318_Initial-Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221747194_AddLocationIdToShopList.resx">
+      <DependentUpon>201811221747194_AddLocationIdToShopList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221838522_AddItemNameToShopItem.resx">
+      <DependentUpon>201811221838522_AddItemNameToShopItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

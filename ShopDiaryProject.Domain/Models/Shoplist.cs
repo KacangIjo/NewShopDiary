@@ -16,6 +16,8 @@ namespace ShopDiaryProject.Domain.Models
         [MaxLength(300)]
         public string Description { get; set; }
         
+        public string LocationId { get; set; }
+        
         public virtual ICollection<Shopitem> ShopItems { get; set; }
         public Shoplist()
         {

@@ -10,6 +10,7 @@ namespace ShopDiaryApp.API.Models.ViewModels
     public class ShopitemViewModel
     {
         public Guid Id { get; set; }
+        public string ItemName { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public string AddedUserId { get; set; }
@@ -22,7 +23,8 @@ namespace ShopDiaryApp.API.Models.ViewModels
             return new Shopitem
             {
                 Id = (Id == Guid.Empty) ? Guid.NewGuid() : Id,
-                Quantity=Quantity,
+                ItemName=ItemName,
+                Quantity =Quantity,
                 Price = Price,
                 ProductId=ProductId,
                 ShoplistId=ShoplistId,
@@ -33,6 +35,7 @@ namespace ShopDiaryApp.API.Models.ViewModels
         public ShopitemViewModel(Shopitem s)
         {
             this.Id = s.Id;
+            ItemName = s.ItemName;
             this.Quantity = s.Quantity;
             this.Price = s.Price;
             this.ProductId = s.ProductId;
