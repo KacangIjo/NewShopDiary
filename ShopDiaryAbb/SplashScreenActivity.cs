@@ -64,43 +64,13 @@ namespace ShopDiaryAbb
             mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
             db.CreateDatabase();
             ListSource = db.SelectTable();
-            for (int i = 0; i < ListSource.Count; i++)
-            {
-                var pro = ListSource[i].Id;
-            }
-            mProgressBar.Visibility = Android.Views.ViewStates.Visible;
-            if (db.SelectTable(0))
-            {
-                var intent=new Intent();
-                for (int i = 0; i <= ListSource.Count + 1; i++)
-                {
-                    if (ListSource[i].Id == 1 && ListSource[i].IsLogin==1)
-                    {
-                        LoginPageActivity.StaticUserClass.ID = Guid.Parse(ListSource[i].UserInfoId);
-                        intent = new Intent(this, typeof(MainActivity));
-                        LoadData();
-                        UpgradeProgress();
-                        RunOnUiThread(() => mProgressBar.Visibility = Android.Views.ViewStates.Invisible);
-                        this.StartActivity(intent);
-                        break;
-                    }
-                    else if(ListSource[i].Id == 1 && ListSource[i].IsLogin == 0)
-                    {
-                        intent = new Intent(this, typeof(LoginPageActivity));
-                        UpgradeProgress();
-                        RunOnUiThread(() => mProgressBar.Visibility = Android.Views.ViewStates.Invisible);
-                        this.StartActivity(intent);
-                        break;
-                    }
-                }
-                
-            }
-            else
+
+            if (ListSource.Count==0)
             {
                 UserInfoLocal userInfoLocal = new UserInfoLocal()
                 {
                     IsLogin = 0,
-                    UserInfoId ="",
+                    UserInfoId = "",
                 };
                 SplashScreenActivity.db.InsertIntoTable(userInfoLocal);
                 var intent = new Intent(this, typeof(LoginPageActivity));
@@ -108,22 +78,45 @@ namespace ShopDiaryAbb
                 RunOnUiThread(() => mProgressBar.Visibility = Android.Views.ViewStates.Invisible);
                 this.StartActivity(intent);
             }
-            
-       
-            
-         
+            else
+            {
+                var intent = new Intent();
+                if (ListSource[0].Id == 1 && ListSource[0].IsLogin == 1)
+                {
+                    LoginPageActivity.StaticUserClass.ID = Guid.Parse(ListSource[0].UserInfoId);
+                    intent = new Intent(this, typeof(MainActivity));
+                    LoadData();
+                    UpgradeProgress();
+                    RunOnUiThread(() => mProgressBar.Visibility = Android.Views.ViewStates.Invisible);
+                    this.StartActivity(intent);
+                }
+                else if (ListSource[0].Id == 1 && ListSource[0].IsLogin == 0)
+                {
+                    intent = new Intent(this, typeof(LoginPageActivity));
+                    UpgradeProgress();
+                    RunOnUiThread(() => mProgressBar.Visibility = Android.Views.ViewStates.Invisible);
+                    this.StartActivity(intent);
+                }
+
+
+            }
+
+
+
+
         }
         private async void LoadData()
         {
 
             LoginPageActivity.mGlobalLocations = await mLocationDataService.GetAll();
-            LoginPageActivity.mGlobalProducts = await mProductDataService.GetAll();
             LoginPageActivity.mGlobalStorages = await mStorageDataService.GetAll();
             LoginPageActivity.mGlobalCategories = await mCategoryDataService.GetAll();
             LoginPageActivity.mGlobalUserLocs = await mUserLocationDataService.GetAll();
             LoginPageActivity.mGlobalUserDatas = await mUserDataDataService.GetAll();
             LoginPageActivity.mGlobalShopList = await mShopListDataService.GetAll();
             LoginPageActivity.mGlobalShopItem = await mShopItemDataService.GetAll();
+
+            LoginPageActivity.mGlobalProducts = await mProductDataService.GetAll();
             LoginPageActivity.mGlobalInventories = new List<InventoryViewModel>();
 
             List<InventoryViewModel> tempInventories = await mInventoryDataService.GetAll();

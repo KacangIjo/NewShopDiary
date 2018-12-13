@@ -5,6 +5,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using ShopDiaryAbb.Adapter;
+using ShopDiaryAbb.DialogFragments;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
 using System;
@@ -26,6 +27,7 @@ namespace ShopDiaryAbb.Fragments
         private ImageButton mButtonAdd;
         private ImageButton mButtonEdit;
         private Android.Support.V7.Widget.SearchView mSearchView;
+        int QuantityTemp=1;
         public StoragesFragment()
         {
             mStorageDataService = new StorageDataService();
@@ -77,6 +79,8 @@ namespace ShopDiaryAbb.Fragments
             }
 
         }
+
+        
         private void OnStorageClicked(object sender, int e)
         {
             mSelectedStorage = e;
@@ -89,7 +93,7 @@ namespace ShopDiaryAbb.Fragments
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }

@@ -11,6 +11,7 @@ namespace ShopDiaryProject.Domain.Models
         public DateTime ExpirationDate { get; set; }
         public string ItemName { get; set; }
         public decimal Price { get; set; }
+        public int Stock { get; set; }
         public bool IsConsumed { get; set; }
 
         public Guid StorageId { get; set; }

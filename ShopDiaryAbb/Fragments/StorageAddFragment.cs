@@ -80,13 +80,14 @@ namespace ShopDiaryAbb.Fragments
 
             };
 
-            new Thread(new ThreadStart(delegate
+            new Thread(new ThreadStart(async delegate
             {
                 UpgradeProgress();
                 var isAdded = mStorageDataService.Add(newStorage.ToModel());
 
                 if (isAdded)
                 {
+                    LoginPageActivity.mGlobalStorages = await mStorageDataService.GetAll();
                     this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Storage Added", ToastLength.Long).Show());
                     mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
                     ReplaceFragment(new StoragesFragment(), "Manage Storages");
@@ -136,7 +137,7 @@ namespace ShopDiaryAbb.Fragments
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }

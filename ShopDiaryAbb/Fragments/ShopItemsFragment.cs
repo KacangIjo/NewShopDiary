@@ -10,6 +10,7 @@ using ShopDiaryAbb.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace ShopDiaryAbb.Fragments
 {
@@ -24,10 +25,10 @@ namespace ShopDiaryAbb.Fragments
         private FragmentTransaction mFragmentTransaction;
         private Button mButtonAdd;
         private Button mButtonRemove;
+        private Button mButtonCancel; 
 
-
-        ShoplistDataService shoplistDataService;
-        public List<ShopitemViewModel> mShopItems;
+        ShopItemDataService mShopItemDataService=new ShopItemDataService();
+        public List<ShopitemViewModel> mShopItems=new List<ShopitemViewModel>();
         public ShopItemsFragment()
         {
             mStorageDataService = new StorageDataService();
@@ -54,15 +55,35 @@ namespace ShopDiaryAbb.Fragments
             mListViewShopList.SetLayoutManager(new LinearLayoutManager(this.Activity));
             mButtonAdd = view.FindViewById<Button>(Resource.Id.buttonShopItemAddNew);
             mButtonRemove = view.FindViewById<Button>(Resource.Id.buttonShopItemRemove);
-           
+            mButtonCancel= view.FindViewById<Button>(Resource.Id.buttonAddShopItemCancel);
             LoadData();
             mButtonAdd.Click += (object sender, EventArgs args) => {
-                ReplaceFragment(new ShopListAddFragement(), "Add Shop List");
+                ReplaceFragment(new ShopItemAddFragment(), "Manage Shop List");
             };
             mButtonRemove.Click += (object sender, EventArgs args) => {
-                ReplaceFragment(new InventoriesFragment(), "Manage Shop Item");
+                new Thread(new ThreadStart(async delegate
+                {
+                    var isAdded = mShopItemDataService.Delete(mSelectedShopItem.Id);
+                    if (isAdded)
+                    {
+                        LoginPageActivity.mGlobalShopItem = await mShopItemDataService.GetAll();
+                        var temp = LoginPageActivity.mGlobalShopItem;
+                        mShopItems = temp.Where(s => s.ShoplistId == ShopListFragment.mSelectedShopList.Id).ToList();
+                        mShopItemAdapter = new ShopItemRecycleAdapter(mShopItems, this.Activity);
+                        mShopItemAdapter.ItemClick += OnStorageClicked;
+                        mListViewShopList.SetAdapter(this.mShopItemAdapter);
+                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Removed", ToastLength.Long).Show());
+                    }
+                    else
+                    {
+                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed", ToastLength.Long).Show());
+                    }
+                })).Start();
             };
-         
+            mButtonCancel.Click += (object sender, EventArgs args) => {
+                ReplaceFragment(new ShopListFragment(), "Manage Shop List");
+            };
+
 
 
             return view;
@@ -70,7 +91,7 @@ namespace ShopDiaryAbb.Fragments
         private void LoadData()
         {
             var temp = LoginPageActivity.mGlobalShopItem;
-            mShopItems = temp.Where(s => s.ShoplistID == ShopListFragment.mSelectedShopList.Id).ToList();
+            mShopItems = temp.Where(s => s.ShoplistId== ShopListFragment.mSelectedShopList.Id).ToList();
             if (mShopItems != null)
             {
 
@@ -91,7 +112,7 @@ namespace ShopDiaryAbb.Fragments
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }

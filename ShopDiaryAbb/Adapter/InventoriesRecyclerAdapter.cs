@@ -40,13 +40,13 @@ namespace ShopDiaryAbb.Adapter
         {
             if (this.mInventories.Count > 0)
             {
-                var vh = holder as ViewHolder;
-                if (vh != null)
+                if (holder is ViewHolder vh)
                 {
                     var inv = this.mInventories[position];
                     vh.ItemName.Text = inv.ItemName.ToString();
-                    vh.ItemExpDate.Text = inv.ExpirationDate.ToString();
-                    if(inv.ExpirationDate<DateTime.Now)
+                    vh.Stock.Text = inv.Stock.ToString();
+                    vh.ExpiredDate.Text = inv.ExpirationDate.ToString("yyyy-MM-dd");
+                    if (inv.ExpirationDate < DateTime.Now)
                     {
                         vh.ItemStatus.SetBackgroundColor(Android.Graphics.Color.Red);
                         vh.ItemStatus.Text = "Expired";
@@ -75,18 +75,19 @@ namespace ShopDiaryAbb.Adapter
             {
             }
 
-            public ViewHolder(View itemView, Action<int> listener)
-                : base(itemView)
+            public ViewHolder(View itemView, Action<int> listener): base(itemView)
             {
-                this.ItemName = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterItemName);
-                this.ItemExpDate = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterExpDate);
-                this.ItemStatus = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterExpStatus);
-
+                ItemName = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterItemName);
+                Stock = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterStock);
+                ExpiredDate = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterExpiredDate);
+                ItemStatus = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterExpStatus);
+                
                 itemView.Click += (sender, e) => listener(this.LayoutPosition);
             }
 
             public TextView ItemName { get; }
-            public TextView ItemExpDate { get; }
+            public TextView Stock { get; }
+            public TextView ExpiredDate { get; }
             public TextView ItemStatus { get; }
 
         }

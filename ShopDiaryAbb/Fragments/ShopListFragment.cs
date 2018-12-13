@@ -23,9 +23,9 @@ namespace ShopDiaryAbb.Fragments
         private RecyclerView mListViewShopList;
         private int mSelected = -1;
         private FragmentTransaction mFragmentTransaction;
-        private ImageButton mButtonAdd;
-        private ImageButton mButtonView;
-        private ImageButton mButtonEdit;
+        private Button mButtonAdd;
+        private Button mButtonView;
+        private Button mButtonEdit;
 
         ShoplistDataService shoplistDataService;
         public List<ShoplistViewModel> mShopLists;
@@ -53,18 +53,18 @@ namespace ShopDiaryAbb.Fragments
             View view = inflater.Inflate(Resource.Layout.ManageShopList, container, false);
             mListViewShopList= view.FindViewById<RecyclerView>(Resource.Id.recylerShopLists);
             mListViewShopList.SetLayoutManager(new LinearLayoutManager(this.Activity));
-            mButtonAdd = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListAdd);
-            mButtonView = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListView);
-            mButtonEdit = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageShopListEdit);
+            mButtonAdd = view.FindViewById<Button>(Resource.Id.buttonShopListAdd);
+            mButtonView = view.FindViewById<Button>(Resource.Id.buttonShopListView);
+            mButtonEdit = view.FindViewById<Button>(Resource.Id.buttonManageShopListEdit);
             LoadData();
             mButtonAdd.Click += (object sender, EventArgs args) => {
                 ReplaceFragment(new ShopListAddFragement(), "Add Shop List");
             };
             mButtonView.Click += (object sender, EventArgs args) => {
-                ReplaceFragment(new InventoriesFragment(), "Manage Shop Item");
+                ReplaceFragment(new ShopItemsFragment(), "Manage Shop Item");
             };
             mButtonEdit.Click += (object sender, EventArgs args) => {
-                ReplaceFragment(new InventoriesFragment(), "Manage Shop Item");
+                ReplaceFragment(new ShopListEditFragment(), "Manage Shop Item");
             };
 
 
@@ -95,7 +95,7 @@ namespace ShopDiaryAbb.Fragments
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }

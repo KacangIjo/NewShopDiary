@@ -48,6 +48,11 @@
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:id="@+id/buttonShopItemRemove" />
+                <Button
+                    android:text="Cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/buttonShopItemCancel" />
 			</LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -5,6 +5,7 @@ using Android.Views;
 using Android.Widget;
 using ShopDiaryAbb.Adapter;
 using ShopDiaryAbb.Class;
+using ShopDiaryAbb.DialogFragments;
 using ShopDiaryAbb.Models;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
@@ -22,6 +23,7 @@ namespace ShopDiaryAbb.Fragments
         public List<InventoryViewModel> mInventories;
         public List<InventoryViewModel> mFilteredInventories;
         static InventoryViewModel mSelectedInventoryClass;
+        private int QuantityTemp;
 
         private InventoriesRecyclerAdapter mInventoriesAdapter;
         private RecyclerView mListViewInventories;
@@ -178,6 +180,10 @@ namespace ShopDiaryAbb.Fragments
         }
         private void OnUseClicked(object sender, EventArgs e)
         {
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            DialogNumberPicker NumberPickerDialog = new DialogNumberPicker();
+            NumberPickerDialog.Show(transaction, "dialogue fragment");
+            NumberPickerDialog.OnPickDateComplete += NumberPickerDialogue_OnComplete;
             if (mSelectedInventoryClass.Id != null)
             {
                 Inventorylog newInventoryLog = new Inventorylog()
@@ -210,18 +216,24 @@ namespace ShopDiaryAbb.Fragments
         }
         private async void UpdateInventories()
         {
-            LoginPageActivity.mGlobalInventories.Clear();
-            List<ProductViewModel> mProducts = LoginPageActivity.mGlobalProducts;
+            InventoryDataService mInventoryDataService = new InventoryDataService();
+            ProductDataService mProductDataService = new ProductDataService();
+            LoginPageActivity.mGlobalProducts = await mProductDataService.GetAll();
+            LoginPageActivity.mGlobalInventories = new List<InventoryViewModel>();
+
             List<InventoryViewModel> tempInventories = await mInventoryDataService.GetAll();
             for (int i = 0; i < tempInventories.Count(); i++)
             {
-                for (int j = 0; j < mProducts.Count(); j++)
+                for (int j = 0; j < LoginPageActivity.mGlobalProducts.Count(); j++)
                 {
-
-                    if (tempInventories[i].ProductId == mProducts[j].Id)
+                    if (tempInventories[i].ProductId == LoginPageActivity.mGlobalProducts[j].Id)
                     {
-                        tempInventories[i].ItemName = mProducts[j].Name;
+                        tempInventories[i].ItemName = LoginPageActivity.mGlobalProducts[j].Name;
                         LoginPageActivity.mGlobalInventories.Add(tempInventories[i]);
+                    }
+                    if (LoginPageActivity.mGlobalProducts[j].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
+                    {
+                        LoginPageActivity.mGlobalProductsByUser.Add(LoginPageActivity.mGlobalProducts[j]);
                     }
                 }
             }
@@ -237,10 +249,14 @@ namespace ShopDiaryAbb.Fragments
             }
 
         }
+        private void NumberPickerDialogue_OnComplete(object sender, OnNumberPickedEventArgs e)
+        {
+            QuantityTemp = e.Quantity;
+        }
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }

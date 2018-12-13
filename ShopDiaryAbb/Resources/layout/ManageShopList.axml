@@ -38,42 +38,21 @@
                 android:background="#2c3e50"
                 android:layout_gravity="right"
                 android:gravity="center">
-                <ImageButton
-                    android:src="@drawable/addorange"
-                    android:layout_width="45dp"
+                <Button
+                    android:text="Add"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/imageButtonManageShopListAdd"
-                    android:maxHeight="15dp"
-                    android:scaleType="fitCenter"
-                    android:hapticFeedbackEnabled="false"
-                    android:background="@android:color/transparent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_margin="3dp" />
-				<ImageButton
-					android:src="@drawable/view"
-					android:layout_width="45dp"
-					android:layout_height="match_parent"
-					android:id="@+id/imageButtonManageShopListView"
-					android:maxHeight="15dp"
-					android:scaleType="fitCenter"
-					android:hapticFeedbackEnabled="false"
-					android:background="@android:color/transparent"
-					android:layout_marginLeft="5dp"
-					android:layout_marginRight="5dp"
-					android:layout_margin="3dp" />
-                <ImageButton
-                    android:src="@drawable/edit"
-                    android:layout_width="45dp"
+                    android:id="@+id/buttonShopListAdd" />
+                <Button
+                    android:text="View"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/imageButtonManageShopListEdit"
-                    android:maxHeight="15dp"
-                    android:scaleType="fitCenter"
-                    android:hapticFeedbackEnabled="false"
-                    android:background="@android:color/transparent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_margin="3dp" />
+                    android:id="@+id/buttonShopListView" />
+                <Button
+                    android:text="Edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/buttonManageShopListEdit" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -9,6 +9,7 @@ namespace ShopDiaryAbb.Models.ViewModels
         public string ItemName { get; set; }
         public bool IsConsumed { get; set; }
         public decimal Price { get; set; }
+        public int Stock { get; set; }
         public string AddedUserId { get; set; }
         public string CreatedUserId { get; set; }
 
@@ -24,6 +25,7 @@ namespace ShopDiaryAbb.Models.ViewModels
                 ExpirationDate = ExpirationDate,
                 IsConsumed=IsConsumed,
                 Price=Price,
+                Stock=Stock,
                 ProductId=ProductId,
                 StorageId=StorageId,
                 ItemName=ItemName,
@@ -41,6 +43,7 @@ namespace ShopDiaryAbb.Models.ViewModels
             this.Id = i.Id;
             this.ExpirationDate = i.ExpirationDate;
             this.Price = i.Price;
+            this.Stock = i.Stock;
             this.ProductId = i.ProductId;
             this.StorageId = i.StorageId;
             this.ItemName = i.ItemName;

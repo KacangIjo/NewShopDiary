@@ -27,10 +27,10 @@ namespace ShopDiaryAbb.Fragments
         private CheckBox mUpdate;
         private CheckBox mRead;
         private CheckBox mDelete;
-        public  int mCreateValue;
-        public  int mUpdateValue;
-        public  int mReadValue;
-        public  int mDeleteValue;
+        //public  int mCreateValue;
+        //public  int mUpdateValue;
+        //public  int mReadValue;
+        //public  int mDeleteValue;
         private Button mButtonAdd;
         private Button mButtonCancel;
 
@@ -56,38 +56,39 @@ namespace ShopDiaryAbb.Fragments
             mEmail = view.FindViewById<EditText>(Resource.Id.editTextLocationDetailAddUserName);
             mName = view.FindViewById<EditText>(Resource.Id.editTextLocationDetailAddUserName);
             mDescription = view.FindViewById<EditText>(Resource.Id.editTextLocationDetailAddUserDescription);
-            mCreate = view.FindViewById<CheckBox>(Resource.Id.checkBoxCreate);
-            mDelete = view.FindViewById<CheckBox>(Resource.Id.checkBoxDelete);
-            mUpdate = view.FindViewById<CheckBox>(Resource.Id.checkBoxUpdate);
-            mRead = view.FindViewById<CheckBox>(Resource.Id.checkBoxRead);
+            //mCreate = view.FindViewById<CheckBox>(Resource.Id.checkBoxCreate);
+            //mDelete = view.FindViewById<CheckBox>(Resource.Id.checkBoxDelete);
+            //mUpdate = view.FindViewById<CheckBox>(Resource.Id.checkBoxUpdate);
+            //mRead = view.FindViewById<CheckBox>(Resource.Id.checkBoxRead);
             mButtonAdd = view.FindViewById<Button>(Resource.Id.buttonLocationDetailAddUserAdd);
             mButtonCancel = view.FindViewById<Button>(Resource.Id.buttonLocationDetailAddUserCancel);
-            mCreate.Click += (o, e) => {
-                if (mCreate.Checked)
-                    mCreateValue = 1;
-                else
-                    mCreateValue = 0;
-            };
-            mDelete.Click += (o, e) => {
-                if (mDelete.Checked)
-                    mDeleteValue = 1;
-                else
-                    mDeleteValue = 0;
-            };
-            mUpdate.Click += (o, e) => {
-                if (mUpdate.Checked)
-                    mUpdateValue = 1;
-                else
-                    mUpdateValue = 0;
-            };
-            mRead.Click += (o, e) => {
-                if (mRead.Checked)
-                    mReadValue = 1;
-                else
-                    mReadValue = 0;
-            };
+            //mCreate.Click += (o, e) => {
+            //    if (mCreate.Checked)
+            //        mCreateValue = 1;
+            //    else
+            //        mCreateValue = 0;
+            //};
+            //mDelete.Click += (o, e) => {
+            //    if (mDelete.Checked)
+            //        mDeleteValue = 1;
+            //    else
+            //        mDeleteValue = 0;
+            //};
+            //mUpdate.Click += (o, e) => {
+            //    if (mUpdate.Checked)
+            //        mUpdateValue = 1;
+            //    else
+            //        mUpdateValue = 0;
+            //};
+            //mRead.Click += (o, e) => {
+            //    if (mRead.Checked)
+            //        mReadValue = 1;
+            //    else
+            //        mReadValue = 0;
+            //};
             mButtonAdd.Click += (object sender, EventArgs args) =>
             {
+                var isFound = false;
                 for (int i = 0; i < LoginPageActivity.mGlobalUserDatas.Count;i++)
                 {
                     if(mEmail.Text==LoginPageActivity.mGlobalUserDatas[i].Email)
@@ -96,10 +97,10 @@ namespace ShopDiaryAbb.Fragments
                         {
                             RegisteredUser = LoginPageActivity.mGlobalUserDatas[i].UserId,
                             Description = mDescription.Text,
-                            Create = mCreateValue,
-                            Update = mUpdateValue,
-                            Read = mReadValue,
-                            Delete = mDeleteValue,
+                            Create = 0,
+                            Update = 0,
+                            Read = 0,
+                            Delete = 0,
                             AddedUserId = LoginPageActivity.StaticUserClass.ID.ToString(),
                             LocationId = LocationsFragment.mSelectedLocationClass.Id
                         };
@@ -117,13 +118,15 @@ namespace ShopDiaryAbb.Fragments
 
                         })).Start();
                         ReplaceFragment(new LocationEditFragment(), "Location Detail");
+                        isFound = true;
                     }
-                    else
-                    {
-                       this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Email not Found", ToastLength.Long).Show());
-                    }
+
                 }
-              
+                if(isFound)
+                    {
+                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Email not Found", ToastLength.Long).Show());
+                }
+
             };
             mButtonCancel.Click += (object sender, EventArgs args) =>
             {
@@ -135,7 +138,7 @@ namespace ShopDiaryAbb.Fragments
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }

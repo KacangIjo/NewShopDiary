@@ -88,7 +88,6 @@ namespace ShopDiaryAbb.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.HomeLayout, container, false);
-            mSpinnerActiveLocation = view.FindViewById<Spinner>(Resource.Id.spinnerHomeActiveLocation);
             mListViewInventory = view.FindViewById<RecyclerView>(Resource.Id.recyclerHomePage);
             mListViewInventory.SetLayoutManager(new LinearLayoutManager(Activity));
             mRunOutCounter = view.FindViewById<TextView>(Resource.Id.textViewMainRunningOutCounter);
@@ -98,120 +97,55 @@ namespace ShopDiaryAbb.Fragments
             mFilterExpCounter = view.FindViewById<LinearLayout>(Resource.Id.linearLayoutExpiredCounter);
             mFilterRunOutCounter = view.FindViewById<LinearLayout>(Resource.Id.linearLayoutNearlyExpiredCounter);
             mFilterGoodCounter = view.FindViewById<LinearLayout>(Resource.Id.linearLayoutGoodCondition);
-            
-            LoadInventoryData();
+            LoadLocationData();
+            mRunOutCounter.Text = mInventories.Count.ToString();
+            mExpCounter.Text = mInventories.Count.ToString();
+            mStockCounter.Text = "0";
 
-            #region
-            
+            #region comment
+
             List<StorageViewModel> StorageByLocation = LoginPageActivity.mGlobalStorages.Where(s => s.LocationId == LoginPageActivity.StaticActiveLocationClass.Id).ToList();
-          
-           
-            
-            
-            //mRunOutCounter.Text = InventoriesNearlyExpired.Count.ToString();
-            //mStockCounter.Text = InventoriesGood.Count.ToString();
-            //mExpCounter.Text = InventoriesExpired.Count.ToString();
-            mFilterExpCounter.Click += (object sender, EventArgs args) =>
-            {
-                #region textField
-                mHomeRecyclerTitle.Text = "Expired Items";
-                mHomeRecyclerTitle.SetTextColor(Android.Graphics.Color.Red);
-                #endregion
-                List<InventoryViewModel> temp = LoginPageActivity.mGlobalInventories;
-                InventoriesExpired = temp
-               .Join(mStorages, i => i.StorageId, s => s.Id, (i, s) => i)
-               .Where(i => i.ExpirationDate < DateTime.Now)
-               .GroupBy(s => s.ProductId)
-               .Select(g => g.First()).ToList();
-                mInventories =InventoriesExpired;
-                this.mInventoryAdapter = new HomeAdapter(InventoriesExpired,"Expired","Red", this.Activity);
-                this.mInventoryAdapter.ItemClick += OnInventoryClick;
-                this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
-            };
-            mFilterRunOutCounter.Click += (object sender, EventArgs args) =>
-            {
-                #region textField
-                mHomeRecyclerTitle.Text = "Nearly Expired Items";
-                mHomeRecyclerTitle.SetTextColor(Android.Graphics.Color.Yellow);
-                #endregion
-                List<InventoryViewModel> temp = LoginPageActivity.mGlobalInventories;
-                InventoriesNearlyExpired = temp
-                .Join(mStorages, i => i.StorageId, s => s.Id, (i, s) => i)
-                .Where(i => i.ExpirationDate > DateTime.Now)
-                .GroupBy(s => s.ProductId)
-                .Select(g => g.First()).ToList();
-                mInventories = InventoriesNearlyExpired;
-                this.mInventoryAdapter = new HomeAdapter(InventoriesNearlyExpired, "Nearly Expired","Yellow", this.Activity);
-                this.mInventoryAdapter.ItemClick += OnInventoryClick;
-                this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
-            };
-            mFilterGoodCounter.Click += (object sender, EventArgs args) =>
-            {
-                #region textField
-                mHomeRecyclerTitle.Text = "Good Items";
-                mHomeRecyclerTitle.SetTextColor(Android.Graphics.Color.Green);
-                #endregion
-                List<InventoryViewModel> temp = LoginPageActivity.mGlobalInventories;
-                InventoriesGood = temp.Join(mStorages, i => i.StorageId, s => s.Id, (i, s) => i)
-                .Where(i => i.ExpirationDate > DateTime.Now)
-                .GroupBy(s => s.ProductId)
-                .Select(g => g.First())
-                .ToList();
-                mInventories = InventoriesGood;
-                this.mInventoryAdapter = new HomeAdapter(InventoriesGood, "Good","Green", this.Activity);
-                this.mInventoryAdapter.ItemClick += OnInventoryClick;
-                this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
-            };
+
+
             #endregion
-
-
-
-           
             return view;
         }
 
-        public  void LoadInventoryData()
+        public  void LoadLocationData()
         {
             mLocations = LoginPageActivity.mGlobalLocations.Where(l => l.AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString()).ToList();
-            if (mLocations != null)
+            if (LoginPageActivity.StaticActiveLocationClass == null)
             {
-                var adapterLocation = new SpinnerLocationAdapter(this.Activity, mLocations);
-                mSpinnerActiveLocation.Adapter = adapterLocation;
-                mSpinnerActiveLocation.ItemSelected += SpinnerLocation_ItemSelected;
-                mSpinnerActiveLocation.SetSelection(0);
+                LoginPageActivity.StaticActiveLocationClass = mLocations[0];
             }
-            
-
+            mStorages = LoginPageActivity.mGlobalStorages.Where(s => s.LocationId == LoginPageActivity.StaticActiveLocationClass.Id).ToList();
+            LoadExpiredItemData();
         }
-        private void SpinnerLocation_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            Spinner spinner = (Spinner)sender;
-            LoginPageActivity.StaticActiveLocationClass = mLocations[e.Position];
-            mStorages = LoginPageActivity.mGlobalStorages.Where(s => s.LocationId == mLocations[e.Position].Id).ToList();
-            List<InventoryViewModel> temp = LoginPageActivity.mGlobalInventories;
 
-            List<InventoryViewModel> InventoriesByLocation = temp.Join(mStorages, i => i.StorageId, s => s.Id, (i, s) => i)
-                .Where(i=> i.ExpirationDate>DateTime.Now)
-                .GroupBy(s => s.ProductId)
-                .Select(g=>g.First())
-                .ToList();
+        private void LoadExpiredItemData()
+        {
             #region textField
             mHomeRecyclerTitle.Text = "Expired Items";
             mHomeRecyclerTitle.SetTextColor(Android.Graphics.Color.Red);
             #endregion
-            mInventories = InventoriesByLocation;
-            if (LoginPageActivity.mGlobalInventories != null)
-            {
-                this.mInventoryAdapter = new HomeAdapter(InventoriesByLocation,"Expired","Red", this.Activity);
-                this.mInventoryAdapter.ItemClick += OnInventoryClick;
-                this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
-            }
+            List<InventoryViewModel> temp = LoginPageActivity.mGlobalInventories;
+            InventoriesExpired = temp
+           .Join(mStorages, i => i.StorageId, s => s.Id, (i, s) => i)
+           .Where(i => i.ExpirationDate < DateTime.Now).ToList();
+           var InventoriesGrouped=InventoriesExpired
+           .GroupBy(s => s.ProductId)
+           .Select(g => g.First()).ToList();
+            mInventories = InventoriesExpired;
+            this.mInventoryAdapter = new HomeAdapter(InventoriesGrouped, "Expired", "Red", this.Activity);
+            this.mInventoryAdapter.ItemClick += OnInventoryClick;
+            this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
+            
         }
+
         private void OnInventoryClick(object sender, int e)
         {
             mSelectedInventory = e;
             mHomeSelectedInventory = mInventories[mSelectedInventory];
-            
             ReplaceFragment(new HomeStoragesFragment(), mHomeSelectedInventory.ItemName);
         }
 

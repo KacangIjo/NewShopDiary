@@ -82,7 +82,9 @@
     <Compile Include="Class\Storage.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="Class\UserLocation.cs" />
+    <Compile Include="DialogFragments\DialogNumberPicker.cs" />
     <Compile Include="DialogFragments\DialogDatePickerActivity.cs" />
+    <Compile Include="Fragments\ShopItemAddFragment.cs" />
     <Compile Include="Fragments\ShopListEditFragment.cs" />
     <Compile Include="Fragments\ShopListAddFragment.cs" />
     <Compile Include="Fragments\ShopItemsFragment.cs" />
@@ -540,6 +542,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\AdapterShopItem.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AdapterInventories.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DialogNumberPicker.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

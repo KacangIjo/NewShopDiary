@@ -16,6 +16,7 @@ namespace ShopDiaryApp.API.Models.ViewModels
         public bool IsDeleted { get; set; }
         public bool IsConsumed { get; set; }
         public decimal Price { get; set; }
+        public int Stock { get; set; }
         public string ItemName { get; set; }
         public Guid ProductId { get; set; }
         public Guid StorageId { get; set; }
@@ -28,6 +29,7 @@ namespace ShopDiaryApp.API.Models.ViewModels
                 Id = (Id == Guid.Empty) ? Guid.NewGuid() : Id,
                 ExpirationDate = ExpirationDate,
                 Price = Price,
+                Stock=Stock,
                 ProductId=ProductId,
                 StorageId=StorageId,
                 ItemName=ItemName,
@@ -46,6 +48,7 @@ namespace ShopDiaryApp.API.Models.ViewModels
             this.Id = i.Id;
             this.ExpirationDate = i.ExpirationDate;
             this.Price = i.Price;
+            this.Stock = i.Stock;
             this.ProductId = i.ProductId;
             this.StorageId = i.StorageId;
             this.ItemName = i.ItemName;

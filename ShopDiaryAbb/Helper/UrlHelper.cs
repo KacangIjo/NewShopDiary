@@ -27,7 +27,7 @@ namespace ShopDiaryAbb.Helper
         public const string ShopList_Url = Base_Url + "ShopList";
         public const string Consumes_Url = Base_Url + "Consumes";
         public const string Purchases_Url = Base_Url + "Purchases";
-        public const string Shopitem_Url = Base_Url + "Shopitems";
+        public const string Shopitem_Url = Base_Url + "Shopitem";
         public const string Shoplists_Url = Base_Url + "Shoplists";
         public const string Userlocations_Url = Base_Url + "UserLocations";
         public const string Rolelocations_Url = Base_Url + "RoleLocations";

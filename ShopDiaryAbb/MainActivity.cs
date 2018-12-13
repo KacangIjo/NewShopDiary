@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Android;
 using Android.App;
 using Android.OS;
@@ -73,7 +75,17 @@ namespace ShopDiaryAbb
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
             CreateNotificationChannel();
-            Notify();
+            List<InventoryViewModel> ExpiredItem = LoginPageActivity.mGlobalInventories.Where(s => s.ExpirationDate.Date >= DateTime.Today && s.AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString()).ToList();
+            if (ExpiredItem.Count != 0 && (DateTime.Now.ToString("HH:mm") =="07:30"|| DateTime.Now.ToString("HH:mm") == "08:30"))
+            {
+                NotifyExpired();
+            }
+            List<InventoryViewModel> NearlyExpiredItem = LoginPageActivity.mGlobalInventories.Where(s => s.ExpirationDate.Date >= DateTime.Today && s.AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString()).ToList();
+            if (NearlyExpiredItem.Count != 0 && (DateTime.Now.ToString("HH:mm") == "07:30" || DateTime.Now.ToString("HH:mm") == "08:30"))
+            {
+                NotifyNearlyExpired();
+            }
+
 
             if (savedInstanceState == null)
             {
@@ -244,7 +256,19 @@ namespace ShopDiaryAbb
             notificationManager.CreateNotificationChannel(channel);
         }
 
-        public new void Notify()
+        public new void NotifyNearlyExpired()
+        {
+            var builder = new Android.Support.V4.App.NotificationCompat.Builder(this, CHANNEL_ID)
+                 .SetAutoCancel(true) // Dismiss the notification from the notification area when the user clicks on it
+                 .SetContentTitle("Expired Items") // Set the title
+                 .SetSmallIcon(Resource.Drawable.Icon) // This is the icon to display
+                 .SetContentText("You have expired Items in your inventory"); // the message to display.
+
+            // Finally, publish the notification:
+            var notificationManager = Android.Support.V4.App.NotificationManagerCompat.From(this);
+            notificationManager.Notify(NOTIFICATION_ID, builder.Build());
+        }
+        public new void NotifyExpired()
         {
             var builder = new Android.Support.V4.App.NotificationCompat.Builder(this, CHANNEL_ID)
                  .SetAutoCancel(true) // Dismiss the notification from the notification area when the user clicks on it

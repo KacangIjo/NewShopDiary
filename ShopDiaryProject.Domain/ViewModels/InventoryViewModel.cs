@@ -13,6 +13,8 @@ namespace ShopDiaryProject.Domain.ViewModels
         public string ItemName { get; set; }
         public bool IsConsumed { get; set; }
         public decimal Price { get; set; }
+        public int Stock { get; set; }
+       
 
 
         public Guid ProductId { get; set; }
@@ -27,6 +29,7 @@ namespace ShopDiaryProject.Domain.ViewModels
                 IsDeleted=this.IsDeleted,
                 StorageId=this.StorageId,
                 Price=this.Price,
+                Stock=this.Stock,
                 ExpirationDate = this.ExpirationDate,
                 Id = this.Id == Guid.Empty ? Guid.NewGuid() : this.Id
             };
@@ -44,6 +47,7 @@ namespace ShopDiaryProject.Domain.ViewModels
                 this.IsDeleted = i.IsDeleted;
                 this.IsConsumed = i.IsConsumed;
                 this.Price = i.Price;
+                this.Stock = i.Stock;
                
             }
         }

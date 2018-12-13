@@ -32,8 +32,8 @@ namespace ShopDiaryAbb.FragmentsScanner
         public List<String> mProductAdapter = new List<string>();
 
         public static string scannedBarcode = "-";
-        
 
+        int sel=-1;
         private readonly InventoryDataService mInventoryDataService;
         private readonly ProductDataService mProductDataService;
         private readonly CategoryDataService mCategoryDataService;
@@ -88,11 +88,8 @@ namespace ShopDiaryAbb.FragmentsScanner
             mBarcode.Text = "-";
             mStock.Text = "1";
             LoadItemData();
-            mName.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) => {
-                ProductViewModel checkedProduct = mProducts.Find(p => p.Name == mName.Text);
-                mSpinnerCategories.GetItemAtPosition(0);
-                
-            };
+           
+          
             mExpDateChoose.Click += (object sender, EventArgs args) =>
             {
                 //ngeluarin dialog
@@ -142,10 +139,22 @@ namespace ShopDiaryAbb.FragmentsScanner
                     {
                         mProduct.Id = mProducts[i].Id;
                         mName.Text = mProducts[i].Name;
+                        for (int j = 0; spinnerListCategories.Count >j ; j++)
+                        {
+                            if (spinnerListCategories[j].Id== mProducts[i].CategoryId)
+                            {
+                                sel = j;
+                            }
+                        }
                     }
                 }
+                if (sel != -1)
+                {
+                    mSpinnerStorages.SetSelection(sel+1);
+                }
             };
-
+            
+           
             void HandleScanResult(ZXing.Result result)
             {
                 string msg = "";
@@ -157,7 +166,7 @@ namespace ShopDiaryAbb.FragmentsScanner
 
                 this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, msg, ToastLength.Short).Show());
             }
-      
+            
             return view;
         }
 
@@ -188,21 +197,22 @@ namespace ShopDiaryAbb.FragmentsScanner
         }
         private void AddInventoryData()
         {
-            var totalAdded = 0;
+            
             Inventory newInventory = new Inventory(){
                 ExpirationDate = DateTemp,
                 StorageId = mStorage.Id,
                 ItemName = mName.Text,
+                Stock = int.Parse(mStock.Text),
                 ProductId = mProduct.Id,
                 AddedUserId = LoginPageActivity.StaticUserClass.ID.ToString()
             };
             new Thread(new ThreadStart(delegate{
-                if (int.Parse(mStock.Text) == 1)
+                if (int.Parse(mStock.Text) != 0)
                 {
-
                     var isInventoryAdded = mInventoryDataService.Add(newInventory);
                     if (isInventoryAdded)
                     {
+                        UpdateDataAsync();
                         this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Inventory Added", ToastLength.Long).Show());
                         ReplaceFragment(new HomeFragment(), "Home");
                     }
@@ -211,32 +221,17 @@ namespace ShopDiaryAbb.FragmentsScanner
                         this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed to add, please check again form's field", ToastLength.Long).Show());
                     }
                 }
-                else if(int.Parse(mStock.Text) > 1)
-                {
-                    for(int i=0;i < int.Parse(mStock.Text); i++)
-                    {
-                        var isInventoryAdded = mInventoryDataService.Add(newInventory);
-                        if (isInventoryAdded)
-                        {
-                            totalAdded += 1;
-                        }
-                    }
-                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, totalAdded+" Inventories Added", ToastLength.Long).Show());
-                    ReplaceFragment(new HomeFragment(), "Home");
-                }
                 else
                 {
-                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Please set stock value to the correct value.", ToastLength.Long).Show());
+                    this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "No Item Added", ToastLength.Long).Show());
                 }
-                
-
             })).Start();
         }
 
         private void LoadItemData(){
             //Spinner Adapter Category
             spinnerListCategories = mCategories.Where(c => c.UserId == LoginPageActivity.StaticUserClass.ID.ToString()).ToList();
-            var adapterCategories = new SpinnerCategoryAdapter(this.Activity, spinnerListCategories);
+            SpinnerCategoryAdapter adapterCategories = new SpinnerCategoryAdapter(Activity, spinnerListCategories);
             mSpinnerCategories.Adapter = adapterCategories;
 
             mSpinnerCategories.ItemSelected += SpinnerCategory_ItemSelected;
@@ -291,14 +286,37 @@ namespace ShopDiaryAbb.FragmentsScanner
         private void DatePickerDialogue_OnComplete(object sender, OnDatePickedEventArgs e)
         {
             DateTemp = e.Date;
-            mExpDateChoose.Text = DateTemp.ToString();
+            mExpDateChoose.Text = DateTemp.ToString("yyyy-MM-dd");
             Toast.MakeText(this.Activity, "Expired Date Added", ToastLength.Short).Show();
         }
+        public async void UpdateDataAsync()
+        {
+            InventoryDataService mInventoryDataService = new InventoryDataService();
+            ProductDataService mProductDataService = new ProductDataService();
+            LoginPageActivity.mGlobalProducts = await mProductDataService.GetAll();
+            LoginPageActivity.mGlobalInventories = new List<InventoryViewModel>();
 
+            List<InventoryViewModel> tempInventories = await mInventoryDataService.GetAll();
+            for (int i = 0; i < tempInventories.Count(); i++)
+            {
+                for (int j = 0; j < LoginPageActivity.mGlobalProducts.Count(); j++)
+                {
+                    if (tempInventories[i].ProductId == LoginPageActivity.mGlobalProducts[j].Id)
+                    {
+                        tempInventories[i].ItemName = LoginPageActivity.mGlobalProducts[j].Name;
+                        LoginPageActivity.mGlobalInventories.Add(tempInventories[i]);
+                    }
+                    if (LoginPageActivity.mGlobalProducts[j].AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString())
+                    {
+                        LoginPageActivity.mGlobalProductsByUser.Add(LoginPageActivity.mGlobalProducts[j]);
+                    }
+                }
+            }
+        }
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }

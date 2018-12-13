@@ -58,6 +58,7 @@ namespace ShopDiaryAbb.Adapter
                     vh.ItemName.Text = inv.ItemName;
                     vh.Status.Text = mStatus;
                     vh.Status.SetTextColor(Color.ParseColor(mColor));
+                    
                     //if (position % 2 == 0)
                     //{
                         

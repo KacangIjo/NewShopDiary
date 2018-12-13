@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
 using ShopDiaryAbb.Models.ViewModels;
+using Android.Graphics;
 
 namespace ShopDiaryAbb.Adapter
 {
@@ -18,9 +19,9 @@ namespace ShopDiaryAbb.Adapter
         private readonly List<InventoryViewModel> mInventories;
         private int mSelectedPosition = -1;
 
-        public HomeInventoryRecycleAdapter(List<InventoryViewModel> inventories, ProductViewModel products, Activity activity)
+        public HomeInventoryRecycleAdapter(List<InventoryViewModel> inventories, Activity activity)
         {
-            this.mSelectedProduct = products;
+
             this.mInventories = inventories;
             this.mActivity = activity;
         }
@@ -39,22 +40,25 @@ namespace ShopDiaryAbb.Adapter
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            if (this.mInventories.Count > 0)
+
+            if (holder is ViewHolder vh)
             {
-                var vh = holder as ViewHolder;
-                if (vh != null)
+                var inv = this.mInventories[position];
+                vh.ItemName.Text = inv.ItemName.ToString();
+                if (inv.ExpirationDate >= DateTime.Today)
                 {
-                    var inv = this.mInventories[position];
-                    if (inv.ProductId == mSelectedProduct.Id)
-                    {
-                        vh.ItemName.Text = mSelectedProduct.Name.ToString();
-                        vh.ItemExpDate.Text = inv.ExpirationDate.ToString();
-                        vh.ItemStatus.Text = inv.ExpirationDate.ToString();
-                    }
-                  
-                    vh.ItemView.Selected = (mSelectedPosition == position);
+                    vh.ItemStatus.Text = inv.ExpirationDate.ToString();
+                    vh.ItemStatus.SetTextColor(Color.Red);
                 }
+                else 
+                {
+                    vh.ItemStatus.Text = inv.ExpirationDate.ToString();
+                    vh.ItemStatus.SetTextColor(Color.Orange);
+                }
+
+                vh.ItemView.Selected = (mSelectedPosition == position);
             }
+
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -75,14 +79,12 @@ namespace ShopDiaryAbb.Adapter
                 : base(itemView)
             {
                 this.ItemName = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterItemName);
-                this.ItemExpDate = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterExpDate);
                 this.ItemStatus = itemView.FindViewById<TextView>(Resource.Id.HomeInventoriesAdapterExpStatus);
 
                 itemView.Click += (sender, e) => listener(this.LayoutPosition);
             }
 
             public TextView ItemName { get; }
-            public TextView ItemExpDate { get; }
             public TextView ItemStatus { get; }
 
         }

@@ -49,7 +49,8 @@ namespace ShopDiaryAbb.Services
             var content = new FormUrlEncodedContent(new[]
             {
                 new KeyValuePair<string, string>("ExpirationDate", expirationDate),
-                new KeyValuePair<string, string>("Price", data.Price.ToString()),             
+                new KeyValuePair<string, string>("Price", data.Price.ToString()),
+                new KeyValuePair<string, string>("Stock", data.Stock.ToString()),
                 new KeyValuePair<string, string>("ProductId", data.ProductId.ToString()),
                 new KeyValuePair<string, string>("StorageId", data.StorageId.ToString()),
                 new KeyValuePair<string, string>("IsDeleted", false.ToString()),
@@ -73,6 +74,7 @@ namespace ShopDiaryAbb.Services
             var content = new FormUrlEncodedContent(new[]
             {
                 new KeyValuePair<string, string>("IsConsumed", true.ToString()),
+                new KeyValuePair<string, string>("Stock", (data.Stock-1).ToString()),
             });
 
             try
@@ -91,6 +93,7 @@ namespace ShopDiaryAbb.Services
             var content = new FormUrlEncodedContent(new[]
             {
                 new KeyValuePair<string, string>("Price", data.Price.ToString()),
+                new KeyValuePair<string, string>("Stock", data.Stock.ToString()),
                 new KeyValuePair<string, string>("ExpDate", data.ExpirationDate.ToString()),
                 new KeyValuePair<string, string>("InventoryId", data.Id.ToString()),
 

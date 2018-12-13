@@ -183,6 +183,16 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
+		 <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarAddItemForm"
+        android:visibility="invisible"
+        android:progress="10"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:progressBackgroundTint="#ff00fff0" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

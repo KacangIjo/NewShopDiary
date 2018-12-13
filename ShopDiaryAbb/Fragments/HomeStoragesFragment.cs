@@ -67,15 +67,15 @@ namespace ShopDiaryAbb.Fragments
 
             List<StorageViewModel> mStoragesByUser = HomeFragment.mStorages;
             List<InventoryViewModel> temp = HomeFragment.mInventories;
-            List<StorageViewModel> StorageContainsInventory = mStoragesByUser.Join(temp, i => i.Id, s => s.StorageId, (i, s) => i)
+            mFilteredStorage = mStoragesByUser.Join(temp, i => i.Id, s => s.StorageId, (i, s) => i)
                  .GroupBy(i => i.Id)
                  .Select(g => g.First())
                  .ToList();
 
 
-            if (StorageContainsInventory != null)
+            if (mFilteredStorage != null)
             {
-                this.mStorageAdapter = new HomeStorageAdapter(StorageContainsInventory, this.Activity);
+                this.mStorageAdapter = new HomeStorageAdapter(mFilteredStorage, this.Activity);
                 this.mStorageAdapter.ItemClick += OnStorageClicked;
                 this.mListViewStorages.SetAdapter(this.mStorageAdapter);
             }
@@ -102,7 +102,7 @@ namespace ShopDiaryAbb.Fragments
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();
-            mFragmentTransaction.Replace(Resource.Id.content_frame, fragment, tag);
+            mFragmentTransaction.Replace(Resource.Id.main_frame, fragment, tag);
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }

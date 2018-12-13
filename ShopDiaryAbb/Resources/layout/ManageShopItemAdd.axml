@@ -40,12 +40,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:gravity="top" />
-			<android.support.design.widget.TextInputEditText
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:id="@+id/editTextAddShoItemName"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:inputType="none|textAutoComplete" />
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/editTextAddShopItemName"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:inputType="none|textAutoComplete" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -65,12 +65,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center" />
-			<android.support.design.widget.TextInputEditText
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:id="@+id/editTextAddShoItemQuantity"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:inputType="none|number" />
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/editTextAddShopItemQuantity"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:inputType="none|number" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"

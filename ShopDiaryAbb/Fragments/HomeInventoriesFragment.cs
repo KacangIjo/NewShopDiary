@@ -16,7 +16,7 @@ namespace ShopDiaryAbb.Fragments
 {
     public class HomeInventoriesFragment : Fragment
     {
-        private HomeInventoryRecycleAdapter mHomeInventoriesAdapter;
+        private InventoriesRecyclerAdapter mHomeInventoriesAdapter;
         public List<InventoryViewModel> mFilteredInventories;
         public static InventoryViewModel mSelectedInventoryClass;
 
@@ -25,9 +25,9 @@ namespace ShopDiaryAbb.Fragments
         private int mSelectedStorage = -1;
         private FragmentTransaction mFragmentTransaction;
 
-        
-
-        private Android.Support.V7.Widget.SearchView mSearchView;
+        private Button mUse;
+        private Button mThrow;
+        private Button mRemove;
 
         public HomeInventoriesFragment()
         {
@@ -51,38 +51,25 @@ namespace ShopDiaryAbb.Fragments
         {
             HasOptionsMenu = true;
             View view = inflater.Inflate(Resource.Layout.HomeInventoriesLayout, container, false);
-            
             mListViewStorages = view.FindViewById<RecyclerView>(Resource.Id.recylerHomeInventories);
             mListViewStorages.SetLayoutManager(new LinearLayoutManager(Activity));
+            mUse = view.FindViewById<Button>(Resource.Id.buttonHomeInventoriesUse);
+            mThrow = view.FindViewById<Button>(Resource.Id.buttonHomeInventoriesThrow);
+            mRemove = view.FindViewById<Button>(Resource.Id.buttonHomeInventoriesRemove);
             LoadInventoriesData();
             return view;
         }
 
         private void LoadInventoriesData()
         {
-            //List<InventoryViewModel> mInventories = HomeFragment.mInventoriesByProduct;
+            var SelectedStorage = HomeStoragesFragment.mSelectedStorageClass;
+            var temp = LoginPageActivity.mGlobalInventories;
+            mFilteredInventories = temp.Where(i => i.StorageId == SelectedStorage.Id && i.ProductId==HomeFragment.mHomeSelectedInventory.ProductId).ToList();
 
-            //StorageViewModel SelectedStorage = HomeStoragesFragment.mSelectedStorageClass;
-            //LocationViewModel mSelectedStorage = LoginPageActivity.StaticActiveLocationClass;
+            this.mHomeInventoriesAdapter = new InventoriesRecyclerAdapter(mFilteredInventories, this.Activity);
+            this.mHomeInventoriesAdapter.ItemClick += OnStorageClicked;
+            this.mListViewStorages.SetAdapter(this.mHomeInventoriesAdapter);
 
-            //ProductViewModel mSelectedProduct = HomeFragment.mHomeSelectedProduct;
-
-            //mFilteredInventories = new List<InventoryViewModel>();
-            //for (int i = 0; i< mInventories.Count ; i++)
-            //{
-            //    if (mInventories[i].StorageId == SelectedStorage.Id)
-            //    {
-            //        mFilteredInventories.Add(mInventories[i]);
-            //    }
-            //}
-
-            //if (mFilteredInventories != null)
-            //{
-            //    this.mHomeInventoriesAdapter = new HomeInventoryRecycleAdapter(mFilteredInventories, mSelectedProduct , this.Activity);
-            //    this.mHomeInventoriesAdapter.ItemClick += OnStorageClicked;
-            //    this.mListViewStorages.SetAdapter(this.mHomeInventoriesAdapter);
-            //}
-            
         }
         
 

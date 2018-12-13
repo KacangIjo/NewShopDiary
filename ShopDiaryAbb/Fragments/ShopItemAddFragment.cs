@@ -17,26 +17,26 @@ using ShopDiaryAbb.Services;
 
 namespace ShopDiaryAbb.Fragments
 {
-    public class ShopListAddFragement : Android.Support.V4.App.Fragment
+    public class ShopItemAddFragment : Android.Support.V4.App.Fragment
     {
-        private EditText mShopListName;
-        private EditText mShopListDescription;
+        private EditText Name;
+        private EditText Quantity;
         private EditText mStoreLocation;
 
         private Button mButtonAdd;
         private Button mButtonCancel;
         private ProgressBar mProgressBar;
 
-        ShoplistDataService shoplistDataService;
+        ShopItemDataService mShopItemDataService;
         public List<ShoplistViewModel> mShopLists;
         private Guid mSelectedLocationId;
 
         private FragmentTransaction mFragmentTransaction;
         Guid mAuthorizedId = LoginPageActivity.StaticUserClass.ID;
 
-        public ShopListAddFragement()
+        public ShopItemAddFragment()
         {
-            shoplistDataService = new ShoplistDataService();
+            mShopItemDataService = new ShopItemDataService();
             mShopLists = new List<ShoplistViewModel>();
         }
         public override void OnCreate(Bundle savedInstanceState)
@@ -46,18 +46,18 @@ namespace ShopDiaryAbb.Fragments
 
 
 
-        public static ShopListAddFragement NewInstance()
+        public static ShopItemAddFragment NewInstance()
         {
-            var frag2 = new ShopListAddFragement { Arguments = new Bundle() };
+            var frag2 = new ShopItemAddFragment { Arguments = new Bundle() };
             return frag2;
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View view = inflater.Inflate(Resource.Layout.ManageShopListAdd,container,false);
+            View view = inflater.Inflate(Resource.Layout.ManageShopItemAdd,container,false);
             mButtonAdd = view.FindViewById<Button>(Resource.Id.buttonAddShopList);
             mButtonCancel = view.FindViewById<Button>(Resource.Id.buttonCancelShopList);
-            mShopListName = view.FindViewById<EditText>(Resource.Id.editTextAddShopListName);
-            mShopListDescription = view.FindViewById<EditText>(Resource.Id.editTextAddShopListDescription);
+            Name = view.FindViewById<EditText>(Resource.Id.editTextAddShopItemName);
+            Quantity = view.FindViewById<EditText>(Resource.Id.editTextAddShopItemQuantity);
             mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarAddShopList);
             mButtonAdd.Click += MButtonAdd_Click;
             mButtonCancel.Click += MButtonCancel_Click;
@@ -72,22 +72,23 @@ namespace ShopDiaryAbb.Fragments
         private void MButtonAdd_Click(object sender, EventArgs e)
         {
             mProgressBar.Visibility = Android.Views.ViewStates.Visible;
-            ShoplistViewModel newShopList = new ShoplistViewModel()
+            ShopitemViewModel newShopList = new ShopitemViewModel()
             {
-                Name = mShopListName.Text,
-                Description = mShopListDescription.Text,
-                LocationId = LoginPageActivity.StaticActiveLocationClass.Id.ToString(),
+                ItemName = Name.Text,
+                Quantity = int.Parse(Quantity.Text),
+                ShoplistId = ShopListFragment.mSelectedShopList.Id,
                 AddedUserId = LoginPageActivity.StaticUserClass.ID.ToString()
+
             };
 
             new Thread(new ThreadStart(async delegate
             {
                 UpgradeProgress();
-                var isAdded = shoplistDataService.Add(newShopList.ToModel());
+                var isAdded = mShopItemDataService.Add(newShopList.ToModel());
 
                 if (isAdded)
                 {
-                    LoginPageActivity.mGlobalShopList = await shoplistDataService.GetAll();
+                    LoginPageActivity.mGlobalShopItem = await mShopItemDataService.GetAll();
                     this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "ShopList Added", ToastLength.Long).Show());
                     mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
                     ReplaceFragment(new ShopListFragment(), "Manage ShopLists");

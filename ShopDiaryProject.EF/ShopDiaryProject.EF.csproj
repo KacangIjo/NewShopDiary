@@ -94,8 +94,16 @@
       <DependentUpon>201811221747194_AddLocationIdToShopList.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201811221838522_AddItemNameToShopItem.cs" />
-    <Compile Include="Migrations\201811221838522_AddItemNameToShopItem.Designer.cs">
+    <Compile Include="Migrations\201811221838522_AddItemNameToShopItem.designer.cs">
       <DependentUpon>201811221838522_AddItemNameToShopItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812100912321_AddStockModel.cs" />
+    <Compile Include="Migrations\201812100912321_AddStockModel.Designer.cs">
+      <DependentUpon>201812100912321_AddStockModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812100913344_AddStockModel2.cs" />
+    <Compile Include="Migrations\201812100913344_AddStockModel2.Designer.cs">
+      <DependentUpon>201812100913344_AddStockModel2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +128,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811221838522_AddItemNameToShopItem.resx">
       <DependentUpon>201811221838522_AddItemNameToShopItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812100912321_AddStockModel.resx">
+      <DependentUpon>201812100912321_AddStockModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812100913344_AddStockModel2.resx">
+      <DependentUpon>201812100913344_AddStockModel2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

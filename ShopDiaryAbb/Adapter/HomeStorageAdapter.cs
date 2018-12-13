@@ -66,11 +66,6 @@ namespace ShopDiaryAbb.Adapter
                 : base(itemView)
             {
                 this.ItemName = itemView.FindViewById<TextView>(Resource.Id.HomeStorageAdapterItemName);
-                this.ExpiredItem = itemView.FindViewById<TextView>(Resource.Id.HomeStorageAdapterWarningCounter);
-                this.WarningItem = itemView.FindViewById<TextView>(Resource.Id.HomeStorageAdapterWarningCounter);
-                this.GoodItem = itemView.FindViewById<TextView>(Resource.Id.HomeStorageAdapterGoodCounter);
-
-
                 itemView.Click += (sender, e) => listener(this.LayoutPosition);
             }
 
