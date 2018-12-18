@@ -59,6 +59,8 @@ namespace ShopDiaryAbb.Fragments
             mButtonCancel = view.FindViewById<Button>(Resource.Id.buttonShopListEditCancel);
             mShopListName = view.FindViewById<EditText>(Resource.Id.editTextShopListDetailName);
             mShopListDescription = view.FindViewById<EditText>(Resource.Id.editTextShopListDetailDescription);
+            mShopListName.Text = ShopListFragment.mSelectedShopList.Name;
+            mShopListDescription.Text = ShopListFragment.mSelectedShopList.Description;
             mButtonSave.Click += MButtonSave_Click;
             mButtonDelete.Click += MButtonDelete_Click;
             mButtonCancel.Click += MButtonCancel_Click;

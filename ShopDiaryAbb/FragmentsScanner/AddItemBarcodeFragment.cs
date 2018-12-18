@@ -24,6 +24,9 @@ namespace ShopDiaryAbb.FragmentsScanner
         public List<ProductViewModel> mProducts;
         public List<CategoryViewModel> spinnerListCategories;
 
+        public Guid tempproductid;
+        public Guid mNewProductId;
+        public bool mIsContainName = false;
         public InventoryViewModel mInventory;
         public ProductViewModel mProduct = new ProductViewModel();
         public ProductViewModel mProductForBarcode;
@@ -80,7 +83,7 @@ namespace ShopDiaryAbb.FragmentsScanner
             mName = view.FindViewById<AutoCompleteTextView>(Resource.Id.editTextAddName);
 
             mStock = view.FindViewById<EditText>(Resource.Id.editTextAddItemTotalItem);
-            mSpinnerCategories = view.FindViewById<Spinner>(Resource.Id.spinnerAddItemCategory);
+      
             mSpinnerStorages = view.FindViewById<Spinner>(Resource.Id.spinnerAddItemStorage);
             mExpDateChoose = view.FindViewById<EditText>(Resource.Id.editTextAddItemExpDate);
             mAddtoInventory = view.FindViewById<ImageButton>(Resource.Id.buttonAddAddToInventory);
@@ -139,18 +142,8 @@ namespace ShopDiaryAbb.FragmentsScanner
                     {
                         mProduct.Id = mProducts[i].Id;
                         mName.Text = mProducts[i].Name;
-                        for (int j = 0; spinnerListCategories.Count >j ; j++)
-                        {
-                            if (spinnerListCategories[j].Id== mProducts[i].CategoryId)
-                            {
-                                sel = j;
-                            }
-                        }
+                        mIsContainName = true;
                     }
-                }
-                if (sel != -1)
-                {
-                    mSpinnerStorages.SetSelection(sel+1);
                 }
             };
             
@@ -175,11 +168,14 @@ namespace ShopDiaryAbb.FragmentsScanner
         {
             Product product = new Product()
             {
+                Id = new Guid(),
                 Name = mName.Text,
                 BarcodeId = mBarcode.Text,
-                CategoryId = mCategory.Id,
+                CategoryId = new Guid(),
                 AddedUserId=LoginPageActivity.StaticUserClass.ID.ToString()
             };
+            mNewProductId = product.Id;
+
             new Thread(new ThreadStart(delegate
             {
                 var isProductAdded = mProductDataService.Add(product);
@@ -197,13 +193,32 @@ namespace ShopDiaryAbb.FragmentsScanner
         }
         private void AddInventoryData()
         {
-            
-            Inventory newInventory = new Inventory(){
+
+            if (mBarcode.Text == "-")
+            {
+                AddProductData();
+                tempproductid = mNewProductId;
+            }
+            else if (mBarcode.Text != "-")
+            {
+                if (mIsContainName)
+                {
+                    tempproductid = mProduct.Id;
+                }
+                else
+                {
+                    AddProductData();
+                    tempproductid = mNewProductId;
+                }
+            }
+
+            Inventory newInventory = new Inventory()
+            {
                 ExpirationDate = DateTemp,
                 StorageId = mStorage.Id,
                 ItemName = mName.Text,
                 Stock = int.Parse(mStock.Text),
-                ProductId = mProduct.Id,
+                ProductId = tempproductid,
                 AddedUserId = LoginPageActivity.StaticUserClass.ID.ToString()
             };
             new Thread(new ThreadStart(delegate{
@@ -229,13 +244,6 @@ namespace ShopDiaryAbb.FragmentsScanner
         }
 
         private void LoadItemData(){
-            //Spinner Adapter Category
-            spinnerListCategories = mCategories.Where(c => c.UserId == LoginPageActivity.StaticUserClass.ID.ToString()).ToList();
-            SpinnerCategoryAdapter adapterCategories = new SpinnerCategoryAdapter(Activity, spinnerListCategories);
-            mSpinnerCategories.Adapter = adapterCategories;
-
-            mSpinnerCategories.ItemSelected += SpinnerCategory_ItemSelected;
-            mSpinnerCategories.SetSelection(0);
 
             //Spinner Adapter Storage
             List<StorageViewModel> tempStorages = mStorages.Where(s => s.LocationId == LoginPageActivity.StaticActiveLocationClass.Id).ToList();
@@ -243,7 +251,7 @@ namespace ShopDiaryAbb.FragmentsScanner
             mSpinnerStorages.Adapter = adapterStorages;
 
             mSpinnerStorages.ItemSelected += SpinnerStorage_ItemSelected;
-            if (mSpinnerStorages.Count>1)
+            if (mSpinnerStorages.Count!=0)
             {
                 mSpinnerStorages.SetSelection(0);
             }
@@ -269,19 +277,21 @@ namespace ShopDiaryAbb.FragmentsScanner
 
             string toast = string.Format("{0} selected", mStorage.Name);
             Toast.MakeText(this.Activity, toast, ToastLength.Long).Show();
-            //LoadRecyclerAdapter(mStorage, mCategory);
+
 
         }
-        private void SpinnerCategory_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            Spinner spinner = (Spinner)sender;
-            mCategory = mCategories[e.Position];
+        #region categoryItemSelected
+        //private void SpinnerCategory_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        //{
+        //    Spinner spinner = (Spinner)sender;
+        //    mCategory = mCategories[e.Position];
 
-            string toast = string.Format("{0} selected", mCategory.Name);
-            Toast.MakeText(this.Activity, toast, ToastLength.Long).Show();
-            //LoadRecyclerAdapter(mStorage, mCategory);
+        //    string toast = string.Format("{0} selected", mCategory.Name);
+        //    Toast.MakeText(this.Activity, toast, ToastLength.Long).Show();
+        //    //LoadRecyclerAdapter(mStorage, mCategory);
 
-        }
+        //}
+        #endregion
 
         private void DatePickerDialogue_OnComplete(object sender, OnDatePickedEventArgs e)
         {

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:gravity="center">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/primary">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <TextView
+                android:text="Shop List : "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/background_dark" />
+            <TextView
+                android:text="-"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textViewDialogShopLists" />
+        </LinearLayout>
+        <Button
+            android:text="View Shop Items"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDialogShopListsViewShopItems" />
+        <Button
+            android:text="Edit"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDialogShopListsEdit" />
+        <Button
+            android:text="Delete"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDialogShopListssDelete" />
+        <Button
+            android:text="Cancel"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDialogShopListsCancel"
+            android:gravity="center" />
+    </LinearLayout>
+    
+</LinearLayout>

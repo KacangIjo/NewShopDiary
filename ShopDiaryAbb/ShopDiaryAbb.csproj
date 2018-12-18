@@ -82,6 +82,12 @@
     <Compile Include="Class\Storage.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="Class\UserLocation.cs" />
+    <Compile Include="DialogFragments\DialogHomeInventoryOptions.cs" />
+    <Compile Include="DialogFragments\DialogInventoryOptions.cs" />
+    <Compile Include="DialogFragments\DialogShopItemOptions.cs" />
+    <Compile Include="DialogFragments\DialogShopListOptions.cs" />
+    <Compile Include="DialogFragments\DialogStorageOptions.cs" />
+    <Compile Include="DialogFragments\DialogLocationOptions.cs" />
     <Compile Include="DialogFragments\DialogNumberPicker.cs" />
     <Compile Include="DialogFragments\DialogDatePickerActivity.cs" />
     <Compile Include="Fragments\ShopItemAddFragment.cs" />
@@ -554,6 +560,47 @@
     <AndroidResource Include="Resources\layout\DialogNumberPicker.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ItemSelectBackground.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DialogLocationOptions.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DialogStorageOptions.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DialogProductOptions.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DialogCategoryOptions.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DialogShopListOptions.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DialogShopItemOptions.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DialogInventoryOptions.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\file.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

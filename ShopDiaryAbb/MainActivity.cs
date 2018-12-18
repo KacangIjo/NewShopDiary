@@ -85,7 +85,7 @@ namespace ShopDiaryAbb
             {
                 NotifyNearlyExpired();
             }
-
+            NotifyExpired();
 
             if (savedInstanceState == null)
             {
@@ -163,11 +163,6 @@ namespace ShopDiaryAbb
                 SupportActionBar.Title = "Manage Shop List";
                 ListItemClicked(4);
             }
-            else if (id == Resource.Id.menuCategories)
-            {
-                SupportActionBar.Title = "Manage Categories";
-                ListItemClicked(5);
-            }
             else if (id == Resource.Id.menuProducts)
             {
                 SupportActionBar.Title = "Manage Products";
@@ -217,9 +212,6 @@ namespace ShopDiaryAbb
                     break;
                 case 4:
                     fragment = ShopListFragment.NewInstance();
-                    break;
-                case 5:
-                    fragment = CategoriesFragment.NewInstance();
                     break;
                 case 6:
                     fragment = ProductsFragment.NewInstance();

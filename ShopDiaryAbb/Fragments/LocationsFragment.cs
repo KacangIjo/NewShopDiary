@@ -6,6 +6,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using ShopDiaryAbb.Adapter;
+using ShopDiaryAbb.DialogFragments;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
 using System;
@@ -27,7 +28,6 @@ namespace ShopDiaryAbb.Fragments
         private FragmentTransaction mFragmentTransaction;
         private ImageButton mButtonAdd;
         private ImageButton mButtonEdit;
-        private Android.Support.V7.Widget.SearchView mSearchView;
 
         public LocationsFragment()
         {
@@ -103,7 +103,8 @@ namespace ShopDiaryAbb.Fragments
             {
                 mLocationsAdapter = new LocationsRecycleAdapter(mFilteredLocation, this.Activity);
                 mLocationsAdapter.ItemClick += OnLocationClicked;
-                mListViewLocations.SetAdapter(this.mLocationsAdapter);
+                this.Activity.RunOnUiThread(() => mLocationsAdapter.NotifyDataSetChanged());
+                this.Activity.RunOnUiThread(() => this.mListViewLocations.SetAdapter(this.mLocationsAdapter));
             }
         }
 
@@ -112,25 +113,30 @@ namespace ShopDiaryAbb.Fragments
             mSelectedLocation = e;
             mSelectedLocationClass = mLocations[e];
             LoginPageActivity.StaticActiveLocationClass = mLocations[e];
-
             LoginPageActivity.StaticLocationClass = mLocations[e];
+
+            //ShowOptionsDialog
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            DialogLocationOptions LocationOptionsDialog = new DialogLocationOptions();
+            LocationOptionsDialog.Show(transaction, "dialogue fragment");
+            LocationOptionsDialog.OnLocationOptionsPicked += LocationOptions_OnComplete;
         }
 
+        private void LocationOptions_OnComplete(object sender, OnLocationOptionsPicked e)
+        {
+            var IsLoadData = e.IsNeedLoadData;
+            if (IsLoadData == true)
+            {
+
+            }
+           
+            Toast.MakeText(this.Activity, "Expired Date Added", ToastLength.Short).Show();
+        }
 
         public override void OnCreateOptionsMenu(IMenu menu,MenuInflater menuInflater)
         {
-            //SearchMenu
             menuInflater.Inflate(Resource.Menu.nav_search, menu);
             var searchItem = menu.FindItem(Resource.Id.action_search);
-            //var provider = MenuItemCompat.GetActionView(searchItem);
-            //mSearchView = provider.JavaCast<Android.Support.V7.Widget.SearchView>();
-            //mSearchView.QueryTextChange += (s, e) => mLocationsAdapter.Filter.InvokeFilter(e.NewText);
-            //mSearchView.QueryTextSubmit += (s, e) =>
-            //{
-            //    Toast.MakeText(this.Activity, "You searched: " + e.Query, ToastLength.Short).Show();
-            //    e.Handled = true;
-            //};
-            //MenuItemCompat.SetOnActionExpandListener(searchItem, new SearchViewExpandListener(mLocationsAdapter));
         }
        
 

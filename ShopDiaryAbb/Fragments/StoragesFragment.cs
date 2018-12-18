@@ -18,7 +18,7 @@ namespace ShopDiaryAbb.Fragments
     {
         private StoragesRecycleAdapter mStoragesAdapter;
         public List<StorageViewModel> mStorages;
-        static StorageViewModel mSelectedStorageClass;
+        public static StorageViewModel mSelectedStorageClass;
         private readonly StorageDataService mStorageDataService;
 
         private RecyclerView mListViewStorage;
@@ -26,7 +26,7 @@ namespace ShopDiaryAbb.Fragments
         private FragmentTransaction mFragmentTransaction;
         private ImageButton mButtonAdd;
         private ImageButton mButtonEdit;
-        private Android.Support.V7.Widget.SearchView mSearchView;
+
         int QuantityTemp=1;
         public StoragesFragment()
         {
@@ -72,12 +72,11 @@ namespace ShopDiaryAbb.Fragments
             mStorages = LoginPageActivity.mGlobalStorages.Where(s => s.LocationId == LoginPageActivity.StaticActiveLocationClass.Id).ToList();
             if (mStorages != null)
             {
-
                 mStoragesAdapter = new StoragesRecycleAdapter(mStorages, this.Activity);
                 mStoragesAdapter.ItemClick += OnStorageClicked;
-                mListViewStorage.SetAdapter(this.mStoragesAdapter);
+                this.Activity.RunOnUiThread(() => mStoragesAdapter.NotifyDataSetChanged());
+                this.Activity.RunOnUiThread(() => this.mListViewStorage.SetAdapter(this.mStoragesAdapter));
             }
-
         }
 
         
@@ -87,9 +86,18 @@ namespace ShopDiaryAbb.Fragments
             mSelectedStorageClass = mStorages[e];
             //mTextSelectedLocation.Text = mLocations[e].Name;
             LoginPageActivity.StaticStorageClass = mStorages[e];
-            ReplaceFragment(new InventoriesFragment(), mStorages[e].Name.ToString());
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            DialogStorageOptions StorageDialog = new DialogStorageOptions();
+            StorageDialog.Show(transaction, "dialogue fragment");
+            StorageDialog.OnStorageOptionsPicked += StorageOptions_OnComplete;
 
         }
+
+        private void StorageOptions_OnComplete(object sender, OnStorageDialogPicked e)
+        {
+          
+        }
+
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();

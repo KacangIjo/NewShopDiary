@@ -5,6 +5,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using ShopDiaryAbb.Adapter;
+using ShopDiaryAbb.DialogFragments;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
 using System;
@@ -29,6 +30,9 @@ namespace ShopDiaryAbb.Fragments
 
         ShopItemDataService mShopItemDataService=new ShopItemDataService();
         public List<ShopitemViewModel> mShopItems=new List<ShopitemViewModel>();
+
+        
+
         public ShopItemsFragment()
         {
             mStorageDataService = new StorageDataService();
@@ -57,32 +61,16 @@ namespace ShopDiaryAbb.Fragments
             mButtonRemove = view.FindViewById<Button>(Resource.Id.buttonShopItemRemove);
             mButtonCancel= view.FindViewById<Button>(Resource.Id.buttonAddShopItemCancel);
             LoadData();
-            mButtonAdd.Click += (object sender, EventArgs args) => {
+            mButtonAdd.Click += (object sender, EventArgs args) =>
+            {
                 ReplaceFragment(new ShopItemAddFragment(), "Manage Shop List");
             };
             mButtonRemove.Click += (object sender, EventArgs args) => {
-                new Thread(new ThreadStart(async delegate
-                {
-                    var isAdded = mShopItemDataService.Delete(mSelectedShopItem.Id);
-                    if (isAdded)
-                    {
-                        LoginPageActivity.mGlobalShopItem = await mShopItemDataService.GetAll();
-                        var temp = LoginPageActivity.mGlobalShopItem;
-                        mShopItems = temp.Where(s => s.ShoplistId == ShopListFragment.mSelectedShopList.Id).ToList();
-                        mShopItemAdapter = new ShopItemRecycleAdapter(mShopItems, this.Activity);
-                        mShopItemAdapter.ItemClick += OnStorageClicked;
-                        mListViewShopList.SetAdapter(this.mShopItemAdapter);
-                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Removed", ToastLength.Long).Show());
-                    }
-                    else
-                    {
-                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed", ToastLength.Long).Show());
-                    }
-                })).Start();
+               
             };
-            mButtonCancel.Click += (object sender, EventArgs args) => {
-                ReplaceFragment(new ShopListFragment(), "Manage Shop List");
-            };
+            //mButtonCancel.Click += (object sender, EventArgs args) => {
+            //    ReplaceFragment(new ShopListFragment(), "Manage Shop List");
+            //};
 
 
 
@@ -97,7 +85,8 @@ namespace ShopDiaryAbb.Fragments
 
                 mShopItemAdapter = new ShopItemRecycleAdapter(mShopItems, this.Activity);
                 mShopItemAdapter.ItemClick += OnStorageClicked;
-                mListViewShopList.SetAdapter(this.mShopItemAdapter);
+                this.Activity.RunOnUiThread(() => mShopItemAdapter.NotifyDataSetChanged());
+                this.Activity.RunOnUiThread(() => this.mListViewShopList.SetAdapter(this.mShopItemAdapter));
             }
 
         }
@@ -105,10 +94,38 @@ namespace ShopDiaryAbb.Fragments
         {
             mSelected = e;
             mSelectedShopItem = mShopItems[mSelected];
-            
-         
+
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            DialogShopItemOptions ShopItemsDialog = new DialogShopItemOptions();
+            ShopItemsDialog.Show(transaction, "dialogue fragment");
+            ShopItemsDialog.OnShopItemOptionPicked += ShopItemOptions_OnComplete;
 
         }
+
+        private void ShopItemOptions_OnComplete(object sender, OnShopItemOptionPicked e)
+        {
+            if (e.MenuItem == 1)
+            {
+                new Thread(new ThreadStart(async delegate
+                {
+                    var isAdded = mShopItemDataService.Delete(mSelectedShopItem.Id);
+                    if (isAdded)
+                    {
+                        mShopItems.Clear();
+                        LoginPageActivity.mGlobalShopItem = await mShopItemDataService.GetAll();
+                        LoadData();
+                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Removed", ToastLength.Long).Show());
+                    }
+                    else
+                    {
+                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed", ToastLength.Long).Show());
+                    }
+                })).Start();
+            }
+            else
+                this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Canceled", ToastLength.Long).Show());
+        }
+
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();

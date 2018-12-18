@@ -22,7 +22,7 @@ namespace ShopDiaryAbb.Fragments
         private User mUser = LoginPageActivity.StaticUserClass;
         public List<InventoryViewModel> mInventories;
         public List<InventoryViewModel> mFilteredInventories;
-        static InventoryViewModel mSelectedInventoryClass;
+        public static InventoryViewModel mSelectedInventoryClass;
         private int QuantityTemp;
 
         private InventoriesRecyclerAdapter mInventoriesAdapter;
@@ -32,12 +32,11 @@ namespace ShopDiaryAbb.Fragments
         private readonly InventoryDataService mInventoryDataService;
 
         private FragmentTransaction mFragmentTransaction;
-        private Button mButtonUse;
-        private Button mButtonThrow;
-        private Button mButtonRemove;
+      
         private ProgressBar mProgressBar;
-        private Android.Support.V7.Widget.SearchView mSearchView;
-
+        private ImageButton mButtonHistory;
+        private ImageButton mButtonAdd;
+      
         private int mSelectedInventory = -1;
         #endregion
         public InventoriesFragment()
@@ -61,18 +60,15 @@ namespace ShopDiaryAbb.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             HasOptionsMenu = true;
+
             View view = inflater.Inflate(Resource.Layout.ManageInventoriesLayout, container, false);
             mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarManageInventories);
-            mButtonUse= view.FindViewById<Button>(Resource.Id.buttonManageInventoriesUse);
-            mButtonThrow = view.FindViewById<Button>(Resource.Id.buttonManageInventoriesThrow);
-            mButtonRemove = view.FindViewById<Button>(Resource.Id.buttonManageInventoriesRemove);
-            var mButtonHistory = view.FindViewById<Button>(Resource.Id.buttonManageInventoriesLogs);
+            mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
+            mButtonHistory = view.FindViewById<ImageButton>(Resource.Id.imageButtonManageInventoriesLog);
+            mButtonAdd= view.FindViewById<ImageButton>(Resource.Id.imageButtonManageInventoriesAdd);
             mListViewInventories = view.FindViewById<RecyclerView>(Resource.Id.recylerInventories);
             mListViewInventories.SetLayoutManager(new LinearLayoutManager(Activity));
             LoadInventoriesData();
-            mButtonUse.Click += OnUseClicked;
-            mButtonThrow.Click += OnThrowClicked;
-            mButtonRemove.Click += OnRemoveClicked;
             mButtonHistory.Click += OnHistoryClicked;
             return view;
         }
@@ -96,9 +92,12 @@ namespace ShopDiaryAbb.Fragments
 
             if (mFilteredInventories != null)
             {
+               
                 this.mInventoriesAdapter = new InventoriesRecyclerAdapter(mFilteredInventories, this.Activity);
                 this.mInventoriesAdapter.ItemClick += OnInventoryClicked;
-                this.mListViewInventories.SetAdapter(this.mInventoriesAdapter);
+                this.Activity.RunOnUiThread(() => mInventoriesAdapter.NotifyDataSetChanged());
+                this.Activity.RunOnUiThread(() => this.mListViewInventories.SetAdapter(this.mInventoriesAdapter));
+
             }
         }
         #region clicked function
@@ -110,45 +109,58 @@ namespace ShopDiaryAbb.Fragments
         {
             mSelectedInventoryClass = mFilteredInventories[e];
             LoginPageActivity.StaticInventoryClass = mSelectedInventoryClass;
-        }
-        private void OnRemoveClicked(object sender, EventArgs e)
-        {
-            if (mSelectedInventoryClass.Id != null)
-            {
-                Inventorylog newInventoryLog = new Inventorylog()
-                {
-                    InventoryId = mSelectedInventoryClass.Id,
-                    Description = mSelectedInventoryClass.ItemName + " Removed By " + mUser.Username,
-                    LogDate = DateTime.Now,
-                    CreatedUserId = mUser.ID.ToString(),
-                    AddedUserId = mUser.ID.ToString()
-                };
-                new Thread(new ThreadStart(delegate
-                {
 
-                    var isAdded = mInventoryLogDataService.Add(newInventoryLog);
-                    var isDeleted = mInventoryDataService.Delete(mSelectedInventoryClass.Id);
-                    if (isDeleted)
-                    {
-                        UpdateInventories();
-                        UpgradeProgress();
-                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Item Removed", ToastLength.Long).Show());
-                        mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
-                    }
-                    else
-                    {
-                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed", ToastLength.Long).Show());
-                    }
-                })).Start();
-            }
-            
+            //ShowOptionsDialog
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            DialogInventoryOptions InventoriesOptionsDialog = new DialogInventoryOptions();
+            InventoriesOptionsDialog.Show(transaction, "dialogue fragment");
+            InventoriesOptionsDialog.OnInventoryDialogPicked += InventoryOptions_OnComplete;
         }
-        private void OnThrowClicked(object sender, EventArgs e)
+
+        private void InventoryOptions_OnComplete(object sender, OnInventoryDialogPicked e)
         {
-            if (mSelectedInventoryClass.Id != null)
+           
+            var menu = e.MenuItem;
+            if (menu == 1)
             {
                 if (mSelectedInventoryClass.Id != null)
                 {
+                    mProgressBar.Visibility = Android.Views.ViewStates.Visible;
+                    Inventorylog newInventoryLog = new Inventorylog()
+                    {
+                        InventoryId = mSelectedInventoryClass.Id,
+                        Description = mSelectedInventoryClass.ItemName + " Used By " + mUser.Username,
+                        LogDate = DateTime.Now,
+                        CreatedUserId = mUser.ID.ToString(),
+                        AddedUserId = mUser.ID.ToString()
+                    };
+                    new Thread(new ThreadStart(delegate
+                    {
+                        var isAdded = mInventoryLogDataService.Add(newInventoryLog);
+                        var isDeleted = mInventoryDataService.Delete(mSelectedInventoryClass.Id);
+                        if (isDeleted)
+                        {
+                            UpdateInventories();
+                            LoadInventoriesData();
+                            UpgradeProgress();
+                            this.Activity.RunOnUiThread(() => mInventoriesAdapter.NotifyDataSetChanged());
+                            this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Item Removed", ToastLength.Long).Show());
+                            
+                            ReplaceFragment(new InventoriesFragment(), "Manage Inventories");
+                            mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
+                        }
+                        else
+                        {
+                            this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed", ToastLength.Long).Show());
+                        }
+                    })).Start();
+                }
+            }
+            else if (menu == 2)
+            {
+                if (mSelectedInventoryClass.Id != null)
+                {
+                    mProgressBar.Visibility = Android.Views.ViewStates.Visible;
                     Inventorylog newInventoryLog = new Inventorylog()
                     {
 
@@ -166,7 +178,46 @@ namespace ShopDiaryAbb.Fragments
                         if (isDeleted)
                         {
                             UpdateInventories();
+                            LoadInventoriesData();
                             UpgradeProgress();
+                            this.Activity.RunOnUiThread(() => mInventoriesAdapter.NotifyDataSetChanged());
+                            this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Item Removed", ToastLength.Long).Show());
+                            ReplaceFragment(new InventoriesFragment(), "Manage Inventories");
+                            mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
+                        }
+                        else
+                        {
+                            this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed", ToastLength.Long).Show());
+                        }
+                    })).Start();
+                }
+                
+            }
+            else if (menu == 3)
+            {
+                
+                if (mSelectedInventoryClass.Id != null)
+                {
+                    mProgressBar.Visibility = Android.Views.ViewStates.Visible;
+                    Inventorylog newInventoryLog = new Inventorylog()
+                    {
+                        InventoryId = mSelectedInventoryClass.Id,
+                        Description = mSelectedInventoryClass.ItemName + " Removed By " + mUser.Username,
+                        LogDate = DateTime.Now,
+                        CreatedUserId = mUser.ID.ToString(),
+                        AddedUserId = mUser.ID.ToString()
+                    };
+                    new Thread(new ThreadStart(delegate
+                    {
+
+                        var isAdded = mInventoryLogDataService.Add(newInventoryLog);
+                        var isDeleted = mInventoryDataService.Delete(mSelectedInventoryClass.Id);
+                        if (isDeleted)
+                        {
+                            UpdateInventories();
+                            LoadInventoriesData();
+                            UpgradeProgress();
+                            this.Activity.RunOnUiThread(() => mInventoriesAdapter.NotifyDataSetChanged());
                             this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Item Removed", ToastLength.Long).Show());
                             mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
                         }
@@ -177,42 +228,12 @@ namespace ShopDiaryAbb.Fragments
                     })).Start();
                 }
             }
-        }
-        private void OnUseClicked(object sender, EventArgs e)
-        {
-            FragmentTransaction transaction = FragmentManager.BeginTransaction();
-            DialogNumberPicker NumberPickerDialog = new DialogNumberPicker();
-            NumberPickerDialog.Show(transaction, "dialogue fragment");
-            NumberPickerDialog.OnPickDateComplete += NumberPickerDialogue_OnComplete;
-            if (mSelectedInventoryClass.Id != null)
+            else
             {
-                Inventorylog newInventoryLog = new Inventorylog()
-                {
-                    InventoryId = mSelectedInventoryClass.Id,
-                    Description = mSelectedInventoryClass.ItemName + " Used By " + mUser.Username,
-                    LogDate = DateTime.Now,
-                    CreatedUserId = mUser.ID.ToString(),
-                    AddedUserId = mUser.ID.ToString()
-                };
-                new Thread(new ThreadStart(delegate
-                {
 
-                    var isAdded = mInventoryLogDataService.Add(newInventoryLog);
-                    var isDeleted = mInventoryDataService.Delete(mSelectedInventoryClass.Id);
-                    if (isDeleted)
-                    {
-                        UpdateInventories();
-                        UpgradeProgress();
-                        
-                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Item Removed", ToastLength.Long).Show());
-                        mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
-                    }
-                    else
-                    {
-                        this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "Failed", ToastLength.Long).Show());
-                    }
-                })).Start();
             }
+            
+           
         }
         private async void UpdateInventories()
         {

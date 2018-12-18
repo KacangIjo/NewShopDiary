@@ -5,6 +5,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using ShopDiaryAbb.Adapter;
+using ShopDiaryAbb.DialogFragments;
 using ShopDiaryAbb.Models.ViewModels;
 using ShopDiaryAbb.Services;
 using System;
@@ -17,7 +18,7 @@ namespace ShopDiaryAbb.Fragments
     {
         private ShopListsRecylceAdapter mShopListAdapter;
         public List<StorageViewModel> mStorages;
-        public static ShoplistViewModel mSelectedShopList;
+        public static ShoplistViewModel mSelectedShopList=new ShoplistViewModel();
         private readonly StorageDataService mStorageDataService;
 
         private RecyclerView mListViewShopList;
@@ -60,14 +61,6 @@ namespace ShopDiaryAbb.Fragments
             mButtonAdd.Click += (object sender, EventArgs args) => {
                 ReplaceFragment(new ShopListAddFragement(), "Add Shop List");
             };
-            mButtonView.Click += (object sender, EventArgs args) => {
-                ReplaceFragment(new ShopItemsFragment(), "Manage Shop Item");
-            };
-            mButtonEdit.Click += (object sender, EventArgs args) => {
-                ReplaceFragment(new ShopListEditFragment(), "Manage Shop Item");
-            };
-
-
 
             return view;
         }
@@ -79,19 +72,32 @@ namespace ShopDiaryAbb.Fragments
             {
 
                 mShopListAdapter = new ShopListsRecylceAdapter(mShopLists, this.Activity);
-                mShopListAdapter.ItemClick += OnStorageClicked;
-                mListViewShopList.SetAdapter(this.mShopListAdapter);
+                mShopListAdapter.ItemClick += OnShopListClicked;
+                this.Activity.RunOnUiThread(() => mShopListAdapter.NotifyDataSetChanged());
+                this.Activity.RunOnUiThread(() => this.mListViewShopList.SetAdapter(this.mShopListAdapter));
             }
 
         }
-        private void OnStorageClicked(object sender, int e)
+        private void OnShopListClicked(object sender, int e)
         {
             mSelected = e;
-            mSelectedShopList = mShopLists[mSelected];
-            
-         
+            mSelectedShopList = mShopLists[e];
 
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            DialogShopListOptions DialogShopList = new DialogShopListOptions();
+            DialogShopList.Show(transaction, "dialogue fragment");
+            DialogShopList.OnShopListOptionPicked += ShopListOptions_OnComplete;
         }
+
+        private void ShopListOptions_OnComplete(object sender, OnShopListOptionPicked e)
+        {
+            var IsLoadData = e.IsNeedLoadData;
+            if (IsLoadData == true)
+            {
+                LoadData();
+            }
+        }
+
         public void ReplaceFragment(Fragment fragment, string tag)
         {
             mFragmentTransaction = FragmentManager.BeginTransaction();

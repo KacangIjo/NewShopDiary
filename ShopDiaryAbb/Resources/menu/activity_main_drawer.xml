@@ -25,10 +25,6 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="Shop List" />
       <item
-            android:id="@+id/menuCategories"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Categories" />
-      <item
             android:id="@+id/menuProducts"
             android:icon="@drawable/ic_menu_manage"
             android:title="Products" />

@@ -22,7 +22,7 @@ namespace ShopDiaryAbb.Fragments
         #region Layout Field
         private HomeAdapter mInventoryAdapter;
         private RecyclerView mListViewInventory;
-        
+
         public List<ProductViewModel> mProducts;
         public List<LocationViewModel> mLocations;
         public List<UserLocationViewModel> mUserLoc;
@@ -58,7 +58,7 @@ namespace ShopDiaryAbb.Fragments
         public static List<InventoryViewModel> mInventories;
 
         public event EventHandler OptionButtonWasClicked;
-        
+
         #endregion
         public HomeFragment()
         {
@@ -71,8 +71,8 @@ namespace ShopDiaryAbb.Fragments
             mStorages = new List<StorageViewModel>();
             mLocations = new List<LocationViewModel>();
             mUserLoc = new List<UserLocationViewModel>();
-     
-    }
+
+        }
         #region Fragment Properties
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -93,12 +93,12 @@ namespace ShopDiaryAbb.Fragments
             mRunOutCounter = view.FindViewById<TextView>(Resource.Id.textViewMainRunningOutCounter);
             mExpCounter = view.FindViewById<TextView>(Resource.Id.textViewMainExpiredCounter);
             mStockCounter = view.FindViewById<TextView>(Resource.Id.textViewMainGoodConditionCounter);
-            mHomeRecyclerTitle= view.FindViewById<TextView>(Resource.Id.textViewHomeRecyclerTitle);
+            mHomeRecyclerTitle = view.FindViewById<TextView>(Resource.Id.textViewHomeRecyclerTitle);
             mFilterExpCounter = view.FindViewById<LinearLayout>(Resource.Id.linearLayoutExpiredCounter);
             mFilterRunOutCounter = view.FindViewById<LinearLayout>(Resource.Id.linearLayoutNearlyExpiredCounter);
             mFilterGoodCounter = view.FindViewById<LinearLayout>(Resource.Id.linearLayoutGoodCondition);
             LoadLocationData();
-            mRunOutCounter.Text = mInventories.Count.ToString();
+            mRunOutCounter.Text = InventoriesGood.Count.ToString();
             mExpCounter.Text = mInventories.Count.ToString();
             mStockCounter.Text = "0";
 
@@ -111,7 +111,7 @@ namespace ShopDiaryAbb.Fragments
             return view;
         }
 
-        public  void LoadLocationData()
+        public void LoadLocationData()
         {
             mLocations = LoginPageActivity.mGlobalLocations.Where(l => l.AddedUserId == LoginPageActivity.StaticUserClass.ID.ToString()).ToList();
             if (LoginPageActivity.StaticActiveLocationClass == null)
@@ -129,17 +129,20 @@ namespace ShopDiaryAbb.Fragments
             mHomeRecyclerTitle.SetTextColor(Android.Graphics.Color.Red);
             #endregion
             List<InventoryViewModel> temp = LoginPageActivity.mGlobalInventories;
+            InventoriesGood = temp
+           .Join(mStorages, i => i.StorageId, s => s.Id, (i, s) => i)
+           .Where(i => i.ExpirationDate > DateTime.Now).ToList();
             InventoriesExpired = temp
            .Join(mStorages, i => i.StorageId, s => s.Id, (i, s) => i)
            .Where(i => i.ExpirationDate < DateTime.Now).ToList();
-           var InventoriesGrouped=InventoriesExpired
-           .GroupBy(s => s.ProductId)
-           .Select(g => g.First()).ToList();
+            var InventoriesGrouped = InventoriesExpired
+            .GroupBy(s => s.ProductId)
+            .Select(g => g.First()).ToList();
             mInventories = InventoriesExpired;
             this.mInventoryAdapter = new HomeAdapter(InventoriesGrouped, "Expired", "Red", this.Activity);
             this.mInventoryAdapter.ItemClick += OnInventoryClick;
             this.mListViewInventory.SetAdapter(this.mInventoryAdapter);
-            
+
         }
 
         private void OnInventoryClick(object sender, int e)
@@ -158,7 +161,5 @@ namespace ShopDiaryAbb.Fragments
             mFragmentTransaction.AddToBackStack(tag);
             mFragmentTransaction.CommitAllowingStateLoss();
         }
-       
-       
-    }
+    } 
 }

@@ -54,8 +54,8 @@ namespace ShopDiaryAbb.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.ManageShopItemAdd,container,false);
-            mButtonAdd = view.FindViewById<Button>(Resource.Id.buttonAddShopList);
-            mButtonCancel = view.FindViewById<Button>(Resource.Id.buttonCancelShopList);
+            mButtonAdd = view.FindViewById<Button>(Resource.Id.buttonAddShopItemAdd);
+            mButtonCancel = view.FindViewById<Button>(Resource.Id.buttonAddShopItemCancel);
             Name = view.FindViewById<EditText>(Resource.Id.editTextAddShopItemName);
             Quantity = view.FindViewById<EditText>(Resource.Id.editTextAddShopItemQuantity);
             mProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarAddShopList);
@@ -91,7 +91,7 @@ namespace ShopDiaryAbb.Fragments
                     LoginPageActivity.mGlobalShopItem = await mShopItemDataService.GetAll();
                     this.Activity.RunOnUiThread(() => Toast.MakeText(this.Activity, "ShopList Added", ToastLength.Long).Show());
                     mProgressBar.Visibility = Android.Views.ViewStates.Invisible;
-                    ReplaceFragment(new ShopListFragment(), "Manage ShopLists");
+                    ReplaceFragment(new ShopItemsFragment(), "Manage ShopLists");
                 }
                 else
                 {

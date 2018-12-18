@@ -18,10 +18,6 @@
        android:id="@+id/nav_home_storages"
        android:icon="@drawable/ic_home_2"
        android:title="Storages" />
-    <item
-       android:id="@+id/nav_home_categories"
-       android:icon="@drawable/ic_home_2"
-       android:title="Categories" />
      <item
        android:id="@+id/nav_home_products"
        android:icon="@drawable/ic_home_2"
